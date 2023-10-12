@@ -6,20 +6,24 @@ export const StyledBalanceDiv = styled.div`
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
   padding: 8px 74px 12px 32px;
+  width: 280px;
+  height: 80px;
+
+  @media only screen and (min-width: 768px) {
+    padding: 8px 122px 12px 40px;
+    width: 330px;
+  }
 `;
 
 export const StyledBalanceTitle = styled.h2`
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 700;
 `;
 
 export const StyledBalanceSupTitle = styled.h4`
   color: ${({ theme }) => theme.colors.subColor};
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 12px;
 `;
-
-export const TextBox = styled.div``;
