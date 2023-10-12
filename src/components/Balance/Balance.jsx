@@ -5,6 +5,7 @@ import {
   StyledBalanceTitle,
 } from './Balance.styled';
 
+
 const Balance = () => {
   const mockBalance = 24000;
   return (
