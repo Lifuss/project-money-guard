@@ -11,3 +11,9 @@
     <path fill="#fbfbfb" style="fill: var(--color2, #fbfbfb)" d="M10.79 26.073l-6.102-7.212v4.993l6.102 7.212v-4.993z">
     </path>
 </symbol>
+<symbol id="icon-statisticarrow-up" viewBox="0 0 58 32">
+<path fill="none" stroke="#fbfbfb" style="stroke: var(--color1, #fbfbfb)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.9091" d="M55.273 29.091l-26.182-26.182-26.182 26.182"></path>
+</symbol>
+<symbol id="icon-statisticarrow-down" viewBox="0 0 58 32">
+<path fill="none" stroke="#fbfbfb" style="stroke: var(--color1, #fbfbfb)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.9091" d="M55.273 2.909l-26.182 26.182-26.182-26.182"></path>
+</symbol>
