@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledTransaction = styled.li`
   margin: 0 auto;
   width: 280px;
+  margin-bottom: 8px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
   border-left: 5px solid #ff868d;
