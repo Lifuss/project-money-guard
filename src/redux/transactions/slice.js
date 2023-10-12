@@ -67,7 +67,8 @@ export const slice = createSlice({
           fetchTransactionsThunk.pending,
           deleteTransactionThunk.pending,
           addTransactionThunk.pending,
-          fetchTransactionCategory.pending
+          fetchTransactionCategory.pending,
+          fetchTransactionsSummary.pending
         ),
         (state, { payload }) => {
           state.transactions.isLoading = true;
@@ -79,7 +80,8 @@ export const slice = createSlice({
           fetchTransactionsThunk.rejected,
           deleteTransactionThunk.rejected,
           addTransactionThunk.rejected,
-          fetchTransactionCategory.rejected
+          fetchTransactionCategory.rejected,
+          fetchTransactionsSummary.rejected
         ),
         (state, { payload }) => {
           state.transactions.error = payload;
