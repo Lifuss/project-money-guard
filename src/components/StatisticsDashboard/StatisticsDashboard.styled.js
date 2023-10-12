@@ -19,6 +19,21 @@ export const SelectBtn = styled.button`
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.6);
 `;
-export const Option = styled.option`
+
+export const Options = styled.button`
   padding: 6px 20px;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  color: white;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  margin: 0;
+  position: relative;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ff868d;
+  }
 `;

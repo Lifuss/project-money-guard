@@ -1,45 +1,91 @@
 import React, { useState } from 'react';
-import { Select, SelectBtn } from './StatisticsDashboard.styled';
-const StatisticsDashboard = () => {
+import {
+  Select,
+  SelectBtn,
+  Options,
+  OptionsDiv,
+} from './StatisticsDashboard.styled';
+import { Scrollbars } from 'react-custom-scrollbars-2';
+const StatisticsDashboard = ({
+  isOpen,
+  setIsOpen,
+  isOpenYear,
+  setIsOpenYear,
+}) => {
   const [selectedMonth, setSelectedMonth] = useState('January');
+  const [selectedYear, setSelectedYear] = useState('2023');
+  const onMonthClick = month => {
+    setSelectedMonth(month);
+    setIsOpen(!isOpen);
+  };
+  const years = ['2023', '2022', '2021', '2020', '2019'];
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
   console.log(selectedMonth);
   return (
     <div
       style={{
         display: 'flex',
         gap: '32px',
+        marginTop: '60px',
       }}
     >
       <div>
-        <SelectBtn>
+        <SelectBtn onClick={() => setIsOpen(!isOpen)}>
           {selectedMonth}
-          {}
         </SelectBtn>
+        {isOpen && (
+          <Scrollbars
+            style={{
+              width: 181,
+              height: 157,
+              position: 'absolute',
+              zIndex: '2',
+              backgroundColor: ' rgba(98, 63, 139, 1)',
+            }}
+          >
+            {months.map(month => (
+              <Options key={month} onClick={() => onMonthClick(month)}>
+                {month}
+              </Options>
+            ))}
+          </Scrollbars>
+        )}
       </div>
-      {/* <div class="select">
-        <Select id="month-select">
-          <Option value="January">January</Option>
-          <Option value="February"> February</Option>
-          <Option value="March">March</Option>
-          <Option value="April"> April</Option>
-          <Option value="May">May</Option>
-          <Option value="June"> June</Option>
-          <Option value="July">July</Option>
-          <Option value="August">August</Option>
-          <Option value="September">September</Option>
-          <Option value="October"> October</Option>
-          <Option value="November">November</Option>
-          <Option value="December">December</Option>
-        </Select>
-      </div> */}
-      <div class="select">
-        <Select id="year-select">
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
-        </Select>
+
+      <div>
+        <SelectBtn onClick={() => setIsOpenYear(!isOpenYear)}>
+          {selectedYear}
+        </SelectBtn>
+        {isOpenYear && (
+          <Scrollbars
+            style={{
+              width: 181,
+              height: 157,
+              position: 'absolute',
+              zIndex: '2',
+              backgroundColor: ' rgba(98, 63, 139, 1)',
+            }}
+          >
+            {years.map(year => (
+              <Options key={year} onClick={() => onMonthClick(year)}>
+                {year}
+              </Options>
+            ))}
+          </Scrollbars>
+        )}
       </div>
     </div>
   );

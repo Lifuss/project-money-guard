@@ -5,9 +5,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Chart = ({ dataDoughnut }) => {
   return (
     <div>
-      Chart
       <Doughnut
-        style={{ display: 'flex', maxWidth: '400px', maxHeight: '400px' }}
+        style={{
+          display: 'flex',
+          width: '336px',
+          height: '336px',
+          marginTop: '20px',
+        }}
         data={dataDoughnut}
       />
     </div>

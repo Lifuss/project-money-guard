@@ -6,7 +6,8 @@ import axios from 'axios';
 
 const StatisticsTab = () => {
   const [categories, setCategories] = useState([]);
-
+  const [isOpenMonth, setIsOpenMonth] = useState(false);
+  const [isOpenYear, setIsOpenYear] = useState(false);
   useEffect(() => {
     getCategories()
       .then(data => {
@@ -36,16 +37,16 @@ const StatisticsTab = () => {
         data: [12, 19, 33, 5, 10, 39, 7, 8, 16, 45, 20],
         backgroundColor: [
           'rgba(255, 2, 57, 0.991)',
-          'rgb(54, 163, 235)',
-          'rgb(255, 207, 86)',
-          'rgb(75, 192, 192)',
+          'rgba(110, 120, 232, 1)',
+          'rgba(254, 208, 87, 1)',
+          'rgba(197, 186, 255, 1)',
           'rgb(153, 102, 255)',
           'rgb(255, 160, 64)',
-          'rgb(0, 161, 70)',
-          'rgb(0, 76, 164)',
-          'rgb(206, 0, 155)',
-          'rgb(77, 255, 190)',
-          'rgb(255, 137, 137)',
+          'rgba(36, 204, 167, 1)',
+          'rgba(0, 173, 132, 1)',
+          'rgba(255, 216, 208, 1)',
+          'rgba(129, 225, 255, 1)',
+          'rgba(253, 148, 152, 1)',
         ],
         borderColor: [
           'rgba(255, 2, 57, 0.991)',
@@ -64,16 +65,35 @@ const StatisticsTab = () => {
       },
     ],
   };
+
   return (
     <div
       style={{
         display: 'flex',
         gap: '32px',
+        padding: '32px 16px 40px 69px',
+      }}
+      onClick={() => {
+        if (isOpenMonth) {
+          setIsOpenMonth(false);
+        } else if (isOpenYear) {
+          setIsOpenYear(false);
+        } else {
+          return;
+        }
       }}
     >
-      <Chart dataDoughnut={dataDoughnut} />
       <div>
-        <StatisticsDashboard />
+        Statistics
+        <Chart dataDoughnut={dataDoughnut} />
+      </div>
+      <div>
+        <StatisticsDashboard
+          isOpen={isOpenMonth}
+          setIsOpen={setIsOpenMonth}
+          isOpenYear={isOpenYear}
+          setIsOpenYear={setIsOpenYear}
+        />
         <StatisticsTable categories={categories} dataDoughnut={dataDoughnut} />
       </div>
     </div>
