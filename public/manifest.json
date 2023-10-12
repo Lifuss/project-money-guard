@@ -3,7 +3,7 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "/assets/sprite.svg#icon--Money-Guard-2",
+      "src": "/assets/sprite.svg#icon-Money-Guard-2",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
