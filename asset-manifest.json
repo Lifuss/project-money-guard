@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/project-moneyGuard/static/css/main.7acaea2f.css",
+    "main.js": "/project-moneyGuard/static/js/main.07d3183d.js",
+    "index.html": "/project-moneyGuard/index.html",
+    "main.7acaea2f.css.map": "/project-moneyGuard/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/project-moneyGuard/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
