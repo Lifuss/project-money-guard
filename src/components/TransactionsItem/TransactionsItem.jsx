@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTransactionThunk } from 'redux/transactions/operations';
+import { StyledDeleteBtn } from './TransactionsItem.styled';
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,9 @@ const TransactionsItem = ({ transaction }) => {
       <p>Comment{transaction.comment}</p>
       <p>Sum{transaction.amount}</p>
       <div>
-        <button onClick={() => handleBtnDelete(transaction.id)}>Delete</button>
+        <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
+          Delete
+        </StyledDeleteBtn>
         <button>Edit</button>
       </div>
     </li>
