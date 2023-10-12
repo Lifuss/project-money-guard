@@ -3,6 +3,9 @@
   src: url(/src/fonts/Poppins-Regular.ttf), url(/src/fonts/Poppins-SemiBold.ttf),
     url(/src/fonts/Poppins-SemiBold.ttf);
 }
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: 'Poppins', sans-serif;
 }
