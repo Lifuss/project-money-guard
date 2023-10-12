@@ -7,11 +7,23 @@ import RegistrationPage from 'pages/RegistrationPage';
 import StatisticsTab from 'pages/StatisticsTab';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'routes/PrivateRoute';
+import Loader from './Loader/Loader';
 
 export const App = () => {
+<<<<<<< Updated upstream
   // логіка isLogin поки заглушка
   // const isLoginMuck = true;
   return (
+=======
+  const dispatch = useDispatch();
+  const isRefresh = useSelector(selectIsRefresh);
+  useEffect(() => {
+    dispatch(refreshThunk());
+  }, [dispatch]);
+  return isRefresh ? (
+    <Loader />
+  ) : (
+>>>>>>> Stashed changes
     <Routes>
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegistrationPage />} />
