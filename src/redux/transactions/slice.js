@@ -2,6 +2,8 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addTransactionThunk,
   deleteTransactionThunk,
+  fetchTransactionCategory,
+  fetchTransactionsSummary,
   fetchTransactionsThunk,
   updateTransactionThunk,
 } from './operations';
@@ -9,8 +11,17 @@ import {
 const initialState = {
   transactions: {
     items: [],
+    categories: [],
     isLoading: false,
     error: null,
+  },
+  summary: {
+    categoriesSummary: [],
+    incomeSummary: 0,
+    expenseSummary: 0,
+    periodTotal: 0,
+    year: 0,
+    month: 0,
   },
 };
 export const slice = createSlice({
@@ -34,11 +45,18 @@ export const slice = createSlice({
           transaction.id === payload.id ? payload : transaction
         );
       })
+      .addCase(fetchTransactionCategory.fulfilled, (state, { payload }) => {
+        state.transactions.categories = payload;
+      })
+      .addCase(fetchTransactionsSummary.fulfilled, (state, { payload }) => {
+        state.summary = payload;
+      })
       .addMatcher(
         isAnyOf(
           fetchTransactionsThunk.fulfilled,
           deleteTransactionThunk.fulfilled,
-          addTransactionThunk.fulfilled
+          addTransactionThunk.fulfilled,
+          fetchTransactionCategory.fulfilled
         ),
         (state, { payload }) => {
           state.transactions.isLoading = false;
@@ -48,7 +66,8 @@ export const slice = createSlice({
         isAnyOf(
           fetchTransactionsThunk.pending,
           deleteTransactionThunk.pending,
-          addTransactionThunk.pending
+          addTransactionThunk.pending,
+          fetchTransactionCategory.pending
         ),
         (state, { payload }) => {
           state.transactions.isLoading = true;
@@ -59,7 +78,8 @@ export const slice = createSlice({
         isAnyOf(
           fetchTransactionsThunk.rejected,
           deleteTransactionThunk.rejected,
-          addTransactionThunk.rejected
+          addTransactionThunk.rejected,
+          fetchTransactionCategory.rejected
         ),
         (state, { payload }) => {
           state.transactions.error = payload;

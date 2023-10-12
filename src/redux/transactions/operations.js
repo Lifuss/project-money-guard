@@ -55,3 +55,27 @@ export const updateTransactionThunk = createAsyncThunk(
     }
   }
 );
+
+export const fetchTransactionCategory = createAsyncThunk(
+  'transactionCategory',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await swaggerApi.get('transaction-categories');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchTransactionsSummary = createAsyncThunk(
+  'transactionsSummary',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await swaggerApi.get('transactions-summary');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
