@@ -14,7 +14,7 @@ const DashboardPage = () => {
         <Navigation />
         {/* <Currency /> дивлячись який адаптив */}
         <Balance />
-        <Loader />
+        {/* <Loader /> */}
       </div>
 
       <hr />
