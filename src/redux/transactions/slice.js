@@ -20,8 +20,8 @@ const initialState = {
     incomeSummary: 0,
     expenseSummary: 0,
     periodTotal: 0,
-    year: 0,
-    month: 0,
+    year: null,
+    month: null,
   },
 };
 export const slice = createSlice({

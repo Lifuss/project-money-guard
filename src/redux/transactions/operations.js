@@ -70,9 +70,11 @@ export const fetchTransactionCategory = createAsyncThunk(
 
 export const fetchTransactionsSummary = createAsyncThunk(
   'transactionsSummary',
-  async (_, { rejectWithValue }) => {
+  async ({ month, year }, { rejectWithValue }) => {
     try {
-      const { data } = await swaggerApi.get('transactions-summary');
+      const { data } = await swaggerApi.get(
+        `transactions-summary?month=${month}&year=${year}`
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
