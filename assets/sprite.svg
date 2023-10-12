@@ -1,0 +1,13 @@
+<symbol id="icon--Money-Guard-2" viewBox="0 0 33 32">
+    <path fill="#ffc727" style="fill: var(--color1, #ffc727)"
+        d="M22.44 4.308c-2.219-0.555-4.438-1.664-6.102-3.328-1.664 1.664-3.883 2.774-6.102 3.328 0.555 4.993 2.219 8.321 6.102 11.095 3.883-2.774 6.102-6.102 6.102-11.095z">
+    </path>
+    <path fill="#fbfbfb" style="fill: var(--color2, #fbfbfb)"
+        d="M20.221 24.963l-15.533-18.307v8.876l12.204 13.869 3.329-4.438z"></path>
+    <path fill="#fbfbfb" style="fill: var(--color2, #fbfbfb)"
+        d="M21.886 23.299l6.657-7.766v-8.321l-10.54 12.204 3.883 3.883z"></path>
+    <path fill="#fbfbfb" style="fill: var(--color2, #fbfbfb)" d="M22.44 26.073v4.993l6.102-7.212v-4.993l-6.102 7.212z">
+    </path>
+    <path fill="#fbfbfb" style="fill: var(--color2, #fbfbfb)" d="M10.79 26.073l-6.102-7.212v4.993l6.102 7.212v-4.993z">
+    </path>
+</symbol>
