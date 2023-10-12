@@ -10,7 +10,28 @@ import {
 
 const initialState = {
   transactions: {
-    items: [],
+    items: [
+      {
+        id: 'be686c9f-73fd-4802-b226-ecb7c11d36ca',
+        transactionDate: '2023-12-10',
+        type: 'INCOME',
+        comment: 'my salary',
+        amount: 10000,
+        balanceAfter: 10000,
+        categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+        userId: 'e0d5fbfd-d4d0-4001-92e2-911580cc12f9',
+      },
+      {
+        id: 'e4639801-c0f3-4a44-b87f-96cb9b4305b2',
+        transactionDate: '2023-01-09',
+        type: 'EXPENSE',
+        comment: 'kypiv prodykti',
+        amount: -4000,
+        balanceAfter: 6000,
+        categoryId: '27eb4b75-9a42-4991-a802-4aefe21ac3ce',
+        userId: 'e0d5fbfd-d4d0-4001-92e2-911580cc12f9',
+      },
+    ],
     categories: [],
     isLoading: false,
     error: null,
