@@ -10,7 +10,7 @@ import PrivateRoute from 'routes/PrivateRoute';
 
 export const App = () => {
   // логіка isLogin поки заглушка
-  const isLoginMuck = true;
+  // const isLoginMuck = true;
   return (
     <Routes>
       <Route path="login" element={<LoginPage />} />
