@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
   // логіка isLogin
-  const isLoginMuck = false;
+  const isLoginMuck = true;
   if (isLoginMuck) {
     return children;
   }
