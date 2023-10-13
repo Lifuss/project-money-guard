@@ -13,11 +13,8 @@ import {
   StyledTable,
   StyledTableWrapper,
   StyledTbodyTable,
-  StyledTdCategory,
+  StyledTd,
   StyledTdComment,
-  StyledTdDate,
-  StyledTdSum,
-  StyledTdType,
   StyledThCategory,
   StyledThComment,
   StyledThDate,
@@ -71,25 +68,23 @@ const TransactionsList = ({ handleDelete }) => {
             {transactions.length > 0 ? (
               transactions.map(transaction => (
                 <StyledTr key={transaction.id}>
-                  <StyledTdDate>
-                    {formatDate(transaction.transactionDate)}
-                  </StyledTdDate>
-                  <StyledTdType>
+                  <StyledTd>{formatDate(transaction.transactionDate)}</StyledTd>
+                  <StyledTd>
                     {transaction.type === 'INCOME' ? '+' : '-'}
-                  </StyledTdType>
-                  <StyledTdCategory>
+                  </StyledTd>
+                  <StyledTd>
                     {categories.find(cat => cat.id === transaction.categoryId)
                       ?.name || '-'}
-                  </StyledTdCategory>
+                  </StyledTd>
                   <StyledTdComment>{transaction.comment}</StyledTdComment>
-                  <StyledTdSum
+                  <StyledTd
                     style={{
                       color:
                         transaction.type === 'INCOME' ? '#FFB627' : '#FF868D',
                     }}
                   >
                     {transaction.amount}
-                  </StyledTdSum>
+                  </StyledTd>
                   <td>
                     <StyledBtnBox>
                       <StyledEditBtn>

@@ -76,31 +76,24 @@ export const StyledTbodyTable = styled.tbody`
 
 export const StyledTr = styled.tr`
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between;
+  gap: 65px;
   align-items: center;
   padding: 15px 20px;
   border-bottom: ${({ theme }) => theme.border.borderBottom};
 `;
 
-export const StyledTdDate = styled.td`
+export const StyledTd = styled.td`
   text-align: right;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: #fbfbfb;
-  margin-right: 64px;
+  color: ${({ theme }) => theme.colors.mainWhite};
 `;
-export const StyledTdType = styled(StyledTdDate)`
-  margin-right: 64px;
-`;
-export const StyledTdCategory = styled(StyledTdDate)`
-  margin-right: 85px;
-`;
-export const StyledTdComment = styled(StyledTdDate)`
-  margin-right: 100px;
-`;
-export const StyledTdSum = styled(StyledTdDate)`
-  margin-right: 40px;
+
+export const StyledTdComment = styled(StyledTd)`
+  margin-right: 20px;
+  width: 100px;
 `;
