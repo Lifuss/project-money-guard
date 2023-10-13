@@ -32,7 +32,7 @@ import {
 } from 'components/TransactionsItem/TransactionsItem.styled';
 import { deleteTransactionThunk } from 'redux/transactions/operations';
 
-const TransactionsList = ({ handleDelete }) => {
+const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
