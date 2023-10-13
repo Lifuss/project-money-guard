@@ -36,6 +36,12 @@ export const TableTh = styled.th`
   /* padding: 16px; */
   display: inline-block;
 `;
+export const TableH3 = styled.h3`
+  margin-top: 200px;
+  font-size: 20px;
+  text-align: center;
+  line-height: normal;
+`;
 export const TableBody = styled.tbody`
   /* padding: 16px; */
   display: flex;

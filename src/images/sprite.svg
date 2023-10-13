@@ -40,14 +40,14 @@
     </symbol>
     <symbol id="arrow_up" viewBox="0 0 32 32">
       <path fill="none" stroke="#fbfbfb" stroke-width="1.6" d="M30.4 23.2 16 8.8 1.6 23.2"
-        style="stroke:var(--color3, #fbfbfb)" />
+         />
     </symbol>
     <symbol id="minus" viewBox="0 0 32 32">
       <path fill="none" stroke="#fff" stroke-width="3.2" d="M0 16h32" style="stroke:var(--color1, #fff)" />
     </symbol>
     <symbol id="arrow_down" viewBox="0 0 32 32">
-      <path fill="none" stroke="#fbfbfb" stroke-width="1.6" d="M1.6 8.8 16 23.2 30.4 8.8"
-        style="stroke:var(--color3, #fbfbfb)" />
+      <path fill="none"  stroke="#fbfbfb" stroke-width="1.6" d="M1.6 8.8 16 23.2 30.4 8.8"
+         />
     </symbol>
     <symbol id="slash" viewBox="0 0 32 32">
       <path fill="none" stroke="#fff" stroke-width="2.909" d="M21.529 1.597 10.471 30.403"

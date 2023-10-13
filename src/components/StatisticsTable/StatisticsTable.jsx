@@ -5,8 +5,17 @@ import {
   TableTh,
   TableTrHead,
   TableBody,
+  TableH3,
 } from './StatisticsTable.styled';
+import { useSelector } from 'react-redux';
+
+import {
+  selectExpenseSummary,
+  selectIncomeSummary,
+} from 'redux/transactions/selectors';
 const StatisticsTable = ({ categories, dataDoughnut }) => {
+  const income = useSelector(selectIncomeSummary);
+  const expense = useSelector(selectExpenseSummary);
   return (
     <div>
       <table>
@@ -17,29 +26,36 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
           </TableTrHead>
         </thead>
         <TableBody>
-          {categories.map(({ name }, index) => {
-            return (
-              <TableTr key={name}>
-                <TableTd>
-                  <div
+          {categories.length > 1 ? (
+            categories.map(({ name, total }, index) => {
+              return (
+                <TableTr key={name}>
+                  <TableTd>
+                    <div
+                      style={{
+                        backgroundColor: `${dataDoughnut.datasets[0].backgroundColor[index]}`,
+                        width: '24px',
+                        height: '24px',
+                      }}
+                    ></div>
+                    {name}
+                  </TableTd>
+                  <td
                     style={{
-                      backgroundColor: `${dataDoughnut.datasets[0].backgroundColor[index]}`,
-                      width: '24px',
-                      height: '24px',
+                      fontSize: '14px',
                     }}
-                  ></div>
-                  {name}
-                </TableTd>
-                <td
-                  style={{
-                    fontSize: '14px',
-                  }}
-                >
-                  {dataDoughnut.datasets[0].data[index]}
-                </td>
-              </TableTr>
-            );
-          })}
+                  >
+                    {total < 0 ? -total : total}
+                  </td>
+                </TableTr>
+              );
+            })
+          ) : (
+            <TableH3>
+              It looks like you have not made any monetary transactions during
+              this time period
+            </TableH3>
+          )}
         </TableBody>
         <TableTr
           style={{
@@ -52,7 +68,7 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
               color: '#FF868D',
             }}
           >
-            1000.00
+            {-expense}
           </td>
         </TableTr>
         <TableTr
@@ -66,7 +82,7 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
               color: '#FF868D',
             }}
           >
-            1000.00
+            {income}
           </td>
         </TableTr>
       </table>
