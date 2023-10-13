@@ -13,7 +13,9 @@ import {
   StyledTableWrapper,
   StyledTbodyTable,
   StyledTd,
+  StyledTh,
   StyledThead,
+  StyledTr,
   StyledTransactionsList,
 } from './TransactionsList.styled';
 import {
@@ -48,18 +50,17 @@ const TransactionsList = ({ handleDelete }) => {
         <StyledTable>
           <StyledThead>
             <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Comment</th>
-              <th>Amount</th>
-              <th>Sum</th>
+              <StyledTh>Date</StyledTh>
+              <StyledTh>Type</StyledTh>
+              <StyledTh>Category</StyledTh>
+              <StyledTh>Comment</StyledTh>
+              <StyledTh>Sum</StyledTh>
             </tr>
           </StyledThead>
           <StyledTbodyTable>
             {transactions.length > 0 ? (
               transactions.map(transaction => (
-                <tr key={transaction.id}>
+                <StyledTr key={transaction.id}>
                   <StyledTd>{transaction.transactionDate}</StyledTd>
                   <StyledTd>
                     {transaction.type === 'INCOME' ? '+' : '-'}
@@ -69,7 +70,14 @@ const TransactionsList = ({ handleDelete }) => {
                       ?.name || '-'}
                   </StyledTd>
                   <StyledTd>{transaction.comment}</StyledTd>
-                  <StyledTd>{transaction.amount}</StyledTd>
+                  <StyledTd
+                    style={{
+                      color:
+                        transaction.type === 'INCOME' ? '#FFB627' : '#FF868D',
+                    }}
+                  >
+                    {transaction.amount}
+                  </StyledTd>
                   <StyledTd>
                     <StyledBtnBox>
                       <StyledEditBtn>
@@ -80,7 +88,7 @@ const TransactionsList = ({ handleDelete }) => {
                       <StyledDeleteBtn>Delete</StyledDeleteBtn>
                     </StyledBtnBox>
                   </StyledTd>
-                </tr>
+                </StyledTr>
               ))
             ) : (
               <tr>
