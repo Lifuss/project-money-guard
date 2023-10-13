@@ -8,6 +8,7 @@ import {
 } from 'redux/transactions/selectors';
 import Loader from 'components/Loader/Loader';
 import {
+  StyledHeaderTr,
   StyledMobileWrapper,
   StyledTable,
   StyledTableBtnWrapper,
@@ -20,7 +21,6 @@ import {
   StyledThDate,
   StyledThSum,
   StyledThType,
-  StyledThead,
   StyledTr,
   StyledTransactionsList,
 } from './TransactionsList.styled';
@@ -55,15 +55,15 @@ const TransactionsList = ({ handleDelete }) => {
         {loading && <Loader />}
         {error && <h1>Something went wrong... 😢</h1>}
         <StyledTable>
-          <StyledThead>
-            <tr>
+          <thead>
+            <StyledHeaderTr>
               <StyledThDate>Date</StyledThDate>
               <StyledThType>Type</StyledThType>
               <StyledThCategory>Category</StyledThCategory>
               <StyledThComment>Comment</StyledThComment>
               <StyledThSum>Sum</StyledThSum>
-            </tr>
-          </StyledThead>
+            </StyledHeaderTr>
+          </thead>
           <StyledTbodyTable>
             {transactions.length > 0 ? (
               transactions.map(transaction => (

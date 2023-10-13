@@ -37,21 +37,15 @@ export const StyledHeaderTr = styled.tr`
   background: ${({ theme }) => theme.backgrounds.tableHead};
   box-shadow: ${({ theme }) => theme.shadows.default};
   backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
-`;
-export const StyledThead = styled.thead`
-  display: flex;
-  align-items: center;
-  padding: 16px 20px;
-  border-radius: 8px;
-  background: ${({ theme }) => theme.backgrounds.tableHead};
-  box-shadow: ${({ theme }) => theme.shadows.default};
-  backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
-  gap: 65px;
+  gap: 110px;
   & :nth-child(3) {
     margin-left: -15px;
   }
   & :nth-child(4) {
     margin-left: -30px;
+  }
+  & :nth-child(5) {
+    margin-left: 10px;
   }
   & :nth-child(:not(:last-child)) {
     margin-right: 0;
