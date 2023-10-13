@@ -36,24 +36,22 @@ const Header = () => {
 
   return (
     <>
-      <header>
-        <HeaderWrapper>
-          <LogoBox>
-            <LogoImg src={logoMoneyGuard} alt="logo" />
-            <LogoName>Money Guard</LogoName>
-          </LogoBox>
-          <HeaderInfo>
-            <AccountName>{nameFromEmail}</AccountName>
-            {isDesktopOrLaptop && (
-              <DividerImg src={dividerIcon} alt="divider-icon" />
-            )}
-            <LogoutBtn onClick={handleLogout}>
-              <img src={exitIcon} alt="exit" />
-              {isDesktopOrLaptop && <ExitText>Exit</ExitText>}
-            </LogoutBtn>
-          </HeaderInfo>
-        </HeaderWrapper>
-      </header>
+      <HeaderWrapper>
+        <LogoBox>
+          <LogoImg src={logoMoneyGuard} alt="logo" />
+          <LogoName>Money Guard</LogoName>
+        </LogoBox>
+        <HeaderInfo>
+          <AccountName>{nameFromEmail}</AccountName>
+          {isDesktopOrLaptop && (
+            <DividerImg src={dividerIcon} alt="divider-icon" />
+          )}
+          <LogoutBtn onClick={handleLogout}>
+            <img src={exitIcon} alt="exit" />
+            {isDesktopOrLaptop && <ExitText>Exit</ExitText>}
+          </LogoutBtn>
+        </HeaderInfo>
+      </HeaderWrapper>
     </>
   );
 };
