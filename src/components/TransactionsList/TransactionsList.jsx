@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategories,
   selectError,
@@ -30,12 +30,18 @@ import {
   StyledDeleteBtn,
   StyledEditBtn,
 } from 'components/TransactionsItem/TransactionsItem.styled';
+import { deleteTransactionThunk } from 'redux/transactions/operations';
 
 const TransactionsList = ({ handleDelete }) => {
+  const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+
+  const handleTableBtnDelete = id => {
+    dispatch(deleteTransactionThunk(id));
+  };
 
   return (
     <StyledTransactionsList>
@@ -91,7 +97,11 @@ const TransactionsList = ({ handleDelete }) => {
                           <use href={`${sprite}#edit`} />
                         </svg>
                       </StyledEditBtn>
-                      <StyledDeleteBtn>Delete</StyledDeleteBtn>
+                      <StyledDeleteBtn
+                        onClick={() => handleTableBtnDelete(transaction.id)}
+                      >
+                        Delete
+                      </StyledDeleteBtn>
                     </StyledTableBtnWrapper>
                   </td>
                 </StyledTr>
