@@ -6,11 +6,12 @@ import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransact
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import React from 'react';
+import { StyledContainer } from 'styles/GlobalStyles';
 
 const HomeTab = () => {
   const isOpen=true
   return (
-    <div>
+    <StyledContainer>
       <TransactionsList />
       <ButtonAddTransactions />
       <ModalAddTransaction />
@@ -18,7 +19,7 @@ const HomeTab = () => {
       <AddTransactionForm />
       <EditTransactionForm />
       {isOpen && <Modal/>}
-    </div>
+    </StyledContainer>
   );
 };
 
