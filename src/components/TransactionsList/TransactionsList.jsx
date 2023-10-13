@@ -9,22 +9,16 @@ import {
 import Loader from 'components/Loader/Loader';
 import {
   StyledHeaderTr,
-  StyledMobileWrapper,
   StyledTable,
   StyledTableBtnWrapper,
   StyledTableWrapper,
   StyledTbodyTable,
   StyledTd,
   StyledTdComment,
-  StyledThCategory,
-  StyledThComment,
-  StyledThDate,
-  StyledThSum,
-  StyledThType,
+  StyledTh,
   StyledTr,
   StyledTransactionsList,
 } from './TransactionsList.styled';
-import TransactionsItem from 'components/TransactionsItem/TransactionsItem';
 import sprite from '../../images/sprite.svg';
 import {
   StyledDeleteBtn,
@@ -45,29 +39,17 @@ const TransactionsList = () => {
 
   return (
     <StyledTransactionsList>
-      <StyledMobileWrapper>
-        {loading && <Loader />}
-        {error && <h1>Something went wrong... 😢</h1>}
-        {transactions.length > 0 ? (
-          transactions.map(transaction => (
-            <TransactionsItem key={transaction.id} transaction={transaction} />
-          ))
-        ) : (
-          <h3>Oh, you don't have transactions yet. Let's create one!</h3>
-        )}
-      </StyledMobileWrapper>
-
       <StyledTableWrapper>
         {loading && <Loader />}
         {error && <h1>Something went wrong... 😢</h1>}
         <StyledTable>
           <thead>
             <StyledHeaderTr>
-              <StyledThDate>Date</StyledThDate>
-              <StyledThType>Type</StyledThType>
-              <StyledThCategory>Category</StyledThCategory>
-              <StyledThComment>Comment</StyledThComment>
-              <StyledThSum>Sum</StyledThSum>
+              <StyledTh>Date</StyledTh>
+              <StyledTh>Type</StyledTh>
+              <StyledTh>Category</StyledTh>
+              <StyledTh>Comment</StyledTh>
+              <StyledTh>Sum</StyledTh>
             </StyledHeaderTr>
           </thead>
           <StyledTbodyTable>

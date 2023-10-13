@@ -32,12 +32,13 @@ export const StyledTable = styled.table`
 export const StyledHeaderTr = styled.tr`
   display: flex;
   align-items: center;
+
   padding: 16px 20px;
   border-radius: 8px;
   background: ${({ theme }) => theme.backgrounds.tableHead};
   box-shadow: ${({ theme }) => theme.shadows.default};
   backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
-  gap: 110px;
+
   & :nth-child(3) {
     margin-left: -15px;
   }
@@ -50,19 +51,18 @@ export const StyledHeaderTr = styled.tr`
   & :nth-child(:not(:last-child)) {
     margin-right: 0;
   }
+  @media only screen and (min-width: 768px) {
+    gap: 60px;
+  }
 `;
-export const StyledThDate = styled.th`
+
+export const StyledTh = styled.th`
   text-align: center;
   font-size: 16px;
   font-weight: 400;
 
   color: ${({ theme }) => theme.colors.mainWhite};
 `;
-
-export const StyledThType = styled(StyledThDate)``;
-export const StyledThCategory = styled(StyledThDate)``;
-export const StyledThComment = styled(StyledThDate)``;
-export const StyledThSum = styled(StyledThDate)``;
 export const StyledTbodyTable = styled.tbody`
   display: block;
 
