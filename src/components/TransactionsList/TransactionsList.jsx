@@ -10,6 +10,7 @@ import {
   StyledTransactionWrapper,
   StyledTransactionsList,
 } from './TransactionsList.styled';
+import Loader from 'components/Loader/Loader';
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -17,7 +18,7 @@ const TransactionsList = () => {
   const error = useSelector(selectError);
   return (
     <StyledTransactionWrapper>
-      {loading && <h1>Loading...</h1>}
+      {loading && <Loader />}
       {error && <h1>Something went wrong... 😢</h1>}
       {transactions ? (
         <StyledTransactionsList>
