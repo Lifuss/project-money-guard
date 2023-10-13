@@ -34,6 +34,9 @@ export const StyledParagraph = styled.p`
   color: ${({ theme }) => theme.colors.mainWhite};
 `;
 
+export const StyledSpan = styled.span`
+  max-width: 120px;
+`;
 export const StyledBtnBox = styled.div`
   display: flex;
   justify-content: space-between;

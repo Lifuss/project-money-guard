@@ -7,6 +7,7 @@ import {
   StyledEditBtn,
   StyledParWrapper,
   StyledParagraph,
+  StyledSpan,
   StyledTransaction,
 } from './TransactionsItem.styled';
 import { selectCategories } from 'redux/transactions/selectors';
@@ -38,7 +39,11 @@ const TransactionsItem = ({ transaction }) => {
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Comment</StyledParagraph>
-          <span>{transaction.comment}</span>
+          <StyledSpan>
+            {transaction.comment.length >= 25
+              ? `${transaction.comment.slice(0, 25)}...`
+              : transaction.comment}
+          </StyledSpan>
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Sum</StyledParagraph>

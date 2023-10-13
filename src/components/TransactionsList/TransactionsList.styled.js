@@ -46,7 +46,7 @@ export const StyledHeaderTr = styled.tr`
     margin-left: -30px;
   }
   & :nth-child(5) {
-    margin-left: 10px;
+    margin-left: 18px;
   }
   & :nth-child(:not(:last-child)) {
     margin-right: 0;
