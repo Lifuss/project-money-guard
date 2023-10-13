@@ -7,6 +7,7 @@ import {
   StyledNavText,
 } from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
+import { StyledContainer } from 'styles/GlobalStyles';
 
 const Navigation = () => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -18,7 +19,7 @@ const Navigation = () => {
   return (
     <>
       <NavContainer>
-        <nav>
+        <StyledContainer>
           <NavList>
             <li>
               <StyledNavLink to="/">
@@ -46,7 +47,7 @@ const Navigation = () => {
               </li>
             ) : null}
           </NavList>
-        </nav>
+        </StyledContainer>
       </NavContainer>
     </>
   );

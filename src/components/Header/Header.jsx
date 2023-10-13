@@ -4,11 +4,11 @@ import {
   DividerImg,
   ExitText,
   HeaderInfo,
-  HeaderWrapper,
   LogoBox,
   LogoImg,
   LogoName,
   LogoutBtn,
+  StyledHeaderContainer,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import exitIcon from '../../images/exit.svg';
@@ -36,22 +36,24 @@ const Header = () => {
 
   return (
     <>
-      <HeaderWrapper>
-        <LogoBox>
-          <LogoImg src={logoMoneyGuard} alt="logo" />
-          <LogoName>Money Guard</LogoName>
-        </LogoBox>
-        <HeaderInfo>
-          <AccountName>{nameFromEmail}</AccountName>
-          {isDesktopOrLaptop && (
-            <DividerImg src={dividerIcon} alt="divider-icon" />
-          )}
-          <LogoutBtn onClick={handleLogout}>
-            <img src={exitIcon} alt="exit" />
-            {isDesktopOrLaptop && <ExitText>Exit</ExitText>}
-          </LogoutBtn>
-        </HeaderInfo>
-      </HeaderWrapper>
+      <header>
+        <StyledHeaderContainer>
+          <LogoBox>
+            <LogoImg src={logoMoneyGuard} alt="logo" />
+            <LogoName>Money Guard</LogoName>
+          </LogoBox>
+          <HeaderInfo>
+            <AccountName>{nameFromEmail}</AccountName>
+            {isDesktopOrLaptop && (
+              <DividerImg src={dividerIcon} alt="divider-icon" />
+            )}
+            <LogoutBtn onClick={handleLogout}>
+              <img src={exitIcon} alt="exit" />
+              {isDesktopOrLaptop && <ExitText>Exit</ExitText>}
+            </LogoutBtn>
+          </HeaderInfo>
+        </StyledHeaderContainer>
+      </header>
     </>
   );
 };

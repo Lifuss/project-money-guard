@@ -1,7 +1,6 @@
 import Balance from 'components/Balance/Balance';
 
 import Header from 'components/Header/Header';
-// import Loader from 'components/Loader/Loader';
 import Navigation from 'components/Navigation/Navigation';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -14,7 +13,7 @@ import {
 import Loader from 'components/Loader/Loader';
 
 const DashboardPage = () => {
-  const isTable = useMediaQuery({ query: '(min-width: 768px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <>
       <Header />
@@ -23,7 +22,7 @@ const DashboardPage = () => {
           <Navigation />
           <Balance />
         </StyledDashBoardBox>
-        {isTable && <Currency />}
+        {isTablet && <Currency />}
       </StyledDashBoardContainer>
 
       <Suspense fallback={<Loader />}>
