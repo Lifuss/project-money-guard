@@ -2,33 +2,20 @@ import Chart from 'components/Chart/Chart';
 import StatisticsDashboard from 'components/StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { selectCategories } from '../redux/transactions/selectors';
+
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTransactionCategory } from 'redux/transactions/operations';
 const StatisticsTab = () => {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
   const [isOpenMonth, setIsOpenMonth] = useState(false);
   const [isOpenYear, setIsOpenYear] = useState(false);
   useEffect(() => {
-    getCategories()
-      .then(data => {
-        setCategories(data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
-  // const categoriesTabl = categories.map(({ name }) => name);
-  async function getCategories() {
-    axios.defaults.baseURL = 'https://wallet.goit.ua/';
-    axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIxYmNhYzUyMi0xYTUzLTRjMjgtODE0ZS05N2JjODBjNjU4ZTEiLCJpYXQiOjE2OTcxMTgyNDIsImV4cCI6MTAwMDAwMDE2OTcxMTgyNDJ9.v-qTolgWR02HGC6_BE7_5V4wk3YR-qNpAlXYeOjV2sY`;
+    dispatch(fetchTransactionCategory());
+  }, [dispatch]);
 
-    try {
-      const response = await axios.get('api/transaction-categories');
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const categories = useSelector(selectCategories);
 
   const dataDoughnut = {
     labels: [],

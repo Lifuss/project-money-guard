@@ -32,7 +32,7 @@ const StatisticsDashboard = ({
     'November',
     'December',
   ];
-  console.log(selectedMonth);
+
   return (
     <div
       style={{
