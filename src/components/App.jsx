@@ -1,10 +1,10 @@
-import CurrencyTab from 'pages/CurrencyTab';
-import DashboardPage from 'pages/DashboardPage';
-import HomeTab from 'pages/HomeTab';
-import LoginPage from 'pages/LoginPage';
-import PageNotFound from 'pages/PageNotFound';
-import RegistrationPage from 'pages/RegistrationPage';
-import StatisticsTab from 'pages/StatisticsTab';
+import CurrencyTab from 'pages/CurrtncyTab/CurrencyTab';
+import DashboardPage from 'pages/DashboardPage/DashboardPage';
+import HomeTab from 'pages/HomeTab/HomeTab';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import PageNotFound from 'pages/PageNotFound/PageNotFound';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import StatisticsTab from 'pages/StatisticsTab/StatisticsTab';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'routes/PrivateRoute';
 import Loader from './Loader/Loader';

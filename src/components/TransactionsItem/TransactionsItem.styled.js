@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledTransaction = styled.li`
   margin: 0 auto;
-  width: 280px;
+  min-width: 280px;
+  max-width: 360px;
   margin-bottom: 8px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);

@@ -8,12 +8,11 @@ export const HeaderInfo = styled.div`
 `;
 
 export const HeaderWrapper = styled.header`
+  width: 100%;
   padding: 12px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  outline: 1px solid white;
 `;
 
 export const LogoBox = styled.div`
