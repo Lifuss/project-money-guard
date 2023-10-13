@@ -7,8 +7,7 @@ export const StyledTransaction = styled.li`
   margin-bottom: 8px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
-  border-left: 5px solid #ff868d;
-
+  border-left: 5px solid ${props => props.$color};
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     display: block;
     list-style: none;

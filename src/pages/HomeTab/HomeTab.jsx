@@ -5,9 +5,13 @@ import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransact
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { StyledContainer } from 'styles/GlobalStyles';
 
 const HomeTab = () => {
+  const isTable = useMediaQuery({
+    query: '(min-width:768px)',
+  });
   return (
     <StyledContainer>
       <TransactionsList />

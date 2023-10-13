@@ -8,17 +8,10 @@ import {
 } from 'redux/transactions/selectors';
 import Loader from 'components/Loader/Loader';
 import {
-  StyledHeaderTr,
   StyledMobileWrapper,
   StyledTable,
   StyledTableBtnWrapper,
   StyledTableWrapper,
-  StyledTabletCategory,
-  StyledTabletComment,
-  StyledTabletDate,
-  StyledTabletList,
-  StyledTabletType,
-  StyledTabletWrapper,
   StyledTbodyTable,
   StyledTd,
   StyledTdComment,
@@ -27,13 +20,13 @@ import {
   StyledThDate,
   StyledThSum,
   StyledThType,
+  StyledThead,
   StyledTr,
   StyledTransactionsList,
 } from './TransactionsList.styled';
 import TransactionsItem from 'components/TransactionsItem/TransactionsItem';
 import sprite from '../../images/sprite.svg';
 import {
-  StyledBtnBox,
   StyledDeleteBtn,
   StyledEditBtn,
 } from 'components/TransactionsItem/TransactionsItem.styled';
@@ -62,15 +55,15 @@ const TransactionsList = ({ handleDelete }) => {
         {loading && <Loader />}
         {error && <h1>Something went wrong... 😢</h1>}
         <StyledTable>
-          <thead>
-            <StyledHeaderTr>
+          <StyledThead>
+            <tr>
               <StyledThDate>Date</StyledThDate>
               <StyledThType>Type</StyledThType>
               <StyledThCategory>Category</StyledThCategory>
               <StyledThComment>Comment</StyledThComment>
               <StyledThSum>Sum</StyledThSum>
-            </StyledHeaderTr>
-          </thead>
+            </tr>
+          </StyledThead>
           <StyledTbodyTable>
             {transactions.length > 0 ? (
               transactions.map(transaction => (
@@ -85,10 +78,9 @@ const TransactionsList = ({ handleDelete }) => {
                   </StyledTd>
                   <StyledTdComment>{transaction.comment}</StyledTdComment>
                   <StyledTd
-                    style={{
-                      color:
-                        transaction.type === 'INCOME' ? '#FFB627' : '#FF868D',
-                    }}
+                    $color={
+                      transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'
+                    }
                   >
                     {transaction.amount}
                   </StyledTd>
@@ -112,21 +104,6 @@ const TransactionsList = ({ handleDelete }) => {
           </StyledTbodyTable>
         </StyledTable>
       </StyledTableWrapper>
-
-      <StyledTabletWrapper>
-        <StyledTabletList>
-          <StyledTabletDate>Date</StyledTabletDate>
-          <StyledTabletType>Type</StyledTabletType>
-          <StyledTabletCategory>Category</StyledTabletCategory>
-          <StyledTabletComment>Comment</StyledTabletComment>
-          <li>Sum</li>
-        </StyledTabletList>
-        <ul>
-          {transactions.map(transaction => (
-            <TransactionsItem key={transaction.id} transaction={transaction} />
-          ))}
-        </ul>
-      </StyledTabletWrapper>
     </StyledTransactionsList>
   );
 };

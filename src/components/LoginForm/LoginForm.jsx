@@ -21,7 +21,7 @@ const validationSchema = yup.object({
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     dispatch(loginThunk(values));
   };
 
@@ -31,7 +31,7 @@ const LoginForm = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: values => {
       handleSubmit(values);
     },
   });

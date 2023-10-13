@@ -7,13 +7,6 @@ import {
   StyledEditBtn,
   StyledParWrapper,
   StyledParagraph,
-  StyledTabletBtnWrapper,
-  StyledTabletCategoryPar,
-  StyledTabletCommentPar,
-  StyledTabletDatePar,
-  StyledTabletItem,
-  StyledTabletSumPar,
-  StyledTabletTypePar,
   StyledTransaction,
 } from './TransactionsItem.styled';
 import { selectCategories } from 'redux/transactions/selectors';
@@ -29,12 +22,7 @@ const TransactionsItem = ({ transaction }) => {
   return (
     <>
       <StyledTransaction
-        style={{
-          borderLeft:
-            transaction.type === 'INCOME'
-              ? '5px solid #ff868d'
-              : '5px solid #FFB627',
-        }}
+        $color={transaction.type === 'INCOME' ? '#ff868d' : '#FFB627'}
       >
         <StyledParWrapper>
           <StyledParagraph>Date</StyledParagraph>
@@ -68,35 +56,6 @@ const TransactionsItem = ({ transaction }) => {
           </StyledEditBtn>
         </StyledBtnBox>
       </StyledTransaction>
-      <StyledTabletItem>
-        <StyledTabletDatePar>
-          {formatDate(transaction.transactionDate)}
-        </StyledTabletDatePar>
-        <StyledTabletTypePar>
-          {transaction.type === 'INCOME' ? '+' : '-'}
-        </StyledTabletTypePar>
-        <StyledTabletCategoryPar>
-          {categories ? category.name : '-'}
-        </StyledTabletCategoryPar>
-        <StyledTabletCommentPar>{transaction.comment}</StyledTabletCommentPar>
-        <StyledTabletSumPar
-          style={{
-            color: transaction.type === 'INCOME' ? '#FFB627' : '#FF868D',
-          }}
-        >
-          {transaction.amount}
-        </StyledTabletSumPar>
-        <StyledTabletBtnWrapper>
-          <StyledEditBtn>
-            <svg width="14" height="14">
-              <use href={`${sprite}#edit`} />
-            </svg>
-          </StyledEditBtn>
-          <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
-            Delete
-          </StyledDeleteBtn>
-        </StyledTabletBtnWrapper>
-      </StyledTabletItem>
     </>
   );
 };
