@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Select,
-  SelectBtn,
-  Options,
-  OptionsDiv,
-} from './StatisticsDashboard.styled';
+import { SelectBtn, Options } from './StatisticsDashboard.styled';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 const StatisticsDashboard = ({
   isOpen,
@@ -17,6 +12,10 @@ const StatisticsDashboard = ({
   const onMonthClick = month => {
     setSelectedMonth(month);
     setIsOpen(!isOpen);
+  };
+  const onYearClick = year => {
+    setSelectedYear(year);
+    setIsOpenYear(!isOpenYear);
   };
   const years = ['2023', '2022', '2021', '2020', '2019'];
   const months = [
@@ -80,7 +79,7 @@ const StatisticsDashboard = ({
             }}
           >
             {years.map(year => (
-              <Options key={year} onClick={() => onMonthClick(year)}>
+              <Options key={year} onClick={() => onYearClick(year)}>
                 {year}
               </Options>
             ))}

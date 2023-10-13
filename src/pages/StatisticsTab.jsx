@@ -3,7 +3,7 @@ import StatisticsDashboard from 'components/StatisticsDashboard/StatisticsDashbo
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import styled from 'styled-components';
 const StatisticsTab = () => {
   const [categories, setCategories] = useState([]);
   const [isOpenMonth, setIsOpenMonth] = useState(false);
@@ -67,11 +67,13 @@ const StatisticsTab = () => {
   };
 
   return (
-    <div
+    <StatisticDivMain
       style={{
         display: 'flex',
         gap: '32px',
         padding: '32px 16px 40px 69px',
+        justifyContent: 'space-between',
+        overflow: 'hidden',
       }}
       onClick={() => {
         if (isOpenMonth) {
@@ -83,11 +85,19 @@ const StatisticsTab = () => {
         }
       }}
     >
-      <div>
-        Statistics
+      <StatisticDivChart
+        style={{
+          zIndex: '2',
+        }}
+      >
+        <StatisticTitle>Statistics</StatisticTitle>
         <Chart dataDoughnut={dataDoughnut} />
-      </div>
-      <div>
+      </StatisticDivChart>
+      <div
+        style={{
+          zIndex: '3',
+        }}
+      >
         <StatisticsDashboard
           isOpen={isOpenMonth}
           setIsOpen={setIsOpenMonth}
@@ -96,8 +106,66 @@ const StatisticsTab = () => {
         />
         <StatisticsTable categories={categories} dataDoughnut={dataDoughnut} />
       </div>
-    </div>
+    </StatisticDivMain>
   );
 };
 
 export default StatisticsTab;
+export const StatisticDivMain = styled.div`
+  background: #101010;
+  color: white;
+  width: 803px;
+  height: 827px;
+  position: relative;
+  &::after {
+    content: '';
+    width: 893px;
+    height: 901px;
+    border-radius: 901px;
+    background: linear-gradient(
+      220deg,
+      rgba(109, 84, 235, 0.6) 28.31%,
+      rgba(101, 35, 146, 0.6) 66.76%
+    );
+    filter: blur(200px);
+    position: absolute;
+    left: 300px;
+    top: 200px;
+  }
+  &::before {
+    content: '';
+    width: 893px;
+    height: 901px;
+    border-radius: 366.105px;
+    background: #302e8e;
+
+    filter: blur(150px);
+    position: absolute;
+    left: 650px;
+    bottom: 500px;
+  }
+`;
+export const StatisticDivChart = styled.div`
+  position: relative;
+  &::after {
+    content: '';
+    width: 330px;
+    height: 333px;
+    border-radius: 333px;
+    background: #6d1c77;
+    position: absolute;
+    left: 200px;
+    bottom: 0;
+
+    filter: blur(150px);
+  }
+`;
+export const StatisticTitle = styled.h2`
+  color: var(--white, #fbfbfb);
+  text-align: left;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;

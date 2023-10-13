@@ -4,6 +4,7 @@ import {
   TableTd,
   TableTh,
   TableTrHead,
+  TableBody,
 } from './StatisticsTable.styled';
 const StatisticsTable = ({ categories, dataDoughnut }) => {
   return (
@@ -15,7 +16,7 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
             <TableTh>Sum</TableTh>
           </TableTrHead>
         </thead>
-        <tbody>
+        <TableBody>
           {categories.map(({ name }, index) => {
             return (
               <TableTr key={name}>
@@ -29,19 +30,45 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
                   ></div>
                   {name}
                 </TableTd>
-                <td>{dataDoughnut.datasets[0].data[index]}</td>
+                <td
+                  style={{
+                    fontSize: '14px',
+                  }}
+                >
+                  {dataDoughnut.datasets[0].data[index]}
+                </td>
               </TableTr>
             );
           })}
-          <TableTr>
-            <td>Expenses:</td>
-            <td>1000</td>
-          </TableTr>
-          <TableTr>
-            <td>Income:</td>
-            <td>1000</td>
-          </TableTr>
-        </tbody>
+        </TableBody>
+        <TableTr
+          style={{
+            border: 'none',
+          }}
+        >
+          <td>Expenses:</td>
+          <td
+            style={{
+              color: '#FF868D',
+            }}
+          >
+            1000.00
+          </td>
+        </TableTr>
+        <TableTr
+          style={{
+            border: 'none',
+          }}
+        >
+          <td>Income:</td>
+          <td
+            style={{
+              color: '#FF868D',
+            }}
+          >
+            1000.00
+          </td>
+        </TableTr>
       </table>
     </div>
   );
