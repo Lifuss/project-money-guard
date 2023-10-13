@@ -1,3 +1,4 @@
+@import url('./styles/modern-normalize.min.css');
 @font-face {
   font-family: 'Poppins';
   src: url(/src/fonts/Poppins-Regular.ttf), url(/src/fonts/Poppins-SemiBold.ttf),
