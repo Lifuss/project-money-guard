@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-money-guard/static/css/main.e96cf6f7.css",
-    "main.js": "/project-money-guard/static/js/main.7f63134d.js",
+    "main.js": "/project-money-guard/static/js/main.7fd11655.js",
     "static/media/Poppins-Regular.ttf": "/project-money-guard/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-SemiBold.ttf": "/project-money-guard/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/sprite.svg": "/project-money-guard/static/media/sprite.3ab750f01e7eb4b4328a22153080e3c9.svg",
@@ -10,10 +10,10 @@
     "static/media/exit.svg": "/project-money-guard/static/media/exit.e630083d99c67516c6d0428369e2c7e6.svg",
     "static/media/straight_line.svg": "/project-money-guard/static/media/straight_line.af8513ecc3ad6b6637fe1f628e65400e.svg",
     "main.e96cf6f7.css.map": "/project-money-guard/static/css/main.e96cf6f7.css.map",
-    "main.7f63134d.js.map": "/project-money-guard/static/js/main.7f63134d.js.map"
+    "main.7fd11655.js.map": "/project-money-guard/static/js/main.7fd11655.js.map"
   },
   "entrypoints": [
     "static/css/main.e96cf6f7.css",
-    "static/js/main.7f63134d.js"
+    "static/js/main.7fd11655.js"
   ]
 }
