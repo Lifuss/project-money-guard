@@ -93,9 +93,15 @@ const initialState = {
     error: null,
   },
   summary: {
-    categoriesSummary: [],
-    incomeSummary: 0,
-    expenseSummary: 0,
+    categoriesSummary: [
+      {
+        name: 'car',
+        type: 'INCOME',
+        total: 10000,
+      },
+    ],
+    incomeSummary: 10000.25,
+    expenseSummary: 10000.25,
     periodTotal: 0,
     year: null,
     month: null,

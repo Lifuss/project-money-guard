@@ -8,7 +8,21 @@ export const SelectBtn = styled.button`
   font-size: 16px;
   min-width: 181px;
   border-radius: 8px;
+  display: flex;
+  font-family: Poppins;
+  font-weight: 400;
+  justify-content: space-between;
+  max-width: 160px;
+  align-items: stretch;
   border: 1px solid rgba(255, 255, 255, 0.6);
+  position: relative;
+`;
+export const SelectSvg = styled.svg`
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  right: 20px;
+  top: 10px;
 `;
 
 export const Options = styled.button`
