@@ -7,6 +7,13 @@ import {
   StyledEditBtn,
   StyledParWrapper,
   StyledParagraph,
+  StyledTabletBtnWrapper,
+  StyledTabletCategoryPar,
+  StyledTabletCommentPar,
+  StyledTabletDatePar,
+  StyledTabletItem,
+  StyledTabletSumPar,
+  StyledTabletTypePar,
   StyledTransaction,
 } from './TransactionsItem.styled';
 import { selectCategories } from 'redux/transactions/selectors';
@@ -61,6 +68,35 @@ const TransactionsItem = ({ transaction }) => {
           </StyledEditBtn>
         </StyledBtnBox>
       </StyledTransaction>
+      <StyledTabletItem>
+        <StyledTabletDatePar>
+          {formatDate(transaction.transactionDate)}
+        </StyledTabletDatePar>
+        <StyledTabletTypePar>
+          {transaction.type === 'INCOME' ? '+' : '-'}
+        </StyledTabletTypePar>
+        <StyledTabletCategoryPar>
+          {categories ? category.name : '-'}
+        </StyledTabletCategoryPar>
+        <StyledTabletCommentPar>{transaction.comment}</StyledTabletCommentPar>
+        <StyledTabletSumPar
+          style={{
+            color: transaction.type === 'INCOME' ? '#FFB627' : '#FF868D',
+          }}
+        >
+          {transaction.amount}
+        </StyledTabletSumPar>
+        <StyledTabletBtnWrapper>
+          <StyledEditBtn>
+            <svg width="14" height="14">
+              <use href={`${sprite}#edit`} />
+            </svg>
+          </StyledEditBtn>
+          <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
+            Delete
+          </StyledDeleteBtn>
+        </StyledTabletBtnWrapper>
+      </StyledTabletItem>
     </>
   );
 };

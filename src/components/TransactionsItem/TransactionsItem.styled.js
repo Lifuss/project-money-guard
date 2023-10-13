@@ -71,3 +71,41 @@ export const StyledEditBtn = styled.button`
   line-height: normal;
   letter-spacing: 0.32px;
 `;
+
+// =================================================================
+
+export const StyledTabletItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: ${({ theme }) => theme.border.borderBottom};
+`;
+
+export const StyledTabletBtnWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const StyledTabletDatePar = styled.p`
+  text-align: right;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: ${({ theme }) => theme.colors.mainWhite};
+  margin-right: 60px;
+`;
+export const StyledTabletTypePar = styled(StyledTabletDatePar)`
+  margin-right: 50px;
+`;
+export const StyledTabletCategoryPar = styled(StyledTabletDatePar)`
+  margin-right: 60px;
+`;
+export const StyledTabletCommentPar = styled(StyledTabletDatePar)`
+  width: 120px;
+`;
+export const StyledTabletSumPar = styled(StyledTabletDatePar)`
+  margin-right: 40px;
+`;

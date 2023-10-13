@@ -11,7 +11,14 @@ import {
   StyledHeaderTr,
   StyledMobileWrapper,
   StyledTable,
+  StyledTableBtnWrapper,
   StyledTableWrapper,
+  StyledTabletCategory,
+  StyledTabletComment,
+  StyledTabletDate,
+  StyledTabletList,
+  StyledTabletType,
+  StyledTabletWrapper,
   StyledTbodyTable,
   StyledTd,
   StyledTdComment,
@@ -23,13 +30,13 @@ import {
   StyledTr,
   StyledTransactionsList,
 } from './TransactionsList.styled';
+import TransactionsItem from 'components/TransactionsItem/TransactionsItem';
+import sprite from '../../images/sprite.svg';
 import {
   StyledBtnBox,
   StyledDeleteBtn,
   StyledEditBtn,
 } from 'components/TransactionsItem/TransactionsItem.styled';
-import TransactionsItem from 'components/TransactionsItem/TransactionsItem';
-import sprite from '../../images/sprite.svg';
 
 const TransactionsList = ({ handleDelete }) => {
   const transactions = useSelector(selectTransactions);
@@ -86,14 +93,14 @@ const TransactionsList = ({ handleDelete }) => {
                     {transaction.amount}
                   </StyledTd>
                   <td>
-                    <StyledBtnBox>
+                    <StyledTableBtnWrapper>
                       <StyledEditBtn>
                         <svg width="14" height="14">
                           <use href={`${sprite}#edit`} />
                         </svg>
                       </StyledEditBtn>
                       <StyledDeleteBtn>Delete</StyledDeleteBtn>
-                    </StyledBtnBox>
+                    </StyledTableBtnWrapper>
                   </td>
                 </StyledTr>
               ))
@@ -105,6 +112,21 @@ const TransactionsList = ({ handleDelete }) => {
           </StyledTbodyTable>
         </StyledTable>
       </StyledTableWrapper>
+
+      <StyledTabletWrapper>
+        <StyledTabletList>
+          <StyledTabletDate>Date</StyledTabletDate>
+          <StyledTabletType>Type</StyledTabletType>
+          <StyledTabletCategory>Category</StyledTabletCategory>
+          <StyledTabletComment>Comment</StyledTabletComment>
+          <li>Sum</li>
+        </StyledTabletList>
+        <ul>
+          {transactions.map(transaction => (
+            <TransactionsItem key={transaction.id} transaction={transaction} />
+          ))}
+        </ul>
+      </StyledTabletWrapper>
     </StyledTransactionsList>
   );
 };

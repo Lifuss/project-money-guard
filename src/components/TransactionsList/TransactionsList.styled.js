@@ -25,14 +25,10 @@ export const StyledTableWrapper = styled.div`
     flex-direction: column;
   }
 `;
-
 export const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
 `;
-
-export const StyledThead = styled.thead``;
-
 export const StyledHeaderTr = styled.tr`
   display: flex;
   align-items: center;
@@ -73,7 +69,6 @@ export const StyledTbodyTable = styled.tbody`
     display: block;
   }
 `;
-
 export const StyledTr = styled.tr`
   display: flex;
   justify-content: space-between;
@@ -82,7 +77,6 @@ export const StyledTr = styled.tr`
   padding: 15px 20px;
   border-bottom: ${({ theme }) => theme.border.borderBottom};
 `;
-
 export const StyledTd = styled.td`
   text-align: right;
   font-family: Poppins;
@@ -92,8 +86,42 @@ export const StyledTd = styled.td`
   line-height: normal;
   color: ${({ theme }) => theme.colors.mainWhite};
 `;
-
 export const StyledTdComment = styled(StyledTd)`
   margin-right: 20px;
   width: 100px;
+`;
+export const StyledTableBtnWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+// =================================================================
+
+export const StyledTabletWrapper = styled.div`
+  width: 704px;
+`;
+export const StyledTabletList = styled.ul`
+  display: flex;
+
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: ${({ theme }) => theme.backgrounds.tableHead};
+  box-shadow: ${({ theme }) => theme.shadows.default};
+  backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
+`;
+
+export const StyledTabletDate = styled.li`
+  margin-right: 60px;
+`;
+export const StyledTabletType = styled.li`
+  margin-right: 50px;
+`;
+export const StyledTabletCategory = styled.li`
+  margin-right: 60px;
+`;
+export const StyledTabletComment = styled.li`
+  margin-right: 75px;
+`;
+export const StyledTabletSum = styled.li`
+  margin-right: 60px;
 `;
