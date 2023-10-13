@@ -20,46 +20,48 @@ const TransactionsItem = ({ transaction }) => {
     dispatch(deleteTransactionThunk(id));
   };
   return (
-    <StyledTransaction
-      style={{
-        borderLeft:
-          transaction.type === 'INCOME'
-            ? '5px solid #ff868d'
-            : '5px solid #FFB627',
-      }}
-    >
-      <StyledParWrapper>
-        <StyledParagraph>Date</StyledParagraph>
-        <span>{transaction.transactionDate}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Type</StyledParagraph>
-        <span>{transaction.type}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Category</StyledParagraph>
-        <span>{categories ? category.name : '-'}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Comment</StyledParagraph>
-        <span>{transaction.comment}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Sum</StyledParagraph>
-        <span>{transaction.amount}</span>
-      </StyledParWrapper>
-      <StyledBtnBox>
-        <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
-          Delete
-        </StyledDeleteBtn>
-        <StyledEditBtn>
-          <svg width="14" height="14">
-            <use href={`${sprite}#edit`} />
-          </svg>
-          Edit
-        </StyledEditBtn>
-      </StyledBtnBox>
-    </StyledTransaction>
+    <>
+      <StyledTransaction
+        style={{
+          borderLeft:
+            transaction.type === 'INCOME'
+              ? '5px solid #ff868d'
+              : '5px solid #FFB627',
+        }}
+      >
+        <StyledParWrapper>
+          <StyledParagraph>Date</StyledParagraph>
+          <span>{transaction.transactionDate}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Type</StyledParagraph>
+          <span>{transaction.type}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Category</StyledParagraph>
+          <span>{categories ? category.name : '-'}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Comment</StyledParagraph>
+          <span>{transaction.comment}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Sum</StyledParagraph>
+          <span>{transaction.amount}</span>
+        </StyledParWrapper>
+        <StyledBtnBox>
+          <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
+            Delete
+          </StyledDeleteBtn>
+          <StyledEditBtn>
+            <svg width="14" height="14">
+              <use href={`${sprite}#edit`} />
+            </svg>
+            Edit
+          </StyledEditBtn>
+        </StyledBtnBox>
+      </StyledTransaction>
+    </>
   );
 };
 
