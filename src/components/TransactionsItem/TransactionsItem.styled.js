@@ -7,7 +7,14 @@ export const StyledTransaction = styled.li`
   margin-bottom: 8px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
-  border-left: 5px solid #ff868d;
+  border-left: 5px solid ${props => props.$color};
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    display: block;
+    list-style: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const StyledParWrapper = styled.div`
@@ -15,7 +22,7 @@ export const StyledParWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+  border-bottom: ${({ theme }) => theme.border.borderBottom};
 `;
 export const StyledParagraph = styled.p`
   text-align: right;
@@ -24,9 +31,12 @@ export const StyledParagraph = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: #fbfbfb;
+  color: ${({ theme }) => theme.colors.mainWhite};
 `;
 
+export const StyledSpan = styled.span`
+  max-width: 120px;
+`;
 export const StyledBtnBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -42,9 +52,9 @@ export const StyledDeleteBtn = styled.button`
   line-height: normal;
   padding: 4px 12px;
 
-  background: ${({ theme }) => theme.backgrounds.btnGradient};
   border-radius: 18px;
-  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  background: ${({ theme }) => theme.backgrounds.btnGradient};
+  box-shadow: ${({ theme }) => theme.shadows.deleteBtnShadow};
 `;
 
 export const StyledEditBtn = styled.button`

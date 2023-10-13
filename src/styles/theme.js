@@ -8,6 +8,7 @@ export const theme = {
   },
   backgrounds: {
     yellow: '#FFB627',
+    tableHead: 'rgba(82, 59, 126, 0.6)',
     background: '#101010',
     white40: '#FFFFFF66',
     active: '#734AEF',
@@ -20,5 +21,12 @@ export const theme = {
 
   shadows: {
     default: '0px 4px 60px 0px rgba(0, 0, 0, 0.25)',
+    deleteBtnShadow: '1px 9px 15px 0px rgba(0, 0, 0, 0.2)',
+  },
+  border: {
+    borderBottom: '1px solid rgba(255, 255, 255, 0.41)',
+  },
+  blur: {
+    backdropFilter: 'blur(50px)',
   },
 };

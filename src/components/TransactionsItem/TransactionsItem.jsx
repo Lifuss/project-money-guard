@@ -7,6 +7,7 @@ import {
   StyledEditBtn,
   StyledParWrapper,
   StyledParagraph,
+  StyledSpan,
   StyledTransaction,
 } from './TransactionsItem.styled';
 import { selectCategories } from 'redux/transactions/selectors';
@@ -20,47 +21,55 @@ const TransactionsItem = ({ transaction }) => {
     dispatch(deleteTransactionThunk(id));
   };
   return (
-    <StyledTransaction
-      style={{
-        borderLeft:
-          transaction.type === 'INCOME'
-            ? '5px solid #ff868d'
-            : '5px solid #FFB627',
-      }}
-    >
-      <StyledParWrapper>
-        <StyledParagraph>Date</StyledParagraph>
-        <span>{transaction.transactionDate}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Type</StyledParagraph>
-        <span>{transaction.type}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Category</StyledParagraph>
-        <span>{categories ? category.name : '-'}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Comment</StyledParagraph>
-        <span>{transaction.comment}</span>
-      </StyledParWrapper>
-      <StyledParWrapper>
-        <StyledParagraph>Sum</StyledParagraph>
-        <span>{transaction.amount}</span>
-      </StyledParWrapper>
-      <StyledBtnBox>
-        <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
-          Delete
-        </StyledDeleteBtn>
-        <StyledEditBtn>
-          <svg width="14" height="14">
-            <use href={`${sprite}#edit`} />
-          </svg>
-          Edit
-        </StyledEditBtn>
-      </StyledBtnBox>
-    </StyledTransaction>
+    <>
+      <StyledTransaction
+        $color={transaction.type === 'INCOME' ? '#ff868d' : '#FFB627'}
+      >
+        <StyledParWrapper>
+          <StyledParagraph>Date</StyledParagraph>
+          <span>{formatDate(transaction.transactionDate)}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Type</StyledParagraph>
+          <span>{transaction.type}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Category</StyledParagraph>
+          <span>{categories ? category.name : '-'}</span>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Comment</StyledParagraph>
+          <StyledSpan>
+            {transaction.comment.length >= 25
+              ? `${transaction.comment.slice(0, 25)}...`
+              : transaction.comment}
+          </StyledSpan>
+        </StyledParWrapper>
+        <StyledParWrapper>
+          <StyledParagraph>Sum</StyledParagraph>
+          <span>{transaction.amount}</span>
+        </StyledParWrapper>
+        <StyledBtnBox>
+          <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
+            Delete
+          </StyledDeleteBtn>
+          <StyledEditBtn>
+            <svg width="14" height="14">
+              <use href={`${sprite}#edit`} />
+            </svg>
+            Edit
+          </StyledEditBtn>
+        </StyledBtnBox>
+      </StyledTransaction>
+    </>
   );
 };
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear().toString().slice(-2);
+  return `${day}.${month}.${year}`;
+}
 
 export default TransactionsItem;
