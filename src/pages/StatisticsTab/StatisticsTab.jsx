@@ -1,10 +1,12 @@
 import Chart from 'components/Chart/Chart';
 import StatisticsDashboard from 'components/StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
-import React, { useState, useEffect } from 'react';
-import { selectCategories } from '../../redux/transactions/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTransactionCategory } from 'redux/transactions/operations';
+
+import { selectCategoriesSummary } from '../../redux/transactions/selectors';
+
+import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+
 import {
   StatisticDivChart,
   StatisticDivMain,
@@ -12,20 +14,21 @@ import {
 } from './StatisticsTab.styled';
 
 const StatisticsTab = () => {
-  const dispatch = useDispatch();
   const [isOpenMonth, setIsOpenMonth] = useState(false);
   const [isOpenYear, setIsOpenYear] = useState(false);
-  useEffect(() => {
-    dispatch(fetchTransactionCategory());
-  }, [dispatch]);
 
-  const categories = useSelector(selectCategories);
-
+  const categories = useSelector(selectCategoriesSummary);
+  const categoriesValue = categories.map(({ total }) => {
+    if (total < 0) {
+      return -total;
+    }
+    return total;
+  });
   const dataDoughnut = {
     labels: [],
     datasets: [
       {
-        data: [12, 19, 33, 5, 10, 39, 7, 8, 16, 45, 20],
+        data: [...categoriesValue],
         backgroundColor: [
           'rgba(255, 2, 57, 0.991)',
           'rgba(110, 120, 232, 1)',
@@ -82,7 +85,7 @@ const StatisticsTab = () => {
         }}
       >
         <StatisticTitle>Statistics</StatisticTitle>
-        <Chart dataDoughnut={dataDoughnut} />
+        <Chart dataDoughnut={dataDoughnut} categories={categories} />
       </StatisticDivChart>
       <div
         style={{
