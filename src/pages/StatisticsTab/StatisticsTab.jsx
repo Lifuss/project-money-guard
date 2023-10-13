@@ -1,15 +1,12 @@
 import Chart from 'components/Chart/Chart';
 import StatisticsDashboard from 'components/StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
-// import React, { useState } from 'react';
+
 import { selectCategoriesSummary } from '../../redux/transactions/selectors';
 
-// import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
-// import { selectCategories } from '../../redux/transactions/selectors';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchTransactionCategory } from 'redux/transactions/operations';
+
 import {
   StatisticDivChart,
   StatisticDivMain,
