@@ -7,6 +7,17 @@ export const StyledTransactionsList = styled.div`
 `;
 
 export const StyledMobileWrapper = styled.ul`
+  max-height: 50vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(82, 59, 126, 0.3);
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  &::-webkit-scrollbar {
+    width: 0.5em;
+  }
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     display: block;
     list-style: none;
