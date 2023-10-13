@@ -51,10 +51,20 @@ body {
 `;
 
 export const StyledContainer = styled.div`
-  padding-left: ${props => props.$paddingLeft || '20px'};
-  padding-right: ${props => props.$paddingRight || '20px'};
+  padding-left: 20px;
+  padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
-  min-width: ${props => props.$minWidth || '320px'};
-  max-width: ${props => props.$maxWidth || '425px'};
+  min-width: 320px;
+  max-width: 425px;
+  @media only screen and (min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 1279px;
+  }
+  @media only screen and (min-width: 1280px) {
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 1280px;
+  }
 `;
