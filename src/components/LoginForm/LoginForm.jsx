@@ -1,11 +1,12 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operations';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const validationSchema = yup.object({
   email: yup
@@ -20,21 +21,24 @@ const validationSchema = yup.object({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-
-  const handleSubmit = (values) => {
-    dispatch(loginThunk(values));
-  };
-
+  const isLogin = useSelector(selectIsLoggedIn);
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: values => {
       handleSubmit(values);
     },
   });
+  if (isLogin) {
+    return <Navigate to="/" />;
+  }
+
+  const handleSubmit = values => {
+    dispatch(loginThunk(values));
+  };
 
   return (
     <div>
