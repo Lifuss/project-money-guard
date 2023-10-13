@@ -8,13 +8,17 @@ import {
 } from 'redux/transactions/selectors';
 import Loader from 'components/Loader/Loader';
 import {
+  StyledHeaderTr,
   StyledMobileWrapper,
   StyledTable,
   StyledTableWrapper,
   StyledTbodyTable,
   StyledTd,
-  StyledTh,
-  StyledThead,
+  StyledThCategory,
+  StyledThComment,
+  StyledThDate,
+  StyledThSum,
+  StyledThType,
   StyledTr,
   StyledTransactionsList,
 } from './TransactionsList.styled';
@@ -34,9 +38,9 @@ const TransactionsList = ({ handleDelete }) => {
 
   return (
     <StyledTransactionsList>
-      {loading && <Loader />}
-      {error && <h1>Something went wrong... 😢</h1>}
       <StyledMobileWrapper>
+        {loading && <Loader />}
+        {error && <h1>Something went wrong... 😢</h1>}
         {transactions.length > 0 ? (
           transactions.map(transaction => (
             <TransactionsItem key={transaction.id} transaction={transaction} />
@@ -47,21 +51,23 @@ const TransactionsList = ({ handleDelete }) => {
       </StyledMobileWrapper>
 
       <StyledTableWrapper>
+        {loading && <Loader />}
+        {error && <h1>Something went wrong... 😢</h1>}
         <StyledTable>
-          <StyledThead>
-            <tr>
-              <StyledTh>Date</StyledTh>
-              <StyledTh>Type</StyledTh>
-              <StyledTh>Category</StyledTh>
-              <StyledTh>Comment</StyledTh>
-              <StyledTh>Sum</StyledTh>
-            </tr>
-          </StyledThead>
+          <thead>
+            <StyledHeaderTr>
+              <StyledThDate>Date</StyledThDate>
+              <StyledThType>Type</StyledThType>
+              <StyledThCategory>Category</StyledThCategory>
+              <StyledThComment>Comment</StyledThComment>
+              <StyledThSum>Sum</StyledThSum>
+            </StyledHeaderTr>
+          </thead>
           <StyledTbodyTable>
             {transactions.length > 0 ? (
               transactions.map(transaction => (
                 <StyledTr key={transaction.id}>
-                  <StyledTd>{transaction.transactionDate}</StyledTd>
+                  <StyledTd>{formatDate(transaction.transactionDate)}</StyledTd>
                   <StyledTd>
                     {transaction.type === 'INCOME' ? '+' : '-'}
                   </StyledTd>
@@ -101,5 +107,12 @@ const TransactionsList = ({ handleDelete }) => {
     </StyledTransactionsList>
   );
 };
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear().toString().slice(-2);
+  return `${day}.${month}.${year}`;
+}
 
 export default TransactionsList;
