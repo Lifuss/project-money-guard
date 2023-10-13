@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import sprite from '../../images/sprite.svg';
 import { NavContainer, NavList, StyledNavLink } from './Navigation.styled';
 
@@ -17,18 +16,18 @@ const Navigation = () => {
               </StyledNavLink>
             </li>
             <li>
-              <NavLink to="/statistics">
+              <StyledNavLink to="/statistics">
                 <svg width="38" height="38">
                   <use href={`${sprite}#statistics`} />
                 </svg>
-              </NavLink>
+              </StyledNavLink>
             </li>
             <li>
-              <NavLink to="/currency">
+              <StyledNavLink to="/currency">
                 <svg width="38" height="38">
                   <use href={`${sprite}#dollar`} />
                 </svg>
-              </NavLink>
+              </StyledNavLink>
             </li>
           </NavList>
         </nav>

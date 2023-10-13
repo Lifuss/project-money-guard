@@ -14,10 +14,15 @@ export const NavList = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
+  align-items: center;
+  width: 38px;
+  height: 38px;
   &.active {
-    color: red;
+    /* color: #4a56e2; */
+    color: ${({ theme }) => theme.backgrounds.activeNavBtn};
+    border-radius: 3px;
   }
-  &svg {
+  & svg {
     fill: currentColor;
   }
 `;
