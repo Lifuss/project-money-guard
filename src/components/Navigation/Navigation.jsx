@@ -1,8 +1,20 @@
 import React from 'react';
 import sprite from '../../images/sprite.svg';
-import { NavContainer, NavList, StyledNavLink } from './Navigation.styled';
+import {
+  NavContainer,
+  NavList,
+  StyledNavLink,
+  StyledNavText,
+} from './Navigation.styled';
+import { useMediaQuery } from 'react-responsive';
 
 const Navigation = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
+  const isMobile = useMediaQuery({
+    query: '(max-width: 767px)',
+  });
   return (
     <>
       <NavContainer>
@@ -13,6 +25,7 @@ const Navigation = () => {
                 <svg width="38" height="38">
                   <use href={`${sprite}#homepage`} />
                 </svg>
+                {isDesktopOrLaptop && <StyledNavText>Home</StyledNavText>}
               </StyledNavLink>
             </li>
             <li>
@@ -20,15 +33,18 @@ const Navigation = () => {
                 <svg width="38" height="38">
                   <use href={`${sprite}#statistics`} />
                 </svg>
+                {isDesktopOrLaptop && <StyledNavText>Statistics</StyledNavText>}
               </StyledNavLink>
             </li>
-            <li>
-              <StyledNavLink to="/currency">
-                <svg width="38" height="38">
-                  <use href={`${sprite}#dollar`} />
-                </svg>
-              </StyledNavLink>
-            </li>
+            {isMobile ? (
+              <li>
+                <StyledNavLink to="/currency">
+                  <svg width="38" height="38">
+                    <use href={`${sprite}#dollar`} />
+                  </svg>
+                </StyledNavLink>
+              </li>
+            ) : null}
           </NavList>
         </nav>
       </NavContainer>
