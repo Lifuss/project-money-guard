@@ -21,7 +21,7 @@ export const StyledParWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+  border-bottom: ${({ theme }) => theme.border.borderBottom};
 `;
 export const StyledParagraph = styled.p`
   text-align: right;
@@ -30,7 +30,7 @@ export const StyledParagraph = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: #fbfbfb;
+  color: ${({ theme }) => theme.colors.mainWhite};
 `;
 
 export const StyledBtnBox = styled.div`
@@ -50,7 +50,7 @@ export const StyledDeleteBtn = styled.button`
 
   background: ${({ theme }) => theme.backgrounds.btnGradient};
   border-radius: 18px;
-  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: ${({ theme }) => theme.shadows.deleteBtnShadow};
 `;
 
 export const StyledEditBtn = styled.button`

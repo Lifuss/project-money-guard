@@ -13,7 +13,11 @@ import {
   StyledTable,
   StyledTableWrapper,
   StyledTbodyTable,
-  StyledTd,
+  StyledTdCategory,
+  StyledTdComment,
+  StyledTdDate,
+  StyledTdSum,
+  StyledTdType,
   StyledThCategory,
   StyledThComment,
   StyledThDate,
@@ -67,24 +71,26 @@ const TransactionsList = ({ handleDelete }) => {
             {transactions.length > 0 ? (
               transactions.map(transaction => (
                 <StyledTr key={transaction.id}>
-                  <StyledTd>{formatDate(transaction.transactionDate)}</StyledTd>
-                  <StyledTd>
+                  <StyledTdDate>
+                    {formatDate(transaction.transactionDate)}
+                  </StyledTdDate>
+                  <StyledTdType>
                     {transaction.type === 'INCOME' ? '+' : '-'}
-                  </StyledTd>
-                  <StyledTd>
+                  </StyledTdType>
+                  <StyledTdCategory>
                     {categories.find(cat => cat.id === transaction.categoryId)
                       ?.name || '-'}
-                  </StyledTd>
-                  <StyledTd>{transaction.comment}</StyledTd>
-                  <StyledTd
+                  </StyledTdCategory>
+                  <StyledTdComment>{transaction.comment}</StyledTdComment>
+                  <StyledTdSum
                     style={{
                       color:
                         transaction.type === 'INCOME' ? '#FFB627' : '#FF868D',
                     }}
                   >
                     {transaction.amount}
-                  </StyledTd>
-                  <StyledTd>
+                  </StyledTdSum>
+                  <td>
                     <StyledBtnBox>
                       <StyledEditBtn>
                         <svg width="14" height="14">
@@ -93,7 +99,7 @@ const TransactionsList = ({ handleDelete }) => {
                       </StyledEditBtn>
                       <StyledDeleteBtn>Delete</StyledDeleteBtn>
                     </StyledBtnBox>
-                  </StyledTd>
+                  </td>
                 </StyledTr>
               ))
             ) : (
