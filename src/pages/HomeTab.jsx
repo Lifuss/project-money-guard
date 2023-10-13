@@ -5,17 +5,18 @@ import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransact
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import React from 'react';
+import { StyledContainer } from 'styles/GlobalStyles';
 
 const HomeTab = () => {
   return (
-    <div>
+    <StyledContainer>
       <TransactionsList />
       <ButtonAddTransactions />
       <ModalAddTransaction />
       <ModalEditTransaction />
       <AddTransactionForm />
       <EditTransactionForm />
-    </div>
+    </StyledContainer>
   );
 };
 

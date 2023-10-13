@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
 h1,
@@ -48,4 +48,13 @@ body {
     color: ${({ theme }) => theme.colors.mainWhite}  }
 
     
+`;
+
+export const StyledContainer = styled.div`
+  padding-left: ${props => props.$paddingLeft || '20px'};
+  padding-right: ${props => props.$paddingRight || '20px'};
+  margin-left: auto;
+  margin-right: auto;
+  min-width: ${props => props.$minWidth || '320px'};
+  max-width: ${props => props.$maxWidth || '425px'};
 `;

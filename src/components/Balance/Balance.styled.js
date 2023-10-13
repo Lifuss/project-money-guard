@@ -26,4 +26,5 @@ export const StyledBalanceSupTitle = styled.h4`
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
+  margin-bottom: 12px;
 `;
