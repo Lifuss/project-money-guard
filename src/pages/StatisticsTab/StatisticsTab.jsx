@@ -2,7 +2,7 @@ import Chart from 'components/Chart/Chart';
 import StatisticsDashboard from 'components/StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
 import React, { useState, useEffect } from 'react';
-import { selectCategories } from '../redux/transactions/selectors';
+import { selectCategories } from '../../redux/transactions/selectors';
 
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
