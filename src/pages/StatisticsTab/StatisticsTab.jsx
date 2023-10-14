@@ -62,13 +62,6 @@ const StatisticsTab = () => {
 
   return (
     <StatisticDivMain
-      style={{
-        display: 'flex',
-        gap: '32px',
-        padding: '32px 16px 40px 69px',
-        justifyContent: 'space-between',
-        overflow: 'hidden',
-      }}
       onClick={() => {
         if (isOpenMonth) {
           setIsOpenMonth(false);

@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 import { authReducer } from '../../redux/auth/slice';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
 import {
   StyledSection,
   StyledForm,
   StyledLink,
-  ProgressBar,
-} from './RegistrationForm.styled';
+} from '../LoginForm/LoginForm.styled';
 
 const validationSchema = yup.object({
-  name: yup
-    .string('Enter your name')
-    .required('Name is required'),
+  name: yup.string('Enter your name').required('Name is required'),
   email: yup
     .string('Enter your email')
     .email('Enter a valid email')
@@ -38,6 +36,8 @@ const validationSchema = yup.object({
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(selectIsLoggedIn);
+  const [password, setPassword] = useState(''); 
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -52,33 +52,27 @@ const RegistrationForm = () => {
   });
 
   if (isLogin) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/" />;
   }
 
-const handleSubmit = async values => {
-  try {
-    const response = await dispatch(registerThunk(values));
+  const handleSubmit = async values => {
+    try {
+      const response = await dispatch(registerThunk(values));
 
-    if (response.status === 201) {
-      dispatch(authReducer.actions.login(response.data));
-
-      return <Navigate to="/dashboard" />;
-
-    } else if (response.status === 400) {
-      console.error('Validation error:', response.data);
-
-    } else if (response.status === 409) {
-      console.error('Error: User with such email already exists:', response.data);
-
-    } else {
-      console.error('Unknown error during registration. Status:', response.status);
+      if (response.status === 201) {
+        dispatch(authReducer.actions.login(response.data));
+        return <Navigate to="/" />;
+      } else if (response.status === 400) {
+        console.error('Validation error:', response.data);
+      } else if (response.status === 409) {
+        console.error('Error: User with such email already exists:', response.data);
+      } else {
+        console.error('Unknown error during registration. Status:', response.status);
+      }
+    } catch (error) {
+      console.error('Registration was unsuccessful:', error);
     }
-
-  } catch (error) {
-    console.error('Registration was unsuccessful:', error);
-  }
-};
-
+  };
 
   return (
     <StyledSection>
@@ -122,7 +116,10 @@ const handleSubmit = async values => {
           }
           type="password"
           value={formik.values.password}
-          onChange={formik.handleChange}
+          onChange={(e) => {
+            formik.handleChange(e);
+            setPassword(e.target.value); 
+          }}
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
@@ -143,7 +140,7 @@ const handleSubmit = async values => {
           error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
           helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
         />
-        <ProgressBar />
+        <PasswordStrengthBar password={password} /> 
         <Button color="primary" variant="contained" fullWidth type="submit">
           Register
         </Button>
@@ -154,4 +151,5 @@ const handleSubmit = async values => {
 };
 
 export default RegistrationForm;
+
 
