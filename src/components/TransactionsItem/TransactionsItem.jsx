@@ -35,7 +35,7 @@ const TransactionsItem = ({ transaction }) => {
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Category</StyledParagraph>
-          <span>{categories ? category.name : '-'}</span>
+          <span>{!categories ? category.name : '-'}</span>
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Comment</StyledParagraph>
