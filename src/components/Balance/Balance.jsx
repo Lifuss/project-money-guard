@@ -4,13 +4,15 @@ import {
   StyledBalanceSupTitle,
   StyledBalanceTitle,
 } from './Balance.styled';
+import { useSelector } from 'react-redux';
+import { selectBalance } from 'redux/auth/selectors';
 
 const Balance = () => {
-  const mockBalance = 24000;
+  const balance = useSelector(selectBalance);
   return (
     <StyledBalanceDiv>
       <StyledBalanceSupTitle>Your Balance</StyledBalanceSupTitle>
-      <StyledBalanceTitle>&#8372;{mockBalance.toFixed(2)}</StyledBalanceTitle>
+      <StyledBalanceTitle>&#8372;{balance.toFixed(2)}</StyledBalanceTitle>
     </StyledBalanceDiv>
   );
 };
