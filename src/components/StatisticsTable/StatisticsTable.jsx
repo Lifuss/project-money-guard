@@ -27,6 +27,7 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
               <TableTh>Sum</TableTh>
             </TableTrHead>
           </thead>
+
           <TableBody>
             {categories.map(({ name, total, type }, index) => {
               if (type !== 'INCOME') {
@@ -52,36 +53,39 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
                   </TableTr>
                 );
               }
+              return '';
             })}
           </TableBody>
-          <TableTr
-            style={{
-              border: 'none',
-            }}
-          >
-            <td>Expenses:</td>
-            <td
+          <tfoot>
+            <TableTr
               style={{
-                color: '#FF868D',
+                border: 'none',
               }}
             >
-              {-expense}
-            </td>
-          </TableTr>
-          <TableTr
-            style={{
-              border: 'none',
-            }}
-          >
-            <td>Income:</td>
-            <td
+              <td>Expenses:</td>
+              <td
+                style={{
+                  color: '#FF868D',
+                }}
+              >
+                {-expense}
+              </td>
+            </TableTr>
+            <TableTr
               style={{
-                color: '#FF868D',
+                border: 'none',
               }}
             >
-              {income}
-            </td>
-          </TableTr>
+              <td>Income:</td>
+              <td
+                style={{
+                  color: '#FF868D',
+                }}
+              >
+                {income}
+              </td>
+            </TableTr>
+          </tfoot>
         </table>
       ) : (
         <TableH3>
