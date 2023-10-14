@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTransactionThunk } from 'redux/transactions/operations';
+import {
+  deleteTransactionThunk,
+  fetchTransactionCategory,
+} from 'redux/transactions/operations';
 import {
   StyledBtnBox,
   StyledDeleteBtn,
@@ -20,6 +23,9 @@ const TransactionsItem = ({ transaction }) => {
   const handleBtnDelete = id => {
     dispatch(deleteTransactionThunk(id));
   };
+  useEffect(() => {
+    dispatch(fetchTransactionCategory());
+  }, [dispatch]);
   return (
     <>
       <StyledTransaction
@@ -35,7 +41,7 @@ const TransactionsItem = ({ transaction }) => {
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Category</StyledParagraph>
-          <span>{categories ? category.name : '-'}</span>
+          <span>{categories ? category?.name : '-'}</span>
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Comment</StyledParagraph>
