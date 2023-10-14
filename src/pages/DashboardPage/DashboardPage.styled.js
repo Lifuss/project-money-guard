@@ -5,7 +5,10 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
   @media only screen and (min-width: 768px) {
     display: flex;
     flex-direction: row;
-    gap: 32px;
+    /* gap: 32px; */
+    @media only screen and (min-width: 1280px) {
+      flex-direction: column;
+    }
   }
 `;
 
