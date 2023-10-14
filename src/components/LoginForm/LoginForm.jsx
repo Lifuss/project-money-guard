@@ -9,7 +9,15 @@ import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { StyledSection, StyledForm, StyledLink } from './LoginForm.styled';
+import logoMoneyGuard from '../../images/logo_money_guard.svg';
+import {
+  StyledSection,
+  StyledForm,
+  StyledLink,
+  LogoBox,
+  LogoImg,
+  LogoName
+} from './LoginForm.styled';
 
 const validationSchema = yup.object({
   email: yup
@@ -37,25 +45,29 @@ const LoginForm = () => {
   });
 
   if (isLogin) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" />;
   }
 
   const handleSubmit = values => {
     dispatch(loginThunk(values));
   };
 
-  return (
+return (
     <StyledSection>
       <StyledForm onSubmit={formik.handleSubmit}>
+        <LogoBox>
+            <LogoImg src={logoMoneyGuard} alt="logo" />
+            <LogoName>Money Guard</LogoName>
+          </LogoBox>
         <TextField
           fullWidth
           id="email"
           name="email"
           label={
-            <>
-              <EmailOutlinedIcon /> Email
-            </>
-          }
+  <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+    <EmailOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> E-mail
+  </span>
+}
           type="email"
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -66,16 +78,16 @@ const LoginForm = () => {
             width: '409px',
             marginTop: '52px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-          }}
+            }}
         />
         <TextField
           fullWidth
           id="password"
           name="password"
           label={
-            <>
-              <LockIcon /> Password
-            </>
+            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+              <LockIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Password
+            </span>
           }
           type="password"
           value={formik.values.password}
@@ -87,15 +99,14 @@ const LoginForm = () => {
             width: '409px',
             marginTop: '40px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-          }}
+            }}
         />
         <StyledLoginButton
           type="submit"
-          style={{
+         style={{
             width: '300px',
             height: '50px',
-            background:
-              'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
+            background: 'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
             boxShadow: '1px 9px 15px rgba(0, 0, 0, 0.20)',
             borderRadius: '20px',
             color: '#ffffff',
@@ -106,16 +117,17 @@ const LoginForm = () => {
             textAlign: 'center',
             cursor: 'pointer',
             marginTop: '52px',
-            transition: 'background 0.3s, font-weight 0.3s',
-          }}
-        >
-          Log In
-        </StyledLoginButton>
+            transition: 'background 0.3s, font-weight 0.3s', 
+  }}
+>
+  Log In
+</StyledLoginButton>
 
-        <StyledLink to="/registration">Register</StyledLink>
+         <StyledLink to="/registration">Register</StyledLink>
       </StyledForm>
     </StyledSection>
   );
+
 };
 
 export default LoginForm;
