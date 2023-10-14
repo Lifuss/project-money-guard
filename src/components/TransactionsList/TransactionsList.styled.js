@@ -34,6 +34,7 @@ export const StyledTableWrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
+    width: 715px;
   }
 `;
 export const StyledTable = styled.table`
