@@ -5,7 +5,7 @@ import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
 import { selectCategoriesSummary } from '../../redux/transactions/selectors';
 
 import { useSelector } from 'react-redux';
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   StatisticDivChart,
@@ -14,15 +14,15 @@ import {
 } from './StatisticsTab.styled';
 
 const StatisticsTab = () => {
-  const [isOpenMonth, setIsOpenMonth] = useState(false);
-  const [isOpenYear, setIsOpenYear] = useState(false);
-
   const categories = useSelector(selectCategoriesSummary);
-  const categoriesValue = categories.map(({ total }) => {
-    if (total < 0) {
-      return -total;
+  const categoriesValue = categories.map(({ total, type }) => {
+    if (type !== 'INCOME') {
+      if (total < 0) {
+        return -total;
+      }
+      return total;
     }
-    return total;
+    return '';
   });
   const dataDoughnut = {
     labels: [],
@@ -30,7 +30,7 @@ const StatisticsTab = () => {
       {
         data: [...categoriesValue],
         backgroundColor: [
-          'rgba(255, 2, 57, 0.991)',
+          'rgba(247, 79, 115, 0.991)',
           'rgba(110, 120, 232, 1)',
           'rgba(254, 208, 87, 1)',
           'rgba(197, 186, 255, 1)',
@@ -61,17 +61,7 @@ const StatisticsTab = () => {
   };
 
   return (
-    <StatisticDivMain
-      onClick={() => {
-        if (isOpenMonth) {
-          setIsOpenMonth(false);
-        } else if (isOpenYear) {
-          setIsOpenYear(false);
-        } else {
-          return;
-        }
-      }}
-    >
+    <StatisticDivMain>
       <StatisticDivChart
         style={{
           zIndex: '2',
@@ -85,12 +75,7 @@ const StatisticsTab = () => {
           zIndex: '3',
         }}
       >
-        <StatisticsDashboard
-          isOpen={isOpenMonth}
-          setIsOpen={setIsOpenMonth}
-          isOpenYear={isOpenYear}
-          setIsOpenYear={setIsOpenYear}
-        />
+        <StatisticsDashboard />
         <StatisticsTable categories={categories} dataDoughnut={dataDoughnut} />
       </div>
     </StatisticDivMain>

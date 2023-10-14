@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import pngwing from '../StatisticsTable/pngwing.com (8).png';
+import pngwing from '../StatisticsTable/pngwing.com (8).webp';
 import { ChartP, ChartDiv } from './Chart.styled';
 import { selectPeriodTotal } from 'redux/transactions/selectors';
 import { useSelector } from 'react-redux';
