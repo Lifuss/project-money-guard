@@ -9,11 +9,7 @@ import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import {
-  StyledSection,
-  StyledForm,
-  StyledLink,
-} from './LoginForm.styled';
+import { StyledSection, StyledForm, StyledLink } from './LoginForm.styled';
 
 const validationSchema = yup.object({
   email: yup
@@ -41,7 +37,7 @@ const LoginForm = () => {
   });
 
   if (isLogin) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
 
   const handleSubmit = values => {
@@ -70,7 +66,7 @@ const LoginForm = () => {
             width: '409px',
             marginTop: '52px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            }}
+          }}
         />
         <TextField
           fullWidth
@@ -91,14 +87,15 @@ const LoginForm = () => {
             width: '409px',
             marginTop: '40px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            }}
+          }}
         />
         <StyledLoginButton
           type="submit"
-         style={{
+          style={{
             width: '300px',
             height: '50px',
-            background: 'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
+            background:
+              'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
             boxShadow: '1px 9px 15px rgba(0, 0, 0, 0.20)',
             borderRadius: '20px',
             color: '#ffffff',
@@ -109,13 +106,13 @@ const LoginForm = () => {
             textAlign: 'center',
             cursor: 'pointer',
             marginTop: '52px',
-            transition: 'background 0.3s, font-weight 0.3s', 
-  }}
->
-  Log In
-</StyledLoginButton>
+            transition: 'background 0.3s, font-weight 0.3s',
+          }}
+        >
+          Log In
+        </StyledLoginButton>
 
-         <StyledLink to="/registration">Register</StyledLink>
+        <StyledLink to="/registration">Register</StyledLink>
       </StyledForm>
     </StyledSection>
   );
