@@ -16,22 +16,20 @@ import {
   StyledEditForm,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
-import useModal from 'hooks/useModal';
 
-const EditTransactionForm = ({ transaction }) => {
+const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState();
-  const { close } = useModal();
 
   const AddSchema = object({
-    amount: string().min(1, 'Too Short!').max(50, 'Too Long!'),
+    amount: string().required().min(1, 'Too Short!').max(12, 'Too Long!'),
     comment: string().min(2, 'Too Short!').max(50, 'Too Long!'),
     type: string().oneOf(['INCOME', 'EXPENSE'], 'Invalid transaction type'),
   });
 
   const handleSubmit = values => {
     const EditData = {
-      // id: transaction.id,
+      id: transaction.id,
       amount:
         values.type === 'EXPENSE'
           ? -Math.abs(values.amount)
@@ -40,11 +38,6 @@ const EditTransactionForm = ({ transaction }) => {
       type: values.type,
       comment: values.comment,
     };
-    // const id = transaction.id;
-    // const amount = () => (values.amount ? -values.amount : values.amount);
-    // const transactionDate = values.transactionDate;
-    // const type = values.type;
-    // const comment = values.comment;
     dispatch(updateTransactionThunk(EditData));
     console.log(EditData);
     close();
@@ -93,7 +86,7 @@ const EditTransactionForm = ({ transaction }) => {
 
               <StyledEditField
                 name="amount"
-                type="text"
+                type="number"
                 value={values.amount}
                 placeholder="0.0"
               />

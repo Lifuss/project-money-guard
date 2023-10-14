@@ -108,7 +108,7 @@ const TransactionsList = () => {
       </StyledTableWrapper>
       {isOpen && (
         <Modal close={close}>
-          <EditTransactionForm transaction={data} />
+          <EditTransactionForm transaction={data} close={close} />
         </Modal>
       )}
     </StyledTransactionsList>
