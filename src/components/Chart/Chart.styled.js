@@ -1,20 +1,13 @@
 import styled from 'styled-components';
 export const ChartP = styled.p`
   position: absolute;
-  left: 36%;
-  top: 48%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   color: var(--white, #fbfbfb);
   text-align: center;
   font-size: 18px;
   font-weight: 600;
-  @media only screen and (min-width: 768px) {
-    left: 30%;
-    top: 40%;
-  }
-  @media only screen and (min-width: 1280px) {
-    left: 36%;
-    top: 49%;
-  }
 `;
 export const ChartDiv = styled.div`
   position: relative;
