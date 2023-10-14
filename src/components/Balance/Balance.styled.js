@@ -4,7 +4,7 @@ export const StyledBalanceDiv = styled.div`
   border-radius: 8px;
   background: rgba(82, 59, 126, 0.6);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
+  /* backdrop-filter: blur(50px); */
   padding: 8px 74px 12px 32px;
   width: 280px;
   height: 80px;

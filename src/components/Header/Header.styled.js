@@ -1,4 +1,14 @@
 import { styled } from 'styled-components';
+import { StyledContainer } from 'styles/GlobalStyles';
+
+export const StyledHeaderContainer = styled(StyledContainer)`
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export const HeaderInfo = styled.div`
   display: flex;
@@ -7,14 +17,13 @@ export const HeaderInfo = styled.div`
   gap: 8px;
 `;
 
-export const HeaderWrapper = styled.header`
-  padding: 12px 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  outline: 1px solid white;
-`;
+// export const HeaderWrapper = styled.header`
+//   width: 100%;
+//   padding: 12px 0;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// `;
 
 export const LogoBox = styled.div`
   display: flex;

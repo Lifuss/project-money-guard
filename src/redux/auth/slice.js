@@ -11,8 +11,7 @@ const initialState = {
     email: '',
     password: '',
   },
-  token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI2MTQ3NmQ0NS1kMjU4LTRlYzItYWJmMi1iNTFmMGY4MjMzZDEiLCJpYXQiOjE2OTcxMzkzODQsImV4cCI6MTAwMDAwMDE2OTcxMzkzODR9.B31I71pTXdPGeNWYSR65FQUXmH5QAzwX4v0qFw9-Viw',
+  token: '',
   isLoggedIn: false,
   isLoading: false,
   isRefresh: false,

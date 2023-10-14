@@ -1,17 +1,19 @@
-import CurrencyTab from 'pages/CurrencyTab';
-import DashboardPage from 'pages/DashboardPage';
-import HomeTab from 'pages/HomeTab';
-import LoginPage from 'pages/LoginPage';
-import PageNotFound from 'pages/PageNotFound';
-import RegistrationPage from 'pages/RegistrationPage';
-import StatisticsTab from 'pages/StatisticsTab';
+import DashboardPage from 'pages/DashboardPage/DashboardPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+// import StatisticsTab from 'pages/StatisticsTab/StatisticsTab';
+import PageNotFound from 'pages/PageNotFound/PageNotFound';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from 'routes/PrivateRoute';
 import Loader from './Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefresh } from 'redux/auth/selectors';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { refreshThunk } from 'redux/auth/operations';
+
+const CurrencyTab = lazy(() => import('pages/CurrencyTab/CurrencyTab'));
+const HomeTab = lazy(() => import('pages/HomeTab/HomeTab'));
+const StatisticsTab = lazy(() => import('pages/StatisticsTab/StatisticsTab'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ export const App = () => {
   ) : (
     <Routes>
       <Route path="login" element={<LoginPage />} />
-      <Route path="register" element={<RegistrationPage />} />
+      <Route path="registration" element={<RegistrationPage />} />
 
       <Route path="/" element={<DashboardPage />}>
         <Route
