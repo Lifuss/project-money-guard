@@ -100,5 +100,5 @@ export const CancelBtnStyle = styled.button`
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
-  /* margin-top: 501px; */
+  margin-top: 501px;
 `;
