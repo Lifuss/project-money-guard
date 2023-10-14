@@ -108,7 +108,7 @@ const EditTransactionForm = ({ transaction }) => {
                   handleChange({
                     target: {
                       name: 'transactionDate',
-                      value: transaction.transactionDate,
+                      value: date,
                     },
                   });
                   setStartDate(date);
