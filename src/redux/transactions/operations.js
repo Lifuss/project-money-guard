@@ -40,16 +40,16 @@ export const deleteTransactionThunk = createAsyncThunk(
 export const updateTransactionThunk = createAsyncThunk(
   'updateTransaction',
   async (body, { rejectWithValue }) => {
-    const data = {
-      date: body.transactionDate,
-      type: body.type,
-      category: body.categoryId,
-      comment: body.comment,
-      amount: body.amount,
-    };
+    // const data = {
+    //   transactionDate: body.transactionDate,
+    //   type: body.type,
+    //   comment: body.comment,
+    //   amount: body.amount,
+    // };
+    // console.log(data)
     try {
-      const res = await swaggerApi.patch(`transactions/${body.id}`, data);
-      return res.data;
+      const { data } = await swaggerApi.patch(`transactions/${body.id}`, body);
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

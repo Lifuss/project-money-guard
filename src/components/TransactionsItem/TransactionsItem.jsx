@@ -72,7 +72,7 @@ const TransactionsItem = ({ transaction }) => {
         </StyledBtnBox>
         {isOpen && (
           <Modal close={close}>
-            <EditTransactionForm />
+            <EditTransactionForm transaction={transaction} />
           </Modal>
         )}
       </StyledTransaction>

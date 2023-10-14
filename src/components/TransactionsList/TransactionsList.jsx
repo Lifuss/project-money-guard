@@ -34,7 +34,7 @@ import EditTransactionForm from 'components/EditTransactionForm/EditTransactionF
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
-  const { open, close, isOpen } = useModal();
+  const { open, close, isOpen, data } = useModal();
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectLoading);
@@ -108,7 +108,7 @@ const TransactionsList = () => {
       </StyledTableWrapper>
       {isOpen && (
         <Modal close={close}>
-          <EditTransactionForm />
+          <EditTransactionForm transaction={data} />
         </Modal>
       )}
     </StyledTransactionsList>
