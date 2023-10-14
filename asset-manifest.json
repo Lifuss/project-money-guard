@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-money-guard/static/css/main.e96cf6f7.css",
-    "main.js": "/project-money-guard/static/js/main.78a78e27.js",
+    "main.js": "/project-money-guard/static/js/main.a9acb884.js",
     "static/js/898.1eaba4c2.chunk.js": "/project-money-guard/static/js/898.1eaba4c2.chunk.js",
     "static/js/229.0bddfd2b.chunk.js": "/project-money-guard/static/js/229.0bddfd2b.chunk.js",
     "static/js/485.295f0bcb.chunk.js": "/project-money-guard/static/js/485.295f0bcb.chunk.js",
@@ -17,7 +17,7 @@
     "static/media/exit.svg": "/project-money-guard/static/media/exit.e630083d99c67516c6d0428369e2c7e6.svg",
     "static/media/straight_line.svg": "/project-money-guard/static/media/straight_line.af8513ecc3ad6b6637fe1f628e65400e.svg",
     "main.e96cf6f7.css.map": "/project-money-guard/static/css/main.e96cf6f7.css.map",
-    "main.78a78e27.js.map": "/project-money-guard/static/js/main.78a78e27.js.map",
+    "main.a9acb884.js.map": "/project-money-guard/static/js/main.a9acb884.js.map",
     "898.1eaba4c2.chunk.js.map": "/project-money-guard/static/js/898.1eaba4c2.chunk.js.map",
     "229.0bddfd2b.chunk.js.map": "/project-money-guard/static/js/229.0bddfd2b.chunk.js.map",
     "485.295f0bcb.chunk.js.map": "/project-money-guard/static/js/485.295f0bcb.chunk.js.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.e96cf6f7.css",
-    "static/js/main.78a78e27.js"
+    "static/js/main.a9acb884.js"
   ]
 }
