@@ -4,10 +4,21 @@ export const StyledTableWrapper = styled.div`
   position: relative;
   background-color: rgba(74, 86, 226, 0.1);
   width: 320px;
+  height: 214px;
+  @media only screen and (min-width: 768px) {
+    min-width: 336px;
+    height: 214px;
+  }
+  @media only screen and (min-width: 1280px) {
+    min-width: 480px;
+    max-height: 395px;
+  }
 `;
 
 export const StyledGraphWrapper = styled.div`
   position: relative;
+  width: 100%;
+  /* height: 100%; */
   background-color: rgba(74, 86, 226, 0.1);
 
   top: -6px;
@@ -37,18 +48,49 @@ export const StyledGraphWrapper = styled.div`
     top: -2px;
     z-index: 1000;
   }
+  @media only screen and (min-width: 768px) {
+    &::before {
+      left: 42px;
+      top: 21px;
+      width: 9px;
+      height: 9px;
+    }
+    &::after {
+      left: 254px;
+      top: -2px;
+      width: 9px;
+      height: 9px;
+    }
+  }
+  @media only screen and (min-width: 1280px) {
+    &::before {
+      left: 58px;
+      top: 29px;
+    }
+    &::after {
+      left: 364px;
+      top: -4px;
+    }
+    top: 26px;
+  }
 `;
 
 export const StyledTable = styled.table`
-  width: 320px;
+  width: 100%;
   font-size: 16px;
   line-height: normal;
   border-collapse: collapse;
   padding-left: 20px;
+  @media only screen and (min-width: 1280px) {
+    /* padding-left: 50px; */
+  }
 `;
 export const StyledThead = styled.thead`
   background: rgba(255, 255, 255, 0.2);
   font-weight: 600;
+  @media only screen and (min-width: 1280px) {
+    /* padding-left: 50px; */
+  }
 `;
 
 export const StyledTh = styled.th`
@@ -56,6 +98,14 @@ export const StyledTh = styled.th`
   padding-bottom: 13px;
   width: 33%;
   padding-left: 20px;
+  @media only screen and (min-width: 1280px) {
+    &:first-child {
+      padding-left: 62px;
+    }
+    &:last-child {
+      padding-right: 131px;
+    }
+  }
 `;
 
 export const StyledTd = styled.td`
@@ -66,27 +116,23 @@ export const StyledTd = styled.td`
   &:last-child {
     padding-left: 46px;
   }
+  @media only screen and (min-width: 1280px) {
+    text-align: center;
+    &:first-child {
+      padding-left: 62px;
+    }
+    &:last-child {
+      padding-right: 151px;
+    }
+  }
 `;
 
 export const StyledWave = styled.svg`
   position: absolute;
+  width: 100%;
 `;
 export const StyledGradientWave = styled.svg`
+  width: 100%;
   position: absolute;
   top: 6px;
-
-  /* fill: rgba(255, 255, 255, 0.2); */
-  /* fill: linear-gradient(
-      0deg,
-      rgba(57, 0, 150, 0.2) 0%,
-      rgba(57, 0, 150, 0.2) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.6) 14.72%,
-      rgba(255, 255, 255, 0.32) 52.74%,
-      rgba(255, 255, 255, 0.16) 76.49%,
-      rgba(255, 255, 255, 0.09) 92.4%,
-      rgba(255, 255, 255, 0) 116.14%
-    ); */
 `;
