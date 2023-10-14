@@ -28,9 +28,13 @@ import {
   deleteTransactionThunk,
   fetchTransactionsThunk,
 } from 'redux/transactions/operations';
+import useModal from 'hooks/useModal';
+import Modal from 'components/Modal/Modal';
+import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
+  const { open, close, isOpen, data } = useModal();
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectLoading);
@@ -80,7 +84,7 @@ const TransactionsList = () => {
                   </StyledTd>
                   <td>
                     <StyledTableBtnWrapper>
-                      <StyledEditBtn>
+                      <StyledEditBtn onClick={() => open(transaction)}>
                         <svg width="14" height="14">
                           <use href={`${sprite}#edit`} />
                         </svg>
@@ -102,6 +106,11 @@ const TransactionsList = () => {
           </StyledTbodyTable>
         </StyledTable>
       </StyledTableWrapper>
+      {isOpen && (
+        <Modal close={close}>
+          <EditTransactionForm transaction={data} close={close} />
+        </Modal>
+      )}
     </StyledTransactionsList>
   );
 };

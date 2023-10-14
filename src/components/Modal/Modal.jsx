@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 
-import { ModalWindowStyle, OverlayStyle, ButtonCloseStyle, CancelBtnStyle } from './Modal.styled';
+import {
+  ModalWindowStyle,
+  OverlayStyle,
+  ButtonCloseStyle,
+  CancelBtnStyle,
+} from './Modal.styled';
 
-export default function Modal({
-  children,
-  showCloseIcon = true,
-  handleOpen,
-  close,
-}) {
+export default function Modal({ children, showCloseIcon = true, close }) {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.key === 'Escape') {
-        handleOpen();
+        close();
       }
     };
     document.addEventListener('keydown', handleKeyDown);
@@ -19,7 +19,7 @@ export default function Modal({
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleOpen]);
+  }, [close]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
@@ -33,7 +33,6 @@ export default function Modal({
     }
   };
 
- 
   return (
     <OverlayStyle onClick={e => handleBackdropClick(e)}>
       <ModalWindowStyle>
