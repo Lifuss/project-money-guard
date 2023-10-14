@@ -29,8 +29,8 @@ export const deleteTransactionThunk = createAsyncThunk(
   'deleteTransaction',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await swaggerApi.delete(`transactions/${id}`);
-      return data.id;
+      await swaggerApi.delete(`transactions/${id}`);
+      return id;
     } catch (error) {
       return rejectWithValue(error.message);
     }
