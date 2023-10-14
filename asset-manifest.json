@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/project-money-guard/static/css/main.e96cf6f7.css",
-    "main.js": "/project-money-guard/static/js/main.7a11fcc5.js",
+    "main.js": "/project-money-guard/static/js/main.442366bb.js",
     "static/js/898.1eaba4c2.chunk.js": "/project-money-guard/static/js/898.1eaba4c2.chunk.js",
-    "static/js/229.d5887e7b.chunk.js": "/project-money-guard/static/js/229.d5887e7b.chunk.js",
+    "static/js/229.33c02617.chunk.js": "/project-money-guard/static/js/229.33c02617.chunk.js",
     "static/js/485.a5d9b558.chunk.js": "/project-money-guard/static/js/485.a5d9b558.chunk.js",
     "static/css/44.9ba067ec.chunk.css": "/project-money-guard/static/css/44.9ba067ec.chunk.css",
     "static/js/44.1d56b4e3.chunk.js": "/project-money-guard/static/js/44.1d56b4e3.chunk.js",
@@ -17,9 +17,9 @@
     "static/media/exit.svg": "/project-money-guard/static/media/exit.e630083d99c67516c6d0428369e2c7e6.svg",
     "static/media/straight_line.svg": "/project-money-guard/static/media/straight_line.af8513ecc3ad6b6637fe1f628e65400e.svg",
     "main.e96cf6f7.css.map": "/project-money-guard/static/css/main.e96cf6f7.css.map",
-    "main.7a11fcc5.js.map": "/project-money-guard/static/js/main.7a11fcc5.js.map",
+    "main.442366bb.js.map": "/project-money-guard/static/js/main.442366bb.js.map",
     "898.1eaba4c2.chunk.js.map": "/project-money-guard/static/js/898.1eaba4c2.chunk.js.map",
-    "229.d5887e7b.chunk.js.map": "/project-money-guard/static/js/229.d5887e7b.chunk.js.map",
+    "229.33c02617.chunk.js.map": "/project-money-guard/static/js/229.33c02617.chunk.js.map",
     "485.a5d9b558.chunk.js.map": "/project-money-guard/static/js/485.a5d9b558.chunk.js.map",
     "44.9ba067ec.chunk.css.map": "/project-money-guard/static/css/44.9ba067ec.chunk.css.map",
     "44.1d56b4e3.chunk.js.map": "/project-money-guard/static/js/44.1d56b4e3.chunk.js.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.e96cf6f7.css",
-    "static/js/main.7a11fcc5.js"
+    "static/js/main.442366bb.js"
   ]
 }
