@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Overlay = styled.div`
+
+export const OverlayStyle = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -21,28 +22,41 @@ export const Overlay = styled.div`
   }
 `;
 
-export const ModalWindow = styled.div`
-  width: 511px;
+export const ModalWindowStyle = styled.div`
+  width: 320px;
+  min-height: 600px;
   padding: 41px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, var(--purple), #623f8b);
+  background: radial-gradient(#3f2e96, #5f478c);
   border-radius: 8px;
   position: relative;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
 
-  @media screen and (max-width: 767px) {
+  @media screen and (min-width: 768px) {
     width: 100%;
     height: 100%;
-    border-radius: 0px;
+    border-radius: 0;
+    padding: calc(20 * (100vw / 480));
+    min-width: 300px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 540px;
+    max-height: 511px;
+    border-radius: 8px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    border-radius: 8px;
     padding: calc(20 * (100vw / 480));
     min-width: 300px;
   }
 `;
 
-export const ButtonClose = styled.button`
+export const ButtonCloseStyle = styled.button`
   width: 20px;
   height: 20px;
   position: absolute;
@@ -60,12 +74,12 @@ export const ButtonClose = styled.button`
   }
 `;
 
-export const CancelBtn = styled.button`
+export const CancelBtnStyle = styled.button`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  width: 280px;
   height: 50px;
   padding: 13px 68px;
   background-color: rgba(251, 251, 251, 1);
@@ -78,4 +92,12 @@ export const CancelBtn = styled.button`
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
+  margin-top: 501px;
+
+  
 `;
+
+
+
+
+

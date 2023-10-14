@@ -5,11 +5,16 @@ import Modal from 'components/Modal/Modal';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
+import useModal from 'hooks/useModal';
 import React from 'react';
 import { StyledContainer } from 'styles/GlobalStyles';
 
 const HomeTab = () => {
-  const isOpen=true
+  const { toggle, isOpen, close } = useModal();
+  const handleOpen = () => {
+    toggle();
+  };
+
   return (
     <StyledContainer>
       <TransactionsList />
@@ -18,7 +23,7 @@ const HomeTab = () => {
       <ModalEditTransaction />
       <AddTransactionForm />
       <EditTransactionForm />
-      {isOpen && <Modal/>}
+      {isOpen && <Modal handleOpen={handleOpen} close={close}></Modal>}
     </StyledContainer>
   );
 };

@@ -1,45 +1,44 @@
 import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { ModalWindow, Overlay, ButtonClose, CancelBtn } from './Modal.styled';
-import { useDispatch } from 'react-redux';
-// import { toggleModal } from 'redux/modal/ModalSlice';
 
-const modalRoot = document.querySelector('#modal-root');
+import { ModalWindowStyle, OverlayStyle, ButtonCloseStyle, CancelBtnStyle } from './Modal.styled';
 
-export default function Modal({ children, showCloseIcon = true }) {
-  const dispatch = useDispatch();
-
+export default function Modal({
+  children,
+  showCloseIcon = true,
+  handleOpen,
+  close,
+}) {
   useEffect(() => {
     const handleKeyDown = e => {
-      console.log(e.code);
-      // if (e.code === 'Escape') {
-      //   dispatch(toggleModal());
-      // }
+      if (e.key === 'Escape') {
+        handleOpen();
+      }
     };
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch]);
+  }, [handleOpen]);
 
   const handleBackdropClick = e => {
-    // if (e.currentTarget === e.target) {
-    //   dispatch(toggleModal());
-    // }
+    if (e.currentTarget === e.target) {
+      close();
+    }
   };
 
   const closeClick = e => {
-    // if (e.target.name === 'cancel' || e.currentTarget.name === 'closeSvg') {
-    //   dispatch(toggleModal());
-    // }
+    if (e.target.name === 'cancel' || e.currentTarget.name === 'closeSvg') {
+      close();
+    }
   };
 
-  return createPortal(
-    <Overlay onClick={handleBackdropClick}>
-      <ModalWindow>
+ 
+  return (
+    <OverlayStyle onClick={e => handleBackdropClick(e)}>
+      <ModalWindowStyle>
         {showCloseIcon && (
-          <ButtonClose type="button" name="closeSvg" onClick={closeClick}>
+          <ButtonCloseStyle type="button" name="closeSvg" onClick={closeClick}>
             <svg
               width="16"
               height="16"
@@ -50,14 +49,13 @@ export default function Modal({ children, showCloseIcon = true }) {
               <path d="M1 1L17 17" stroke="#FBFBFB" />
               <path d="M1 17L17 0.999999" stroke="#FBFBFB" />
             </svg>
-          </ButtonClose>
+          </ButtonCloseStyle>
         )}
         {children}
-        <CancelBtn type="button" name="cancel" onClick={closeClick}>
+        <CancelBtnStyle type="button" name="cancel" onClick={closeClick}>
           Cancel
-        </CancelBtn>
-      </ModalWindow>
-    </Overlay>,
-    modalRoot
+        </CancelBtnStyle>
+      </ModalWindowStyle>
+    </OverlayStyle>
   );
 }
