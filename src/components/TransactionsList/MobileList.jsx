@@ -21,7 +21,7 @@ const MobileList = () => {
             <TransactionsItem key={transaction.id} transaction={transaction} />
           ))
         ) : (
-          <h3>Oh, you don't have transactions yet. Let's create one!</h3>
+          <h3>You don't have transactions yet</h3>
         )}
       </StyledMobileWrapper>
     </>

@@ -90,7 +90,7 @@ const TransactionsList = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="6">No transactions found.</td>
+                <td>No transactions found</td>
               </tr>
             )}
           </StyledTbodyTable>
