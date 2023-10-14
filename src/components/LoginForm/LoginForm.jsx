@@ -9,10 +9,14 @@ import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
+import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import {
   StyledSection,
   StyledForm,
   StyledLink,
+  LogoBox,
+  LogoImg,
+  LogoName
 } from './LoginForm.styled';
 
 const validationSchema = yup.object({
@@ -48,18 +52,22 @@ const LoginForm = () => {
     dispatch(loginThunk(values));
   };
 
-  return (
+return (
     <StyledSection>
       <StyledForm onSubmit={formik.handleSubmit}>
+        <LogoBox>
+            <LogoImg src={logoMoneyGuard} alt="logo" />
+            <LogoName>Money Guard</LogoName>
+          </LogoBox>
         <TextField
           fullWidth
           id="email"
           name="email"
           label={
-            <>
-              <EmailOutlinedIcon /> Email
-            </>
-          }
+  <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+    <EmailOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> E-mail
+  </span>
+}
           type="email"
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -77,9 +85,9 @@ const LoginForm = () => {
           id="password"
           name="password"
           label={
-            <>
-              <LockIcon /> Password
-            </>
+            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+              <LockIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Password
+            </span>
           }
           type="password"
           value={formik.values.password}
@@ -119,6 +127,7 @@ const LoginForm = () => {
       </StyledForm>
     </StyledSection>
   );
+
 };
 
 export default LoginForm;

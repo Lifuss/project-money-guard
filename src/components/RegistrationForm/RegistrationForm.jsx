@@ -36,7 +36,7 @@ const validationSchema = yup.object({
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(selectIsLoggedIn);
-  const [password, setPassword] = useState(''); 
+  const [password, setPassword] = useState('');
 
   const formik = useFormik({
     initialValues: {
@@ -52,7 +52,7 @@ const RegistrationForm = () => {
   });
 
   if (isLogin) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
 
   const handleSubmit = async values => {
@@ -65,9 +65,15 @@ const RegistrationForm = () => {
       } else if (response.status === 400) {
         console.error('Validation error:', response.data);
       } else if (response.status === 409) {
-        console.error('Error: User with such email already exists:', response.data);
+        console.error(
+          'Error: User with such email already exists:',
+          response.data
+        );
       } else {
-        console.error('Unknown error during registration. Status:', response.status);
+        console.error(
+          'Unknown error during registration. Status:',
+          response.status
+        );
       }
     } catch (error) {
       console.error('Registration was unsuccessful:', error);
@@ -116,9 +122,9 @@ const RegistrationForm = () => {
           }
           type="password"
           value={formik.values.password}
-          onChange={(e) => {
+          onChange={e => {
             formik.handleChange(e);
-            setPassword(e.target.value); 
+            setPassword(e.target.value);
           }}
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
@@ -137,10 +143,15 @@ const RegistrationForm = () => {
           value={formik.values.confirmPassword}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+          error={
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
+          }
+          helperText={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
         />
-        <PasswordStrengthBar password={password} /> 
+        <PasswordStrengthBar password={password} />
         <Button color="primary" variant="contained" fullWidth type="submit">
           Register
         </Button>
@@ -151,5 +162,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-

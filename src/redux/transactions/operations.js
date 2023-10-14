@@ -71,7 +71,6 @@ export const fetchTransactionCategory = createAsyncThunk(
 export const fetchTransactionsSummary = createAsyncThunk(
   'transactionsSummary',
   async ({ month, year }, { rejectWithValue }) => {
-    console.log(month, year);
     try {
       const { data } = await swaggerApi.get(
         `transactions-summary?month=${month}&year=${year}`

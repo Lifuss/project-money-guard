@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 export const StatisticDivMain = styled.div`
-  background: ${({ theme }) => theme.backgrounds.background};
   color: white;
   display: block;
   position: relative;
   overflow: hidden;
+  min-width: 325px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
 
   &::after {
     content: '';
@@ -36,6 +39,7 @@ export const StatisticDivMain = styled.div`
   }
   @media only screen and (min-width: 768px) {
     display: flex;
+    margin: 0;
     justify-content: space-between;
     gap: 32px;
     max-width: 768px;
@@ -43,7 +47,7 @@ export const StatisticDivMain = styled.div`
     padding: 20px 16px 0 35px;
   }
   @media only screen and (min-width: 1280px) {
-    width: 803px;
+    max-width: 803px;
     height: 827px;
     padding: 32px 16px 40px 69px;
     padding: 20px 16px 0 35px;
@@ -53,21 +57,22 @@ export const StatisticDivChart = styled.div`
   position: relative;
   width: 280px;
   padding: 16px;
-  &::after {
-    content: '';
-    width: 330px;
-    height: 333px;
-    border-radius: 333px;
-    background: #6d1c77;
-    position: absolute;
-    left: 200px;
-    bottom: 0;
 
-    filter: blur(150px);
-  }
   @media only screen and (min-width: 768px) {
     width: 336px;
     padding: 0;
+    &::after {
+      content: '';
+      width: 330px;
+      height: 333px;
+      border-radius: 333px;
+      background: #6d1c77;
+      position: absolute;
+      left: 200px;
+      bottom: 0;
+
+      filter: blur(150px);
+    }
   }
   @media only screen and (min-width: 1280px) {
     width: 288px;

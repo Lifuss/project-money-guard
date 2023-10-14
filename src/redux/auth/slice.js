@@ -11,6 +11,7 @@ const initialState = {
     email: '',
     password: '',
   },
+  balance: 0,
   token: '',
   isLoggedIn: false,
   isLoading: false,
@@ -34,7 +35,7 @@ export const slice = createSlice({
         state.isRefresh = false;
         state.isLoggedIn = true;
         state.user.email = payload.email;
-        state.user.password = payload.password;
+        state.balance = payload.balance;
       })
       .addMatcher(
         isAnyOf(loginThunk.pending, registerThunk.pending, state => {

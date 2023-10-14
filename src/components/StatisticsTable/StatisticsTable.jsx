@@ -19,74 +19,76 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
   const expense = useSelector(selectExpenseSummary);
   return (
     <TableDiv>
-      <table>
-        <thead>
-          <TableTrHead>
-            <TableTh>Category</TableTh>
-            <TableTh>Sum</TableTh>
-          </TableTrHead>
-        </thead>
-        <TableBody>
-          {categories.length > 1 ? (
-            categories.map(({ name, total }, index) => {
-              return (
-                <TableTr key={name}>
-                  <TableTd>
-                    <div
+      {categories.length > 1 ? (
+        <table>
+          <thead>
+            <TableTrHead>
+              <TableTh>Category</TableTh>
+              <TableTh>Sum</TableTh>
+            </TableTrHead>
+          </thead>
+          <TableBody>
+            {categories.map(({ name, total, type }, index) => {
+              if (type !== 'INCOME') {
+                return (
+                  <TableTr key={name}>
+                    <TableTd>
+                      <div
+                        style={{
+                          backgroundColor: `${dataDoughnut.datasets[0].backgroundColor[index]}`,
+                          width: '24px',
+                          height: '24px',
+                        }}
+                      ></div>
+                      {name}
+                    </TableTd>
+                    <td
                       style={{
-                        backgroundColor: `${dataDoughnut.datasets[0].backgroundColor[index]}`,
-                        width: '24px',
-                        height: '24px',
+                        fontSize: '14px',
                       }}
-                    ></div>
-                    {name}
-                  </TableTd>
-                  <td
-                    style={{
-                      fontSize: '14px',
-                    }}
-                  >
-                    {total < 0 ? -total : total}
-                  </td>
-                </TableTr>
-              );
-            })
-          ) : (
-            <TableH3>
-              It looks like you have not made any monetary transactions during
-              this time period
-            </TableH3>
-          )}
-        </TableBody>
-        <TableTr
-          style={{
-            border: 'none',
-          }}
-        >
-          <td>Expenses:</td>
-          <td
+                    >
+                      {total < 0 ? -total : total}
+                    </td>
+                  </TableTr>
+                );
+              }
+            })}
+          </TableBody>
+          <TableTr
             style={{
-              color: '#FF868D',
+              border: 'none',
             }}
           >
-            {-expense}
-          </td>
-        </TableTr>
-        <TableTr
-          style={{
-            border: 'none',
-          }}
-        >
-          <td>Income:</td>
-          <td
+            <td>Expenses:</td>
+            <td
+              style={{
+                color: '#FF868D',
+              }}
+            >
+              {-expense}
+            </td>
+          </TableTr>
+          <TableTr
             style={{
-              color: '#FF868D',
+              border: 'none',
             }}
           >
-            {income}
-          </td>
-        </TableTr>
-      </table>
+            <td>Income:</td>
+            <td
+              style={{
+                color: '#FF868D',
+              }}
+            >
+              {income}
+            </td>
+          </TableTr>
+        </table>
+      ) : (
+        <TableH3>
+          It looks like you have not made any monetary transactions during this
+          time period
+        </TableH3>
+      )}
     </TableDiv>
   );
 };
