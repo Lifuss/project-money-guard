@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AddFormTitle,
   BtnAdd,
@@ -11,48 +11,76 @@ import {
   StyledSelect,
 } from './AddTransactionForm.styled';
 import { Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addTransactionThunk } from 'redux/transactions/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addTransactionThunk,
+  fetchTransactionCategory,
+} from 'redux/transactions/operations';
 import { object, string } from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
+import { selectCategories } from 'redux/transactions/selectors';
 
-const categories = [
-  'Main expenses',
-  'Products',
-  'Car',
-  'Self Care',
-  'Child Care',
-  'Household Products',
-  'Education',
-  'Leisure',
-  'Other expenses',
-  'Entertainment',
-];
+// const categories = [
+//   'Main expenses',
+//   'Products',
+//   'Car',
+//   'Self Care',
+//   'Child Care',
+//   'Household Products',
+//   'Education',
+//   'Leisure',
+//   'Other expenses',
+//   'Entertainment',
+// ];
 
 const AddSchema = object({
-  amount: string().required().min(2, 'Too Short!').max(50, 'Too Long!'),
+  amount: string().required(),
   comment: string().min(2, 'Too Short!').max(50, 'Too Long!'),
-  category: string().oneOf(categories).required(),
+  category: string().required(),
 });
 
 const AddTransactionForm = () => {
   const dispatch = useDispatch();
+  // const transactions = useSelector(selectTransactions);
+
+  const categories = useSelector(selectCategories);
+
+  useEffect(() => {
+    // dispatch(fetchTransactionsThunk());
+    dispatch(fetchTransactionCategory());
+  }, [dispatch]);
+
   const [startDate, setStartDate] = useState();
+
   const handleSubmit = values => {
     console.log('submit', values);
-    dispatch(addTransactionThunk(values));
+    const addFormData = {
+      amount: values.type === 'EXPENSE' ? -values.amount : values.amount,
+      // categoryId: values.category.id,
+      categoryId:
+        values.type === 'EXPENSE'
+          ? values.category
+          : '063f1132-ba5d-42b4-951d-44011ca46262', //categoryId INCOME
+      // categoryId: '27eb4b75-9a42-4991-a802-4aefe21ac3ce', //PRODUCTS
+      comment: values.comment,
+      transactionDate: values.transactionDate,
+      type: values.type === 'EXPENSE' ? 'EXPENSE' : 'INCOME',
+    };
+    console.log(addFormData);
+    dispatch(addTransactionThunk(addFormData));
   };
+
   return (
     <div>
       <StyledContainer>
         <AddFormTitle>Add transaction</AddFormTitle>
         <Formik
           initialValues={{
-            type: 'Expense',
+            type: 'EXPENSE',
             category: '',
             amount: '',
-            date: new Date().toLocaleDateString('uk-UA'),
+            transactionDate: new Date(),
             comment: '',
           }}
           validationSchema={AddSchema}
@@ -65,34 +93,43 @@ const AddTransactionForm = () => {
                 value={values.type}
                 onChange={handleChange}
               >
-                <option>Income</option>
-                <option>Expense</option>
+                <option>INCOME</option>
+                <option>EXPENSE</option>
               </StyledSelect>
-              <StyledSelect
-                name="category"
-                value={values.category}
-                onChange={handleChange}
-              >
-                <option disabled value="">
-                  Select a category
-                </option>
-                {categories.map(category => (
-                  <option key={category}>{category}</option>
-                ))}
-              </StyledSelect>
-              <StyledField name="amount" placeholder="0.00" />
+              {values.type !== 'INCOME' ? (
+                <StyledSelect
+                  name="category"
+                  value={values.category}
+                  onChange={handleChange}
+                >
+                  <option disabled value="">
+                    Select a category
+                  </option>
+                  {categories.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </StyledSelect>
+              ) : null}
+
+              <StyledField
+                name="amount"
+                placeholder="0.00"
+                value={values.amount}
+              />
 
               <StyledDatePicker
-                name="date"
-                value={values.date}
-                onChange={date => {
+                name="transactionDate"
+                value={values.transactionDate}
+                onChange={transactionDate => {
                   handleChange({
                     target: {
-                      name: 'date',
-                      value: date.toLocaleDateString('uk-UA'),
+                      name: 'transactionDate',
+                      value: transactionDate,
                     },
                   });
-                  setStartDate(date);
+                  setStartDate(transactionDate);
                 }}
                 dateFormat="dd.MM.yyyy"
                 // placeholderText={`${new Date().toLocaleDateString('uk-UA')}`}
