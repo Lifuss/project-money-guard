@@ -1,5 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { SelectBtn, Options, SelectSvg } from './StatisticsDashboard.styled';
+import {
+  SelectBtn,
+  Options,
+  SelectSvg,
+  SelectMainDiv,
+} from './StatisticsDashboard.styled';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import sprite from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
@@ -52,22 +57,10 @@ const StatisticsDashboard = ({
     dispatch(fetchTransactionsSummary(data));
   }, [dispatch, months, selectedMonth, selectedYear]);
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '32px',
-        marginTop: '60px',
-      }}
-    >
-      <div>
+    <SelectMainDiv>
+      <>
         <SelectBtn onClick={() => setIsOpen(!isOpen)}>
-          <p
-          // style={{
-          //   display: 'inline-block',
-          // }}
-          >
-            {selectedMonth}
-          </p>
+          <p>{selectedMonth}</p>
           <SelectSvg>
             {isOpen ? (
               <use href={`${sprite}#arrow_up`} width={22} />
@@ -79,8 +72,9 @@ const StatisticsDashboard = ({
         {isOpen && (
           <Scrollbars
             style={{
-              width: 181,
               height: 157,
+              width: 181,
+
               position: 'absolute',
               zIndex: '2',
               background:
@@ -94,7 +88,7 @@ const StatisticsDashboard = ({
             ))}
           </Scrollbars>
         )}
-      </div>
+      </>
 
       <div>
         <SelectBtn onClick={() => setIsOpenYear(!isOpenYear)}>
@@ -126,7 +120,7 @@ const StatisticsDashboard = ({
           </Scrollbars>
         )}
       </div>
-    </div>
+    </SelectMainDiv>
   );
 };
 

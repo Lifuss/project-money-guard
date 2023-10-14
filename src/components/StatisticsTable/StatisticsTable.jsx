@@ -6,6 +6,7 @@ import {
   TableTrHead,
   TableBody,
   TableH3,
+  TableDiv,
 } from './StatisticsTable.styled';
 import { useSelector } from 'react-redux';
 
@@ -17,7 +18,7 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
   const income = useSelector(selectIncomeSummary);
   const expense = useSelector(selectExpenseSummary);
   return (
-    <div>
+    <TableDiv>
       <table>
         <thead>
           <TableTrHead>
@@ -86,7 +87,7 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
           </td>
         </TableTr>
       </table>
-    </div>
+    </TableDiv>
   );
 };
 
