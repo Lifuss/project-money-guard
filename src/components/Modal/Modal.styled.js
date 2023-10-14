@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const OverlayStyle = styled.div`
   position: fixed;
   top: 0;
@@ -72,6 +71,15 @@ export const ButtonCloseStyle = styled.button`
   @media screen and (min-width: 768px) {
     display: block;
   }
+
+  &:hover {
+    transform: scale(1.4);
+    transition: transform 0.3s ease-in-out;
+  }
+  &:not(:hover) {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
 `;
 
 export const CancelBtnStyle = styled.button`
@@ -93,11 +101,4 @@ export const CancelBtnStyle = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   margin-top: 501px;
-
-  
 `;
-
-
-
-
-
