@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 
 const useModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const close = () => {
     setIsOpen(false);
