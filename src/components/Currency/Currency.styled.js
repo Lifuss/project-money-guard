@@ -135,4 +135,7 @@ export const StyledGradientWave = styled.svg`
   width: 100%;
   position: absolute;
   top: 6px;
+  @media only screen and (min-width: 1280px) {
+    top: 20px;
+  }
 `;
