@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { SelectMainDiv, styles } from './StatisticsDashboard.styled';
+import { StyledSelectMainDiv, styles } from './StatisticsDashboard.styled';
 
 import { useDispatch } from 'react-redux';
 import { fetchTransactionsSummary } from 'redux/transactions/operations';
@@ -54,7 +54,7 @@ const StatisticsDashboard = () => {
     dispatch(fetchTransactionsSummary(data));
   }, [dispatch, selectedMonth, selectedYear]);
   return (
-    <SelectMainDiv>
+    <StyledSelectMainDiv>
       <Select
         styles={styles}
         value={selectedMonth}
@@ -84,7 +84,7 @@ const StatisticsDashboard = () => {
           })}
         />
       </div>
-    </SelectMainDiv>
+    </StyledSelectMainDiv>
   );
 };
 

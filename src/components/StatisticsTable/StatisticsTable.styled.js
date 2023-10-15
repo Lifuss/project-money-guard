@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const TableDiv = styled.div`
+export const StyledTableDiv = styled.div`
   width: 280px;
   padding: 0 16px;
 
@@ -11,22 +11,23 @@ export const TableDiv = styled.div`
     width: 395px;
   }
 `;
-export const TableTd = styled.td`
+export const StyledTableTd = styled.td`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   font-size: 14px;
+  align-items: center;
   /* padding: 17px 20px; */
   /* width: 395px; */
 `;
-export const TableTr = styled.tr`
+export const StyledTableTr = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
   padding: 16px;
 `;
-export const TableTrHead = styled.tr`
+export const StyledTableTrHead = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,25 +52,26 @@ export const TableTrHead = styled.tr`
     width: 395px;
   }
 `;
-export const TableTh = styled.th`
+export const StyledTableTh = styled.th`
   /* padding: 16px; */
   display: inline-block;
 `;
-export const TableH3 = styled.h3`
-  margin: 30px auto 10px auto;
+export const StyledTableH3 = styled.h3`
+  margin: 30px auto 30px 30px;
   font-size: 20px;
   text-align: center;
   font-weight: 400;
-  max-width: 300px;
+  max-width: 320px;
   line-height: 1.5;
-  padding: 30px 0;
+
+  padding: 15px 0;
   border-top: 1px solid white;
   border-bottom: 2px solid white;
   @media only screen and (min-width: 768px) {
     margin: 200px 50px 50px 50px;
   }
 `;
-export const TableBody = styled.tbody`
+export const StyledTableBody = styled.tbody`
   /* padding: 16px; */
   display: flex;
   flex-direction: column;
@@ -78,10 +80,11 @@ export const TableBody = styled.tbody`
   overflow-y: scroll;
   @media only screen and (min-width: 768px) {
     max-width: 336px;
-    height: 490px;
+    height: 450px;
   }
   @media only screen and (min-width: 1280px) {
     max-width: 395px;
+    height: 490px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: rgba(82, 59, 126, 0.3);

@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 
 import {
-  StatisticDivChart,
-  StatisticDivMain,
-  StatisticTitle,
+  StyledStatisticDivChart,
+  StyledStatisticDivMain,
+  StyledStatisticTitle,
 } from './StatisticsTab.styled';
 
 const StatisticsTab = () => {
@@ -30,55 +30,62 @@ const StatisticsTab = () => {
       {
         data: [...categoriesValue],
         backgroundColor: [
-          'rgba(247, 79, 115, 0.991)',
-          'rgba(110, 120, 232, 1)',
-          'rgba(254, 208, 87, 1)',
-          'rgba(197, 186, 255, 1)',
-          'rgb(153, 102, 255)',
-          'rgb(255, 160, 64)',
-          'rgba(36, 204, 167, 1)',
-          'rgba(0, 173, 132, 1)',
-          'rgba(255, 216, 208, 1)',
-          'rgba(129, 225, 255, 1)',
-          'rgba(253, 148, 152, 1)',
+          '#00AD84',
+          '#FED057',
+          '#24CCA7',
+
+          '#FFD8D0',
+          '#4A56E2',
+          '#24CCA7',
+          '#6E78E8',
+          '#81E1FF',
+          '#C5BAFF',
+
+          '#61f6d6',
+
+          '#FD9498',
         ],
         borderColor: [
-          'rgba(255, 2, 57, 0.991)',
-          'rgb(54, 163, 235)',
-          'rgb(255, 207, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(153, 102, 255)',
-          'rgb(255, 160, 64)',
-          'rgb(0, 161, 70)',
-          'rgb(0, 76, 164)',
-          'rgb(206, 0, 155)',
-          'rgb(77, 255, 190)',
-          'rgb(255, 137, 137)',
+          '#018f6e93',
+          '#c5a04478',
+          '#198d7389',
+
+          '#b79993a2',
+          '#333c9c8d',
+          '#18876f94',
+          '#4d54a39c',
+          '#5695a98f',
+          '#877fb09d',
+
+          '#40a8929e',
+
+          '#b7696ca4',
         ],
-        borderWidth: 1,
+        borderWidth: 4,
+        cutout: '70%',
       },
     ],
   };
 
   return (
-    <StatisticDivMain>
-      <StatisticDivChart
+    <StyledStatisticDivMain>
+      <StyledStatisticDivChart
         style={{
           zIndex: '2',
         }}
       >
-        <StatisticTitle>Statistics</StatisticTitle>
+        <StyledStatisticTitle>Statistics</StyledStatisticTitle>
         <Chart dataDoughnut={dataDoughnut} categories={categories} />
-      </StatisticDivChart>
+      </StyledStatisticDivChart>
       <div
         style={{
-          zIndex: '3',
+          zIndex: '2',
         }}
       >
         <StatisticsDashboard />
         <StatisticsTable categories={categories} dataDoughnut={dataDoughnut} />
       </div>
-    </StatisticDivMain>
+    </StyledStatisticDivMain>
   );
 };
 
