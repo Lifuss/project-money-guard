@@ -5,9 +5,11 @@ export const StyledTableWrapper = styled.div`
   background-color: rgba(74, 86, 226, 0.1);
   width: 320px;
   height: 214px;
+  margin: 0 auto;
   @media only screen and (min-width: 768px) {
     min-width: 336px;
     height: 214px;
+    margin: 0;
   }
   @media only screen and (min-width: 1280px) {
     min-width: 480px;
@@ -19,7 +21,7 @@ export const StyledGraphWrapper = styled.div`
   position: relative;
   width: 100%;
   /* height: 100%; */
-  background-color: rgba(74, 86, 226, 0.1);
+  /* background-color: rgba(74, 86, 226, 0.1); */
 
   top: -6px;
   &::before {
@@ -34,7 +36,21 @@ export const StyledGraphWrapper = styled.div`
     left: 39px;
     top: 21px;
     z-index: 1000;
+    /* &::before {
+      content: '${props => props.$usd}';
+      display: inline-block;
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #563eaf;
+      border: solid 1px #ff868d;
+      left: 39px;
+      top: 21px;
+      z-index: 1000;
+    } */
   }
+
   &::after {
     content: '';
     display: inline-block;
@@ -52,24 +68,24 @@ export const StyledGraphWrapper = styled.div`
     &::before {
       left: 42px;
       top: 21px;
-      width: 9px;
-      height: 9px;
     }
     &::after {
       left: 254px;
       top: -2px;
-      width: 9px;
-      height: 9px;
     }
   }
   @media only screen and (min-width: 1280px) {
     &::before {
       left: 58px;
       top: 29px;
+      width: 9px;
+      height: 9px;
     }
     &::after {
       left: 364px;
       top: -4px;
+      width: 9px;
+      height: 9px;
     }
     top: 26px;
   }
@@ -103,7 +119,7 @@ export const StyledTh = styled.th`
       padding-left: 62px;
     }
     &:last-child {
-      padding-right: 131px;
+      padding-right: 111px;
     }
   }
 `;
@@ -122,7 +138,7 @@ export const StyledTd = styled.td`
       padding-left: 62px;
     }
     &:last-child {
-      padding-right: 151px;
+      padding-right: 131px;
     }
   }
 `;
@@ -139,3 +155,35 @@ export const StyledGradientWave = styled.svg`
     top: 20px;
   }
 `;
+
+export const StyledGraphUsd = styled.div`
+  position: absolute;
+  left: 48px;
+  top: 8px;
+  color: var(--dashboard-text, #ff868d);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+`;
+export const StyledGraphEur = styled.div`
+  position: absolute;
+  left: 352px;
+  top: -27px;
+  color: var(--dashboard-text, #ff868d);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+// &::before {
+//       left: 58px;
+//       top: 29px;
+//       width: 9px;
+//       height: 9px;
+//     }
+//     &::after {
+//       left: 364px;
+//       top: -4px;
+//       width: 9px;
+//       height: 9px;
+//     }
