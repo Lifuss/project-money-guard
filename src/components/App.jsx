@@ -5,8 +5,6 @@ import { Suspense, lazy, useEffect } from 'react';
 import { refreshThunk } from 'redux/auth/operations';
 import PrivateRoute from 'routes/PrivateRoute';
 import Loader from './Loader/Loader';
-import { useMediaQuery } from 'react-responsive';
-import { StyledContainer } from 'styles/GlobalStyles';
 
 // lazy loading
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
