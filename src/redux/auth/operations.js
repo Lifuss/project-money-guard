@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export const swaggerApi = axios.create({
@@ -18,6 +19,7 @@ export const registerThunk = createAsyncThunk(
     try {
       const { data } = await swaggerApi.post('auth/sign-up', credentials);
       setToken(data.token);
+      toast.success(`Good job, ${data.user.email}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -31,8 +33,10 @@ export const loginThunk = createAsyncThunk(
     try {
       const { data } = await swaggerApi.post('auth/sign-in', credentials);
       setToken(data.token);
+      toast.success(`Hello, ${data.user.email}`);
       return data;
     } catch (error) {
+      toast.error(`Email or password is not valid`);
       return rejectWithValue(error.response.data);
     }
   }
@@ -40,11 +44,13 @@ export const loginThunk = createAsyncThunk(
 
 export const logoutThunk = createAsyncThunk(
   'logout',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
       await swaggerApi.delete('auth/sign-out');
       clearToken();
+      toast.info(`Bye, ${getState().auth.user.email} `);
     } catch (error) {
+      toast.warning(`Something happened ${error.message}`);
       return rejectWithValue(error.response.data);
     }
   }

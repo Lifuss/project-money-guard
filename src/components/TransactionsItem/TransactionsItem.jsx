@@ -19,6 +19,7 @@ import useModal from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
 import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
 
+
 const TransactionsItem = ({ transaction }) => {
   const categories = useSelector(selectCategories);
   const { open, close, isOpen } = useModal();
@@ -50,8 +51,8 @@ const TransactionsItem = ({ transaction }) => {
         <StyledParWrapper>
           <StyledParagraph>Comment</StyledParagraph>
           <StyledSpan>
-            {transaction.comment.length >= 25
-              ? `${transaction.comment.slice(0, 25)}...`
+            {transaction.comment.length >= 10
+              ? `${transaction.comment.slice(0, 10)}...`
               : transaction.comment}
           </StyledSpan>
         </StyledParWrapper>

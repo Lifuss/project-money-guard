@@ -75,3 +75,21 @@ export const StyledEditBtn = styled.button`
   line-height: normal;
   letter-spacing: 0.32px;
 `;
+
+export const StyledTansNotFound = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 80px;
+
+  padding: 30px;
+  width: 260px;
+  height: 100px;
+  border-radius: 8px;
+  background: rgba(82, 59, 126, 0.6);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+`;
+
+export const StyledNotFoundTitle = styled.h3`
+  text-align: center;
+`;

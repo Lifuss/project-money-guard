@@ -20,6 +20,7 @@ import {
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState();
+  const [selectedType, setSelectedType] = useState(transaction.type);
 
   const AddSchema = object({
     amount: string().required().min(1, 'Too Short!').max(12, 'Too Long!'),
@@ -39,7 +40,6 @@ const EditTransactionForm = ({ transaction, close }) => {
       comment: values.comment,
     };
     dispatch(updateTransactionThunk(EditData));
-    console.log(EditData);
     close();
   };
 
@@ -61,24 +61,30 @@ const EditTransactionForm = ({ transaction, close }) => {
           {({ errors, touched, values, handleChange, setFieldValue }) => (
             <StyledEditForm autoComplete="off">
               <StyledlabelBox>
-                <CustomRadioLabel>
+                <CustomRadioLabel value="INCOME" selected={selectedType}>
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    value="Income"
+                    value="INCOME"
                     checked={values.type === 'INCOME'}
-                    onChange={() => setFieldValue('type', 'INCOME')}
+                    onChange={() => {
+                      setFieldValue('type', 'INCOME');
+                      setSelectedType('INCOME');
+                    }}
                   />
                   Income
                 </CustomRadioLabel>
                 <span>/</span>
-                <CustomRadioLabel>
+                <CustomRadioLabel value="EXPENSE" selected={selectedType}>
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    value="Expense"
+                    value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
-                    onChange={() => setFieldValue('type', 'EXPENSE')}
+                    onChange={() => {
+                      setFieldValue('type', 'EXPENSE');
+                      setSelectedType('EXPENSE');
+                    }}
                   />
                   Expense
                 </CustomRadioLabel>

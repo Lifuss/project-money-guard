@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {
   StyledGradientWave,
+  StyledGraphEur,
+  StyledGraphUsd,
   StyledGraphWrapper,
   StyledTable,
   StyledTableWrapper,
@@ -59,10 +61,13 @@ const Currency = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
-  const isTablet = useMediaQuery({
-    query: '(max-width: 1279px)',
+  const isMinTablet = useMediaQuery({
+    query: '(min-width: 768px)',
   });
 
+  const isMaxTablet = useMediaQuery({
+    query: '(max-width: 1279px)',
+  });
   const isDesktop = useMediaQuery({
     query: '(min-width: 1280px)',
   });
@@ -155,7 +160,7 @@ const Currency = () => {
       ) : (
         ''
       )}
-      {isTablet ? (
+      {isMinTablet & isMaxTablet ? (
         <StyledGraphWrapper>
           <StyledWave
             xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +225,9 @@ const Currency = () => {
         ''
       )}
       {isDesktop ? (
-        <StyledGraphWrapper>
+        <StyledGraphWrapper $usd={rateBuyUSD}>
+          <StyledGraphUsd>{rateBuyUSD}</StyledGraphUsd>
+          <StyledGraphEur>{rateBuyEUR}</StyledGraphEur>
           <StyledWave
             xmlns="http://www.w3.org/2000/svg"
             width="480"
