@@ -56,7 +56,9 @@ return (
     <StyledSection>
       <StyledForm onSubmit={formik.handleSubmit}>
         <LogoBox>
-            <LogoImg src={logoMoneyGuard} alt="logo" />
+        <LogoImg
+          src={logoMoneyGuard}
+          alt="logo" />
             <LogoName>Money Guard</LogoName>
           </LogoBox>
         <TextField
@@ -75,7 +77,7 @@ return (
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '52px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
             }}
@@ -96,7 +98,7 @@ return (
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '40px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
             }}
@@ -104,7 +106,7 @@ return (
         <StyledLoginButton
           type="submit"
          style={{
-            width: '300px',
+            width: '319px',
             height: '50px',
             background: 'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
             boxShadow: '1px 9px 15px rgba(0, 0, 0, 0.20)',
@@ -117,7 +119,8 @@ return (
             textAlign: 'center',
             cursor: 'pointer',
             marginTop: '52px',
-            transition: 'background 0.3s, font-weight 0.3s', 
+            marginBottom: '20px',
+           transition: 'background 0.3s, font-weight 0.3s', 
   }}
 >
   Log In
