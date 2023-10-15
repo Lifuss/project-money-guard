@@ -17,7 +17,15 @@ export const registerThunk = createAsyncThunk(
   'register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await swaggerApi.post('auth/sign-up', credentials);
+      const updatedCredentials = {
+        username: credentials.name,
+        email: credentials.email,
+        password: credentials.password,
+      };
+      const { data } = await swaggerApi.post(
+        'auth/sign-up',
+        updatedCredentials
+      );
       setToken(data.token);
       toast.success(`Good job, ${data.user.email}`);
       return data;

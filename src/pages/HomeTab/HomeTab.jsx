@@ -1,4 +1,3 @@
-import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import Modal from 'components/Modal/Modal';
 // import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
@@ -18,7 +17,6 @@ const HomeTab = () => {
   });
   return (
     <StyledContainer>
-      
       {isTable ? <TransactionsList /> : <MobileList />}
       <ButtonAddTransactions />
       {/* <ModalAddTransaction /> */}

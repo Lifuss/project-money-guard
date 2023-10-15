@@ -23,7 +23,7 @@ export const StyledTableWrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    width: 705px;
+    width: 100%;
   }
 `;
 export const StyledTable = styled.table`
@@ -33,28 +33,17 @@ export const StyledTable = styled.table`
 export const StyledHeaderTr = styled.tr`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   padding: 16px 20px;
+
+  @media only screen and (min-width: 768px) {
+    padding-right: calc(100% / 4.2);
+  }
   border-radius: 8px;
   background: ${({ theme }) => theme.backgrounds.tableHead};
   box-shadow: ${({ theme }) => theme.shadows.default};
   backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
-
-  & :nth-child(3) {
-    margin-left: -15px;
-  }
-  & :nth-child(4) {
-    margin-left: -18px;
-  }
-  & :nth-child(5) {
-    margin-left: 18px;
-  }
-  & :nth-child(:not(:last-child)) {
-    margin-right: 0;
-  }
-  @media only screen and (min-width: 768px) {
-    gap: 60px;
-  }
 `;
 
 export const StyledTh = styled.th`
