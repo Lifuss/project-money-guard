@@ -1,5 +1,7 @@
 // transactions
 
+import { createSelector } from 'reselect';
+
 export const selectTransactions = state =>
   state.transactions.transactions.items;
 export const selectLoading = state => state.transactions.transactions.isLoading;
@@ -7,6 +9,12 @@ export const selectError = state => state.transactions.transactions.error;
 export const selectCategories = state =>
   state.transactions.transactions.categories;
 
+export const selectAllCategories = createSelector(
+  [selectCategories],
+  categories => {
+    return categories;
+  }
+);
 // summary
 
 export const selectCategoriesSummary = state =>
