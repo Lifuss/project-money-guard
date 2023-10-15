@@ -11,6 +11,7 @@ import {
   StyledDashBoardContainer,
 } from './DashboardPage.styled';
 import Loader from 'components/Loader/Loader';
+import ScrollButton from 'components/ToTopButton/ScrollButton';
 
 const DashboardPage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
@@ -24,10 +25,10 @@ const DashboardPage = () => {
         </StyledDashBoardBox>
         {isTablet && <Currency />}
       </StyledDashBoardContainer>
-
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
+      <ScrollButton />
     </>
   );
 };
