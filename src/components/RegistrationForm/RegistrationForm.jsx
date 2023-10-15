@@ -105,11 +105,7 @@ const RegistrationForm = () => {
           label={
             <span
               style={{
-                color: 'rgba(255, 255, 255, 0.60)',
-                fontSize: '18px',
-                lineHeight: '27px',
-              }}
-            >
+                color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
               <PersonIcon
                 style={{ verticalAlign: 'middle', marginRight: '20px' }}
               />{' '}
@@ -123,7 +119,7 @@ const RegistrationForm = () => {
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -153,7 +149,7 @@ const RegistrationForm = () => {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -186,7 +182,7 @@ const RegistrationForm = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -221,7 +217,7 @@ const RegistrationForm = () => {
             formik.touched.confirmPassword && formik.errors.confirmPassword
           }
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -234,14 +230,15 @@ const RegistrationForm = () => {
           minLength={3}
           shortScoreWord={""}
           style={{
-            width: '409px',
+            width: '90%',
+            margin: "auto",
             // boxShadow: '0px 1px 8px rgba(255, 199, 39, 0.50)',
             }}
         />
         <Button
           type="submit"
           style={{
-            width: '300px',
+            width: '319px',
             height: '50px',
             background:
               'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
@@ -255,6 +252,7 @@ const RegistrationForm = () => {
             textAlign: 'center',
             cursor: 'pointer',
             marginTop: '40px',
+            marginBottom: '20px',
             transition: 'background 0.3s, font-weight 0.3s',
           }}
         >
