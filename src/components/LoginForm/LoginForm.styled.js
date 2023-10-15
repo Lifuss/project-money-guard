@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import loginMobile from '../../images/login-bg/bg-login-mobile.jpg';
+import loginTablet from '../../images/login-bg/bg-login-tablet.jpg';
+import loginDesktop from '../../images/login-bg/bg-login-web.jpg';
 
 export const StyledSection = styled.section`
   width: 100vw;
@@ -9,6 +12,15 @@ export const StyledSection = styled.section`
   align-items: center;
   text-align: center;
   background-color: #1e0646;
+  background-image: url(${loginMobile});
+  background-repeat: no-repeat;
+  background-size: cover;
+   @media screen and (min-width: 768px) {
+    background-image: url(${loginTablet});
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url(${loginDesktop});
+  }
 `;
 
 export const LogoBox = styled.div`
