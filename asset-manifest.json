@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/project-money-guard/static/css/main.fe6f146d.css",
-    "main.js": "/project-money-guard/static/js/main.bdb40b2b.js",
+    "main.css": "/project-money-guard/static/css/main.36380e2b.css",
+    "main.js": "/project-money-guard/static/js/main.6dae9501.js",
     "static/js/245.b273a82a.chunk.js": "/project-money-guard/static/js/245.b273a82a.chunk.js",
     "static/js/654.107afd26.chunk.js": "/project-money-guard/static/js/654.107afd26.chunk.js",
     "static/js/2.b53f5b89.chunk.js": "/project-money-guard/static/js/2.b53f5b89.chunk.js",
-    "static/js/545.143eeb07.chunk.js": "/project-money-guard/static/js/545.143eeb07.chunk.js",
+    "static/js/545.e9369c72.chunk.js": "/project-money-guard/static/js/545.e9369c72.chunk.js",
     "static/js/898.fe3728ec.chunk.js": "/project-money-guard/static/js/898.fe3728ec.chunk.js",
-    "static/js/978.bf398e27.chunk.js": "/project-money-guard/static/js/978.bf398e27.chunk.js",
+    "static/js/978.a2d4fb9a.chunk.js": "/project-money-guard/static/js/978.a2d4fb9a.chunk.js",
     "static/js/731.1fc80f21.chunk.js": "/project-money-guard/static/js/731.1fc80f21.chunk.js",
     "static/js/306.c304a248.chunk.js": "/project-money-guard/static/js/306.c304a248.chunk.js",
     "static/js/805.0c06d62a.chunk.js": "/project-money-guard/static/js/805.0c06d62a.chunk.js",
@@ -20,6 +20,7 @@
     "static/media/bg-login-tablet.jpg": "/project-money-guard/static/media/bg-login-tablet.9083fa66202d76ae2d4e.jpg",
     "static/media/Poppins-Regular.ttf": "/project-money-guard/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Poppins-SemiBold.ttf": "/project-money-guard/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
+    "static/media/Poppins-Bold.ttf": "/project-money-guard/static/media/Poppins-Bold.cdb29a5d7ccf57ff05a3.ttf",
     "static/media/pngwing.com (8).webp": "/project-money-guard/static/media/pngwing.com (8).059b6a6d1e4ba7cea95a.webp",
     "static/media/bg-register-desktop.jpg": "/project-money-guard/static/media/bg-register-desktop.5d1aec93106f96a70e08.jpg",
     "static/media/bg-register-tablet.jpg": "/project-money-guard/static/media/bg-register-tablet.832cc2c6d41a9506da99.jpg",
@@ -29,14 +30,14 @@
     "static/media/logo_money_guard.svg": "/project-money-guard/static/media/logo_money_guard.fce5decc9b22ef0ca025e9630273e85c.svg",
     "static/media/exit.svg": "/project-money-guard/static/media/exit.e630083d99c67516c6d0428369e2c7e6.svg",
     "static/media/straight_line.svg": "/project-money-guard/static/media/straight_line.af8513ecc3ad6b6637fe1f628e65400e.svg",
-    "main.fe6f146d.css.map": "/project-money-guard/static/css/main.fe6f146d.css.map",
-    "main.bdb40b2b.js.map": "/project-money-guard/static/js/main.bdb40b2b.js.map",
+    "main.36380e2b.css.map": "/project-money-guard/static/css/main.36380e2b.css.map",
+    "main.6dae9501.js.map": "/project-money-guard/static/js/main.6dae9501.js.map",
     "245.b273a82a.chunk.js.map": "/project-money-guard/static/js/245.b273a82a.chunk.js.map",
     "654.107afd26.chunk.js.map": "/project-money-guard/static/js/654.107afd26.chunk.js.map",
     "2.b53f5b89.chunk.js.map": "/project-money-guard/static/js/2.b53f5b89.chunk.js.map",
-    "545.143eeb07.chunk.js.map": "/project-money-guard/static/js/545.143eeb07.chunk.js.map",
+    "545.e9369c72.chunk.js.map": "/project-money-guard/static/js/545.e9369c72.chunk.js.map",
     "898.fe3728ec.chunk.js.map": "/project-money-guard/static/js/898.fe3728ec.chunk.js.map",
-    "978.bf398e27.chunk.js.map": "/project-money-guard/static/js/978.bf398e27.chunk.js.map",
+    "978.a2d4fb9a.chunk.js.map": "/project-money-guard/static/js/978.a2d4fb9a.chunk.js.map",
     "731.1fc80f21.chunk.js.map": "/project-money-guard/static/js/731.1fc80f21.chunk.js.map",
     "306.c304a248.chunk.js.map": "/project-money-guard/static/js/306.c304a248.chunk.js.map",
     "805.0c06d62a.chunk.js.map": "/project-money-guard/static/js/805.0c06d62a.chunk.js.map",
@@ -48,7 +49,7 @@
     "913.7b2d8bde.chunk.js.map": "/project-money-guard/static/js/913.7b2d8bde.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe6f146d.css",
-    "static/js/main.bdb40b2b.js"
+    "static/css/main.36380e2b.css",
+    "static/js/main.6dae9501.js"
   ]
 }
