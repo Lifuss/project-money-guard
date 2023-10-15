@@ -27,7 +27,7 @@ export const StyledField = styled(Field)`
 export const StyledSelect = styled.select`
   width: 280px;
   height: 75px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #fbfbfb;
   background: transparent;
   padding: 0 20px;
   border: none;
@@ -120,17 +120,4 @@ export const BtnAdd = styled.button`
   color: ${({ theme }) => theme.colors.mainWhite};
   background: ${({ theme }) => theme.backgrounds.btnGradient};
   margin-top: 40px;
-`;
-
-export const BtnCancel = styled.button`
-  width: 280px;
-  height: 50px;
-  padding: 13px 100px;
-  border-radius: 20px;
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #623f8b;
-  background-color: ${({ theme }) => theme.colors.mainWhite};
-  text-align: center;
 `;
