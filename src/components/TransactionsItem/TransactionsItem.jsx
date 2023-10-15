@@ -19,6 +19,7 @@ import useModal from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
 import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
 
+
 const TransactionsItem = ({ transaction }) => {
   const categories = useSelector(selectCategories);
   const { open, close, isOpen } = useModal();
