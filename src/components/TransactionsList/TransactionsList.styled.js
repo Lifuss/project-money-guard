@@ -23,7 +23,7 @@ export const StyledTableWrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    width: 715px;
+    width: 705px;
   }
 `;
 export const StyledTable = styled.table`
@@ -44,7 +44,7 @@ export const StyledHeaderTr = styled.tr`
     margin-left: -15px;
   }
   & :nth-child(4) {
-    margin-left: -30px;
+    margin-left: -18px;
   }
   & :nth-child(5) {
     margin-left: 18px;
@@ -84,13 +84,13 @@ export const StyledTr = styled.tr`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 12px 10px 12px 20px;
   border-bottom: ${({ theme }) => theme.border.borderBottom};
 
   gap: 50px;
 `;
 export const StyledTd = styled.td`
-  min-width: 50px;
+  width: 50px;
   text-align: center;
   font-family: Poppins;
   font-size: 14px;
@@ -100,11 +100,25 @@ export const StyledTd = styled.td`
   color: ${props => props.$color};
 `;
 export const StyledTdComment = styled(StyledTd)`
-  text-align: start;
-  flex-shrink: 1;
-  flex-basis: 100px;
+  /* text-align: start; */
+  flex-basis: 182px;
 `;
 export const StyledTableBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const StyledNoFound = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 80px;
+
+  padding: 30px;
+  width: 600px;
+  height: 200px;
+  border-radius: 8px;
+  background: rgba(82, 59, 126, 0.6);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
 `;

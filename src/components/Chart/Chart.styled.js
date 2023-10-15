@@ -1,15 +1,16 @@
 import styled from 'styled-components';
-export const ChartP = styled.p`
+export const StyledChartP = styled.p`
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 53%;
   transform: translate(-50%, -50%);
   color: var(--white, #fbfbfb);
   text-align: center;
   font-size: 18px;
   font-weight: 600;
+  letter-spacing: 2px;
 `;
-export const ChartDiv = styled.div`
+export const StyledChartDiv = styled.div`
   position: relative;
   width: 280px;
   height: 280px;

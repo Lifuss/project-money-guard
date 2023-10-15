@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { swaggerApi } from 'redux/auth/operations';
 
 export const fetchTransactionsThunk = createAsyncThunk(
@@ -25,8 +26,10 @@ export const addTransactionThunk = createAsyncThunk(
     };
     try {
       const res = await swaggerApi.post('transactions', data);
+      toast.success(`Transacation added💸`);
       return res.data;
     } catch (error) {
+      toast.error(`Invalid input, check your data`);
       return rejectWithValue(error.message);
     }
   }
@@ -37,8 +40,10 @@ export const deleteTransactionThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await swaggerApi.delete(`transactions/${id}`);
+      toast.success('Transaction delete success!');
       return id;
     } catch (error) {
+      toast.error(`Error! ${error.message}`);
       return rejectWithValue(error.message);
     }
   }
@@ -55,8 +60,10 @@ export const updateTransactionThunk = createAsyncThunk(
     };
     try {
       const res = await swaggerApi.patch(`transactions/${body.id}`, data);
+      toast.success('Edit completed!');
       return res.data;
     } catch (error) {
+      toast.error(`Your data is not valid, check your data`);
       return rejectWithValue(error.message);
     }
   }

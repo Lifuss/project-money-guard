@@ -10,6 +10,8 @@ import {
   CustomRadioLabel,
   EditBtnBox,
   EditFormTitle,
+  StyledAmounDateEdit,
+  StyledEditAmount,
   StyledEditContainer,
   StyledEditDatePicker,
   StyledEditField,
@@ -20,6 +22,7 @@ import {
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState();
+  const [selectedType, setSelectedType] = useState(transaction.type);
 
   const AddSchema = object({
     amount: string().required().min(1, 'Too Short!').max(12, 'Too Long!'),
@@ -39,7 +42,6 @@ const EditTransactionForm = ({ transaction, close }) => {
       comment: values.comment,
     };
     dispatch(updateTransactionThunk(EditData));
-    console.log(EditData);
     close();
   };
 
@@ -61,63 +63,69 @@ const EditTransactionForm = ({ transaction, close }) => {
           {({ errors, touched, values, handleChange, setFieldValue }) => (
             <StyledEditForm autoComplete="off">
               <StyledlabelBox>
-                <CustomRadioLabel>
+                <CustomRadioLabel value="INCOME" selected={selectedType}>
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    value="Income"
+                    value="INCOME"
                     checked={values.type === 'INCOME'}
-                    onChange={() => setFieldValue('type', 'INCOME')}
+                    onChange={() => {
+                      setFieldValue('type', 'INCOME');
+                      setSelectedType('INCOME');
+                    }}
                   />
                   Income
                 </CustomRadioLabel>
                 <span>/</span>
-                <CustomRadioLabel>
+                <CustomRadioLabel value="EXPENSE" selected={selectedType}>
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    value="Expense"
+                    value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
-                    onChange={() => setFieldValue('type', 'EXPENSE')}
+                    onChange={() => {
+                      setFieldValue('type', 'EXPENSE');
+                      setSelectedType('EXPENSE');
+                    }}
                   />
                   Expense
                 </CustomRadioLabel>
               </StyledlabelBox>
+              <StyledAmounDateEdit>
+                <StyledEditAmount
+                  name="amount"
+                  type="number"
+                  value={values.amount}
+                  placeholder="0.0"
+                />
+                {errors.amount && touched.amount ? (
+                  <div>{errors.amount}</div>
+                ) : null}
 
-              <StyledEditField
-                name="amount"
-                type="number"
-                value={values.amount}
-                placeholder="0.0"
-              />
-              {errors.amount && touched.amount ? (
-                <div>{errors.amount}</div>
-              ) : null}
-
-              <StyledEditDatePicker
-                name="transactionDate"
-                value={values.transactionDate}
-                onChange={date => {
-                  handleChange({
-                    target: {
-                      name: 'transactionDate',
-                      value: date,
-                    },
-                  });
-                  setStartDate(date);
-                }}
-                dateFormat="dd.MM.yy"
-                showIcon
-                selected={startDate}
-                maxDate={new Date()}
-                style={{ float: 'right' }}
-                icon={
-                  <svg width="24" height="24">
-                    <use href={`${sprite}#calendar`} />
-                  </svg>
-                }
-              />
-
+                <StyledEditDatePicker
+                  name="transactionDate"
+                  value={values.transactionDate}
+                  onChange={date => {
+                    handleChange({
+                      target: {
+                        name: 'transactionDate',
+                        value: date,
+                      },
+                    });
+                    setStartDate(date);
+                  }}
+                  dateFormat="dd.MM.yy"
+                  showIcon
+                  selected={startDate}
+                  maxDate={new Date()}
+                  style={{ float: 'left' }}
+                  icon={
+                    <svg width="24" height="24">
+                      <use href={`${sprite}#calendar`} />
+                    </svg>
+                  }
+                />
+              </StyledAmounDateEdit>
               <StyledEditField
                 name="comment"
                 type="text"
