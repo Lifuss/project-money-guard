@@ -1,16 +1,19 @@
-import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { FaArrowCircleUp } from 'react-icons/fa';
+import { Button } from './ScrollButton.styled';
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
+  const [opacity, setOpacity] = useState(0);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 50) {
+    if (scrolled > 200) {
       setVisible(true);
-    } else if (scrolled <= 50) {
+      setOpacity(1);
+    } else if (scrolled <= 200) {
       setVisible(false);
+      setOpacity(0);
     }
   };
 
@@ -24,10 +27,10 @@ const ScrollButton = () => {
   window.addEventListener('scroll', toggleVisible);
 
   return (
-    <Button>
+    <Button $opacity={opacity}>
       <FaArrowCircleUp
         onClick={scrollToTop}
-        style={{ display: visible ? 'inline' : 'none' }}
+        style={{ display: visible ? 'inline-block' : 'none' }}
       />
     </Button>
   );
