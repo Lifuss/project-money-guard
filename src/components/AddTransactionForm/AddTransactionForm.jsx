@@ -25,7 +25,7 @@ import {
 import { object, string } from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
-import { selectCategories } from 'redux/transactions/selectors';
+import { selectAllCategories } from 'redux/transactions/selectors';
 
 const AddSchema = object({
   amount: string().required(),
@@ -36,7 +36,7 @@ const AddSchema = object({
 const AddTransactionForm = () => {
   const dispatch = useDispatch();
 
-  const categories = useSelector(selectCategories);
+  const categories = useSelector(selectAllCategories);
 
   useEffect(() => {
     dispatch(fetchTransactionCategory());
