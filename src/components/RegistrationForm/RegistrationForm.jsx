@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
-import { authReducer } from '../../redux/auth/slice';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -64,26 +62,8 @@ const RegistrationForm = () => {
     return <Navigate to="/" replace />;
   }
 
-const handleSubmit = async values => {
-  try {
-    const response = await dispatch(registerThunk(values));
-
-    switch (response.status) {
-      case 201:
-        dispatch(authReducer.actions.login(response.data));
-        return <Navigate to="/" />;
-      case 400:
-        toast.error(`Validation error: ${response.data}`);
-        break;
-      case 409:
-        toast.error(`Error: User with such email already exists:${response.data}`);
-        break;
-      default:
-        toast.error(`Unknown error during registration. Status: ${response.status}`);
-    }
-  } catch (error) {
-    toast.error(`Registration was unsuccessful: ${error}`);
-  }
+  const handleSubmit =  values => {
+    dispatch(registerThunk(values));
 };
 
 
