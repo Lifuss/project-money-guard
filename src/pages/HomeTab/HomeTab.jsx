@@ -19,10 +19,10 @@ const HomeTab = () => {
   return (
     <StyledContainer>
       {isTable ? <TransactionsList /> : <MobileList />}
-      <ButtonAddTransactions />
-      <ModalAddTransaction />
-      <ModalEditTransaction />
-      <AddTransactionForm />
+      {/* <ButtonAddTransactions /> */}
+      {/* <ModalAddTransaction /> */}
+      {/* <ModalEditTransaction /> */}
+      {/* <AddTransactionForm /> */}
       {isOpen && <Modal close={close}></Modal>}
     </StyledContainer>
   );

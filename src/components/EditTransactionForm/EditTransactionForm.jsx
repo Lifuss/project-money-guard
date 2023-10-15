@@ -39,7 +39,6 @@ const EditTransactionForm = ({ transaction, close }) => {
       comment: values.comment,
     };
     dispatch(updateTransactionThunk(EditData));
-    console.log(EditData);
     close();
   };
 

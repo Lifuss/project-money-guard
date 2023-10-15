@@ -17,17 +17,17 @@ const MobileList = () => {
   }, [dispatch]);
   return (
     <>
-      <StyledMobileWrapper>
-        {loading && <Loader />}
-        {error && <h1>Something went wrong... 😢</h1>}
-        {transactions.length > 0 ? (
-          transactions.map(transaction => (
+      {loading && <Loader />}
+      {error && <h1>Something went wrong... 😢</h1>}
+      {transactions.length > 0 ? (
+        <StyledMobileWrapper>
+          {transactions.map(transaction => (
             <TransactionsItem key={transaction.id} transaction={transaction} />
-          ))
-        ) : (
-          <h3>You don't have transactions yet</h3>
-        )}
-      </StyledMobileWrapper>
+          ))}
+        </StyledMobileWrapper>
+      ) : (
+        <h3>No transactions found</h3>
+      )}
     </>
   );
 };

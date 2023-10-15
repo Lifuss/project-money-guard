@@ -108,3 +108,18 @@ export const StyledTableBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const StyledNoFound = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 80px;
+
+  padding: 8px 74px 12px 32px;
+  width: 600px;
+  height: 200px;
+  border-radius: 8px;
+  background: rgba(82, 59, 126, 0.6);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+`;
