@@ -1,16 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-export const NavContainer = styled.nav`
-  padding: 12px 42px;
-  /* outline: 1px solid white; */
-
-  @media only screen and (min-width: 768px) {
-    padding-top: 40px;
-    padding-bottom: 28px;
-  }
-`;
-
 export const NavList = styled.ul`
   display: flex;
   flex-direction: row;
