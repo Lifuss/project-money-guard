@@ -15,13 +15,16 @@ import PersonIcon from '@mui/icons-material/Person';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
 import {
-  StyledForm,
   StyledLink,
   LogoBox,
   LogoImg,
   LogoName,
 } from '../LoginForm/LoginForm.styled';
-import { StyledSection } from './RegistrationForm.styled';
+import { StyledSection, StyledForm } from "./RegistrationForm.styled"
+
+// Import PasswordStrengthBar and define barColors and isRequired
+const barColors = ['#ddd', '#FFC727', '#FFC727', '#FFC727', '#FFC727'];
+const isRequired = false;
 
 const validationSchema = yup.object({
   name: yup.string('Enter your name').required('Name is required'),
@@ -223,7 +226,18 @@ const RegistrationForm = () => {
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
         />
-        <PasswordStrengthBar password={password} />
+        <PasswordStrengthBar
+          password={password}
+          barColors={barColors}
+          isRequired={isRequired}
+          scoreWords={["", "", "", ""]}
+          minLength={3}
+          shortScoreWord={""}
+          style={{
+            width: '409px',
+            // boxShadow: '0px 1px 8px rgba(255, 199, 39, 0.50)',
+            }}
+        />
         <Button
           type="submit"
           style={{

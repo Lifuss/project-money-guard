@@ -1,11 +1,6 @@
 import React from 'react';
 import sprite from '../../images/sprite.svg';
-import {
-  NavContainer,
-  NavList,
-  StyledNavLink,
-  StyledNavText,
-} from './Navigation.styled';
+import { NavList, StyledNavLink, StyledNavText } from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
 import { StyledContainer } from 'styles/GlobalStyles';
 
@@ -18,7 +13,7 @@ const Navigation = () => {
   });
   return (
     <>
-      <NavContainer>
+      <nav>
         <StyledContainer>
           <NavList>
             <li>
@@ -48,7 +43,7 @@ const Navigation = () => {
             ) : null}
           </NavList>
         </StyledContainer>
-      </NavContainer>
+      </nav>
     </>
   );
 };

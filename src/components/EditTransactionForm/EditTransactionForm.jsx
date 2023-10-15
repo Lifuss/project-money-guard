@@ -10,6 +10,8 @@ import {
   CustomRadioLabel,
   EditBtnBox,
   EditFormTitle,
+  StyledAmounDateEdit,
+  StyledEditAmount,
   StyledEditContainer,
   StyledEditDatePicker,
   StyledEditField,
@@ -89,41 +91,41 @@ const EditTransactionForm = ({ transaction, close }) => {
                   Expense
                 </CustomRadioLabel>
               </StyledlabelBox>
+              <StyledAmounDateEdit>
+                <StyledEditAmount
+                  name="amount"
+                  type="number"
+                  value={values.amount}
+                  placeholder="0.0"
+                />
+                {errors.amount && touched.amount ? (
+                  <div>{errors.amount}</div>
+                ) : null}
 
-              <StyledEditField
-                name="amount"
-                type="number"
-                value={values.amount}
-                placeholder="0.0"
-              />
-              {errors.amount && touched.amount ? (
-                <div>{errors.amount}</div>
-              ) : null}
-
-              <StyledEditDatePicker
-                name="transactionDate"
-                value={values.transactionDate}
-                onChange={date => {
-                  handleChange({
-                    target: {
-                      name: 'transactionDate',
-                      value: date,
-                    },
-                  });
-                  setStartDate(date);
-                }}
-                dateFormat="dd.MM.yy"
-                showIcon
-                selected={startDate}
-                maxDate={new Date()}
-                style={{ float: 'right' }}
-                icon={
-                  <svg width="24" height="24">
-                    <use href={`${sprite}#calendar`} />
-                  </svg>
-                }
-              />
-
+                <StyledEditDatePicker
+                  name="transactionDate"
+                  value={values.transactionDate}
+                  onChange={date => {
+                    handleChange({
+                      target: {
+                        name: 'transactionDate',
+                        value: date,
+                      },
+                    });
+                    setStartDate(date);
+                  }}
+                  dateFormat="dd.MM.yy"
+                  showIcon
+                  selected={startDate}
+                  maxDate={new Date()}
+                  style={{ float: 'left' }}
+                  icon={
+                    <svg width="24" height="24">
+                      <use href={`${sprite}#calendar`} />
+                    </svg>
+                  }
+                />
+              </StyledAmounDateEdit>
               <StyledEditField
                 name="comment"
                 type="text"

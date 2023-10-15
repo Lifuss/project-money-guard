@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectCategories,
+  selectAllCategories,
   selectError,
   selectLoading,
   selectTransactions,
@@ -37,7 +37,7 @@ const TransactionsList = () => {
   const dispatch = useDispatch();
   const { open, close, isOpen, data } = useModal();
   const transactions = useSelector(selectTransactions);
-  const categories = useSelector(selectCategories);
+  const categories = useSelector(selectAllCategories);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   useEffect(() => {
