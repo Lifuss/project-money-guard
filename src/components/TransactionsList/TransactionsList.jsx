@@ -9,6 +9,7 @@ import {
 import Loader from 'components/Loader/Loader';
 import {
   StyledHeaderTr,
+  StyledNoFound,
   StyledTable,
   StyledTableBtnWrapper,
   StyledTableWrapper,
@@ -48,70 +49,78 @@ const TransactionsList = () => {
   };
 
   return (
-    <StyledTransactionsList>
-      <StyledTableWrapper>
-        {loading && <Loader />}
-        {error && <h1>Something went wrong... 😢</h1>}
-        <StyledTable>
-          <thead>
-            <StyledHeaderTr>
-              <StyledTh>Date</StyledTh>
-              <StyledTh>Type</StyledTh>
-              <StyledTh>Category</StyledTh>
-              <StyledTh>Comment</StyledTh>
-              <StyledTh>Sum</StyledTh>
-            </StyledHeaderTr>
-          </thead>
-          <StyledTbodyTable>
-            {transactions.length > 0 ? (
-              transactions.map(transaction => (
-                <StyledTr key={transaction.id}>
-                  <StyledTd>{formatDate(transaction.transactionDate)}</StyledTd>
-                  <StyledTd>
-                    {transaction.type === 'INCOME' ? '+' : '-'}
-                  </StyledTd>
-                  <StyledTd>
-                    {categories.find(cat => cat.id === transaction.categoryId)
-                      ?.name || 'Other'}
-                  </StyledTd>
-                  <StyledTdComment>{transaction.comment}</StyledTdComment>
-                  <StyledTd
-                    $color={
-                      transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'
-                    }
-                  >
-                    {transaction.amount}
-                  </StyledTd>
-                  <td>
-                    <StyledTableBtnWrapper>
-                      <StyledEditBtn onClick={() => open(transaction)}>
-                        <svg width="14" height="14">
-                          <use href={`${sprite}#edit`} />
-                        </svg>
-                      </StyledEditBtn>
-                      <StyledDeleteBtn
-                        onClick={() => handleTableBtnDelete(transaction.id)}
-                      >
-                        Delete
-                      </StyledDeleteBtn>
-                    </StyledTableBtnWrapper>
-                  </td>
-                </StyledTr>
-              ))
-            ) : (
-              <tr>
-                <td>No transactions found</td>
-              </tr>
-            )}
-          </StyledTbodyTable>
-        </StyledTable>
-      </StyledTableWrapper>
-      {isOpen && (
-        <Modal close={close}>
-          <EditTransactionForm transaction={data} close={close} />
-        </Modal>
+    <>
+      {loading && <Loader />}
+      {error && <h1>Something went wrong... 😢</h1>}
+      {transactions.length > 0 ? (
+        <StyledTransactionsList>
+          <StyledTableWrapper>
+            <StyledTable>
+              <thead>
+                <StyledHeaderTr>
+                  <StyledTh>Date</StyledTh>
+                  <StyledTh>Type</StyledTh>
+                  <StyledTh>Category</StyledTh>
+                  <StyledTh>Comment</StyledTh>
+                  <StyledTh>Sum</StyledTh>
+                </StyledHeaderTr>
+              </thead>
+              <StyledTbodyTable>
+                {transactions.map(transaction => (
+                  <StyledTr key={transaction.id}>
+                    <StyledTd>
+                      {formatDate(transaction.transactionDate)}
+                    </StyledTd>
+                    <StyledTd>
+                      {transaction.type === 'INCOME' ? '+' : '-'}
+                    </StyledTd>
+                    <StyledTd>
+                      {categories.find(cat => cat.id === transaction.categoryId)
+                        ?.name || 'Other'}
+                    </StyledTd>
+                    <StyledTdComment>
+                      {transaction.comment.length > 15
+                        ? `${transaction.comment.slice(0, 15)}...`
+                        : transaction.comment}
+                    </StyledTdComment>
+                    <StyledTd
+                      $color={
+                        transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'
+                      }
+                    >
+                      {transaction.amount}
+                    </StyledTd>
+                    <td>
+                      <StyledTableBtnWrapper>
+                        <StyledEditBtn onClick={() => open(transaction)}>
+                          <svg width="14" height="14">
+                            <use href={`${sprite}#edit`} />
+                          </svg>
+                        </StyledEditBtn>
+                        <StyledDeleteBtn
+                          onClick={() => handleTableBtnDelete(transaction.id)}
+                        >
+                          Delete
+                        </StyledDeleteBtn>
+                      </StyledTableBtnWrapper>
+                    </td>
+                  </StyledTr>
+                ))}
+              </StyledTbodyTable>
+            </StyledTable>
+          </StyledTableWrapper>
+          {isOpen && (
+            <Modal close={close}>
+              <EditTransactionForm transaction={data} close={close} />
+            </Modal>
+          )}
+        </StyledTransactionsList>
+      ) : (
+        <StyledNoFound>
+          <h2>No transactions found, lets create it!</h2>
+        </StyledNoFound>
       )}
-    </StyledTransactionsList>
+    </>
   );
 };
 function formatDate(dateString) {

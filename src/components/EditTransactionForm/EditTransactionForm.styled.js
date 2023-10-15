@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { Form, Field } from 'formik';
 import DatePicker from 'react-datepicker';
 
@@ -72,19 +72,6 @@ export const EditBtnCancel = styled.button`
   background-color: ${({ theme }) => theme.colors.mainWhite};
   text-align: center;
 `;
-
-// const income = document?.querySelector('#income');
-// const expense = document?.querySelector('#expense');
-
-// const changeColor = () => {
-//   if (income.hasAttribute('checked')) {
-//     return '#FFB627';
-//   }
-//   if (expense.hasAttribute('checked')) {
-//     return '#FF868D';
-//   }
-// };
-
 export const StyledlabelBox = styled.div`
   display: flex;
   justify-content: center;
@@ -101,11 +88,14 @@ export const CustomRadioInput = styled.input`
 export const CustomRadioLabel = styled.label`
   position: relative;
   cursor: pointer;
-  color: ${({ selected }) =>
-    selected ? '#FFB627' : 'rgba(255, 255, 255, 0.60)'};
-`;
-
-export const StyledRadioText = styled.span`
-  color: ${({ selected }) =>
-    selected ? '#FF868D' : 'rgba(255, 255, 255, 0.60)'};
+  color: ${({ value, selected }) => {
+    if (
+      (selected === 'INCOME' && value === 'INCOME') ||
+      (selected === 'EXPENSE' && value === 'EXPENSE')
+    ) {
+      return value === 'INCOME' ? '#FFB627' : '#FF868D';
+    } else {
+      return '#E0E0E0';
+    }
+  }};
 `;

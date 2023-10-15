@@ -50,8 +50,8 @@ const TransactionsItem = ({ transaction }) => {
         <StyledParWrapper>
           <StyledParagraph>Comment</StyledParagraph>
           <StyledSpan>
-            {transaction.comment.length >= 25
-              ? `${transaction.comment.slice(0, 25)}...`
+            {transaction.comment.length >= 10
+              ? `${transaction.comment.slice(0, 10)}...`
               : transaction.comment}
           </StyledSpan>
         </StyledParWrapper>
