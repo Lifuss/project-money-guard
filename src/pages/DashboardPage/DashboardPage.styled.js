@@ -5,10 +5,8 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
   @media only screen and (min-width: 768px) {
     display: flex;
     flex-direction: row;
-    /* gap: 32px; */
-    @media only screen and (min-width: 768px) {
-      justify-content: space-between;
-    }
+    justify-content: space-between;
+    margin-bottom: 20px;
     @media only screen and (min-width: 1280px) {
       flex-direction: column;
     }

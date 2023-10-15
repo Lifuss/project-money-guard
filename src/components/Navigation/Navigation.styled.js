@@ -16,11 +16,11 @@ export const NavList = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  /* align-items: center; */
-  width: 38px;
-  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &.active {
-    /* color: #4a56e2; */
     color: ${({ theme }) => theme.backgrounds.activeNavBtn};
     border-radius: 3px;
   }
