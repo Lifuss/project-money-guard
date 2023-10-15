@@ -22,6 +22,7 @@ const HomeTab = () => {
   });
   return (
     <StyledContainer>
+      
       {isTable ? <TransactionsList /> : <MobileList />}
       <ButtonAddTransactions />
       <ModalAddTransaction />

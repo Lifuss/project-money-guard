@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { swaggerApi } from 'redux/auth/operations';
 
 export const fetchTransactionsThunk = createAsyncThunk(
@@ -30,8 +31,10 @@ export const deleteTransactionThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await swaggerApi.delete(`transactions/${id}`);
+      toast.success('🦄 success delete!');
       return data.id;
     } catch (error) {
+      toast.error(`🦄 Error! ${error.message}`);
       return rejectWithValue(error.message);
     }
   }

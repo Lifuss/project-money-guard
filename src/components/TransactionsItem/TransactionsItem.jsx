@@ -13,6 +13,7 @@ import {
 import { selectCategories } from 'redux/transactions/selectors';
 import sprite from '../../images/sprite.svg';
 
+
 const TransactionsItem = ({ transaction }) => {
   const categories = useSelector(selectCategories);
   const category = categories.find(cat => cat.id === transaction.categoryId);
