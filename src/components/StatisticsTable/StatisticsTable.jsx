@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  TableTr,
-  TableTd,
-  TableTh,
-  TableTrHead,
-  TableBody,
-  TableH3,
+  StyledTableTr,
+  StyledTableTd,
+  StyledTableTh,
+  StyledTableTrHead,
+  StyledTableBody,
+  StyledTableH3,
+  StyledTableDiv,
 } from './StatisticsTable.styled';
 import { useSelector } from 'react-redux';
 
@@ -17,76 +18,82 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
   const income = useSelector(selectIncomeSummary);
   const expense = useSelector(selectExpenseSummary);
   return (
-    <div>
-      <table>
-        <thead>
-          <TableTrHead>
-            <TableTh>Category</TableTh>
-            <TableTh>Sum</TableTh>
-          </TableTrHead>
-        </thead>
-        <TableBody>
-          {categories.length > 1 ? (
-            categories.map(({ name, total }, index) => {
-              return (
-                <TableTr key={name}>
-                  <TableTd>
-                    <div
+    <StyledTableDiv>
+      {categories.length > 1 ? (
+        <table>
+          <thead>
+            <StyledTableTrHead>
+              <StyledTableTh>Category</StyledTableTh>
+              <StyledTableTh>Sum</StyledTableTh>
+            </StyledTableTrHead>
+          </thead>
+
+          <StyledTableBody>
+            {categories.map(({ name, total, type }, index) => {
+              if (type !== 'INCOME') {
+                return (
+                  <StyledTableTr key={name}>
+                    <StyledTableTd>
+                      <div
+                        style={{
+                          backgroundColor: `${dataDoughnut.datasets[0].backgroundColor[index]}`,
+                          width: '24px',
+                          height: '24px',
+                        }}
+                      ></div>
+                      {name}
+                    </StyledTableTd>
+                    <td
                       style={{
-                        backgroundColor: `${dataDoughnut.datasets[0].backgroundColor[index]}`,
-                        width: '24px',
-                        height: '24px',
+                        fontSize: '14px',
                       }}
-                    ></div>
-                    {name}
-                  </TableTd>
-                  <td
-                    style={{
-                      fontSize: '14px',
-                    }}
-                  >
-                    {total < 0 ? -total : total}
-                  </td>
-                </TableTr>
-              );
-            })
-          ) : (
-            <TableH3>
-              It looks like you have not made any monetary transactions during
-              this time period
-            </TableH3>
-          )}
-        </TableBody>
-        <TableTr
-          style={{
-            border: 'none',
-          }}
-        >
-          <td>Expenses:</td>
-          <td
-            style={{
-              color: '#FF868D',
-            }}
-          >
-            {-expense}
-          </td>
-        </TableTr>
-        <TableTr
-          style={{
-            border: 'none',
-          }}
-        >
-          <td>Income:</td>
-          <td
-            style={{
-              color: '#FF868D',
-            }}
-          >
-            {income}
-          </td>
-        </TableTr>
-      </table>
-    </div>
+                    >
+                      {total < 0 ? -total : total}
+                    </td>
+                  </StyledTableTr>
+                );
+              }
+              return '';
+            })}
+          </StyledTableBody>
+          <tfoot>
+            <StyledTableTr
+              style={{
+                border: 'none',
+              }}
+            >
+              <td>Expenses:</td>
+              <td
+                style={{
+                  color: '#FF868D',
+                }}
+              >
+                {-expense}
+              </td>
+            </StyledTableTr>
+            <StyledTableTr
+              style={{
+                border: 'none',
+              }}
+            >
+              <td>Income:</td>
+              <td
+                style={{
+                  color: '#FF868D',
+                }}
+              >
+                {income}
+              </td>
+            </StyledTableTr>
+          </tfoot>
+        </table>
+      ) : (
+        <StyledTableH3>
+          It looks like you have not made any monetary transactions during this
+          time period
+        </StyledTableH3>
+      )}
+    </StyledTableDiv>
   );
 };
 

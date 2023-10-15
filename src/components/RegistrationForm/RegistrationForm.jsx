@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 import { authReducer } from '../../redux/auth/slice';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+import PersonIcon from '@mui/icons-material/Person';
+import logoMoneyGuard from '../../images/logo_money_guard.svg';
+import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
 import {
-  StyledSection,
   StyledForm,
   StyledLink,
-  ProgressBar,
-} from './RegistrationForm.styled';
+  LogoBox,
+  LogoImg,
+  LogoName
+} from '../LoginForm/LoginForm.styled';
+import { StyledSection } from "./RegistrationForm.styled"
 
 const validationSchema = yup.object({
-  name: yup
-    .string('Enter your name')
-    .required('Name is required'),
+  name: yup.string('Enter your name').required('Name is required'),
   email: yup
     .string('Enter your email')
     .email('Enter a valid email')
@@ -38,6 +41,8 @@ const validationSchema = yup.object({
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector(selectIsLoggedIn);
+  const [password, setPassword] = useState('');
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -52,57 +57,70 @@ const RegistrationForm = () => {
   });
 
   if (isLogin) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/" replace />;
   }
 
-const handleSubmit = async values => {
-  try {
-    const response = await dispatch(registerThunk(values));
+  const handleSubmit = async values => {
+    try {
+      const response = await dispatch(registerThunk(values));
 
-    if (response.status === 201) {
-      dispatch(authReducer.actions.login(response.data));
-
-      return <Navigate to="/dashboard" />;
-
-    } else if (response.status === 400) {
-      console.error('Validation error:', response.data);
-
-    } else if (response.status === 409) {
-      console.error('Error: User with such email already exists:', response.data);
-
-    } else {
-      console.error('Unknown error during registration. Status:', response.status);
+      if (response.status === 201) {
+        dispatch(authReducer.actions.login(response.data));
+        return <Navigate to="/" />;
+      } else if (response.status === 400) {
+        console.error('Validation error:', response.data);
+      } else if (response.status === 409) {
+        console.error(
+          'Error: User with such email already exists:',
+          response.data
+        );
+      } else {
+        console.error(
+          'Unknown error during registration. Status:',
+          response.status
+        );
+      }
+    } catch (error) {
+      console.error('Registration was unsuccessful:', error);
     }
-
-  } catch (error) {
-    console.error('Registration was unsuccessful:', error);
-  }
-};
-
+  };
 
   return (
     <StyledSection>
       <StyledForm onSubmit={formik.handleSubmit}>
+         <LogoBox>
+            <LogoImg src={logoMoneyGuard} alt="logo" style={{ marginTop: '30px' }} />
+            <LogoName>Money Guard</LogoName>
+          </LogoBox>
         <TextField
           fullWidth
           id="name"
           name="name"
-          label="Name"
+          label={
+            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+              <PersonIcon  style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Name
+            </span>
+          }
           type="text"
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          style={{
+            width: '409px',
+            marginTop: '20px',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+            }}
         />
         <TextField
           fullWidth
           id="email"
           name="email"
           label={
-            <>
-              <EmailOutlinedIcon /> Email
-            </>
+            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+              <EmailOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Email
+            </span>
           }
           type="email"
           value={formik.values.email}
@@ -110,48 +128,87 @@ const handleSubmit = async values => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          style={{
+            width: '409px',
+            marginTop: '20px',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+            }}
         />
         <TextField
           fullWidth
           id="password"
           name="password"
           label={
-            <>
-              <LockIcon /> Password
-            </>
+             <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+              <LockIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Password
+            </span>
           }
           type="password"
           value={formik.values.password}
-          onChange={formik.handleChange}
+          onChange={e => {
+            formik.handleChange(e);
+            setPassword(e.target.value);
+          }}
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          style={{
+            width: '409px',
+            marginTop: '20px',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+            }}
         />
         <TextField
           fullWidth
           id="confirmPassword"
           name="confirmPassword"
           label={
-            <>
-              <LockIcon /> Confirm password
-            </>
+            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+              <LockIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Confirm password
+            </span>
           }
           type="password"
           value={formik.values.confirmPassword}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+          error={
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
+          }
+          helperText={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+          style={{
+            width: '409px',
+            marginTop: '20px',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+            }}
         />
-        <ProgressBar />
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <PasswordStrengthBar password={password} />
+        <Button
+          type="submit"
+          style={{
+            width: '300px',
+            height: '50px',
+            background: 'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
+            boxShadow: '1px 9px 15px rgba(0, 0, 0, 0.20)',
+            borderRadius: '20px',
+            color: '#ffffff',
+            fontWeight: 400,
+            fontSize: '18px',
+            textTransform: 'uppercase',
+            letterSpacing: '1.80',
+            textAlign: 'center',
+            cursor: 'pointer',
+            marginTop: '40px',
+            transition: 'background 0.3s, font-weight 0.3s', 
+  }}>
           Register
         </Button>
+        <StyledLink to="/login">Log in</StyledLink>
       </StyledForm>
-      <StyledLink to="/login">Log in</StyledLink>
     </StyledSection>
   );
 };
 
 export default RegistrationForm;
-

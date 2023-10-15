@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTransactionThunk } from 'redux/transactions/operations';
+import {
+  deleteTransactionThunk,
+  fetchTransactionCategory,
+} from 'redux/transactions/operations';
 import {
   StyledBtnBox,
   StyledDeleteBtn,
@@ -12,15 +15,22 @@ import {
 } from './TransactionsItem.styled';
 import { selectCategories } from 'redux/transactions/selectors';
 import sprite from '../../images/sprite.svg';
+import useModal from 'hooks/useModal';
+import Modal from 'components/Modal/Modal';
+import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
 
 
 const TransactionsItem = ({ transaction }) => {
   const categories = useSelector(selectCategories);
-  const category = categories.find(cat => cat.id === transaction.categoryId);
+  const { open, close, isOpen } = useModal();
   const dispatch = useDispatch();
+  const category = categories.find(cat => cat.id === transaction.categoryId);
   const handleBtnDelete = id => {
     dispatch(deleteTransactionThunk(id));
   };
+  useEffect(() => {
+    dispatch(fetchTransactionCategory());
+  }, [dispatch]);
   return (
     <>
       <StyledTransaction
@@ -36,7 +46,7 @@ const TransactionsItem = ({ transaction }) => {
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Category</StyledParagraph>
-          <span>{categories ? category.name : '-'}</span>
+          <span>{categories ? category?.name : '-'}</span>
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Comment</StyledParagraph>
@@ -54,13 +64,18 @@ const TransactionsItem = ({ transaction }) => {
           <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
             Delete
           </StyledDeleteBtn>
-          <StyledEditBtn>
+          <StyledEditBtn onClick={() => open(transaction)}>
             <svg width="14" height="14">
               <use href={`${sprite}#edit`} />
             </svg>
             Edit
           </StyledEditBtn>
         </StyledBtnBox>
+        {isOpen && (
+          <Modal close={close}>
+            <EditTransactionForm transaction={transaction} close={close} />
+          </Modal>
+        )}
       </StyledTransaction>
     </>
   );

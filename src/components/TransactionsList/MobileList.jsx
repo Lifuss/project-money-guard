@@ -1,16 +1,20 @@
 import Loader from 'components/Loader/Loader';
 import { StyledMobileWrapper } from 'components/TransactionsList/TransactionsList.styled';
-import React from 'react';
+import React, { useEffect } from 'react';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectTransactions } from 'redux/transactions/selectors';
 import { selectLoading } from 'redux/auth/selectors';
+import { fetchTransactionsThunk } from 'redux/transactions/operations';
 
 const MobileList = () => {
+  const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
-
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  useEffect(() => {
+    dispatch(fetchTransactionsThunk());
+  }, [dispatch]);
   return (
     <>
       <StyledMobileWrapper>
@@ -21,7 +25,7 @@ const MobileList = () => {
             <TransactionsItem key={transaction.id} transaction={transaction} />
           ))
         ) : (
-          <h3>Oh, you don't have transactions yet. Let's create one!</h3>
+          <h3>You don't have transactions yet</h3>
         )}
       </StyledMobileWrapper>
     </>

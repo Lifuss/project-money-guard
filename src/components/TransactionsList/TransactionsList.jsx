@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategories,
@@ -24,14 +24,24 @@ import {
   StyledDeleteBtn,
   StyledEditBtn,
 } from 'components/TransactionsItem/TransactionsItem.styled';
-import { deleteTransactionThunk } from 'redux/transactions/operations';
+import {
+  deleteTransactionThunk,
+  fetchTransactionsThunk,
+} from 'redux/transactions/operations';
+import useModal from 'hooks/useModal';
+import Modal from 'components/Modal/Modal';
+import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
+  const { open, close, isOpen, data } = useModal();
   const transactions = useSelector(selectTransactions);
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  useEffect(() => {
+    dispatch(fetchTransactionsThunk());
+  }, [dispatch]);
 
   const handleTableBtnDelete = id => {
     dispatch(deleteTransactionThunk(id));
@@ -62,7 +72,7 @@ const TransactionsList = () => {
                   </StyledTd>
                   <StyledTd>
                     {categories.find(cat => cat.id === transaction.categoryId)
-                      ?.name || '-'}
+                      ?.name || 'Other'}
                   </StyledTd>
                   <StyledTdComment>{transaction.comment}</StyledTdComment>
                   <StyledTd
@@ -74,7 +84,7 @@ const TransactionsList = () => {
                   </StyledTd>
                   <td>
                     <StyledTableBtnWrapper>
-                      <StyledEditBtn>
+                      <StyledEditBtn onClick={() => open(transaction)}>
                         <svg width="14" height="14">
                           <use href={`${sprite}#edit`} />
                         </svg>
@@ -90,12 +100,17 @@ const TransactionsList = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="6">No transactions found.</td>
+                <td>No transactions found</td>
               </tr>
             )}
           </StyledTbodyTable>
         </StyledTable>
       </StyledTableWrapper>
+      {isOpen && (
+        <Modal close={close}>
+          <EditTransactionForm transaction={data} close={close} />
+        </Modal>
+      )}
     </StyledTransactionsList>
   );
 };

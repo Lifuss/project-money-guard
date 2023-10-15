@@ -1,21 +1,26 @@
-import DashboardPage from 'pages/DashboardPage/DashboardPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-// import StatisticsTab from 'pages/StatisticsTab/StatisticsTab';
-import PageNotFound from 'pages/PageNotFound/PageNotFound';
 import { Route, Routes } from 'react-router-dom';
-import PrivateRoute from 'routes/PrivateRoute';
-import Loader from './Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefresh } from 'redux/auth/selectors';
-import { lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { refreshThunk } from 'redux/auth/operations';
+import PrivateRoute from 'routes/PrivateRoute';
+import Loader from './Loader/Loader';
 
+// lazy loading
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const RegistrationPage = lazy(() =>
+  import('pages/RegistrationPage/RegistrationPage')
+);
+const PageNotFound = lazy(() => import('pages/PageNotFound/PageNotFound'));
+const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 const CurrencyTab = lazy(() => import('pages/CurrencyTab/CurrencyTab'));
 const HomeTab = lazy(() => import('pages/HomeTab/HomeTab'));
 const StatisticsTab = lazy(() => import('pages/StatisticsTab/StatisticsTab'));
 
 export const App = () => {
+  // const isDesktopOrLaptop = useMediaQuery({
+  //   query: '(min-width: 768px)',
+  // });
   const dispatch = useDispatch();
   const isRefresh = useSelector(selectIsRefresh);
   useEffect(() => {
@@ -25,10 +30,31 @@ export const App = () => {
     <Loader />
   ) : (
     <Routes>
-      <Route path="login" element={<LoginPage />} />
-      <Route path="registration" element={<RegistrationPage />} />
+      <Route
+        path="login"
+        element={
+          <Suspense fallback={<Loader />}>
+            <LoginPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="registration"
+        element={
+          <Suspense fallback={<Loader />}>
+            <RegistrationPage />{' '}
+          </Suspense>
+        }
+      />
 
-      <Route path="/" element={<DashboardPage />}>
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<Loader />}>
+            <DashboardPage />
+          </Suspense>
+        }
+      >
         <Route
           index
           element={
@@ -57,9 +83,9 @@ export const App = () => {
       <Route
         path="*"
         element={
-          <h1>
+          <Suspense fallback={<Loader />}>
             <PageNotFound />
-          </h1>
+          </Suspense>
         }
       />
     </Routes>

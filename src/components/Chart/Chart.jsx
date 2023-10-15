@@ -1,30 +1,24 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import pngwing from '../StatisticsTable/pngwing.com (8).png';
-import { ChartP } from './Chart.styled';
+import pngwing from '../StatisticsTable/pngwing.com (8).webp';
+import { StyledChartP, StyledChartDiv } from './Chart.styled';
 import { selectPeriodTotal } from 'redux/transactions/selectors';
 import { useSelector } from 'react-redux';
 ChartJS.register(ArcElement, Tooltip, Legend);
 const Chart = ({ dataDoughnut, categories }) => {
   const periodTotal = useSelector(selectPeriodTotal);
   return (
-    <div
-      style={{
-        width: '288px',
-        height: '288px',
-        marginTop: '20px',
-      }}
-    >
+    <StyledChartDiv>
       {categories.length > 1 ? (
-        <>
+        <div>
           <Doughnut data={dataDoughnut} />
-          <ChartP>₴{periodTotal}</ChartP>
-        </>
+          <StyledChartP>₴ {periodTotal}</StyledChartP>
+        </div>
       ) : (
         <img src={pngwing} alt="fff" />
       )}
-    </div>
+    </StyledChartDiv>
   );
 };
 

@@ -1,16 +1,24 @@
-import  { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [data, SetData] = useState(null);
   const close = () => {
     setIsOpen(false);
   };
   const toggle = () => setIsOpen(prev => !prev);
-  const open = () => {
+  const open = content => {
     setIsOpen(true);
+    if (content !== null) {
+      SetData(content);
+    }
   };
-  return { isOpen, close, open, toggle };
+  useEffect(() => {
+    isOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'auto');
+  }, [isOpen]);
+  return { isOpen, close, open, toggle, data };
 };
 
 export default useModal;

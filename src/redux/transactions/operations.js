@@ -16,10 +16,17 @@ export const fetchTransactionsThunk = createAsyncThunk(
 
 export const addTransactionThunk = createAsyncThunk(
   'addTransaction',
-  async (credentials, { rejectWithValue }) => {
+  async (body, { rejectWithValue }) => {
+    const data = {
+      transactionDate: body.transactionDate,
+      type: body.type,
+      categoryId: body.categoryId,
+      comment: body.comment,
+      amount: body.amount,
+    };
     try {
-      const { data } = await swaggerApi.post('transactions', credentials);
-      return data;
+      const res = await swaggerApi.post('transactions', data);
+      return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -30,9 +37,9 @@ export const deleteTransactionThunk = createAsyncThunk(
   'deleteTransaction',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await swaggerApi.delete(`transactions/${id}`);
+      await swaggerApi.delete(`transactions/${id}`);
       toast.success('🦄 success delete!');
-      return data.id;
+      return id;
     } catch (error) {
       toast.error(`🦄 Error! ${error.message}`);
       return rejectWithValue(error.message);
@@ -44,9 +51,8 @@ export const updateTransactionThunk = createAsyncThunk(
   'updateTransaction',
   async (body, { rejectWithValue }) => {
     const data = {
-      date: body.transactionDate,
+      transactionDate: body.transactionDate,
       type: body.type,
-      category: body.categoryId,
       comment: body.comment,
       amount: body.amount,
     };
@@ -74,7 +80,6 @@ export const fetchTransactionCategory = createAsyncThunk(
 export const fetchTransactionsSummary = createAsyncThunk(
   'transactionsSummary',
   async ({ month, year }, { rejectWithValue }) => {
-    console.log(month, year);
     try {
       const { data } = await swaggerApi.get(
         `transactions-summary?month=${month}&year=${year}`

@@ -1,132 +1,90 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { SelectBtn, Options, SelectSvg } from './StatisticsDashboard.styled';
-import { Scrollbars } from 'react-custom-scrollbars-2';
-import sprite from '../../images/sprite.svg';
+import React, { useEffect, useState } from 'react';
+import Select from 'react-select';
+import { StyledSelectMainDiv, styles } from './StatisticsDashboard.styled';
+
 import { useDispatch } from 'react-redux';
 import { fetchTransactionsSummary } from 'redux/transactions/operations';
 
-const StatisticsDashboard = ({
-  isOpen,
-  setIsOpen,
-  isOpenYear,
-  setIsOpenYear,
-}) => {
+const StatisticsDashboard = () => {
   const dispatch = useDispatch();
-  const [selectedMonth, setSelectedMonth] = useState('January');
-  const [selectedYear, setSelectedYear] = useState(2023);
+  const [selectedMonth, setSelectedMonth] = useState({
+    value: 1,
+    label: 'January',
+  });
+  const [selectedYear, setSelectedYear] = useState({
+    value: 2023,
+    label: '2023',
+  });
 
-  console.log('rerender');
-  const onMonthClick = month => {
+  const onMonthChange = month => {
     setSelectedMonth(month);
-    setIsOpen(!isOpen);
   };
   const onYearClick = year => {
     setSelectedYear(year);
-    setIsOpenYear(!isOpenYear);
   };
 
-  const years = [2023, 2022, 2021, 2020, 2019];
-  const months = useMemo(
-    () => [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ],
-    []
-  );
+  const optionsYears = [
+    { value: 2023, label: '2023' },
+    { value: 2022, label: '2022' },
+    { value: 2021, label: '2021' },
+    { value: 2019, label: '2019' },
+    { value: 2018, label: '2018' },
+    { value: 2017, label: '2017' },
+  ];
+  const optionsMonth = [
+    { value: 1, label: 'January' },
+    { value: 2, label: 'February' },
+    { value: 3, label: 'March' },
+    { value: 4, label: 'April' },
+    { value: 5, label: 'May' },
+    { value: 6, label: 'June' },
+    { value: 7, label: 'July' },
+    { value: 8, label: 'August' },
+    { value: 9, label: 'September' },
+    { value: 10, label: 'October' },
+    { value: 11, label: 'November' },
+    { value: 12, label: 'December' },
+  ];
+
   useEffect(() => {
-    console.log(selectedMonth, selectedYear);
     const data = {
-      month: months.indexOf(selectedMonth) + 1,
-      year: selectedYear,
+      month: selectedMonth.value,
+      year: selectedYear.value,
     };
     dispatch(fetchTransactionsSummary(data));
-  }, [dispatch, months, selectedMonth, selectedYear]);
+  }, [dispatch, selectedMonth, selectedYear]);
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '32px',
-        marginTop: '60px',
-      }}
-    >
-      <div>
-        <SelectBtn onClick={() => setIsOpen(!isOpen)}>
-          <p
-          // style={{
-          //   display: 'inline-block',
-          // }}
-          >
-            {selectedMonth}
-          </p>
-          <SelectSvg>
-            {isOpen ? (
-              <use href={`${sprite}#arrow_up`} width={22} />
-            ) : (
-              <use href={`${sprite}#arrow_down`} width={22} />
-            )}
-          </SelectSvg>
-        </SelectBtn>
-        {isOpen && (
-          <Scrollbars
-            style={{
-              width: 181,
-              height: 157,
-              position: 'absolute',
-              zIndex: '2',
-              background:
-                'linear-gradient(0deg, rgba(83, 61, 186, 0.90) 0%, rgba(80, 48, 154, 0.90) 43.14%, rgba(106, 70, 165, 0.9) 73.27%, rgba(79, 46, 115, 0.8))',
-            }}
-          >
-            {months.map(month => (
-              <Options key={month} onClick={() => onMonthClick(month)}>
-                {month}
-              </Options>
-            ))}
-          </Scrollbars>
-        )}
-      </div>
+    <StyledSelectMainDiv>
+      <Select
+        styles={styles}
+        value={selectedMonth}
+        onChange={value => onMonthChange(value)}
+        options={optionsMonth}
+        placeholder={selectedMonth.label}
+        theme={theme => ({
+          ...theme,
+          colors: {
+            neutral50: '#fff',
+          },
+        })}
+      />
 
       <div>
-        <SelectBtn onClick={() => setIsOpenYear(!isOpenYear)}>
-          {selectedYear}
-          <SelectSvg>
-            {isOpenYear ? (
-              <use href={`${sprite}#arrow_up`} width={22} />
-            ) : (
-              <use href={`${sprite}#arrow_down`} width={22} />
-            )}
-          </SelectSvg>
-        </SelectBtn>
-        {isOpenYear && (
-          <Scrollbars
-            style={{
-              width: 181,
-              height: 157,
-              position: 'absolute',
-              zIndex: '2',
-              background:
-                'linear-gradient(0deg, rgba(83, 61, 186, 0.90) 0%, rgba(80, 48, 154, 0.90) 43.14%, rgba(106, 70, 165, 0.9) 73.27%, rgba(79, 46, 115, 0.8))',
-            }}
-          >
-            {years.map(year => (
-              <Options key={year} onClick={() => onYearClick(year)}>
-                {year}
-              </Options>
-            ))}
-          </Scrollbars>
-        )}
+        <Select
+          styles={styles}
+          value={selectedYear}
+          onChange={value => onYearClick(value)}
+          options={optionsYears}
+          placeholder={selectedYear.label}
+          theme={theme => ({
+            ...theme,
+            colors: {
+              neutral50: '#fff',
+            },
+          })}
+        />
       </div>
-    </div>
+    </StyledSelectMainDiv>
   );
 };
 

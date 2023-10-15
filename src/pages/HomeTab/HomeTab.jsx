@@ -1,6 +1,5 @@
 import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
-import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
 import Modal from 'components/Modal/Modal';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
@@ -12,10 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import { StyledContainer } from 'styles/GlobalStyles';
 
 const HomeTab = () => {
-  const { toggle, isOpen, close } = useModal();
-  const handleOpen = () => {
-    toggle();
-  };
+  const { isOpen, close } = useModal();
 
   const isTable = useMediaQuery({
     query: '(min-width:768px)',
@@ -28,8 +24,7 @@ const HomeTab = () => {
       <ModalAddTransaction />
       <ModalEditTransaction />
       <AddTransactionForm />
-      <EditTransactionForm />
-      {isOpen && <Modal handleOpen={handleOpen} close={close}></Modal>}
+      {isOpen && <Modal close={close}></Modal>}
     </StyledContainer>
   );
 };
