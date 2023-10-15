@@ -78,7 +78,11 @@ const TransactionsList = () => {
                       {categories.find(cat => cat.id === transaction.categoryId)
                         ?.name || 'Other'}
                     </StyledTd>
-                    <StyledTdComment>{transaction.comment}</StyledTdComment>
+                    <StyledTdComment>
+                      {transaction.comment.length > 15
+                        ? `${transaction.comment.slice(0, 15)}...`
+                        : transaction.comment}
+                    </StyledTdComment>
                     <StyledTd
                       $color={
                         transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'

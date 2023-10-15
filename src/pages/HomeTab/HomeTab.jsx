@@ -1,8 +1,8 @@
 import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import Modal from 'components/Modal/Modal';
-import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
-import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
+// import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
+// import ModalEditTransaction from 'components/ModalEditTransaction/ModalEditTransaction';
 import MobileList from 'components/TransactionsList/MobileList';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
 import useModal from 'hooks/useModal';
@@ -19,10 +19,10 @@ const HomeTab = () => {
   return (
     <StyledContainer>
       {isTable ? <TransactionsList /> : <MobileList />}
-      {/* <ButtonAddTransactions /> */}
+      <ButtonAddTransactions />
       {/* <ModalAddTransaction /> */}
       {/* <ModalEditTransaction /> */}
-      {/* <AddTransactionForm /> */}
+      <AddTransactionForm />
       {isOpen && <Modal close={close}></Modal>}
     </StyledContainer>
   );
