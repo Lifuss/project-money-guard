@@ -3,7 +3,6 @@ import {
   AddFormTitle,
   BtnAdd,
   BtnBox,
-  BtnCancel,
   StyledContainer,
   StyledDatePicker,
   StyledField,
@@ -27,13 +26,25 @@ import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
 import { selectAllCategories } from 'redux/transactions/selectors';
 
+// const options = [
+//   { value: 'Main expenses', label: 'Main expenses' },
+//   { value: 'Products', label: 'Products' },
+//   { value: 'Car', label: 'Car' },
+//   { value: 'Self Care', label: 'Self Care' },
+//   { value: 'Household Products', label: 'Household Products' },
+//   { value: 'Education', label: 'Education' },
+//   { value: 'Leisure', label: 'Leisure' },
+//   { value: 'Other expenses', label: 'Other expenses' },
+//   { value: 'Entertainment', label: 'Entertainment' },
+// ];
+
 const AddSchema = object({
   amount: string().required(),
   comment: string().min(2, 'Too Short!').max(50, 'Too Long!'),
   category: string().required(),
 });
 
-const AddTransactionForm = () => {
+const AddTransactionForm = ({ close }) => {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectAllCategories);
@@ -41,6 +52,11 @@ const AddTransactionForm = () => {
   useEffect(() => {
     dispatch(fetchTransactionCategory());
   }, [dispatch]);
+
+  // const [selectedCategory, setSelectedCategory] = useState(options[0]);
+  // const onCategoryChange = category => {
+  //   setSelectedCategory(category);
+  // };
 
   const [startDate, setStartDate] = useState();
 
@@ -55,10 +71,10 @@ const AddTransactionForm = () => {
       comment: values.comment,
       transactionDate: values.transactionDate,
       type: values.type === 'EXPENSE' ? 'EXPENSE' : 'INCOME',
-      // type: values.type,
     };
     console.log(addFormData);
     dispatch(addTransactionThunk(addFormData));
+    close();
   };
 
   return (
@@ -78,14 +94,6 @@ const AddTransactionForm = () => {
         >
           {({ errors, touched, values, handleChange }) => (
             <StyledForm autoComplete="off">
-              {/* <StyledSelect
-                name="type"
-                value={values.type}
-                onChange={handleChange}
-              >
-                <option>INCOME</option>
-                <option>EXPENSE</option>
-              </StyledSelect> */}
               <StyledRadioBox>
                 <label>
                   <StyledRadioInput
@@ -137,7 +145,7 @@ const AddTransactionForm = () => {
                 </label>
               </StyledRadioBox>
 
-              {values.type !== 'INCOME' ? (
+              {values.type === 'EXPENSE' ? (
                 <StyledSelect
                   name="category"
                   value={values.category}
@@ -153,6 +161,19 @@ const AddTransactionForm = () => {
                   ))}
                 </StyledSelect>
               ) : null}
+
+              {/* {values.type === 'EXPENSE' ? (
+                <StyledSelect
+                  styles={styles}
+                  name="category"
+                  defaultValue={options[0]}
+                  value={selectedCategory}
+                  // defaultValue="Select a category"
+                  onChange={value => onCategoryChange(value)}
+                  options={options}
+                  className="option"
+                />
+              ) : null} */}
 
               <StyledField
                 name="amount"
@@ -173,7 +194,7 @@ const AddTransactionForm = () => {
                   setStartDate(transactionDate);
                 }}
                 dateFormat="dd.MM.yyyy"
-                // placeholderText={`${new Date().toLocaleDateString('uk-UA')}`}
+                placeholderText={`${new Date().toLocaleDateString('uk-UA')}`}
                 showIcon
                 selected={startDate}
                 maxDate={new Date()}
@@ -196,7 +217,6 @@ const AddTransactionForm = () => {
 
               <BtnBox>
                 <BtnAdd type="submit">Add</BtnAdd>
-                <BtnCancel type="submit">Cancel</BtnCancel>
               </BtnBox>
             </StyledForm>
           )}
