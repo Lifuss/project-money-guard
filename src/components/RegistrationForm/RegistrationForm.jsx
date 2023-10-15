@@ -22,6 +22,10 @@ import {
 } from '../LoginForm/LoginForm.styled';
 import { StyledSection } from "./RegistrationForm.styled"
 
+// Import PasswordStrengthBar and define barColors and isRequired
+const barColors = ['#ddd', '#ef4836', '#f6b44d', '#2b90ef', '#25c281'];
+const isRequired = false;
+
 const validationSchema = yup.object({
   name: yup.string('Enter your name').required('Name is required'),
   email: yup
@@ -184,7 +188,11 @@ const RegistrationForm = () => {
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
             }}
         />
-        <PasswordStrengthBar password={password} />
+        <PasswordStrengthBar
+          password={password}
+          barColors={barColors}
+          isRequired={isRequired}
+        />
         <Button
           type="submit"
           style={{
