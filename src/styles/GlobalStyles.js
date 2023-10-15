@@ -1,6 +1,19 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import fontRegular from '../fonts/Poppins-Regular.ttf';
+import fontBold from '../fonts/Poppins-Bold.ttf';
+import fontSemiBold from '../fonts/Poppins-SemiBold.ttf';
 
 export const GlobalStyles = createGlobalStyle`
+ 
+ @font-face {
+  font-family: 'Poppins';
+  font-weight: 400 600 700;
+  src: url(${fontRegular}),url(${fontSemiBold}), url(${fontBold}) ;
+}
+body{
+font-family: 'Poppins', sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -43,11 +56,12 @@ img {
   height: auto;
 }
 
+
 body {
     background: ${({ theme }) => theme.backgrounds.backgroundGradient};
-    color: ${({ theme }) => theme.colors.mainWhite}  }
+    color: ${({ theme }) => theme.colors.mainWhite}; 
+}
 
-    
 `;
 
 export const StyledContainer = styled.div`
