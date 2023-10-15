@@ -23,7 +23,7 @@ const HomeTab = () => {
       <ButtonAddTransactions />
       {/* <ModalAddTransaction /> */}
       {/* <ModalEditTransaction /> */}
-      <AddTransactionForm />
+      {/* <AddTransactionForm /> */}
       {isOpen && <Modal close={close}></Modal>}
     </StyledContainer>
   );
