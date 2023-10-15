@@ -5,11 +5,11 @@ export const StyledTableWrapper = styled.div`
   background-color: rgba(74, 86, 226, 0.1);
   width: 320px;
   height: 214px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   @media only screen and (min-width: 768px) {
     min-width: 336px;
     height: 214px;
-    /* margin: 0; */
+    margin: 0;
   }
   @media only screen and (min-width: 1280px) {
     min-width: 480px;
