@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Money guard",
+  "name": "Money guard",
   "icons": [
     {
       "src": "../src/images/sprite.svg#logo_money_guard",
