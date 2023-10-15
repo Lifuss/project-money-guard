@@ -116,7 +116,7 @@ export const StyledNoFound = styled.div`
   margin: 0 auto;
   margin-top: 80px;
 
-  padding: 8px 74px 12px 32px;
+  padding: 30px;
   width: 600px;
   height: 200px;
   border-radius: 8px;

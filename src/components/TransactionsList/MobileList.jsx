@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectTransactions } from 'redux/transactions/selectors';
 import { selectLoading } from 'redux/auth/selectors';
 import { fetchTransactionsThunk } from 'redux/transactions/operations';
+import {
+  StyledNotFoundTitle,
+  StyledTansNotFound,
+} from 'components/TransactionsItem/TransactionsItem.styled';
 
 const MobileList = () => {
   const dispatch = useDispatch();
@@ -26,7 +30,11 @@ const MobileList = () => {
           ))}
         </StyledMobileWrapper>
       ) : (
-        <h3>No transactions found</h3>
+        <StyledTansNotFound>
+          <StyledNotFoundTitle>
+            No transactions found, lets create it!
+          </StyledNotFoundTitle>
+        </StyledTansNotFound>
       )}
     </>
   );
