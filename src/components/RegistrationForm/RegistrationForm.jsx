@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Navigate } from 'react-router-dom';
@@ -18,9 +19,9 @@ import {
   StyledLink,
   LogoBox,
   LogoImg,
-  LogoName
+  LogoName,
 } from '../LoginForm/LoginForm.styled';
-import { StyledSection } from "./RegistrationForm.styled"
+import { StyledSection } from './RegistrationForm.styled';
 
 const validationSchema = yup.object({
   name: yup.string('Enter your name').required('Name is required'),
@@ -68,37 +69,48 @@ const RegistrationForm = () => {
         dispatch(authReducer.actions.login(response.data));
         return <Navigate to="/" />;
       } else if (response.status === 400) {
-        console.error('Validation error:', response.data);
+        toast.error(`Validation error: ${response.data}`);
       } else if (response.status === 409) {
-        console.error(
-          'Error: User with such email already exists:',
-          response.data
+        toast.error(
+          `Error: User with such email already exists:${response.data}`
         );
       } else {
-        console.error(
-          'Unknown error during registration. Status:',
-          response.status
+        toast.error(
+          `Unknown error during registration. Status: ${response.status}`
         );
       }
     } catch (error) {
-      console.error('Registration was unsuccessful:', error);
+      toast.error(`Registration was unsuccessful: ${error}`);
     }
   };
 
   return (
     <StyledSection>
       <StyledForm onSubmit={formik.handleSubmit}>
-         <LogoBox>
-            <LogoImg src={logoMoneyGuard} alt="logo" style={{ marginTop: '30px' }} />
-            <LogoName>Money Guard</LogoName>
-          </LogoBox>
+        <LogoBox>
+          <LogoImg
+            src={logoMoneyGuard}
+            alt="logo"
+            style={{ marginTop: '30px' }}
+          />
+          <LogoName>Money Guard</LogoName>
+        </LogoBox>
         <TextField
           fullWidth
           id="name"
           name="name"
           label={
-            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
-              <PersonIcon  style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Name
+            <span
+              style={{
+                color: 'rgba(255, 255, 255, 0.60)',
+                fontSize: '18px',
+                lineHeight: '27px',
+              }}
+            >
+              <PersonIcon
+                style={{ verticalAlign: 'middle', marginRight: '20px' }}
+              />{' '}
+              Name
             </span>
           }
           type="text"
@@ -111,15 +123,24 @@ const RegistrationForm = () => {
             width: '409px',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            }}
+          }}
         />
         <TextField
           fullWidth
           id="email"
           name="email"
           label={
-            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
-              <EmailOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Email
+            <span
+              style={{
+                color: 'rgba(255, 255, 255, 0.60)',
+                fontSize: '18px',
+                lineHeight: '27px',
+              }}
+            >
+              <EmailOutlinedIcon
+                style={{ verticalAlign: 'middle', marginRight: '20px' }}
+              />{' '}
+              Email
             </span>
           }
           type="email"
@@ -132,15 +153,24 @@ const RegistrationForm = () => {
             width: '409px',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            }}
+          }}
         />
         <TextField
           fullWidth
           id="password"
           name="password"
           label={
-             <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
-              <LockIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Password
+            <span
+              style={{
+                color: 'rgba(255, 255, 255, 0.60)',
+                fontSize: '18px',
+                lineHeight: '27px',
+              }}
+            >
+              <LockIcon
+                style={{ verticalAlign: 'middle', marginRight: '20px' }}
+              />{' '}
+              Password
             </span>
           }
           type="password"
@@ -156,15 +186,24 @@ const RegistrationForm = () => {
             width: '409px',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            }}
+          }}
         />
         <TextField
           fullWidth
           id="confirmPassword"
           name="confirmPassword"
           label={
-            <span style={{ color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
-              <LockIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> Confirm password
+            <span
+              style={{
+                color: 'rgba(255, 255, 255, 0.60)',
+                fontSize: '18px',
+                lineHeight: '27px',
+              }}
+            >
+              <LockIcon
+                style={{ verticalAlign: 'middle', marginRight: '20px' }}
+              />{' '}
+              Confirm password
             </span>
           }
           type="password"
@@ -182,7 +221,7 @@ const RegistrationForm = () => {
             width: '409px',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            }}
+          }}
         />
         <PasswordStrengthBar password={password} />
         <Button
@@ -190,7 +229,8 @@ const RegistrationForm = () => {
           style={{
             width: '300px',
             height: '50px',
-            background: 'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
+            background:
+              'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
             boxShadow: '1px 9px 15px rgba(0, 0, 0, 0.20)',
             borderRadius: '20px',
             color: '#ffffff',
@@ -201,8 +241,9 @@ const RegistrationForm = () => {
             textAlign: 'center',
             cursor: 'pointer',
             marginTop: '40px',
-            transition: 'background 0.3s, font-weight 0.3s', 
-  }}>
+            transition: 'background 0.3s, font-weight 0.3s',
+          }}
+        >
           Register
         </Button>
         <StyledLink to="/login">Log in</StyledLink>
