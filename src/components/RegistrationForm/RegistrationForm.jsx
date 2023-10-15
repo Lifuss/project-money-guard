@@ -64,28 +64,28 @@ const RegistrationForm = () => {
     return <Navigate to="/" replace />;
   }
 
-  const handleSubmit = async values => {
-    try {
-      const response = await dispatch(registerThunk(values));
+const handleSubmit = async values => {
+  try {
+    const response = await dispatch(registerThunk(values));
 
-      if (response.status === 201) {
+    switch (response.status) {
+      case 201:
         dispatch(authReducer.actions.login(response.data));
         return <Navigate to="/" />;
-      } else if (response.status === 400) {
+      case 400:
         toast.error(`Validation error: ${response.data}`);
-      } else if (response.status === 409) {
-        toast.error(
-          `Error: User with such email already exists:${response.data}`
-        );
-      } else {
-        toast.error(
-          `Unknown error during registration. Status: ${response.status}`
-        );
-      }
-    } catch (error) {
-      toast.error(`Registration was unsuccessful: ${error}`);
+        break;
+      case 409:
+        toast.error(`Error: User with such email already exists:${response.data}`);
+        break;
+      default:
+        toast.error(`Unknown error during registration. Status: ${response.status}`);
     }
-  };
+  } catch (error) {
+    toast.error(`Registration was unsuccessful: ${error}`);
+  }
+};
+
 
   return (
     <StyledSection>
