@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SelectMainDiv = styled.div`
+export const StyledSelectMainDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -11,9 +11,9 @@ export const SelectMainDiv = styled.div`
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     gap: 16px;
-    padding: 0;
+    padding: 20px 0 0 0;
     min-width: 192px;
-    max-width: 192x;
+    max-width: 192px;
   }
   @media only screen and (min-width: 1280px) {
     margin-top: 60px;
