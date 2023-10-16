@@ -8,6 +8,11 @@ export const StyledHeaderContainer = styled(StyledContainer)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media only screen and (min-width: 768px) {
+    padding-top: 16px;
+    padding-bottom: 15px;
+  }
 `;
 
 export const HeaderInfo = styled.div`
@@ -16,14 +21,6 @@ export const HeaderInfo = styled.div`
   align-items: center;
   gap: 8px;
 `;
-
-// export const HeaderWrapper = styled.header`
-//   width: 100%;
-//   padding: 12px 0;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;
 
 export const LogoBox = styled.div`
   display: flex;
@@ -38,13 +35,17 @@ export const LogoImg = styled.img`
 `;
 
 export const LogoName = styled.span`
-  color: #fbfbfb;
+  color: ${({ theme }) => theme.colors.mainWhite};
   font-size: 13px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+  }
 `;
 
 export const AccountName = styled.p`
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: ${({ theme }) => theme.colors.editBtn};
 `;
 
 export const DividerImg = styled.img`
@@ -54,7 +55,7 @@ export const DividerImg = styled.img`
 
 export const ExitText = styled.p`
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: ${({ theme }) => theme.colors.editBtn};
   margin-left: 8px;
 `;
 
