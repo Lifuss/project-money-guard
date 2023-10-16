@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AccountName,
   DividerImg,
@@ -52,13 +52,29 @@ const Header = () => {
   const handleLogout = () => {
     setShowLogoutConfirmation(true);
     disableBodyScroll();
+     document.addEventListener('keydown', handleEscapeKey);
   };
+
+  const handleEscapeKey = (e) => {
+    if (e.key === 'Escape') {
+      setShowLogoutConfirmation(false);
+      enableBodyScroll();
+    }
+  };
+
+
   const confirmLogout = () => {
     dispatch(logoutThunk());
     setShowLogoutConfirmation(false);
     enableBodyScroll();
-
+    document.removeEventListener('keydown', handleEscapeKey);
   };
+
+   useEffect(() => {
+    return () => {
+      document.removeEventListener('keydown');
+    };
+  }, []);
 
   return (
     <>
