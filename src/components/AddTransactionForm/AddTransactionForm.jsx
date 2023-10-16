@@ -41,7 +41,7 @@ import { selectAllCategories } from 'redux/transactions/selectors';
 const AddSchema = object({
   amount: string().required(),
   comment: string().min(2, 'Too Short!').max(50, 'Too Long!'),
-  category: string().required(),
+  category: string(),
 });
 
 const AddTransactionForm = ({ close }) => {
@@ -70,7 +70,8 @@ const AddTransactionForm = ({ close }) => {
           : '063f1132-ba5d-42b4-951d-44011ca46262', // categoryId INCOME
       comment: values.comment,
       transactionDate: values.transactionDate,
-      type: values.type === 'EXPENSE' ? 'EXPENSE' : 'INCOME',
+      // type: values.type === 'EXPENSE' ? 'EXPENSE' : 'INCOME',
+      type: values.type,
     };
     console.log(addFormData);
     dispatch(addTransactionThunk(addFormData));
@@ -144,7 +145,6 @@ const AddTransactionForm = ({ close }) => {
                   </StyledTextSpan>
                 </label>
               </StyledRadioBox>
-
               {values.type === 'EXPENSE' ? (
                 <StyledSelect
                   name="category"
@@ -161,7 +161,6 @@ const AddTransactionForm = ({ close }) => {
                   ))}
                 </StyledSelect>
               ) : null}
-
               {/* {values.type === 'EXPENSE' ? (
                 <StyledSelect
                   styles={styles}
@@ -174,13 +173,11 @@ const AddTransactionForm = ({ close }) => {
                   className="option"
                 />
               ) : null} */}
-
               <StyledField
                 name="amount"
                 placeholder="0.00"
                 value={values.amount}
               />
-
               <StyledDatePicker
                 name="transactionDate"
                 value={values.transactionDate}
@@ -205,7 +202,6 @@ const AddTransactionForm = ({ close }) => {
                   </svg>
                 }
               />
-
               <StyledField
                 name="comment"
                 type="comment"
@@ -214,7 +210,6 @@ const AddTransactionForm = ({ close }) => {
               {errors.comment && touched.comment ? (
                 <div>{errors.comment}</div>
               ) : null}
-
               <BtnBox>
                 <BtnAdd type="submit">Add</BtnAdd>
               </BtnBox>
