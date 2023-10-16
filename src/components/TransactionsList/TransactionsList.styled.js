@@ -57,12 +57,28 @@ export const StyledHeaderTr = styled.tr`
   }
 `;
 
+// export const StyledTrSortBox = styled.tr`
+//   display: flex;
+//   align-items: center;
+//   gap: 6px;
+//   cursor: pointer;
+// `;
 export const StyledTh = styled.th`
   text-align: center;
   font-size: 16px;
   font-weight: 400;
 
   color: ${({ theme }) => theme.colors.mainWhite};
+`;
+
+export const StyledThSortActive = styled(StyledTh)`
+  cursor: pointer;
+`;
+
+export const StyledSortIcon = styled.svg`
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+  transform: rotate(180deg);
 `;
 export const StyledTbodyTable = styled.tbody`
   display: block;
