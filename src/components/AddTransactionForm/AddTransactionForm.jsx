@@ -11,6 +11,7 @@ import {
   StyledRadioInput,
   StyledSelect,
   StyledTextSpan,
+  StyledWrapper,
   SwitcherRoundMinus,
   SwitcherRoundPlus,
   SwitcherSquare,
@@ -178,30 +179,32 @@ const AddTransactionForm = ({ close }) => {
                 placeholder="0.00"
                 value={values.amount}
               />
-              <StyledDatePicker
-                name="transactionDate"
-                value={values.transactionDate}
-                onChange={transactionDate => {
-                  handleChange({
-                    target: {
-                      name: 'transactionDate',
-                      value: transactionDate,
-                    },
-                  });
-                  setStartDate(transactionDate);
-                }}
-                dateFormat="dd.MM.yyyy"
-                placeholderText={`${new Date().toLocaleDateString('uk-UA')}`}
-                showIcon
-                selected={startDate}
-                maxDate={new Date()}
-                style={{ float: 'right' }}
-                icon={
-                  <svg width="24" height="24">
-                    <use href={`${sprite}#calendar`} />
-                  </svg>
-                }
-              />
+              <StyledWrapper>
+                <StyledDatePicker
+                  name="transactionDate"
+                  value={values.transactionDate}
+                  onChange={transactionDate => {
+                    handleChange({
+                      target: {
+                        name: 'transactionDate',
+                        value: transactionDate,
+                      },
+                    });
+                    setStartDate(transactionDate);
+                  }}
+                  dateFormat="dd.MM.yyyy"
+                  placeholderText={`${new Date().toLocaleDateString('uk-UA')}`}
+                  showIcon
+                  selected={startDate}
+                  maxDate={new Date()}
+                  style={{ float: 'left' }}
+                  icon={
+                    <svg width="24" height="24">
+                      <use href={`${sprite}#calendar`} />
+                    </svg>
+                  }
+                />
+              </StyledWrapper>
               <StyledField
                 name="comment"
                 type="comment"
