@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AccountName,
   DividerImg,
@@ -31,11 +31,14 @@ const Header = () => {
   const index = email.indexOf('@');
   const nameFromEmail = email.slice(0, index);
 
+  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
+
   const handleLogout = () => {
-    // alert('Are you sure you want to logout?'); // поки що alert
-    console.log('Logout');
+    setShowLogoutConfirmation(true);
+  };
+  const confirmLogout = () => {
     dispatch(logoutThunk());
-    // відкрити модалку 'Are you sure you want to logout?'
+    setShowLogoutConfirmation(false);
   };
 
   return (
@@ -58,6 +61,14 @@ const Header = () => {
           </HeaderInfo>
         </StyledHeaderContainer>
       </header>
+
+      {showLogoutConfirmation && (
+        <div className="logout-confirmation">
+          <p>Are you sure you want to logout?</p>
+          <button onClick={confirmLogout}>Logout</button>
+          <button onClick={() => setShowLogoutConfirmation(false)}>Cancel</button>
+        </div>
+      )}
     </>
   );
 };
