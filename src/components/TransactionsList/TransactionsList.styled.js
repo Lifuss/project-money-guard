@@ -25,6 +25,9 @@ export const StyledTableWrapper = styled.div`
     flex-direction: column;
     width: 100%;
   }
+  @media only screen and (min-width: 1280px) {
+    margin-top: 46px;
+  }
 `;
 export const StyledTable = styled.table`
   border-collapse: collapse;
@@ -66,6 +69,10 @@ export const StyledTbodyTable = styled.tbody`
   }
   &::-webkit-scrollbar {
     width: 0.5em;
+  }
+
+  @media only screen and (min-width: 1280px) {
+    max-height: 70vh;
   }
 `;
 

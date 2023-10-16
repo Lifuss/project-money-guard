@@ -7,7 +7,7 @@ import TransactionsList from 'components/TransactionsList/TransactionsList';
 import useModal from 'hooks/useModal';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { StyledContainer } from 'styles/GlobalStyles';
+import { StyledHomeTabContainer } from './HomeTab.styled';
 
 const HomeTab = () => {
   const { isOpen, close } = useModal();
@@ -16,14 +16,14 @@ const HomeTab = () => {
     query: '(min-width:768px)',
   });
   return (
-    <StyledContainer>
+    <StyledHomeTabContainer>
       {isTable ? <TransactionsList /> : <MobileList />}
       <ButtonAddTransactions />
       {/* <ModalAddTransaction /> */}
       {/* <ModalEditTransaction /> */}
       {/* <AddTransactionForm /> */}
       {isOpen && <Modal close={close}></Modal>}
-    </StyledContainer>
+    </StyledHomeTabContainer>
   );
 };
 

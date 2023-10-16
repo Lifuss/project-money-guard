@@ -8,6 +8,9 @@ export const StyledHeaderContainer = styled(StyledContainer)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
+  box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25),
+    0px -3px 2px 0px rgba(0, 0, 0, 0.1) inset;
 `;
 
 export const HeaderInfo = styled.div`
@@ -16,14 +19,6 @@ export const HeaderInfo = styled.div`
   align-items: center;
   gap: 8px;
 `;
-
-// export const HeaderWrapper = styled.header`
-//   width: 100%;
-//   padding: 12px 0;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;
 
 export const LogoBox = styled.div`
   display: flex;

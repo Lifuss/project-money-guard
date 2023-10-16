@@ -2,7 +2,6 @@ import React from 'react';
 import sprite from '../../images/sprite.svg';
 import { NavList, StyledNavLink, StyledNavText } from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
-import { StyledContainer } from 'styles/GlobalStyles';
 
 const Navigation = () => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -14,35 +13,33 @@ const Navigation = () => {
   return (
     <>
       <nav>
-        <StyledContainer>
-          <NavList>
+        <NavList>
+          <li>
+            <StyledNavLink to="/">
+              <svg width="38" height="38">
+                <use href={`${sprite}#homepage`} />
+              </svg>
+              {isDesktopOrLaptop && <StyledNavText>Home</StyledNavText>}
+            </StyledNavLink>
+          </li>
+          <li>
+            <StyledNavLink to="/statistics">
+              <svg width="38" height="38">
+                <use href={`${sprite}#statistics`} />
+              </svg>
+              {isDesktopOrLaptop && <StyledNavText>Statistics</StyledNavText>}
+            </StyledNavLink>
+          </li>
+          {isMobile ? (
             <li>
-              <StyledNavLink to="/">
+              <StyledNavLink to="/currency">
                 <svg width="38" height="38">
-                  <use href={`${sprite}#homepage`} />
+                  <use href={`${sprite}#dollar`} />
                 </svg>
-                {isDesktopOrLaptop && <StyledNavText>Home</StyledNavText>}
               </StyledNavLink>
             </li>
-            <li>
-              <StyledNavLink to="/statistics">
-                <svg width="38" height="38">
-                  <use href={`${sprite}#statistics`} />
-                </svg>
-                {isDesktopOrLaptop && <StyledNavText>Statistics</StyledNavText>}
-              </StyledNavLink>
-            </li>
-            {isMobile ? (
-              <li>
-                <StyledNavLink to="/currency">
-                  <svg width="38" height="38">
-                    <use href={`${sprite}#dollar`} />
-                  </svg>
-                </StyledNavLink>
-              </li>
-            ) : null}
-          </NavList>
-        </StyledContainer>
+          ) : null}
+        </NavList>
       </nav>
     </>
   );

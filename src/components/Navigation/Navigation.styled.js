@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 
+export const StyledNavBox = styled.nav``;
+
 export const NavList = styled.ul`
   display: flex;
   flex-direction: row;
@@ -37,7 +39,6 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const StyledNavText = styled.span`
-  /* color: #fbfbfb; */
   color: ${({ theme }) => theme.colors.mainWhite};
   font-size: 18px;
   margin-left: 20px;

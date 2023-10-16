@@ -9,6 +9,7 @@ import { useMediaQuery } from 'react-responsive';
 import {
   StyledDashBoardBox,
   StyledDashBoardContainer,
+  StyledDeskContainer,
 } from './DashboardPage.styled';
 import Loader from 'components/Loader/Loader';
 import ScrollButton from 'components/ToTopButton/ScrollButton';
@@ -18,17 +19,19 @@ const DashboardPage = () => {
   return (
     <>
       <Header />
-      <StyledDashBoardContainer>
-        <StyledDashBoardBox>
-          <Navigation />
-          <Balance />
-        </StyledDashBoardBox>
-        {isTablet && <Currency />}
-      </StyledDashBoardContainer>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
-      <ScrollButton />
+      <StyledDeskContainer>
+        <StyledDashBoardContainer>
+          <StyledDashBoardBox>
+            <Navigation />
+            <Balance />
+          </StyledDashBoardBox>
+          {isTablet && <Currency />}
+        </StyledDashBoardContainer>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+        <ScrollButton />
+      </StyledDeskContainer>
     </>
   );
 };
