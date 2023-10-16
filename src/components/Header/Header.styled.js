@@ -20,6 +20,10 @@ export const HeaderInfo = styled.div`
   gap: 8px;
 `;
 
+export const HeaderWrapper = styled.header`
+  background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
+`;
+
 export const LogoBox = styled.div`
   display: flex;
   flex-direction: column;

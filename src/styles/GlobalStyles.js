@@ -59,18 +59,35 @@ img {
 
 body {
     background: ${({ theme }) => theme.backgrounds.backgroundGradient};
-    color: ${({ theme }) => theme.colors.mainWhite}; 
-}
+    color: ${({ theme }) => theme.colors.mainWhite};
+    @media only screen and (max-width: 767px) {
+    /* &::after {
+    content: '';
+    width: 30%;
+    height: 362.381px;
+    bottom: -90px;
+    left: 230px;
+    z-index: -1;
+    position: sticky;
+    border-radius: 362.381px;
+    background: linear-gradient(220deg, #6d54eb 28.31%, #652392 66.76%);
 
+    filter: blur(150px);}
+  } */}
+}
+ 
 `;
 
 export const StyledContainer = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
+
+  overflow: hidden;
   margin-right: auto;
   min-width: 320px;
   max-width: 425px;
+
   @media only screen and (min-width: 768px) {
     padding-left: 32px;
     padding-right: 32px;
@@ -80,5 +97,56 @@ export const StyledContainer = styled.div`
     padding-left: 16px;
     padding-right: 16px;
     max-width: 1280px;
+  }
+  @media only screen and (max-width: 767px) {
+    &::after {
+      content: '';
+      z-index: -1;
+      width: 100%;
+      height: 454px;
+      border-radius: 901px;
+      background: rgba(93, 44, 214, 40%);
+      filter: blur(100px);
+      position: fixed;
+      left: -250px;
+      top: 20px;
+    }
+
+    &::before {
+      content: '';
+      width: 100%;
+      z-index: -1;
+      height: 539px;
+      border-radius: 539px;
+      background: rgba(47, 21, 176, 0.73);
+      z-index: -1;
+      filter: blur(100px);
+      position: fixed;
+      left: -400px;
+      top: 700px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    &::before {
+      content: '';
+      width: 90%;
+      height: 201px;
+      border-radius: 366.105px;
+      background: #302e8e;
+      z-index: -1;
+      filter: blur(150px);
+      position: absolute;
+      right: 30px;
+      top: 150px;
+    }
+  }
+  @media only screen and (min-width: 1280px) {
+    &::before {
+      left: 400px;
+      width: 50px;
+      height: 501px;
+      top: 200px;
+      filter: blur(100px);
+    }
   }
 `;
