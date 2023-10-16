@@ -5,6 +5,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { refreshThunk } from 'redux/auth/operations';
 import PrivateRoute from 'routes/PrivateRoute';
 import Loader from './Loader/Loader';
+import MediaRoutes from 'routes/MediaRoutes';
 
 // lazy loading
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -75,7 +76,11 @@ export const App = () => {
           path="currency"
           element={
             <PrivateRoute>
-              <CurrencyTab />
+              <MediaRoutes>
+                <Suspense fallback={<Loader />}>
+                  <CurrencyTab />
+                </Suspense>
+              </MediaRoutes>
             </PrivateRoute>
           }
         />

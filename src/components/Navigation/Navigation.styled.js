@@ -1,5 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { StyledContainer } from 'styles/GlobalStyles';
+
+export const NavStyledContainer = styled(StyledContainer)`
+  @media only screen and (min-width: 768px) and (max-width: 1279px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media only screen and (min-width: 1280px) {
+    padding-top: 40px;
+    padding-bottom: 28px;
+  }
+`;
+
+export const StyledNavBox = styled.nav``;
 
 export const NavList = styled.ul`
   display: flex;
@@ -16,11 +30,11 @@ export const NavList = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  /* align-items: center; */
-  width: 38px;
-  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &.active {
-    /* color: #4a56e2; */
     color: ${({ theme }) => theme.backgrounds.activeNavBtn};
     border-radius: 3px;
   }
@@ -37,7 +51,6 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const StyledNavText = styled.span`
-  /* color: #fbfbfb; */
   color: ${({ theme }) => theme.colors.mainWhite};
   font-size: 18px;
   margin-left: 20px;
