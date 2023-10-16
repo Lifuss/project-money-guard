@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 export const StyledTransactionsList = styled.div`
   margin: 0 auto;
+  @media only screen and (min-width: 1280px) {
+    margin-top: 46px;
+  }
 `;
 
 export const StyledMobileWrapper = styled.ul`
@@ -25,9 +28,6 @@ export const StyledTableWrapper = styled.div`
     flex-direction: column;
     width: 100%;
   }
-  @media only screen and (min-width: 1280px) {
-    margin-top: 46px;
-  }
 `;
 export const StyledTable = styled.table`
   border-collapse: collapse;
@@ -40,13 +40,17 @@ export const StyledHeaderTr = styled.tr`
 
   padding: 16px 20px;
 
-  @media only screen and (min-width: 768px) {
-    padding-right: calc(100% / 4.2);
-  }
   border-radius: 8px;
   background: ${({ theme }) => theme.backgrounds.tableHead};
   box-shadow: ${({ theme }) => theme.shadows.default};
   backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
+
+  @media only screen and (min-width: 768px) {
+    padding-right: calc(100% / 4.2);
+  }
+  @media only screen and (min-width: 1280px) {
+    padding-right: calc(100% / 4.05);
+  }
 `;
 
 export const StyledTh = styled.th`
