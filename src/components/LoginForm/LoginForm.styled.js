@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import loginMobile from '../../images/login-bg/bg-login-mobile.jpg';
-import loginTablet from '../../images/login-bg/bg-login-tablet.jpg';
-import loginDesktop from '../../images/login-bg/bg-login-web.jpg';
+import loginMobile from '../../images/login-bg/bg-login-mobile.webp';
+import loginTablet from '../../images/login-bg/bg-login-tablet.webp';
+import loginDesktop from '../../images/login-bg/bg-login-web.webp';
 
 export const StyledSection = styled.section`
   width: 100vw;
@@ -16,7 +16,7 @@ export const StyledSection = styled.section`
   background-repeat: no-repeat;
   background-size: cover;
 
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     background-image: url(${loginTablet});
   }
 
@@ -47,7 +47,7 @@ export const LogoName = styled.span`
   color: #fbfbfb;
   font-size: 19px;
 
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 27px;
   }
 `;
@@ -59,15 +59,13 @@ export const StyledForm = styled.form`
   align-items: center;
   border-radius: 8px;
 
-
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 533px;
     height: 620px;
-    background: radial-gradient(#2f1f81, #FFFFFF3A);
+    background: radial-gradient(#2f1f81, #ffffff3a);
     backdrop-filter: blur(50px);
     box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
-    
-   }
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -77,21 +75,19 @@ export const StyledLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  border:  1px solid #4A56E2;
+  border: 1px solid #4a56e2;
   margin: auto;
-  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.20);
-
-  
+  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
 
   font-weight: 400;
   font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 1.80;
+  letter-spacing: 1.8;
   word-wrap: break-word;
   text-align: center;
   cursor: pointer;
   background-color: #ffffff;
-  color: #623F8B;
+  color: #623f8b;
 
   &:hover {
     font-weight: 600;

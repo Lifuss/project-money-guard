@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
 
-import registrationMobile from '../../images/register-bg/bg-register-mobile.jpg';
-import registrationTablet from '../../images/register-bg/bg-register-tablet.jpg';
-import registrationDesktop from '../../images/register-bg/bg-register-desktop.jpg';
+import registrationMobile from '../../images/register-bg/bg-register-mobile.webp';
+import registrationTablet from '../../images/register-bg/bg-register-tablet.webp';
+import registrationDesktop from '../../images/register-bg/bg-register-desktop.webp';
 
 export const StyledSection = styled.section`
   width: 100vw;
@@ -33,18 +33,15 @@ export const StyledForm = styled.form`
   align-items: center;
   border-radius: 8px;
 
-
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 533px;
     height: 680px;
-    background: radial-gradient(#2f1f81, #FFFFFF3A);
+    background: radial-gradient(#2f1f81, #ffffff3a);
     backdrop-filter: blur(50px);
     box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
-    
-   }
+  }
 `;
 
 export const StyledPasswordStrengthBar = styled(PasswordStrengthBar)`
-  width: 100%; 
+  width: 100%;
 `;
-
