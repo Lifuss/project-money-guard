@@ -27,9 +27,6 @@ import { selectUser } from 'redux/auth/selectors';
 import { useMediaQuery } from 'react-responsive';
 import { logoutThunk } from 'redux/auth/operations';
 
-
-
-
 const Header = () => {
   const dispatch = useDispatch();
   // const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -39,7 +36,6 @@ const Header = () => {
 
   const userData = useSelector(selectUser);
   const email = userData?.email || 'name.surname';
-  // const email = 'name.surname@gmail.com'; // поки що захардкоджено
   const index = email.indexOf('@');
   const nameFromEmail = email.slice(0, index);
 
@@ -72,25 +68,31 @@ const Header = () => {
             </LogoutBtn>
           </HeaderInfo>
         </StyledHeaderContainer>
-    </HeaderWrapper>
+      </HeaderWrapper>
 
-{showLogoutConfirmation && (
-  <OverlayStyle>
+      {showLogoutConfirmation && (
+        <OverlayStyle>
           <ModalWindowStyle>
-             <LogoutLogoBox>
-            <LogoutImg src={logoMoneyGuard} alt="logo" />
-            <LogoutName>Money Guard</LogoutName>
-          </LogoutLogoBox>
-      <ConfirmationMessage><p>Are you sure you want to logout?</p></ConfirmationMessage>
+            <LogoutLogoBox>
+              <LogoutImg src={logoMoneyGuard} alt="logo" />
+              <LogoutName>Money Guard</LogoutName>
+            </LogoutLogoBox>
+            <ConfirmationMessage>
+              <p>Are you sure you want to logout?</p>
+            </ConfirmationMessage>
             <div>
-              <LogOutButtonStyle onClick={confirmLogout}>Logout</LogOutButtonStyle>
-        <CancelButtonStyle onClick={() => setShowLogoutConfirmation(false)}>
-          Cancel
-        </CancelButtonStyle>
-      </div>
-    </ModalWindowStyle>
-  </OverlayStyle>
-)}
+              <LogOutButtonStyle onClick={confirmLogout}>
+                Logout
+              </LogOutButtonStyle>
+              <CancelButtonStyle
+                onClick={() => setShowLogoutConfirmation(false)}
+              >
+                Cancel
+              </CancelButtonStyle>
+            </div>
+          </ModalWindowStyle>
+        </OverlayStyle>
+      )}
     </>
   );
 };
