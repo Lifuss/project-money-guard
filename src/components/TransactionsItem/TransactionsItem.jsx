@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTransactionThunk } from 'redux/transactions/operations';
+import {
+  deleteTransactionThunk,
+  fetchTransactionCategory,
+} from 'redux/transactions/operations';
 import {
   StyledBtnBox,
   StyledDeleteBtn,
@@ -14,6 +17,7 @@ import sprite from '../../images/sprite.svg';
 import useModal from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
 import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
+import { useEffect } from 'react';
 
 const TransactionsItem = ({ transaction }) => {
   const categories = useSelector(selectAllCategories);
@@ -23,6 +27,9 @@ const TransactionsItem = ({ transaction }) => {
   const handleBtnDelete = id => {
     dispatch(deleteTransactionThunk(id));
   };
+  useEffect(() => {
+    dispatch(fetchTransactionCategory());
+  }, [dispatch]);
   return (
     <>
       <StyledTransaction

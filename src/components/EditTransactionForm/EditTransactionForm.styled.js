@@ -75,17 +75,18 @@ export const StyledAmounDateEdit = styled.div`
   }
 `;
 export const StyledEditAmount = styled(Field)`
-  width: 280px;
   font-size: 18px;
   font-weight: 600;
   line-height: normal;
-  color: ${({ theme }) => theme.colors.mainWhite};
-  background: transparent;
-  border: none;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.4);
   padding: 8px;
   padding-left: 20px;
+  width: 280px;
   margin-bottom: 40px;
+
+  border: none;
+  background: transparent;
+  color: ${({ theme }) => theme.colors.mainWhite};
+  border-bottom: ${({ theme }) => theme.border.borderBottom};
 
   @media only screen and (min-width: 768px) {
     width: 180px;
@@ -94,15 +95,14 @@ export const StyledEditAmount = styled(Field)`
 `;
 
 export const StyledEditField = styled(Field)`
-  width: 280px;
-  padding: 0 20px 8px 20px;
-
   font-size: 18px;
   font-weight: 400;
   line-height: normal;
+  width: 280px;
+  padding: 0 20px 8px 20px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: ${({ theme }) => theme.border.borderBottom};
   color: ${({ theme }) => theme.colors.mainWhite};
 
   @media only screen and (min-width: 768px) {
@@ -116,11 +116,12 @@ export const StyledEditDatePicker = styled(DatePicker)`
   font-size: 18px;
   font-weight: 600;
   line-height: normal;
-  color: ${({ theme }) => theme.colors.mainWhite};
+  margin-bottom: 20px;
+
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  margin-bottom: 20px;
+  border-bottom: ${({ theme }) => theme.border.borderBottom};
+  color: ${({ theme }) => theme.colors.mainWhite};
 
   @media only screen and (min-width: 768px) {
     width: 180px;
@@ -153,7 +154,7 @@ export const StyledWrapper = styled.div`
   }
   .react-datepicker__month-container {
     float: left;
-    background: radial-gradient(#3f2e96, #5f478c);
+    background: ${({ theme }) => theme.backgrounds.modalBg};
   }
   .react-datepicker__day-name,
   .react-datepicker__day,
@@ -162,10 +163,10 @@ export const StyledWrapper = styled.div`
     color: ${({ theme }) => theme.colors.mainWhite};
   }
   .react-datepicker__day:hover {
-    background: ${({ theme }) => theme.backgrounds.active};
+    background-color: ${({ theme }) => theme.backgrounds.active};
   }
   .react-datepicker__header {
-    background: ${({ theme }) => theme.backgrounds.tableHead};
+    background-color: ${({ theme }) => theme.backgrounds.tableHead};
   }
   .react-datepicker__day--disabled,
   .react-datepicker__month-text--disabled,
@@ -194,27 +195,27 @@ export const EditBtnBox = styled.div`
 `;
 
 export const BtnSave = styled.button`
-  width: 280px;
-  height: 50px;
-  padding: 13px 100px;
-  border-radius: 20px;
   font-size: 18px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  width: 280px;
+  height: 50px;
+  padding: 13px 100px;
+  margin-top: 40px;
+  border-radius: 20px;
   color: ${({ theme }) => theme.colors.mainWhite};
   background: ${({ theme }) => theme.backgrounds.btnGradient};
-  margin-top: 40px;
 `;
 
 export const EditBtnCancel = styled.button`
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
   width: 280px;
   height: 50px;
   padding: 13px 100px;
   border-radius: 20px;
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: #623f8b;
   background-color: ${({ theme }) => theme.colors.mainWhite};
-  text-align: center;
 `;
