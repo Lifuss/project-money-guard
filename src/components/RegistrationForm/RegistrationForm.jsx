@@ -98,6 +98,9 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
@@ -128,6 +131,9 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
@@ -161,6 +167,9 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
@@ -196,6 +205,9 @@ const RegistrationForm = () => {
           helperText={
             formik.touched.confirmPassword && formik.errors.confirmPassword
           }
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',

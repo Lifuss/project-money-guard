@@ -70,12 +70,15 @@ return (
     <EmailOutlinedIcon style={{ verticalAlign: 'middle', marginRight: '20px' }} /> E-mail
   </span>
 }
-          type="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
+        type="email"
+        value={formik.values.email}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        error={formik.touched.email && Boolean(formik.errors.email)}
+        helperText={formik.touched.email && formik.errors.email}
+        InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '52px',
@@ -97,6 +100,9 @@ return (
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '40px',
