@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AccountName,
   DividerImg,
@@ -8,7 +8,16 @@ import {
   LogoImg,
   LogoName,
   LogoutBtn,
+  LogoutImg,
+  LogoutName,
+  OverlayStyle,
+  ModalWindowStyle,
+  ConfirmationMessage,
+  LogOutButtonStyle,
+  CancelButtonStyle,
+  LogoutLogoBox,
   StyledHeaderContainer,
+  HeaderWrapper,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import exitIcon from '../../images/exit.svg';
@@ -17,6 +26,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useMediaQuery } from 'react-responsive';
 import { logoutThunk } from 'redux/auth/operations';
+
+
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -31,16 +43,19 @@ const Header = () => {
   const index = email.indexOf('@');
   const nameFromEmail = email.slice(0, index);
 
+  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
+
   const handleLogout = () => {
-    // alert('Are you sure you want to logout?'); // поки що alert
-    console.log('Logout');
+    setShowLogoutConfirmation(true);
+  };
+  const confirmLogout = () => {
     dispatch(logoutThunk());
-    // відкрити модалку 'Are you sure you want to logout?'
+    setShowLogoutConfirmation(false);
   };
 
   return (
     <>
-      <header>
+      <HeaderWrapper>
         <StyledHeaderContainer>
           <LogoBox>
             <LogoImg src={logoMoneyGuard} alt="logo" />
@@ -57,7 +72,25 @@ const Header = () => {
             </LogoutBtn>
           </HeaderInfo>
         </StyledHeaderContainer>
-      </header>
+    </HeaderWrapper>
+
+{showLogoutConfirmation && (
+  <OverlayStyle>
+          <ModalWindowStyle>
+             <LogoutLogoBox>
+            <LogoutImg src={logoMoneyGuard} alt="logo" />
+            <LogoutName>Money Guard</LogoutName>
+          </LogoutLogoBox>
+      <ConfirmationMessage><p>Are you sure you want to logout?</p></ConfirmationMessage>
+            <div>
+              <LogOutButtonStyle onClick={confirmLogout}>Logout</LogOutButtonStyle>
+        <CancelButtonStyle onClick={() => setShowLogoutConfirmation(false)}>
+          Cancel
+        </CancelButtonStyle>
+      </div>
+    </ModalWindowStyle>
+  </OverlayStyle>
+)}
     </>
   );
 };

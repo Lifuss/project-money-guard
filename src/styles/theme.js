@@ -3,7 +3,7 @@ export const theme = {
     mainWhite: '#FBFBFB',
     incomeColor: '#FFB627',
     expenseColor: '#FF868D',
-    subColor: '#FFFFFF99',
+    subColor: 'rgba(255, 255, 255, 0.41);',
     contrastText: '#623F8B',
     editBtn: 'rgba(255, 255, 255, 0.6)',
   },
