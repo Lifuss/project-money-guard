@@ -82,9 +82,6 @@ export const OverlayStyle = styled.div`
   height: 80vh;
   display: flex;
   justify-content: flex-end;
-  /* align-items: center; */
-  /* margin: 56px, auto; */
-  /* bottom: 0; */
   z-index: 1200;
   background: rgba(34, 13, 91, 0.23);
   backdrop-filter: blur(7px);
@@ -93,6 +90,10 @@ export const OverlayStyle = styled.div`
   visibility: visible;
 
   @media screen and (min-width: 768px) {
+    position: fixed;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 60px 0px;
   }
 `;
@@ -153,7 +154,7 @@ export const ConfirmationMessage = styled.p`
 `;
 
 export const CancelButtonStyle = styled.button`
-  width: 319px;
+  min-width: 280px;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -176,10 +177,15 @@ export const CancelButtonStyle = styled.button`
   &:hover {
     font-weight: 600;
   }
+
+   @media screen and (min-width: 768px) {
+      width: 319px;
+      height: 50px;
+  }
 `;
 
 export const LogOutButtonStyle = styled.button`
-  width: 319px;
+  min-width: 280px;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -202,6 +208,11 @@ export const LogOutButtonStyle = styled.button`
   &:hover {
     font-weight: 600;
   }
+  
+   @media screen and (min-width: 768px) {
+      width: 319px;
+      height: 50px;
+  }
 `;
 
 export const LogoutLogoBox = styled.div`
@@ -210,7 +221,7 @@ export const LogoutLogoBox = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: 320px) and (max-width: 767px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
 `;
