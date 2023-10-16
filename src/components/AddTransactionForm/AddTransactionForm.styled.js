@@ -12,9 +12,13 @@ export const StyledForm = styled(Form)`
   align-items: center;
   justify-content: center;
   width: 280px;
+
+  @media only screen and (min-width: 768px) {
+    width: 394px;
+  }
 `;
 
-export const StyledField = styled(Field)`
+export const StyledFieldAmount = styled(Field)`
   width: 280px;
   height: 75px;
   color: rgba(255, 255, 255, 0.6);
@@ -22,6 +26,24 @@ export const StyledField = styled(Field)`
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 20px;
+
+  @media only screen and (min-width: 768px) {
+    width: 181px;
+  }
+`;
+
+export const StyledFieldComment = styled(Field)`
+  width: 280px;
+  height: 75px;
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0 20px;
+
+  @media only screen and (min-width: 768px) {
+    width: 394px;
+  }
 `;
 
 export const StyledSelect = styled.select`
@@ -32,6 +54,10 @@ export const StyledSelect = styled.select`
   padding: 0 20px;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+  @media only screen and (min-width: 768px) {
+    width: 394px;
+  }
 `;
 
 export const AddFormTitle = styled.h2`
@@ -92,6 +118,13 @@ export const SwitcherRoundMinus = styled.div`
   left: 38px;
 `;
 
+export const AmountDateBox = styled.div`
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    gap: 32px;
+  }
+`;
+
 export const StyledDatePicker = styled(DatePicker)`
   width: 280px;
   height: 75px;
@@ -101,6 +134,10 @@ export const StyledDatePicker = styled(DatePicker)`
   padding: 0 20px;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+  @media only screen and (min-width: 768px) {
+    width: 181px;
+  }
 `;
 
 export const StyledWrapper = styled.div`

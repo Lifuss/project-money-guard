@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
   AddFormTitle,
+  AmountDateBox,
   BtnAdd,
   BtnBox,
   StyledContainer,
   StyledDatePicker,
-  StyledField,
+  StyledFieldAmount,
+  StyledFieldComment,
   StyledForm,
   StyledRadioBox,
   StyledRadioInput,
@@ -174,38 +176,42 @@ const AddTransactionForm = ({ close }) => {
                   className="option"
                 />
               ) : null} */}
-              <StyledField
-                name="amount"
-                placeholder="0.00"
-                value={values.amount}
-              />
-              <StyledWrapper>
-                <StyledDatePicker
-                  name="transactionDate"
-                  value={values.transactionDate}
-                  onChange={transactionDate => {
-                    handleChange({
-                      target: {
-                        name: 'transactionDate',
-                        value: transactionDate,
-                      },
-                    });
-                    setStartDate(transactionDate);
-                  }}
-                  dateFormat="dd.MM.yyyy"
-                  placeholderText={`${new Date().toLocaleDateString('uk-UA')}`}
-                  showIcon
-                  selected={startDate}
-                  maxDate={new Date()}
-                  style={{ float: 'left' }}
-                  icon={
-                    <svg width="24" height="24">
-                      <use href={`${sprite}#calendar`} />
-                    </svg>
-                  }
+              <AmountDateBox>
+                <StyledFieldAmount
+                  name="amount"
+                  placeholder="0.00"
+                  value={values.amount}
                 />
-              </StyledWrapper>
-              <StyledField
+                <StyledWrapper>
+                  <StyledDatePicker
+                    name="transactionDate"
+                    value={values.transactionDate}
+                    onChange={transactionDate => {
+                      handleChange({
+                        target: {
+                          name: 'transactionDate',
+                          value: transactionDate,
+                        },
+                      });
+                      setStartDate(transactionDate);
+                    }}
+                    dateFormat="dd.MM.yyyy"
+                    placeholderText={`${new Date().toLocaleDateString(
+                      'uk-UA'
+                    )}`}
+                    showIcon
+                    selected={startDate}
+                    maxDate={new Date()}
+                    style={{ float: 'left' }}
+                    icon={
+                      <svg width="24" height="24">
+                        <use href={`${sprite}#calendar`} />
+                      </svg>
+                    }
+                  />
+                </StyledWrapper>
+              </AmountDateBox>
+              <StyledFieldComment
                 name="comment"
                 type="comment"
                 placeholder="Comment"
