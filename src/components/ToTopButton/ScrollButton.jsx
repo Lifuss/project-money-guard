@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaArrowCircleUp } from 'react-icons/fa';
+import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 import { Button } from './ScrollButton.styled';
 
 const ScrollButton = () => {
@@ -11,7 +11,7 @@ const ScrollButton = () => {
     if (scrolled > 200) {
       setVisible(true);
       setOpacity(1);
-    } else if (scrolled <= 200) {
+    } else {
       setVisible(false);
       setOpacity(0);
     }
@@ -28,7 +28,7 @@ const ScrollButton = () => {
 
   return (
     <Button $opacity={opacity}>
-      <FaArrowCircleUp
+      <BsFillArrowUpCircleFill
         onClick={scrollToTop}
         style={{ display: visible ? 'inline-block' : 'none' }}
       />
