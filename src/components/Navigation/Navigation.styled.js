@@ -16,11 +16,9 @@ export const NavList = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  /* align-items: center; */
   width: 38px;
   height: 38px;
   &.active {
-    /* color: #4a56e2; */
     color: ${({ theme }) => theme.backgrounds.activeNavBtn};
     border-radius: 3px;
   }
@@ -37,7 +35,6 @@ export const StyledNavLink = styled(NavLink)`
 `;
 
 export const StyledNavText = styled.span`
-  /* color: #fbfbfb; */
   color: ${({ theme }) => theme.colors.mainWhite};
   font-size: 18px;
   margin-left: 20px;
