@@ -1,6 +1,5 @@
-// transactions
-
 import { createSelector } from 'reselect';
+// transactions
 
 export const selectTransactions = state =>
   state.transactions.transactions.items;

@@ -41,7 +41,7 @@ export const StyledHeaderTr = styled.tr`
   padding: 16px 20px;
 
   border-radius: 8px;
-  background: ${({ theme }) => theme.backgrounds.tableHead};
+  background-color: ${({ theme }) => theme.backgrounds.tableHead};
   box-shadow: ${({ theme }) => theme.shadows.default};
   backdrop-filter: ${({ theme }) => theme.blur.backdropFilter};
 
@@ -66,10 +66,10 @@ export const StyledTbodyTable = styled.tbody`
   max-height: 50vh;
   overflow-y: scroll;
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(82, 59, 126, 0.3);
+    background-color: ${({ theme }) => theme.backgrounds.bgScrollBar};
   }
   &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: ${({ theme }) => theme.shadows.scrollbarShadow};
   }
   &::-webkit-scrollbar {
     width: 0.5em;
@@ -92,15 +92,12 @@ export const StyledTr = styled.tr`
 export const StyledTd = styled.td`
   width: 50px;
   text-align: center;
-  font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   color: ${props => props.$color};
 `;
 export const StyledTdComment = styled(StyledTd)`
-  /* text-align: start; */
   flex-basis: 182px;
 `;
 export const StyledTableBtnWrapper = styled.div`
@@ -119,6 +116,6 @@ export const StyledNoFound = styled.div`
   width: 600px;
   height: 200px;
   border-radius: 8px;
-  background: rgba(82, 59, 126, 0.6);
-  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  background-color: ${({ theme }) => theme.backgrounds.tableHead};
+  box-shadow: ${({ theme }) => theme.shadows.default};
 `;
