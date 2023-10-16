@@ -8,6 +8,11 @@ export const StyledHeaderContainer = styled(StyledContainer)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media only screen and (min-width: 768px) {
+    padding-top: 16px;
+    padding-bottom: 15px;
+  }
 `;
 
 export const HeaderInfo = styled.div`
@@ -20,7 +25,6 @@ export const HeaderInfo = styled.div`
 export const HeaderWrapper = styled.header`
   background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
 `;
-
 export const LogoBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,13 +38,17 @@ export const LogoImg = styled.img`
 `;
 
 export const LogoName = styled.span`
-  color: #fbfbfb;
+  color: ${({ theme }) => theme.colors.mainWhite};
   font-size: 13px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+  }
 `;
 
 export const AccountName = styled.p`
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: ${({ theme }) => theme.colors.editBtn};
 `;
 
 export const DividerImg = styled.img`
@@ -50,7 +58,7 @@ export const DividerImg = styled.img`
 
 export const ExitText = styled.p`
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
+  color: ${({ theme }) => theme.colors.editBtn};
   margin-left: 8px;
 `;
 

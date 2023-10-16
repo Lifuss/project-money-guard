@@ -1,8 +1,12 @@
 import React from 'react';
 import sprite from '../../images/sprite.svg';
-import { NavList, StyledNavLink, StyledNavText } from './Navigation.styled';
+import {
+  NavList,
+  NavStyledContainer,
+  StyledNavLink,
+  StyledNavText,
+} from './Navigation.styled';
 import { useMediaQuery } from 'react-responsive';
-import { StyledContainer } from 'styles/GlobalStyles';
 
 const Navigation = () => {
   const isDesktopOrLaptop = useMediaQuery({
@@ -14,7 +18,7 @@ const Navigation = () => {
   return (
     <>
       <nav>
-        <StyledContainer>
+        <NavStyledContainer>
           <NavList>
             <li>
               <StyledNavLink to="/">
@@ -42,7 +46,7 @@ const Navigation = () => {
               </li>
             ) : null}
           </NavList>
-        </StyledContainer>
+        </NavStyledContainer>
       </nav>
     </>
   );
