@@ -50,6 +50,7 @@ const AddTransactionForm = ({ close }) => {
   };
 
   const categories = useSelector(selectAllCategories);
+  // console.log(categories);
 
   useEffect(() => {
     dispatch(fetchTransactionCategory());
@@ -58,7 +59,7 @@ const AddTransactionForm = ({ close }) => {
   const [startDate, setStartDate] = useState();
 
   const handleSubmit = (values, selectedCategory) => {
-    console.log('Submit, values', values);
+    // console.log('Submit, values', values);
     const addFormData = {
       amount: values.type === 'EXPENSE' ? -values.amount : values.amount,
       categoryId:
@@ -69,7 +70,7 @@ const AddTransactionForm = ({ close }) => {
       transactionDate: values.transactionDate,
       type: values.type,
     };
-    console.log('Submit, addFormData', addFormData);
+    // console.log('Submit, addFormData', addFormData);
     dispatch(addTransactionThunk(addFormData));
     close();
   };
@@ -149,11 +150,13 @@ const AddTransactionForm = ({ close }) => {
                     styles={styles}
                     value={selectedCategory}
                     onChange={value => onCategoryChange(value)}
-                    options={categories?.map(option => ({
-                      value: option.type,
-                      label: option.name,
-                      id: option.id,
-                    }))}
+                    options={categories
+                      ?.filter(option => option.type === 'EXPENSE')
+                      .map(option => ({
+                        value: option.type,
+                        label: option.name,
+                        id: option.id,
+                      }))}
                     placeholder={selectedCategory.label}
                     theme={theme => ({
                       ...theme,
