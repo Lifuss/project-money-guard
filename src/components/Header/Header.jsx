@@ -45,12 +45,23 @@ const Header = () => {
 
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
 
+  const disableBodyScroll = () => {
+    document.body.style.overflow = 'hidden';
+  };
+
+   const enableBodyScroll = () => {
+    document.body.style.overflow = 'auto';
+  };
+
   const handleLogout = () => {
     setShowLogoutConfirmation(true);
+    disableBodyScroll();
   };
   const confirmLogout = () => {
     dispatch(logoutThunk());
     setShowLogoutConfirmation(false);
+    enableBodyScroll();
+
   };
 
   return (
