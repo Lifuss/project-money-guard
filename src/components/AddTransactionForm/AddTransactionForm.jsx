@@ -11,12 +11,13 @@ import {
   StyledForm,
   StyledRadioBox,
   StyledRadioInput,
-  StyledSelect,
+  StyledSelectMainDiv,
   StyledTextSpan,
   StyledWrapper,
   SwitcherRoundMinus,
   SwitcherRoundPlus,
   SwitcherSquare,
+  styles,
 } from './AddTransactionForm.styled';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,18 +29,7 @@ import { object, string } from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
 import { selectAllCategories } from 'redux/transactions/selectors';
-
-// const options = [
-//   { value: 'Main expenses', label: 'Main expenses' },
-//   { value: 'Products', label: 'Products' },
-//   { value: 'Car', label: 'Car' },
-//   { value: 'Self Care', label: 'Self Care' },
-//   { value: 'Household Products', label: 'Household Products' },
-//   { value: 'Education', label: 'Education' },
-//   { value: 'Leisure', label: 'Leisure' },
-//   { value: 'Other expenses', label: 'Other expenses' },
-//   { value: 'Entertainment', label: 'Entertainment' },
-// ];
+import Select from 'react-select';
 
 const AddSchema = object({
   amount: string().required(),
@@ -50,33 +40,36 @@ const AddSchema = object({
 const AddTransactionForm = ({ close }) => {
   const dispatch = useDispatch();
 
+  const [selectedCategory, setSelectedCategory] = useState({
+    value: 'Select a category',
+    label: 'Select a category',
+  });
+
+  const onCategoryChange = category => {
+    setSelectedCategory(category);
+  };
+
   const categories = useSelector(selectAllCategories);
 
   useEffect(() => {
     dispatch(fetchTransactionCategory());
   }, [dispatch]);
 
-  // const [selectedCategory, setSelectedCategory] = useState(options[0]);
-  // const onCategoryChange = category => {
-  //   setSelectedCategory(category);
-  // };
-
   const [startDate, setStartDate] = useState();
 
-  const handleSubmit = values => {
-    console.log('submit', values);
+  const handleSubmit = (values, selectedCategory) => {
+    console.log('Submit, values', values);
     const addFormData = {
       amount: values.type === 'EXPENSE' ? -values.amount : values.amount,
       categoryId:
         values.type === 'EXPENSE'
-          ? values.category
+          ? selectedCategory.id
           : '063f1132-ba5d-42b4-951d-44011ca46262', // categoryId INCOME
       comment: values.comment,
       transactionDate: values.transactionDate,
-      // type: values.type === 'EXPENSE' ? 'EXPENSE' : 'INCOME',
       type: values.type,
     };
-    console.log(addFormData);
+    console.log('Submit, addFormData', addFormData);
     dispatch(addTransactionThunk(addFormData));
     close();
   };
@@ -94,7 +87,7 @@ const AddTransactionForm = ({ close }) => {
             comment: '',
           }}
           validationSchema={AddSchema}
-          onSubmit={handleSubmit}
+          onSubmit={values => handleSubmit(values, selectedCategory)}
         >
           {({ errors, touched, values, handleChange }) => (
             <StyledForm autoComplete="off">
@@ -148,34 +141,30 @@ const AddTransactionForm = ({ close }) => {
                   </StyledTextSpan>
                 </label>
               </StyledRadioBox>
+
               {values.type === 'EXPENSE' ? (
-                <StyledSelect
-                  name="category"
-                  value={values.category}
-                  onChange={handleChange}
-                >
-                  <option disabled value="">
-                    Select a category
-                  </option>
-                  {categories.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </StyledSelect>
+                <StyledSelectMainDiv>
+                  <Select
+                    name="category"
+                    styles={styles}
+                    value={selectedCategory}
+                    onChange={value => onCategoryChange(value)}
+                    options={categories?.map(option => ({
+                      value: option.type,
+                      label: option.name,
+                      id: option.id,
+                    }))}
+                    placeholder={selectedCategory.label}
+                    theme={theme => ({
+                      ...theme,
+                      colors: {
+                        neutral50: '#fff',
+                      },
+                    })}
+                  />
+                </StyledSelectMainDiv>
               ) : null}
-              {/* {values.type === 'EXPENSE' ? (
-                <StyledSelect
-                  styles={styles}
-                  name="category"
-                  defaultValue={options[0]}
-                  value={selectedCategory}
-                  // defaultValue="Select a category"
-                  onChange={value => onCategoryChange(value)}
-                  options={options}
-                  className="option"
-                />
-              ) : null} */}
+
               <AmountDateBox>
                 <StyledFieldAmount
                   name="amount"
