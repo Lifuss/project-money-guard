@@ -11,7 +11,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
-import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
+import PasswordStrengthBar from './PasswordStrengthBar';
 import {
   StyledLink,
   LogoBox,
@@ -21,8 +21,8 @@ import {
 import { StyledSection, StyledForm } from "./RegistrationForm.styled"
 
 // Import PasswordStrengthBar and define barColors and isRequired
-const barColors = ['#ddd', '#FFC727', '#FFC727', '#FFC727', '#FFC727'];
-const isRequired = false;
+// const barColors = ['#ddd', '#FFC727', '#FFC727', '#FFC727', '#FFC727'];
+// const isRequired = false;
 
 const validationSchema = yup.object({
   name: yup.string('Enter your name').required('Name is required'),
@@ -98,6 +98,9 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
@@ -128,6 +131,9 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
@@ -161,6 +167,9 @@ const RegistrationForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
@@ -196,25 +205,19 @@ const RegistrationForm = () => {
           helperText={
             formik.touched.confirmPassword && formik.errors.confirmPassword
           }
+          InputProps={{
+          inputProps: { style: { color: '#FFFFFF99' } }, 
+  }}
           style={{
             width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+            marginBottom: "5px"
           }}
         />
-        <PasswordStrengthBar
-          password={password}
-          barColors={barColors}
-          isRequired={isRequired}
-          scoreWords={["", "", "", ""]}
-          minLength={3}
-          shortScoreWord={""}
-          style={{
-            width: '90%',
-            margin: "auto",
-            // boxShadow: '0px 1px 8px rgba(255, 199, 39, 0.50)',
-            }}
-        />
+        <div>
+          <PasswordStrengthBar password={password} />
+        </div>
         <Button
           type="submit"
           style={{
