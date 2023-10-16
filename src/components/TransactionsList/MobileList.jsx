@@ -5,7 +5,10 @@ import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectTransactions } from 'redux/transactions/selectors';
 import { selectLoading } from 'redux/auth/selectors';
-import { fetchTransactionsThunk } from 'redux/transactions/operations';
+import {
+  fetchTransactionCategory,
+  fetchTransactionsThunk,
+} from 'redux/transactions/operations';
 import {
   StyledNotFoundTitle,
   StyledTansNotFound,
@@ -18,6 +21,7 @@ const MobileList = () => {
   const error = useSelector(selectError);
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
+    dispatch(fetchTransactionCategory());
   }, [dispatch]);
   return (
     <>

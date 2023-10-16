@@ -27,6 +27,7 @@ import {
 } from 'components/TransactionsItem/TransactionsItem.styled';
 import {
   deleteTransactionThunk,
+  fetchTransactionCategory,
   fetchTransactionsThunk,
 } from 'redux/transactions/operations';
 import useModal from 'hooks/useModal';
@@ -42,6 +43,7 @@ const TransactionsList = () => {
   const error = useSelector(selectError);
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
+    dispatch(fetchTransactionCategory());
   }, [dispatch]);
 
   const handleTableBtnDelete = id => {
