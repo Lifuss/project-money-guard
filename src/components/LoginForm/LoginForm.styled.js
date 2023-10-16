@@ -79,6 +79,8 @@ export const StyledLink = styled(NavLink)`
   border-radius: 20px;
   border:  1px solid #4A56E2;
   margin: auto;
+  box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.20);
+
   
 
   font-weight: 400;
