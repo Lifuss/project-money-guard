@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAllCategories,
@@ -10,6 +10,7 @@ import Loader from 'components/Loader/Loader';
 import {
   StyledHeaderTr,
   StyledNoFound,
+  StyledSortIcon,
   StyledTable,
   StyledTableBtnWrapper,
   StyledTableWrapper,
@@ -18,6 +19,7 @@ import {
   StyledTdComment,
   StyledTh,
   StyledTr,
+  StyledTrSortBox,
   StyledTransactionsList,
 } from './TransactionsList.styled';
 import sprite from '../../images/sprite.svg';
@@ -41,6 +43,12 @@ const TransactionsList = () => {
   const categories = useSelector(selectAllCategories);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  const [sortCriteria, setSortCriteria] = useState({
+    value: 'date',
+    label: 'Date',
+    isReverse: false,
+  });
+
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
     dispatch(fetchTransactionCategory());
@@ -50,6 +58,51 @@ const TransactionsList = () => {
     dispatch(deleteTransactionThunk(id));
   };
 
+  const handleSort = criteria => {
+    if (sortCriteria.value === criteria.value) {
+      setSortCriteria(prev => ({ ...prev, isReverse: !prev.isReverse }));
+    } else {
+      setSortCriteria({ ...criteria, isReverse: false });
+    }
+  };
+
+  const sortTransactions = () => {
+    const sortedTransactions = [...transactions];
+
+    switch (sortCriteria.value) {
+      case 'date':
+        sortedTransactions.sort((a, b) => {
+          const dateA = new Date(a.transactionDate);
+          const dateB = new Date(b.transactionDate);
+          return sortCriteria.isReverse ? dateB - dateA : dateA - dateB;
+        });
+        break;
+      case 'amount':
+        sortedTransactions.sort((a, b) => {
+          return sortCriteria.isReverse
+            ? b.amount - a.amount
+            : a.amount - b.amount;
+        });
+        break;
+      case 'category':
+        sortedTransactions.sort((a, b) => {
+          const categoryA =
+            categories.find(cat => cat.id === a.categoryId)?.name || '';
+          const categoryB =
+            categories.find(cat => cat.id === b.categoryId)?.name || '';
+          return sortCriteria.isReverse
+            ? categoryB.localeCompare(categoryA)
+            : categoryA.localeCompare(categoryB);
+        });
+        break;
+      default:
+        return sortedTransactions.sort(
+          (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+        );
+    }
+
+    return sortedTransactions;
+  };
   return (
     <>
       {loading && <Loader />}
@@ -60,15 +113,83 @@ const TransactionsList = () => {
             <StyledTable>
               <thead>
                 <StyledHeaderTr>
-                  <StyledTh>Date</StyledTh>
+                  <StyledTh
+                    onClick={() =>
+                      handleSort({
+                        value: 'date',
+                      })
+                    }
+                  >
+                    Date
+                    <StyledSortIcon
+                      style={{
+                        transform:
+                          sortCriteria.value === 'date' &&
+                          sortCriteria.isReverse
+                            ? 'rotate(180deg)'
+                            : 'none',
+                      }}
+                      width="14"
+                      height="14"
+                    >
+                      <use href={`${sprite}#arrow_down`} />
+                    </StyledSortIcon>
+                  </StyledTh>
                   <StyledTh>Type</StyledTh>
-                  <StyledTh>Category</StyledTh>
+                  <StyledTh
+                    onClick={() =>
+                      handleSort({
+                        value: 'category',
+                      })
+                    }
+                  >
+                    Category
+                    <StyledSortIcon
+                      // $rotated={
+                      //   sortCriteria.value === 'category' &&
+                      //   sortCriteria.isReverse
+                      // }
+                      style={{
+                        transform:
+                          sortCriteria.value === 'category' &&
+                          sortCriteria.isReverse
+                            ? 'rotate(180deg)'
+                            : 'none',
+                      }}
+                      width="14"
+                      height="14"
+                    >
+                      <use href={`${sprite}#arrow_down`} />
+                    </StyledSortIcon>
+                  </StyledTh>
+
                   <StyledTh>Comment</StyledTh>
-                  <StyledTh>Sum</StyledTh>
+                  <StyledTh
+                    onClick={() =>
+                      handleSort({
+                        value: 'amount',
+                      })
+                    }
+                  >
+                    Sum
+                    <StyledSortIcon
+                      style={{
+                        transform:
+                          sortCriteria.value === 'amount' &&
+                          sortCriteria.isReverse
+                            ? 'rotate(180deg)'
+                            : 'none',
+                      }}
+                      width="14"
+                      height="14"
+                    >
+                      <use href={`${sprite}#arrow_down`} />
+                    </StyledSortIcon>
+                  </StyledTh>
                 </StyledHeaderTr>
               </thead>
               <StyledTbodyTable>
-                {transactions.map(transaction => (
+                {sortTransactions().map(transaction => (
                   <StyledTr key={transaction.id}>
                     <StyledTd>
                       {formatDate(transaction.transactionDate)}
@@ -119,7 +240,7 @@ const TransactionsList = () => {
         </StyledTransactionsList>
       ) : (
         <StyledNoFound>
-          <h2>No transactions found, lets create it!</h2>
+          <h2>No transactions found, lets create!</h2>
         </StyledNoFound>
       )}
     </>
