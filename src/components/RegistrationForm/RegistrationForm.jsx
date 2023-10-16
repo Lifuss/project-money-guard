@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
-import { authReducer } from '../../redux/auth/slice';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -64,28 +62,10 @@ const RegistrationForm = () => {
     return <Navigate to="/" replace />;
   }
 
-  const handleSubmit = async values => {
-    try {
-      const response = await dispatch(registerThunk(values));
+  const handleSubmit =  values => {
+    dispatch(registerThunk(values));
+};
 
-      if (response.status === 201) {
-        dispatch(authReducer.actions.login(response.data));
-        return <Navigate to="/" />;
-      } else if (response.status === 400) {
-        toast.error(`Validation error: ${response.data}`);
-      } else if (response.status === 409) {
-        toast.error(
-          `Error: User with such email already exists:${response.data}`
-        );
-      } else {
-        toast.error(
-          `Unknown error during registration. Status: ${response.status}`
-        );
-      }
-    } catch (error) {
-      toast.error(`Registration was unsuccessful: ${error}`);
-    }
-  };
 
   return (
     <StyledSection>
@@ -105,11 +85,7 @@ const RegistrationForm = () => {
           label={
             <span
               style={{
-                color: 'rgba(255, 255, 255, 0.60)',
-                fontSize: '18px',
-                lineHeight: '27px',
-              }}
-            >
+                color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
               <PersonIcon
                 style={{ verticalAlign: 'middle', marginRight: '20px' }}
               />{' '}
@@ -123,7 +99,7 @@ const RegistrationForm = () => {
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -153,7 +129,7 @@ const RegistrationForm = () => {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -186,7 +162,7 @@ const RegistrationForm = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -221,7 +197,7 @@ const RegistrationForm = () => {
             formik.touched.confirmPassword && formik.errors.confirmPassword
           }
           style={{
-            width: '409px',
+            width: '90%',
             marginTop: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
@@ -234,14 +210,15 @@ const RegistrationForm = () => {
           minLength={3}
           shortScoreWord={""}
           style={{
-            width: '409px',
+            width: '90%',
+            margin: "auto",
             // boxShadow: '0px 1px 8px rgba(255, 199, 39, 0.50)',
             }}
         />
         <Button
           type="submit"
           style={{
-            width: '300px',
+            width: '319px',
             height: '50px',
             background:
               'linear-gradient(97deg, #FFC727 0%, #9E40BA 61%, #7000FF 91%)',
@@ -255,6 +232,7 @@ const RegistrationForm = () => {
             textAlign: 'center',
             cursor: 'pointer',
             marginTop: '40px',
+            marginBottom: '20px',
             transition: 'background 0.3s, font-weight 0.3s',
           }}
         >

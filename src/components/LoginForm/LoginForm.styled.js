@@ -15,9 +15,11 @@ export const StyledSection = styled.section`
   background-image: url(${loginMobile});
   background-repeat: no-repeat;
   background-size: cover;
+
    @media screen and (min-width: 768px) {
     background-image: url(${loginTablet});
   }
+
   @media screen and (min-width: 1280px) {
     background-image: url(${loginDesktop});
   }
@@ -32,38 +34,51 @@ export const LogoBox = styled.div`
 
 export const LogoImg = styled.img`
   margin-top: 80px;
-  width: 36px;
-  height: 36px;
+  width: 25px;
+  height: 25px;
+
+  @media screen and (min-width: 768px) {
+    width: 36px;
+    height: 36px;
+  }
 `;
 
 export const LogoName = styled.span`
   color: #fbfbfb;
-  font-size: 27px;
+  font-size: 19px;
+
+   @media screen and (min-width: 768px) {
+    font-size: 27px;
+  }
 `;
 
 export const StyledForm = styled.form`
+  display: block;
   position: relative;
-  display: flex;
-  width: 533px;
-  height: 620px;
   flex-direction: column;
   align-items: center;
-  borderRadius: 8px;
+  border-radius: 8px;
 
-  background-color: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(50px);
-  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
+
+   @media screen and (min-width: 768px) {
+    width: 533px;
+    height: 620px;
+    background: radial-gradient(#2f1f81, #FFFFFF3A);
+    backdrop-filter: blur(50px);
+    box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
+    
+   }
 `;
 
 export const StyledLink = styled(NavLink)`
-  width: 300px;
+  width: 319px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
   border:  1px solid #4A56E2;
-  margin-top: 20px;
+  margin: auto;
   
 
   font-weight: 400;
