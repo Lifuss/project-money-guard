@@ -10,61 +10,26 @@ export const StyledStatisticDivMain = styled.div`
   margin: 0 auto;
   padding: 0 20px;
 
-  &::after {
-    content: '';
-
-    width: 454px;
-    height: 454px;
-    border-radius: 901px;
-    background: rgba(47, 21, 176, 0.73);
-    filter: blur(100px);
-    position: absolute;
-    left: -90px;
-    top: -50px;
-  }
-  &::before {
-    content: '';
-    width: 539px;
-    height: 539px;
-    border-radius: 539px;
-    background: rgba(47, 21, 176, 0.73);
-    z-index: -1;
-    filter: blur(100px);
-    position: absolute;
-    left: -400px;
-    top: 500px;
-  }
   @media only screen and (min-width: 768px) {
     display: flex;
     margin: 0;
     justify-content: space-between;
-    gap: 32px;
-    max-width: 768px;
+    /* gap: 32px; */
+    max-width: 100%;
     height: 720px;
-    padding: 20px 16px 0 35px;
-    &::before {
+    padding: 20px 32px 0 35px;
+    &::after {
       content: '';
-      width: 893px;
-      height: 901px;
-      border-radius: 366.105px;
-      background: #302e8e;
+      width: 70%;
+      height: 362.381px;
+      bottom: -30px;
+      left: -150px;
+      z-index: -1;
+      position: absolute;
+      border-radius: 362.381px;
+      background: linear-gradient(220deg, #6d54eb 28.31%, #652392 66.76%);
 
       filter: blur(150px);
-      position: absolute;
-      left: 650px;
-      bottom: 500px;
-    }
-    &::after {
-      left: 300px;
-      top: 200px;
-      background: linear-gradient(
-        220deg,
-        rgba(109, 84, 235, 0.6) 28.31%,
-        rgba(101, 35, 146, 0.6) 66.76%
-      );
-      filter: blur(200px);
-      width: 893px;
-      height: 901px;
     }
   }
   @media only screen and (min-width: 1280px) {
@@ -78,18 +43,7 @@ export const StyledStatisticDivChart = styled.div`
   position: relative;
   width: 280px;
   padding: 16px;
-  &::after {
-    content: '';
-    width: 362.381px;
-    height: 362.381px;
-    top: 500px;
-    left: 170px;
-    position: absolute;
-    border-radius: 362.381px;
-    background: linear-gradient(220deg, #6d54eb 28.31%, #652392 66.76%);
 
-    filter: blur(200px);
-  }
   @media only screen and (min-width: 768px) {
     width: 336px;
     padding: 0;
@@ -100,8 +54,8 @@ export const StyledStatisticDivChart = styled.div`
       border-radius: 333px;
       background: #6d1c77;
       position: absolute;
-      left: 200px;
-      bottom: 0;
+      left: 500px;
+      bottom: -70px;
 
       filter: blur(150px);
     }

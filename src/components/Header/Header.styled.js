@@ -17,13 +17,9 @@ export const HeaderInfo = styled.div`
   gap: 8px;
 `;
 
-// export const HeaderWrapper = styled.header`
-//   width: 100%;
-//   padding: 12px 0;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;
+export const HeaderWrapper = styled.header`
+  background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
+`;
 
 export const LogoBox = styled.div`
   display: flex;

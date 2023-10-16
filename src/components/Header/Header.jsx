@@ -9,6 +9,7 @@ import {
   LogoName,
   LogoutBtn,
   StyledHeaderContainer,
+  HeaderWrapper,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import exitIcon from '../../images/exit.svg';
@@ -40,7 +41,7 @@ const Header = () => {
 
   return (
     <>
-      <header>
+      <HeaderWrapper>
         <StyledHeaderContainer>
           <LogoBox>
             <LogoImg src={logoMoneyGuard} alt="logo" />
@@ -57,7 +58,7 @@ const Header = () => {
             </LogoutBtn>
           </HeaderInfo>
         </StyledHeaderContainer>
-      </header>
+      </HeaderWrapper>
     </>
   );
 };
