@@ -18,13 +18,13 @@ const initialState = {
   summary: {
     categoriesSummary: [
       {
-        name: 'car',
-        type: 'INCOME',
-        total: 10000,
+        name: '',
+        type: '',
+        total: 0,
       },
     ],
-    incomeSummary: 10000.25,
-    expenseSummary: 10000.25,
+    incomeSummary: 0,
+    expenseSummary: 0,
     periodTotal: 0,
     year: null,
     month: null,
