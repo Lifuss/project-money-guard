@@ -71,10 +71,14 @@ export const StyledTh = styled.th`
   color: ${({ theme }) => theme.colors.mainWhite};
 `;
 
+export const StyledThSortActive = styled(StyledTh)`
+  cursor: pointer;
+`;
+
 export const StyledSortIcon = styled.svg`
   margin-left: 6px;
   transition: transform 0.3s ease;
-  /* ${({ rotated }) => rotated && 'transform: rotate(180deg)'} */
+  transform: rotate(180deg);
 `;
 export const StyledTbodyTable = styled.tbody`
   display: block;

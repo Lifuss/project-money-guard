@@ -26,34 +26,25 @@ const MobileList = () => {
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const categories = useSelector(selectAllCategories);
-
   const [sortCriteria, setSortCriteria] = useState({
     value: 'date',
     label: 'Date',
   });
-
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
     dispatch(fetchTransactionCategory());
   }, [dispatch]);
-
   const sortTransactions = () => {
     const sortedTransactions = [...transactions];
 
     switch (sortCriteria.value) {
       case 'date':
-        sortedTransactions.sort((a, b) => {
-          const dateA = new Date(a.transactionDate);
-          const dateB = new Date(b.transactionDate);
-          return sortCriteria.isReverse ? dateB - dateA : dateA - dateB;
-        });
+        sortedTransactions.sort(
+          (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+        );
         break;
       case 'amount':
-        sortedTransactions.sort((a, b) => {
-          return sortCriteria.isReverse
-            ? b.amount - a.amount
-            : a.amount - b.amount;
-        });
+        sortedTransactions.sort((a, b) => b.amount - a.amount);
         break;
       case 'category':
         sortedTransactions.sort((a, b) => {
@@ -61,15 +52,11 @@ const MobileList = () => {
             categories.find(cat => cat.id === a.categoryId)?.name || '';
           const categoryB =
             categories.find(cat => cat.id === b.categoryId)?.name || '';
-          return sortCriteria.isReverse
-            ? categoryB.localeCompare(categoryA)
-            : categoryA.localeCompare(categoryB);
+          return categoryA.localeCompare(categoryB);
         });
         break;
       default:
-        return sortedTransactions.sort(
-          (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
-        );
+        break;
     }
 
     return sortedTransactions;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAllCategories,
@@ -18,8 +18,8 @@ import {
   StyledTd,
   StyledTdComment,
   StyledTh,
+  StyledThSortActive,
   StyledTr,
-  StyledTrSortBox,
   StyledTransactionsList,
 } from './TransactionsList.styled';
 import sprite from '../../images/sprite.svg';
@@ -48,6 +48,9 @@ const TransactionsList = () => {
     label: 'Date',
     isReverse: false,
   });
+  const dateRef = useRef(null);
+  const amountRef = useRef(null);
+  const categoryRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
@@ -60,9 +63,32 @@ const TransactionsList = () => {
 
   const handleSort = criteria => {
     if (sortCriteria.value === criteria.value) {
-      setSortCriteria(prev => ({ ...prev, isReverse: !prev.isReverse }));
+      setSortCriteria(prev => ({
+        ...prev,
+        isReverse: !prev.isReverse,
+      }));
     } else {
       setSortCriteria({ ...criteria, isReverse: false });
+    }
+  };
+  const rotateIcon = state => {
+    switch (state) {
+      case 'date':
+        dateRef.current.style.transform = 'rotate(0)';
+        amountRef.current.style.transform = 'rotate(180deg)';
+        categoryRef.current.style.transform = 'rotate(180deg)';
+        break;
+      case 'category':
+        dateRef.current.style.transform = 'rotate(180deg)';
+        amountRef.current.style.transform = 'rotate(180deg)';
+        categoryRef.current.style.transform = 'rotate(0)';
+        break;
+      case 'amount':
+        dateRef.current.style.transform = 'rotate(180deg)';
+        amountRef.current.style.transform = 'rotate(0)';
+        categoryRef.current.style.transform = 'rotate(180deg)';
+        break;
+      default:
     }
   };
 
@@ -113,79 +139,48 @@ const TransactionsList = () => {
             <StyledTable>
               <thead>
                 <StyledHeaderTr>
-                  <StyledTh
-                    onClick={() =>
+                  <StyledThSortActive
+                    onClick={() => {
                       handleSort({
                         value: 'date',
-                      })
-                    }
+                      });
+                      rotateIcon('date');
+                    }}
                   >
                     Date
-                    <StyledSortIcon
-                      style={{
-                        transform:
-                          sortCriteria.value === 'date' &&
-                          sortCriteria.isReverse
-                            ? 'rotate(180deg)'
-                            : 'none',
-                      }}
-                      width="14"
-                      height="14"
-                    >
+                    <StyledSortIcon ref={dateRef} width="14" height="14">
                       <use href={`${sprite}#arrow_down`} />
                     </StyledSortIcon>
-                  </StyledTh>
+                  </StyledThSortActive>
                   <StyledTh>Type</StyledTh>
-                  <StyledTh
-                    onClick={() =>
+                  <StyledThSortActive
+                    onClick={() => {
                       handleSort({
                         value: 'category',
-                      })
-                    }
+                      });
+                      rotateIcon('category');
+                    }}
                   >
                     Category
-                    <StyledSortIcon
-                      // $rotated={
-                      //   sortCriteria.value === 'category' &&
-                      //   sortCriteria.isReverse
-                      // }
-                      style={{
-                        transform:
-                          sortCriteria.value === 'category' &&
-                          sortCriteria.isReverse
-                            ? 'rotate(180deg)'
-                            : 'none',
-                      }}
-                      width="14"
-                      height="14"
-                    >
+                    <StyledSortIcon ref={categoryRef} width="14" height="14">
                       <use href={`${sprite}#arrow_down`} />
                     </StyledSortIcon>
-                  </StyledTh>
+                  </StyledThSortActive>
 
                   <StyledTh>Comment</StyledTh>
-                  <StyledTh
-                    onClick={() =>
+                  <StyledThSortActive
+                    onClick={() => {
                       handleSort({
                         value: 'amount',
-                      })
-                    }
+                      });
+                      rotateIcon('amount');
+                    }}
                   >
                     Sum
-                    <StyledSortIcon
-                      style={{
-                        transform:
-                          sortCriteria.value === 'amount' &&
-                          sortCriteria.isReverse
-                            ? 'rotate(180deg)'
-                            : 'none',
-                      }}
-                      width="14"
-                      height="14"
-                    >
+                    <StyledSortIcon ref={amountRef} width="14" height="14">
                       <use href={`${sprite}#arrow_down`} />
                     </StyledSortIcon>
-                  </StyledTh>
+                  </StyledThSortActive>
                 </StyledHeaderTr>
               </thead>
               <StyledTbodyTable>
