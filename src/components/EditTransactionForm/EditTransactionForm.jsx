@@ -16,6 +16,7 @@ import {
   StyledEditDatePicker,
   StyledEditField,
   StyledEditForm,
+  StyledWrapper,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
 
@@ -101,30 +102,31 @@ const EditTransactionForm = ({ transaction, close }) => {
                 {errors.amount && touched.amount ? (
                   <div>{errors.amount}</div>
                 ) : null}
-
-                <StyledEditDatePicker
-                  name="transactionDate"
-                  value={values.transactionDate}
-                  onChange={date => {
-                    handleChange({
-                      target: {
-                        name: 'transactionDate',
-                        value: date,
-                      },
-                    });
-                    setStartDate(date);
-                  }}
-                  dateFormat="dd.MM.yy"
-                  showIcon
-                  selected={startDate}
-                  maxDate={new Date()}
-                  style={{ float: 'left' }}
-                  icon={
-                    <svg width="24" height="24">
-                      <use href={`${sprite}#calendar`} />
-                    </svg>
-                  }
-                />
+                <StyledWrapper>
+                  <StyledEditDatePicker
+                    name="transactionDate"
+                    value={values.transactionDate}
+                    onChange={date => {
+                      handleChange({
+                        target: {
+                          name: 'transactionDate',
+                          value: date,
+                        },
+                      });
+                      setStartDate(date);
+                    }}
+                    dateFormat="dd.MM.yy"
+                    showIcon
+                    selected={startDate}
+                    maxDate={new Date()}
+                    style={{ float: 'left' }}
+                    icon={
+                      <svg width="24" height="24">
+                        <use href={`${sprite}#calendar`} />
+                      </svg>
+                    }
+                  />
+                </StyledWrapper>
               </StyledAmounDateEdit>
               <StyledEditField
                 name="comment"
