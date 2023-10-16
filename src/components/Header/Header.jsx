@@ -8,6 +8,14 @@ import {
   LogoImg,
   LogoName,
   LogoutBtn,
+  LogoutImg,
+  LogoutName,
+  OverlayStyle,
+  ModalWindowStyle,
+  ConfirmationMessage,
+  LogOutButtonStyle,
+  CancelButtonStyle,
+  LogoutLogoBox,
   StyledHeaderContainer,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
@@ -17,6 +25,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useMediaQuery } from 'react-responsive';
 import { logoutThunk } from 'redux/auth/operations';
+
+
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -62,13 +73,23 @@ const Header = () => {
         </StyledHeaderContainer>
       </header>
 
-      {showLogoutConfirmation && (
-        <div className="logout-confirmation">
-          <p>Are you sure you want to logout?</p>
-          <button onClick={confirmLogout}>Logout</button>
-          <button onClick={() => setShowLogoutConfirmation(false)}>Cancel</button>
-        </div>
-      )}
+{showLogoutConfirmation && (
+  <OverlayStyle>
+          <ModalWindowStyle>
+             <LogoutLogoBox>
+            <LogoutImg src={logoMoneyGuard} alt="logo" />
+            <LogoutName>Money Guard</LogoutName>
+          </LogoutLogoBox>
+      <ConfirmationMessage><p>Are you sure you want to logout?</p></ConfirmationMessage>
+            <div>
+              <LogOutButtonStyle onClick={confirmLogout}>Logout</LogOutButtonStyle>
+        <CancelButtonStyle onClick={() => setShowLogoutConfirmation(false)}>
+          Cancel
+        </CancelButtonStyle>
+      </div>
+    </ModalWindowStyle>
+  </OverlayStyle>
+)}
     </>
   );
 };
