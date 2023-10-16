@@ -18,7 +18,7 @@ const Navigation = () => {
   return (
     <>
       <nav>
-        <StyledContainer>
+        <NavStyledContainer>
           <NavList>
             <li>
               <StyledNavLink to="/">
@@ -46,7 +46,7 @@ const Navigation = () => {
               </li>
             ) : null}
           </NavList>
-        </StyledContainer>
+        </NavStyledContainer>
       </nav>
     </>
   );

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import loginMobile from '../../images/login-bg/bg-login-mobile.jpg';
 import loginTablet from '../../images/login-bg/bg-login-tablet.jpg';
 import loginDesktop from '../../images/login-bg/bg-login-web.jpg';
 
