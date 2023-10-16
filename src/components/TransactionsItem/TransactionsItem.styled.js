@@ -6,8 +6,9 @@ export const StyledTransaction = styled.li`
   max-width: 360px;
   margin-bottom: 8px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background-color: ${({ theme }) => theme.backgrounds.transactionBg};
   border-left: 5px solid ${props => props.$color};
+
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     display: block;
     list-style: none;
@@ -26,9 +27,7 @@ export const StyledParWrapper = styled.div`
 `;
 export const StyledParagraph = styled.p`
   text-align: right;
-  font-family: Poppins;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   color: ${({ theme }) => theme.colors.mainWhite};
@@ -45,9 +44,7 @@ export const StyledBtnBox = styled.div`
 
 export const StyledDeleteBtn = styled.button`
   text-align: center;
-  font-family: Poppins;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding: 4px 12px;
@@ -64,16 +61,14 @@ export const StyledEditBtn = styled.button`
   gap: 4px;
   padding: 4px 12px;
 
-  background-color: transparent;
-
-  color: var(--white-60, rgba(255, 255, 255, 0.6));
   text-align: center;
-  font-family: Poppins;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.32px;
+
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.editBtn};
 `;
 
 export const StyledTansNotFound = styled.div`
@@ -86,8 +81,8 @@ export const StyledTansNotFound = styled.div`
   width: 260px;
   height: 100px;
   border-radius: 8px;
-  background: rgba(82, 59, 126, 0.6);
-  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  background-color: ${({ theme }) => theme.backgrounds.tableHead};
+  box-shadow: ${({ theme }) => theme.shadows.default};
 `;
 
 export const StyledNotFoundTitle = styled.h3`
