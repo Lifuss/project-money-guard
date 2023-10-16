@@ -12,6 +12,8 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
       max-width: 480px;
       padding: 0;
       margin: 0;
+      justify-content: start;
+      gap: 32px;
       border-right: 1px solid ${({ theme }) => theme.colors.subColor};
     }
   }

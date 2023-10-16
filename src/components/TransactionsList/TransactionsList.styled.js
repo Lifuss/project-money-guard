@@ -28,6 +28,10 @@ export const StyledTableWrapper = styled.div`
     flex-direction: column;
     width: 100%;
   }
+  @media only screen and (min-width: 1280px) {
+    width: 715px;
+    margin-left: 55px;
+  }
 `;
 export const StyledTable = styled.table`
   border-collapse: collapse;

@@ -5,6 +5,7 @@ export const StyledHeaderContainer = styled(StyledContainer)`
   width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
+  max-width: 1440px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
