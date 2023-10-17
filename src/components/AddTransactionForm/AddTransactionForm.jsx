@@ -30,6 +30,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
 import { selectAllCategories } from 'redux/transactions/selectors';
 import Select from 'react-select';
+import { StyledIconCalendar } from 'components/EditTransactionForm/EditTransactionForm.styled';
 
 const AddSchema = object({
   amount: string().required(),
@@ -37,6 +38,11 @@ const AddSchema = object({
   category: string(),
 });
 
+const handleNumberInput = e => {
+  const inputValue = e.target.value;
+  const newValue = inputValue.replace(/[-+eE]/g, '');
+  e.target.value = newValue;
+};
 const AddTransactionForm = ({ close }) => {
   const dispatch = useDispatch();
 
@@ -219,36 +225,40 @@ const AddTransactionForm = ({ close }) => {
               <AmountDateBox>
                 <StyledFieldAmount
                   name="amount"
+                  type="number"
+                  onInput={handleNumberInput}
                   placeholder="0.00"
                   value={values.amount}
                 />
                 <StyledWrapper>
-                  <StyledDatePicker
-                    name="transactionDate"
-                    value={values.transactionDate}
-                    onChange={transactionDate => {
-                      handleChange({
-                        target: {
-                          name: 'transactionDate',
-                          value: transactionDate,
-                        },
-                      });
-                      setStartDate(transactionDate);
-                    }}
-                    dateFormat="dd.MM.yyyy"
-                    placeholderText={`${new Date().toLocaleDateString(
-                      'uk-UA'
-                    )}`}
-                    showIcon
-                    selected={startDate}
-                    maxDate={new Date()}
-                    style={{ float: 'left' }}
-                    icon={
-                      <svg width="24" height="24">
-                        <use href={`${sprite}#calendar`} />
-                      </svg>
-                    }
-                  />
+                  <label>
+                    <StyledDatePicker
+                      name="transactionDate"
+                      value={values.transactionDate}
+                      onChange={transactionDate => {
+                        handleChange({
+                          target: {
+                            name: 'transactionDate',
+                            value: transactionDate,
+                          },
+                        });
+                        setStartDate(transactionDate);
+                      }}
+                      dateFormat="dd.MM.yyyy"
+                      placeholderText={`${new Date().toLocaleDateString(
+                        'uk-UA'
+                      )}`}
+                      showIcon
+                      selected={startDate}
+                      maxDate={new Date()}
+                      style={{ float: 'left' }}
+                      icon={
+                        <StyledIconCalendar width="24" height="24">
+                          <use href={`${sprite}#calendar`} />
+                        </StyledIconCalendar>
+                      }
+                    />
+                  </label>
                 </StyledWrapper>
               </AmountDateBox>
               <StyledFieldComment
