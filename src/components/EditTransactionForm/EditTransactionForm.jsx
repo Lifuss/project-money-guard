@@ -17,6 +17,7 @@ import {
   StyledEditField,
   StyledEditForm,
   StyledIconCalendar,
+  StyledReqCommentField,
   StyledReqField,
   StyledWrapper,
   StyledlabelBox,
@@ -35,7 +36,7 @@ const EditTransactionForm = ({ transaction, close }) => {
 
   const AddSchema = object({
     amount: string().required().min(1, 'Too Short!').max(12, 'Too Long!'),
-    comment: string().min(2, 'Too Short!').max(50, 'Too Long!'),
+    comment: string().max(50, 'Too Long!'),
     type: string().oneOf(['INCOME', 'EXPENSE'], 'Invalid transaction type'),
   });
 
@@ -153,10 +154,6 @@ const EditTransactionForm = ({ transaction, close }) => {
                 value={values.comment}
                 placeholder="Comment"
               />
-              {errors.comment && touched.comment ? (
-                <div>{errors.comment}</div>
-              ) : null}
-
               <EditBtnBox>
                 <BtnSave type="submit">Save</BtnSave>
               </EditBtnBox>
