@@ -40,8 +40,10 @@ export const deleteTransactionThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await swaggerApi.delete(`transactions/${id}`);
+      const { data } = await swaggerApi.get('/users/current');
+      const newData = { data, id };
       toast.success('Transaction delete success!');
-      return id;
+      return newData;
     } catch (error) {
       toast.error(`Error! ${error.message}`);
       return rejectWithValue(error.message);

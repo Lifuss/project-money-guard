@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 export const StyledTableDiv = styled.div`
   width: 280px;
-  padding: 0 16px;
-
+  margin: 0 auto;
   @media only screen and (min-width: 768px) {
     width: 336px;
     padding: 0;
@@ -17,8 +16,6 @@ export const StyledTableTd = styled.td`
   gap: 16px;
   font-size: 14px;
   align-items: center;
-  /* padding: 17px 20px; */
-  /* width: 395px; */
 `;
 export const StyledTableTr = styled.tr`
   display: flex;
@@ -57,7 +54,7 @@ export const StyledTableTh = styled.th`
   display: inline-block;
 `;
 export const StyledTableH3 = styled.h3`
-  margin: 30px auto 30px 30px;
+  margin: 30px auto;
   font-size: 20px;
   text-align: center;
   font-weight: 400;
@@ -84,7 +81,7 @@ export const StyledTableBody = styled.tbody`
   }
   @media only screen and (min-width: 1280px) {
     max-width: 395px;
-    height: 490px;
+    height: calc(100vh - 400px);
   }
   &::-webkit-scrollbar-thumb {
     background-color: rgba(82, 59, 126, 0.3);

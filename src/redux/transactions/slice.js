@@ -43,7 +43,7 @@ export const slice = createSlice({
       })
       .addCase(deleteTransactionThunk.fulfilled, (state, { payload }) => {
         state.transactions.items = state.transactions.items.filter(
-          transaction => transaction.id !== payload
+          transaction => transaction.id !== payload.id
         );
       })
       .addCase(updateTransactionThunk.fulfilled, (state, { payload }) => {

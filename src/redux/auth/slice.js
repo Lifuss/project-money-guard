@@ -7,6 +7,7 @@ import {
 } from './operations';
 import {
   addTransactionThunk,
+  deleteTransactionThunk,
   updateTransactionThunk,
 } from 'redux/transactions/operations';
 
@@ -47,6 +48,9 @@ export const slice = createSlice({
       .addCase(updateTransactionThunk.fulfilled, (state, { payload }) => {
         state.balance = payload.freshData.balance;
       })
+      .addCase(deleteTransactionThunk.fulfilled, (state, { payload }) => {
+        state.balance = payload.data.balance;
+      })
       .addMatcher(
         isAnyOf(loginThunk.pending, registerThunk.pending, state => {
           state.isLoading = true;
@@ -56,6 +60,7 @@ export const slice = createSlice({
         isAnyOf(loginThunk.fulfilled, registerThunk.fulfilled),
         (state, { payload }) => {
           state.user = payload.user;
+          state.balance = payload.user.balance;
           state.token = payload.token;
           state.isLoading = false;
           state.isLoggedIn = true;

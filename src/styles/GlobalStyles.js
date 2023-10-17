@@ -61,19 +61,7 @@ body {
     background: ${({ theme }) => theme.backgrounds.backgroundGradient};
     color: ${({ theme }) => theme.colors.mainWhite};
     @media only screen and (max-width: 767px) {
-    /* &::after {
-    content: '';
-    width: 30%;
-    height: 362.381px;
-    bottom: -90px;
-    left: 230px;
-    z-index: -1;
-    position: sticky;
-    border-radius: 362.381px;
-    background: linear-gradient(220deg, #6d54eb 28.31%, #652392 66.76%);
-
-    filter: blur(150px);}
-  } */}
+    }
 }
  
 `;
@@ -114,16 +102,15 @@ export const StyledContainer = styled.div`
 
     &::before {
       content: '';
-      width: 100%;
-      z-index: -1;
-      height: 539px;
-      border-radius: 539px;
-      background: rgba(47, 21, 176, 0.73);
-      z-index: -1;
-      filter: blur(100px);
+      width: 362px;
+      height: 200px;
+      border-radius: 362.381px;
+      background: linear-gradient(220deg, #9b467a 28.31%, #581684 66.76%);
+      filter: blur(121.80889129638672px);
       position: fixed;
-      left: -400px;
-      top: 700px;
+      bottom: 0px;
+      right: -40px;
+      z-index: -1;
     }
   }
   @media only screen and (min-width: 768px) {
@@ -132,9 +119,11 @@ export const StyledContainer = styled.div`
       width: 90%;
       height: 201px;
       border-radius: 366.105px;
-      background: #302e8e;
+      background: #432f92;
+
+      filter: blur(200px);
       z-index: -1;
-      filter: blur(150px);
+
       position: absolute;
       right: 30px;
       top: 150px;
@@ -142,11 +131,7 @@ export const StyledContainer = styled.div`
   }
   @media only screen and (min-width: 1280px) {
     &::before {
-      left: 400px;
-      width: 50px;
-      height: 501px;
-      top: 200px;
-      filter: blur(100px);
+      display: none;
     }
   }
 `;
