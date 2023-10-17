@@ -14,8 +14,48 @@ export const selectAllCategories = createSelector(
     return categories;
   }
 );
-// summary
 
+// sort transactions
+export const selectFIltered = (state, sortCriteria) => {
+  const transactions = selectTransactions(state);
+  const categories = selectCategories(state);
+
+  const sortedTransactions = [...transactions];
+  switch (sortCriteria.value) {
+    case 'date':
+      sortedTransactions.sort((a, b) => {
+        const dateA = new Date(a.transactionDate);
+        const dateB = new Date(b.transactionDate);
+        return sortCriteria.isReverse ? dateB - dateA : dateA - dateB;
+      });
+      break;
+    case 'amount':
+      sortedTransactions.sort((a, b) => {
+        return sortCriteria.isReverse
+          ? b.amount - a.amount
+          : a.amount - b.amount;
+      });
+      break;
+    case 'category':
+      sortedTransactions.sort((a, b) => {
+        const categoryA =
+          categories.find(cat => cat.id === a.categoryId)?.name || '';
+        const categoryB =
+          categories.find(cat => cat.id === b.categoryId)?.name || '';
+        return sortCriteria.isReverse
+          ? categoryB.localeCompare(categoryA)
+          : categoryA.localeCompare(categoryB);
+      });
+      break;
+    default:
+      return sortedTransactions.sort(
+        (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+      );
+  }
+  return sortedTransactions;
+};
+
+// summary
 export const selectCategoriesSummary = state =>
   state.transactions.summary.categoriesSummary;
 export const selectIncomeSummary = state =>

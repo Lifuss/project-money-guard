@@ -50,7 +50,7 @@ const TransactionsItem = ({ transaction }) => {
         </StyledParWrapper>
         <StyledParWrapper>
           <StyledParagraph>Sum</StyledParagraph>
-          <span>{transaction.amount}</span>
+          <span> {transaction.amount.toString().replace('-', '')}</span>
         </StyledParWrapper>
         <StyledBtnBox>
           <StyledDeleteBtn onClick={() => handleBtnDelete(transaction.id)}>
