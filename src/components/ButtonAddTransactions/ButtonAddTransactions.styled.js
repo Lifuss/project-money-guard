@@ -24,7 +24,7 @@ export const AddBtnCircle = styled.button`
     right: 4vw;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1280px) {
     bottom: 3vh;
     right: 3vw;
   }
