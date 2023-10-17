@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   AccountName,
   DividerImg,
@@ -45,21 +45,23 @@ const Header = () => {
     document.body.style.overflow = 'hidden';
   };
 
-  const enableBodyScroll = () => {
+  const enableBodyScroll = useCallback(() => {
     document.body.style.overflow = 'auto';
-  };
+  }, []);
+  const handleEscapeKey = useCallback(
+    e => {
+      if (e.key === 'Escape') {
+        setShowLogoutConfirmation(false);
+        enableBodyScroll();
+      }
+    },
+    [enableBodyScroll]
+  );
 
   const handleLogout = () => {
     setShowLogoutConfirmation(true);
     disableBodyScroll();
     document.addEventListener('keydown', handleEscapeKey);
-  };
-
-  const handleEscapeKey = e => {
-    if (e.key === 'Escape') {
-      setShowLogoutConfirmation(false);
-      enableBodyScroll();
-    }
   };
 
   const confirmLogout = () => {
@@ -71,10 +73,9 @@ const Header = () => {
 
   useEffect(() => {
     return () => {
-      // document.removeEventListener('keydown');
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [handleEscapeKey]);
 
   return (
     <>
@@ -105,7 +106,6 @@ const Header = () => {
               <LogoutName>Money Guard</LogoutName>
             </LogoutLogoBox>
             <ConfirmationMessage>
-              {/* <p>Are you sure you want to logout?</p> */}
               Are you sure you want to logout?
             </ConfirmationMessage>
             <div>
