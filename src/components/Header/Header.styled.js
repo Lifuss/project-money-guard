@@ -33,6 +33,15 @@ export const LogoBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    opacity: 0.8; 
+    transform: translateY(-1px); 
+  }
+
 `;
 
 export const LogoImg = styled.img`
