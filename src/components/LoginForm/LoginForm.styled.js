@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import loginMobile from '../../images/login-bg/bg-login-mobile.webp';
 import loginTablet from '../../images/login-bg/bg-login-tablet.webp';
 import loginDesktop from '../../images/login-bg/bg-login-web.webp';
+import TextField from '@mui/material/TextField';
 
 export const StyledSection = styled.section`
   width: 100vw;
@@ -91,5 +92,15 @@ export const StyledLink = styled(NavLink)`
 
   &:hover {
     font-weight: 600;
+  }
+`;
+
+export const StyledLoginField = styled(TextField)`
+  fieldset {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    &:hover {
+      border-bottom: 1px solid ${({ theme }) => theme.backgrounds.active};
+    }
   }
 `;
