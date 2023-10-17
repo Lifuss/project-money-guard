@@ -70,6 +70,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                     type="radio"
                     name="type"
                     value="INCOME"
+                    disabled={values.type === 'EXPENSE' ? 'true' : 'false'}
                     checked={values.type === 'INCOME'}
                     onChange={() => {
                       setFieldValue('type', 'INCOME');
@@ -83,6 +84,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <CustomRadioInput
                     type="radio"
                     name="type"
+                    disabled={values.type === 'INCOME' ? 'true' : 'false'}
                     value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
                     onChange={() => {
@@ -98,7 +100,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <StyledEditAmount
                     name="amount"
                     type="number"
-                    value={values.amount}
+                    value={values.amount.toString().replace('-', '')}
                     placeholder="0.0"
                   />
                   {errors.amount && touched.amount ? (
@@ -106,29 +108,31 @@ const EditTransactionForm = ({ transaction, close }) => {
                   ) : null}
                 </div>
                 <StyledWrapper>
-                  <StyledEditDatePicker
-                    name="transactionDate"
-                    value={values.transactionDate}
-                    onChange={date => {
-                      handleChange({
-                        target: {
-                          name: 'transactionDate',
-                          value: date,
-                        },
-                      });
-                      setStartDate(date);
-                    }}
-                    dateFormat="dd.MM.yy"
-                    showIcon
-                    selected={startDate}
-                    maxDate={new Date()}
-                    style={{ float: 'left' }}
-                    icon={
-                      <svg width="24" height="24">
-                        <use href={`${sprite}#calendar`} />
-                      </svg>
-                    }
-                  />
+                  <label>
+                    <StyledEditDatePicker
+                      name="transactionDate"
+                      value={values.transactionDate}
+                      onChange={date => {
+                        handleChange({
+                          target: {
+                            name: 'transactionDate',
+                            value: date,
+                          },
+                        });
+                        setStartDate(date);
+                      }}
+                      dateFormat="dd.MM.yy"
+                      showIcon
+                      selected={startDate}
+                      maxDate={new Date()}
+                      style={{ float: 'left' }}
+                      icon={
+                        <svg width="24" height="24">
+                          <use href={`${sprite}#calendar`} />
+                        </svg>
+                      }
+                    />
+                  </label>
                 </StyledWrapper>
               </StyledAmounDateEdit>
               <StyledEditField

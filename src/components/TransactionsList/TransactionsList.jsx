@@ -206,7 +206,7 @@ const TransactionsList = () => {
                         transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'
                       }
                     >
-                      {transaction.amount}
+                      {transaction.amount.toString().replace('-', '')}
                     </StyledTd>
                     <td>
                       <StyledTableBtnWrapper>

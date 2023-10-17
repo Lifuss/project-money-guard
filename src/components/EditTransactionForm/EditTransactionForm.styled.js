@@ -38,7 +38,6 @@ export const StyledEditForm = styled(Form)`
 
 export const CustomRadioLabel = styled.label`
   position: relative;
-  cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
