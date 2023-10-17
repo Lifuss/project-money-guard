@@ -26,7 +26,7 @@ export const selectFIltered = (state, sortCriteria) => {
       sortedTransactions.sort((a, b) => {
         const dateA = new Date(a.transactionDate);
         const dateB = new Date(b.transactionDate);
-        return sortCriteria.isReverse ? dateB - dateA : dateA - dateB;
+        return sortCriteria.isReverse ? dateA - dateB : dateB - dateA;
       });
       break;
     case 'amount':
