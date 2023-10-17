@@ -28,7 +28,7 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
     padding: 0;
     margin: 0;
     height: calc(100vh - 70px);
-    justify-content: start;
+    justify-content: space-between;
     gap: 32px;
     border-right: 1px solid ${({ theme }) => theme.colors.subColor};
     &::after {
@@ -92,11 +92,15 @@ export const StyledDashBoardBox = styled.div`
 `;
 
 export const StyledDeskContainer = styled(StyledContainer)`
+  @media only screen and (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
   @media only screen and (min-width: 1280px) {
     display: grid;
     grid-template-columns: 480px auto;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
     gap: 69px;
   }
 `;
