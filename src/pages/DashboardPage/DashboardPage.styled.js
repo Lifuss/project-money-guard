@@ -92,7 +92,7 @@ export const StyledDashBoardBox = styled.div`
 `;
 
 export const StyledDeskContainer = styled(StyledContainer)`
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     padding-left: 0;
     padding-right: 0;
   }
