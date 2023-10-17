@@ -62,7 +62,7 @@ const EditTransactionForm = ({ transaction, close }) => {
           initialValues={{
             id: transaction.id,
             amount: transaction.amount,
-            transactionDate: transaction.transactionDate,
+            transactionDate: new Date(),
             comment: transaction.comment,
             type: transaction.type,
           }}
@@ -77,7 +77,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                     type="radio"
                     name="type"
                     value="INCOME"
-                    disabled={values.type === 'EXPENSE' ? 'true' : 'false'}
+                    disabled={values.type === 'EXPENSE' ? true : false}
                     checked={values.type === 'INCOME'}
                     onChange={() => {
                       setFieldValue('type', 'INCOME');
@@ -91,7 +91,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    disabled={values.type === 'INCOME' ? 'true' : 'false'}
+                    disabled={values.type === 'INCOME' ? true : false}
                     value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
                     onChange={() => {
@@ -120,16 +120,19 @@ const EditTransactionForm = ({ transaction, close }) => {
                     <StyledEditDatePicker
                       name="transactionDate"
                       value={values.transactionDate}
-                      onChange={date => {
+                      onChange={transactionDate => {
                         handleChange({
                           target: {
                             name: 'transactionDate',
-                            value: date,
+                            value: transactionDate,
                           },
                         });
-                        setStartDate(date);
+                        setStartDate(transactionDate);
                       }}
-                      dateFormat="dd.MM.yy"
+                      dateFormat="dd.MM.yyyy"
+                      placeholderText={`${new Date().toLocaleDateString(
+                        'uk-UA'
+                      )}`}
                       showIcon
                       selected={startDate}
                       maxDate={new Date()}
