@@ -4,16 +4,18 @@ export const StyledSelectMainDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 16px;
-  min-width: 316px;
-  max-width: 316px;
-
+  padding: 16px 0;
+  min-width: 280px;
+  max-width: 280px;
+  margin: 0 auto;
+  /* overflow: hidden; */
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     gap: 16px;
     padding: 20px 0 0 0;
     min-width: 192px;
     max-width: 192px;
+    margin: 0;
   }
   @media only screen and (min-width: 1280px) {
     margin-top: 60px;
