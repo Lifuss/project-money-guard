@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectAllCategories,
   selectError,
+  selectFIltered,
   selectTransactions,
 } from 'redux/transactions/selectors';
 import { selectLoading } from 'redux/auth/selectors';
@@ -23,44 +23,20 @@ import { StyledSortTransactionBox } from 'components/SortTransaction/SortTransac
 const MobileList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const categories = useSelector(selectAllCategories);
   const [sortCriteria, setSortCriteria] = useState({
     value: 'date',
     label: 'Date',
   });
+  const filteredTransactions = useSelector(state =>
+    selectFIltered(state, sortCriteria)
+  );
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
   useEffect(() => {
     dispatch(fetchTransactionsThunk());
     dispatch(fetchTransactionCategory());
   }, [dispatch]);
-  const sortTransactions = () => {
-    const sortedTransactions = [...transactions];
-
-    switch (sortCriteria.value) {
-      case 'date':
-        sortedTransactions.sort(
-          (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
-        );
-        break;
-      case 'amount':
-        sortedTransactions.sort((a, b) => b.amount - a.amount);
-        break;
-      case 'category':
-        sortedTransactions.sort((a, b) => {
-          const categoryA =
-            categories.find(cat => cat.id === a.categoryId)?.name || '';
-          const categoryB =
-            categories.find(cat => cat.id === b.categoryId)?.name || '';
-          return categoryA.localeCompare(categoryB);
-        });
-        break;
-      default:
-        break;
-    }
-
-    return sortedTransactions;
-  };
 
   return (
     <>
@@ -75,7 +51,7 @@ const MobileList = () => {
       </StyledSortTransactionBox>
       {transactions.length > 0 ? (
         <StyledMobileWrapper>
-          {sortTransactions().map(transaction => (
+          {filteredTransactions.map(transaction => (
             <TransactionsItem key={transaction.id} transaction={transaction} />
           ))}
         </StyledMobileWrapper>
