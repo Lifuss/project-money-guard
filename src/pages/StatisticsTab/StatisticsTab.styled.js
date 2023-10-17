@@ -17,8 +17,8 @@ export const StyledStatisticDivMain = styled(StyledContainer)`
   @media only screen and (min-width: 1280px) {
     max-width: 803px;
     height: calc(100vh - 70px);
-    padding: 32px 16px 40px 69px;
-    padding: 20px 16px 0 35px;
+
+    padding: 20px 16px 0 0;
   }
 `;
 export const StyledStatisticDivChart = styled.div`
