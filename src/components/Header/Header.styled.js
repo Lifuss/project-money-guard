@@ -5,7 +5,7 @@ export const StyledHeaderContainer = styled(StyledContainer)`
   width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
-  max-width: 1440px;
+  max-width: 1280px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -178,9 +178,9 @@ export const CancelButtonStyle = styled.button`
     font-weight: 600;
   }
 
-   @media screen and (min-width: 768px) {
-      width: 319px;
-      height: 50px;
+  @media screen and (min-width: 768px) {
+    width: 319px;
+    height: 50px;
   }
 `;
 
@@ -208,10 +208,10 @@ export const LogOutButtonStyle = styled.button`
   &:hover {
     font-weight: 600;
   }
-  
-   @media screen and (min-width: 768px) {
-      width: 319px;
-      height: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 319px;
+    height: 50px;
   }
 `;
 

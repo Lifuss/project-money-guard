@@ -17,7 +17,6 @@ import {
   CancelButtonStyle,
   LogoutLogoBox,
   StyledHeaderContainer,
-  HeaderWrapper,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import exitIcon from '../../images/exit.svg';
@@ -79,7 +78,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderWrapper>
+      <header>
         <StyledHeaderContainer>
           <LogoBox>
             <LogoImg src={logoMoneyGuard} alt="logo" />
@@ -96,7 +95,7 @@ const Header = () => {
             </LogoutBtn>
           </HeaderInfo>
         </StyledHeaderContainer>
-      </HeaderWrapper>
+      </header>
 
       {showLogoutConfirmation && (
         <OverlayStyle>

@@ -29,7 +29,7 @@ export const StyledTableWrapper = styled.div`
     width: 100%;
   }
   @media only screen and (min-width: 1280px) {
-    width: 715px;
+    width: fit-content;
     margin-left: 55px;
   }
 `;

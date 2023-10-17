@@ -11,7 +11,10 @@ export const StyledBalanceDiv = styled.div`
 
   @media only screen and (min-width: 768px) {
     padding: 8px 122px 12px 40px;
-    width: 330px;
+    width: 336px;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 100%;
   }
 `;
 

@@ -41,6 +41,7 @@ const EditTransactionForm = ({ transaction, close }) => {
       transactionDate: values.transactionDate,
       type: values.type,
       comment: values.comment,
+      categoryId: transaction.categoryId,
     };
     dispatch(updateTransactionThunk(EditData));
     close();

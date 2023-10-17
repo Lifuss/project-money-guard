@@ -5,6 +5,7 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
   @media only screen and (min-width: 768px) {
     display: flex;
     flex-direction: row;
+    padding: 0;
     justify-content: space-between;
     margin-bottom: 20px;
     @media only screen and (min-width: 1280px) {
@@ -12,7 +13,7 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
       max-width: 480px;
       padding: 0;
       margin: 0;
-      justify-content: start;
+      justify-content: space-between;
       gap: 32px;
       border-right: 1px solid ${({ theme }) => theme.colors.subColor};
     }
@@ -35,11 +36,12 @@ export const StyledDashBoardBox = styled.div`
   }
 `;
 
-export const StyledDeskContainer = styled.div`
+export const StyledDeskContainer = styled(StyledContainer)`
   @media only screen and (min-width: 1280px) {
     display: grid;
     grid-template-columns: 480px auto;
     padding-left: 16px;
     padding-right: 16px;
+    gap: 69px;
   }
 `;
