@@ -16,6 +16,7 @@ import {
   StyledEditDatePicker,
   StyledEditField,
   StyledEditForm,
+  StyledReqField,
   StyledWrapper,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
@@ -93,15 +94,17 @@ const EditTransactionForm = ({ transaction, close }) => {
                 </CustomRadioLabel>
               </StyledlabelBox>
               <StyledAmounDateEdit>
-                <StyledEditAmount
-                  name="amount"
-                  type="number"
-                  value={values.amount}
-                  placeholder="0.0"
-                />
-                {errors.amount && touched.amount ? (
-                  <div>{errors.amount}</div>
-                ) : null}
+                <div>
+                  <StyledEditAmount
+                    name="amount"
+                    type="number"
+                    value={values.amount}
+                    placeholder="0.0"
+                  />
+                  {errors.amount && touched.amount ? (
+                    <StyledReqField>{errors.amount}</StyledReqField>
+                  ) : null}
+                </div>
                 <StyledWrapper>
                   <StyledEditDatePicker
                     name="transactionDate"

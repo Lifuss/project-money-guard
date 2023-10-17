@@ -71,7 +71,7 @@ export const StyledAmounDateEdit = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 32px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 `;
 export const StyledEditAmount = styled(Field)`
@@ -93,6 +93,11 @@ export const StyledEditAmount = styled(Field)`
     width: 180px;
     text-align: center;
   }
+`;
+export const StyledReqField = styled.div`
+  font-size: 14px;
+  color: red;
+  margin-top: -16px;
 `;
 
 export const StyledEditField = styled(Field)`
