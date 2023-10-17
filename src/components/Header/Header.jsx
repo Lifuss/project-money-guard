@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   AccountName,
   DividerImg,
@@ -17,7 +17,6 @@ import {
   CancelButtonStyle,
   LogoutLogoBox,
   StyledHeaderContainer,
-  HeaderWrapper,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import exitIcon from '../../images/exit.svg';
@@ -26,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useMediaQuery } from 'react-responsive';
 import { logoutThunk } from 'redux/auth/operations';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -45,21 +45,23 @@ const Header = () => {
     document.body.style.overflow = 'hidden';
   };
 
-  const enableBodyScroll = () => {
+  const enableBodyScroll = useCallback(() => {
     document.body.style.overflow = 'auto';
-  };
+  }, []);
+  const handleEscapeKey = useCallback(
+    e => {
+      if (e.key === 'Escape') {
+        setShowLogoutConfirmation(false);
+        enableBodyScroll();
+      }
+    },
+    [enableBodyScroll]
+  );
 
   const handleLogout = () => {
     setShowLogoutConfirmation(true);
     disableBodyScroll();
     document.addEventListener('keydown', handleEscapeKey);
-  };
-
-  const handleEscapeKey = e => {
-    if (e.key === 'Escape') {
-      setShowLogoutConfirmation(false);
-      enableBodyScroll();
-    }
   };
 
   const confirmLogout = () => {
@@ -71,19 +73,20 @@ const Header = () => {
 
   useEffect(() => {
     return () => {
-      // document.removeEventListener('keydown');
       document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, []);
+  }, [handleEscapeKey]);
 
   return (
     <>
-      <HeaderWrapper>
+      <header>
         <StyledHeaderContainer>
-          <LogoBox>
-            <LogoImg src={logoMoneyGuard} alt="logo" />
-            <LogoName>Money Guard</LogoName>
-          </LogoBox>
+          <Link to="/">
+            <LogoBox>
+              <LogoImg src={logoMoneyGuard} alt="logo" />
+              <LogoName>Money Guard</LogoName>
+            </LogoBox>
+          </Link>
           <HeaderInfo>
             <AccountName>{nameFromEmail}</AccountName>
             {isDesktopOrLaptop && (
@@ -95,7 +98,7 @@ const Header = () => {
             </LogoutBtn>
           </HeaderInfo>
         </StyledHeaderContainer>
-      </HeaderWrapper>
+      </header>
 
       {showLogoutConfirmation && (
         <OverlayStyle>
@@ -105,7 +108,6 @@ const Header = () => {
               <LogoutName>Money Guard</LogoutName>
             </LogoutLogoBox>
             <ConfirmationMessage>
-              {/* <p>Are you sure you want to logout?</p> */}
               Are you sure you want to logout?
             </ConfirmationMessage>
             <div>

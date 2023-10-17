@@ -5,6 +5,7 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
   @media only screen and (min-width: 768px) {
     display: flex;
     flex-direction: row;
+    padding: 0;
     justify-content: space-between;
     margin-bottom: 20px;
 
@@ -90,11 +91,12 @@ export const StyledDashBoardBox = styled.div`
   }
 `;
 
-export const StyledDeskContainer = styled.div`
+export const StyledDeskContainer = styled(StyledContainer)`
   @media only screen and (min-width: 1280px) {
     display: grid;
     grid-template-columns: 480px auto;
     padding-left: 16px;
     padding-right: 16px;
+    gap: 69px;
   }
 `;

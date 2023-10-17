@@ -100,5 +100,13 @@ export const CancelBtnStyle = styled.button`
   font-weight: 400;
   text-transform: uppercase;
   cursor: pointer;
-  /* margin-top: 501px; */
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+  }
 `;

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAllCategories,
   selectError,
+  selectFIltered,
   selectLoading,
-  selectTransactions,
 } from 'redux/transactions/selectors';
 import Loader from 'components/Loader/Loader';
 import {
@@ -38,16 +38,19 @@ import EditTransactionForm from 'components/EditTransactionForm/EditTransactionF
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
-  const { open, close, isOpen, data } = useModal();
-  const transactions = useSelector(selectTransactions);
-  const categories = useSelector(selectAllCategories);
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
   const [sortCriteria, setSortCriteria] = useState({
     value: 'date',
     label: 'Date',
     isReverse: false,
   });
+  const { open, close, isOpen, data } = useModal();
+  const categories = useSelector(selectAllCategories);
+  const filteredTransactions = useSelector(state =>
+    selectFIltered(state, sortCriteria)
+  );
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
   const dateRef = useRef(null);
   const amountRef = useRef(null);
   const categoryRef = useRef(null);
@@ -92,48 +95,11 @@ const TransactionsList = () => {
     }
   };
 
-  const sortTransactions = () => {
-    const sortedTransactions = [...transactions];
-
-    switch (sortCriteria.value) {
-      case 'date':
-        sortedTransactions.sort((a, b) => {
-          const dateA = new Date(a.transactionDate);
-          const dateB = new Date(b.transactionDate);
-          return sortCriteria.isReverse ? dateB - dateA : dateA - dateB;
-        });
-        break;
-      case 'amount':
-        sortedTransactions.sort((a, b) => {
-          return sortCriteria.isReverse
-            ? b.amount - a.amount
-            : a.amount - b.amount;
-        });
-        break;
-      case 'category':
-        sortedTransactions.sort((a, b) => {
-          const categoryA =
-            categories.find(cat => cat.id === a.categoryId)?.name || '';
-          const categoryB =
-            categories.find(cat => cat.id === b.categoryId)?.name || '';
-          return sortCriteria.isReverse
-            ? categoryB.localeCompare(categoryA)
-            : categoryA.localeCompare(categoryB);
-        });
-        break;
-      default:
-        return sortedTransactions.sort(
-          (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
-        );
-    }
-
-    return sortedTransactions;
-  };
   return (
     <>
       {loading && <Loader />}
       {error && <h1>Something went wrong... 😢</h1>}
-      {transactions.length > 0 ? (
+      {filteredTransactions.length > 0 ? (
         <StyledTransactionsList>
           <StyledTableWrapper>
             <StyledTable>
@@ -184,7 +150,7 @@ const TransactionsList = () => {
                 </StyledHeaderTr>
               </thead>
               <StyledTbodyTable>
-                {sortTransactions().map(transaction => (
+                {filteredTransactions.map(transaction => (
                   <StyledTr key={transaction.id}>
                     <StyledTd>
                       {formatDate(transaction.transactionDate)}
@@ -206,7 +172,7 @@ const TransactionsList = () => {
                         transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'
                       }
                     >
-                      {transaction.amount}
+                      {transaction.amount.toString().replace('-', '')}
                     </StyledTd>
                     <td>
                       <StyledTableBtnWrapper>

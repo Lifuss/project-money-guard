@@ -48,7 +48,7 @@ export const slice = createSlice({
       })
       .addCase(updateTransactionThunk.fulfilled, (state, { payload }) => {
         state.transactions.items = state.transactions.items.map(transaction =>
-          transaction.id === payload.id ? payload : transaction
+          transaction.id === payload.data.id ? payload.data : transaction
         );
       })
       .addCase(fetchTransactionCategory.fulfilled, (state, { payload }) => {

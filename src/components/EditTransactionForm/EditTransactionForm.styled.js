@@ -38,7 +38,6 @@ export const StyledEditForm = styled(Form)`
 
 export const CustomRadioLabel = styled.label`
   position: relative;
-  cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -71,7 +70,7 @@ export const StyledAmounDateEdit = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 32px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 `;
 export const StyledEditAmount = styled(Field)`
@@ -82,6 +81,7 @@ export const StyledEditAmount = styled(Field)`
   padding-left: 20px;
   width: 280px;
   margin-bottom: 40px;
+  outline: none;
 
   border: none;
   background: transparent;
@@ -93,6 +93,11 @@ export const StyledEditAmount = styled(Field)`
     text-align: center;
   }
 `;
+export const StyledReqField = styled.div`
+  font-size: 14px;
+  color: red;
+  margin-top: -16px;
+`;
 
 export const StyledEditField = styled(Field)`
   font-size: 18px;
@@ -101,6 +106,7 @@ export const StyledEditField = styled(Field)`
   width: 280px;
   padding: 0 20px 8px 20px;
   background: transparent;
+  outline: none;
   border: none;
   border-bottom: ${({ theme }) => theme.border.borderBottom};
   color: ${({ theme }) => theme.colors.mainWhite};
@@ -117,6 +123,7 @@ export const StyledEditDatePicker = styled(DatePicker)`
   font-weight: 600;
   line-height: normal;
   margin-bottom: 20px;
+  outline: none;
 
   background: transparent;
   border: none;
@@ -128,6 +135,9 @@ export const StyledEditDatePicker = styled(DatePicker)`
   }
 `;
 
+export const StyledIconCalendar = styled.svg`
+  cursor: pointer;
+`;
 export const StyledWrapper = styled.div`
   .react-datepicker__view-calendar-icon input {
     padding: 6px 5px 5px 20px;

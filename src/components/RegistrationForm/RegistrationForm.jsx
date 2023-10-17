@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
@@ -17,8 +16,9 @@ import {
   LogoBox,
   LogoImg,
   LogoName,
+  StyledLoginField,
 } from '../LoginForm/LoginForm.styled';
-import { StyledSection, StyledForm } from "./RegistrationForm.styled"
+import { StyledSection, StyledForm } from './RegistrationForm.styled';
 
 // Import PasswordStrengthBar and define barColors and isRequired
 // const barColors = ['#ddd', '#FFC727', '#FFC727', '#FFC727', '#FFC727'];
@@ -62,10 +62,9 @@ const RegistrationForm = () => {
     return <Navigate to="/" replace />;
   }
 
-  const handleSubmit =  values => {
+  const handleSubmit = values => {
     dispatch(registerThunk(values));
-};
-
+  };
 
   return (
     <StyledSection>
@@ -78,14 +77,18 @@ const RegistrationForm = () => {
           />
           <LogoName>Money Guard</LogoName>
         </LogoBox>
-        <TextField
+        <StyledLoginField
           fullWidth
           id="name"
           name="name"
           label={
             <span
               style={{
-                color: 'rgba(255, 255, 255, 0.60)', fontSize: '18px', lineHeight: '27px' }}>
+                color: 'rgba(255, 255, 255, 0.60)',
+                fontSize: '18px',
+                lineHeight: '27px',
+              }}
+            >
               <PersonIcon
                 style={{ verticalAlign: 'middle', marginRight: '20px' }}
               />{' '}
@@ -99,15 +102,14 @@ const RegistrationForm = () => {
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
           InputProps={{
-          inputProps: { style: { color: '#FFFFFF99' } }, 
-  }}
+            inputProps: { style: { color: '#FFFFFF99' } },
+          }}
           style={{
             width: '90%',
             marginTop: '20px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
         />
-        <TextField
+        <StyledLoginField
           fullWidth
           id="email"
           name="email"
@@ -132,15 +134,14 @@ const RegistrationForm = () => {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
           InputProps={{
-          inputProps: { style: { color: '#FFFFFF99' } }, 
-  }}
+            inputProps: { style: { color: '#FFFFFF99' } },
+          }}
           style={{
             width: '90%',
             marginTop: '20px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
         />
-        <TextField
+        <StyledLoginField
           fullWidth
           id="password"
           name="password"
@@ -168,15 +169,14 @@ const RegistrationForm = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
           InputProps={{
-          inputProps: { style: { color: '#FFFFFF99' } }, 
-  }}
+            inputProps: { style: { color: '#FFFFFF99' } },
+          }}
           style={{
             width: '90%',
             marginTop: '20px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
         />
-        <TextField
+        <StyledLoginField
           fullWidth
           id="confirmPassword"
           name="confirmPassword"
@@ -206,13 +206,13 @@ const RegistrationForm = () => {
             formik.touched.confirmPassword && formik.errors.confirmPassword
           }
           InputProps={{
-          inputProps: { style: { color: '#FFFFFF99' } }, 
-  }}
+            inputProps: { style: { color: '#FFFFFF99' } },
+          }}
           style={{
             width: '90%',
             marginTop: '20px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
-            marginBottom: "5px"
+
+            marginBottom: '5px',
           }}
         />
         <div>

@@ -26,7 +26,7 @@ export const addTransactionThunk = createAsyncThunk(
     };
     try {
       const res = await swaggerApi.post('transactions', data);
-      toast.success(`Transacation added💸`);
+      toast.success(`Transaction added💸`);
       return res.data;
     } catch (error) {
       toast.error(`Invalid input, check your data`);
@@ -51,20 +51,28 @@ export const deleteTransactionThunk = createAsyncThunk(
 
 export const updateTransactionThunk = createAsyncThunk(
   'updateTransaction',
-  async (body, { rejectWithValue }) => {
-    const data = {
+  async (body, thunkApi) => {
+    const newBody = {
       transactionDate: body.transactionDate,
       type: body.type,
       comment: body.comment,
       amount: body.amount,
+      categoryId: body.categoryId,
     };
     try {
-      const res = await swaggerApi.patch(`transactions/${body.id}`, data);
+      const { data } = await swaggerApi.patch(
+        `transactions/${body.id}`,
+        newBody
+      );
+      const { data: freshData } = await swaggerApi.get('/users/current');
       toast.success('Edit completed!');
-      return res.data;
+      const newData = { data, freshData };
+      console.log(newData);
+
+      return newData;
     } catch (error) {
       toast.error(`Your data is not valid, check your data`);
-      return rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

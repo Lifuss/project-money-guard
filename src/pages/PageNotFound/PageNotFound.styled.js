@@ -15,7 +15,6 @@ export const StyledBox = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* background-color: #1e0646; */
   background-image: url(${loginTablet});
   background-repeat: no-repeat;
   background-size: cover;
