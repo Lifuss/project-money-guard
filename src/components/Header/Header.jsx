@@ -17,7 +17,6 @@ import {
   CancelButtonStyle,
   LogoutLogoBox,
   StyledHeaderContainer,
-  HeaderWrapper,
 } from './Header.styled';
 import logoMoneyGuard from '../../images/logo_money_guard.svg';
 import exitIcon from '../../images/exit.svg';
@@ -26,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useMediaQuery } from 'react-responsive';
 import { logoutThunk } from 'redux/auth/operations';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -79,12 +79,14 @@ const Header = () => {
 
   return (
     <>
-      <HeaderWrapper>
+      <header>
         <StyledHeaderContainer>
-          <LogoBox>
-            <LogoImg src={logoMoneyGuard} alt="logo" />
-            <LogoName>Money Guard</LogoName>
-          </LogoBox>
+          <Link to="/">
+            <LogoBox>
+              <LogoImg src={logoMoneyGuard} alt="logo" />
+              <LogoName>Money Guard</LogoName>
+            </LogoBox>
+          </Link>
           <HeaderInfo>
             <AccountName>{nameFromEmail}</AccountName>
             {isDesktopOrLaptop && (
@@ -96,7 +98,7 @@ const Header = () => {
             </LogoutBtn>
           </HeaderInfo>
         </StyledHeaderContainer>
-      </HeaderWrapper>
+      </header>
 
       {showLogoutConfirmation && (
         <OverlayStyle>
