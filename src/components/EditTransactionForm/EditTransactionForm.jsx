@@ -27,6 +27,13 @@ const handleNumberInput = e => {
   const newValue = inputValue.replace(/[-+eE]/g, '');
   e.target.value = newValue;
 };
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear().toString().slice(-2);
+  return `${day}.${month}.${year}`;
+}
 
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
@@ -62,7 +69,7 @@ const EditTransactionForm = ({ transaction, close }) => {
           initialValues={{
             id: transaction.id,
             amount: transaction.amount,
-            transactionDate: new Date(),
+            transactionDate: formatDate(transaction.transactionDate),
             comment: transaction.comment,
             type: transaction.type,
           }}
@@ -129,9 +136,6 @@ const EditTransactionForm = ({ transaction, close }) => {
                         setStartDate(transactionDate);
                       }}
                       dateFormat="dd.MM.yyyy"
-                      placeholderText={`${new Date().toLocaleDateString(
-                        'uk-UA'
-                      )}`}
                       showIcon
                       selected={startDate}
                       maxDate={new Date()}
