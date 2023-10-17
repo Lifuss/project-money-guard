@@ -130,6 +130,10 @@ export const StyledEditDatePicker = styled(DatePicker)`
   border-bottom: ${({ theme }) => theme.border.borderBottom};
   color: ${({ theme }) => theme.colors.mainWhite};
 
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.mainWhite};
+  }
+
   @media only screen and (min-width: 768px) {
     width: 180px;
   }
