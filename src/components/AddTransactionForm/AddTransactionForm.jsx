@@ -31,6 +31,7 @@ import sprite from '../../images/sprite.svg';
 import { selectAllCategories } from 'redux/transactions/selectors';
 import Select from 'react-select';
 import { StyledIconCalendar } from 'components/EditTransactionForm/EditTransactionForm.styled';
+import { toast } from 'react-toastify';
 
 const AddSchema = object({
   amount: string().required(),
@@ -62,7 +63,6 @@ const AddTransactionForm = ({ close }) => {
   };
 
   const categories = useSelector(selectAllCategories);
-  // console.log(categories);
 
   useEffect(() => {
     dispatch(fetchTransactionCategory());
@@ -71,7 +71,6 @@ const AddTransactionForm = ({ close }) => {
   const [startDate, setStartDate] = useState();
 
   const handleSwitcherClick = (values, setFieldValue) => {
-    console.log('This is switcher click');
     const newTransactionType =
       transactionType === 'EXPENSE' ? 'INCOME' : 'EXPENSE';
     setTransactionType(transactionType === 'EXPENSE' ? 'INCOME' : 'EXPENSE');
@@ -85,25 +84,45 @@ const AddTransactionForm = ({ close }) => {
       setIsSwitcherRoundPlusVisible(false);
       setIsSwitcherRoundMinusVisible(true);
     }
-    console.log(transactionType);
+  };
+  const onClickTitle = str => {
+    if (str === 'INCOME') {
+      setIsSwitcherRoundPlusVisible(true);
+      setIsSwitcherRoundMinusVisible(false);
+    }
+    if (str === 'EXPENSE') {
+      setIsSwitcherRoundPlusVisible(false);
+      setIsSwitcherRoundMinusVisible(true);
+    }
   };
 
   const handleSubmit = (values, selectedCategory) => {
-    // console.log('Submit, values', values);
     const addFormData = {
-      amount: values.type === 'EXPENSE' ? -values.amount : values.amount,
+      amount:
+        values.type === 'EXPENSE'
+          ? Number(-values.amount)
+          : Number(values.amount),
       categoryId:
         values.type === 'EXPENSE'
           ? selectedCategory.id
           : '063f1132-ba5d-42b4-951d-44011ca46262', // categoryId INCOME
       comment: values.comment,
       transactionDate: values.transactionDate,
-      // type: values.type,
-      type: transactionType,
+      type: values.type,
+      // type: transactionType,
     };
-    // console.log('Submit, addFormData', addFormData);
-    dispatch(addTransactionThunk(addFormData));
-    close();
+
+    dispatch(addTransactionThunk(addFormData))
+      .unwrap()
+      .then(() => {
+        close();
+        toast.success(`Transaction added💸`);
+      })
+      .catch(() => {
+        toast.error(
+          'Something went wrong, enter amount or choose a category!🤷‍♀️'
+        );
+      });
   };
 
   return (
@@ -135,6 +154,7 @@ const AddTransactionForm = ({ close }) => {
                     value="INCOME"
                     checked={values.type === 'INCOME'}
                     onChange={handleChange}
+                    onClick={() => onClickTitle('INCOME')}
                   />
                   <StyledTextSpan
                     style={{
@@ -185,6 +205,7 @@ const AddTransactionForm = ({ close }) => {
                     value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
                     onChange={handleChange}
+                    onClick={() => onClickTitle('EXPENSE')}
                   />
                   <StyledTextSpan
                     style={{
@@ -228,7 +249,7 @@ const AddTransactionForm = ({ close }) => {
                   type="number"
                   onInput={handleNumberInput}
                   placeholder="0.00"
-                  value={values.amount}
+                  value={values.amount.toString().replace('-', '')}
                 />
                 <StyledWrapper>
                   <label>

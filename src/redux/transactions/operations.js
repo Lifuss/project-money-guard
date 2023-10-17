@@ -26,10 +26,9 @@ export const addTransactionThunk = createAsyncThunk(
     };
     try {
       const res = await swaggerApi.post('transactions', data);
-      toast.success(`Transaction added💸`);
+
       return res.data;
     } catch (error) {
-      toast.error(`Invalid input, check your data`);
       return rejectWithValue(error.message);
     }
   }
@@ -69,7 +68,6 @@ export const updateTransactionThunk = createAsyncThunk(
       const { data: freshData } = await swaggerApi.get('/users/current');
       toast.success('Edit completed!');
       const newData = { data, freshData };
-      console.log(newData);
 
       return newData;
     } catch (error) {
