@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useMediaQuery } from 'react-responsive';
 import { logoutThunk } from 'redux/auth/operations';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -80,10 +81,12 @@ const Header = () => {
     <>
       <header>
         <StyledHeaderContainer>
-          <LogoBox>
-            <LogoImg src={logoMoneyGuard} alt="logo" />
-            <LogoName>Money Guard</LogoName>
-          </LogoBox>
+          <Link to="/">
+            <LogoBox>
+              <LogoImg src={logoMoneyGuard} alt="logo" />
+              <LogoName>Money Guard</LogoName>
+            </LogoBox>
+          </Link>
           <HeaderInfo>
             <AccountName>{nameFromEmail}</AccountName>
             {isDesktopOrLaptop && (

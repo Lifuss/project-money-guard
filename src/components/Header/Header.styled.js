@@ -33,6 +33,15 @@ export const LogoBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    opacity: 0.8; 
+    transform: translateY(-1px); 
+  }
+
 `;
 
 export const LogoImg = styled.img`
@@ -72,6 +81,10 @@ export const LogoutBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: filter 0.3s;
+  &:hover {
+    filter: drop-shadow(0px 3px 5px rgba(255, 255, 255, 0.8));
+  }
 `;
 
 export const OverlayStyle = styled.div`

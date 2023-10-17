@@ -16,9 +16,17 @@ import {
   StyledEditDatePicker,
   StyledEditField,
   StyledEditForm,
+  StyledIconCalendar,
+  StyledReqField,
   StyledWrapper,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
+
+const handleNumberInput = e => {
+  const inputValue = e.target.value;
+  const newValue = inputValue.replace(/[-+eE]/g, '');
+  e.target.value = newValue;
+};
 
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
@@ -70,6 +78,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                     type="radio"
                     name="type"
                     value="INCOME"
+                    disabled={values.type === 'EXPENSE' ? 'true' : 'false'}
                     checked={values.type === 'INCOME'}
                     onChange={() => {
                       setFieldValue('type', 'INCOME');
@@ -83,6 +92,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <CustomRadioInput
                     type="radio"
                     name="type"
+                    disabled={values.type === 'INCOME' ? 'true' : 'false'}
                     value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
                     onChange={() => {
@@ -94,39 +104,44 @@ const EditTransactionForm = ({ transaction, close }) => {
                 </CustomRadioLabel>
               </StyledlabelBox>
               <StyledAmounDateEdit>
-                <StyledEditAmount
-                  name="amount"
-                  type="number"
-                  value={values.amount}
-                  placeholder="0.0"
-                />
-                {errors.amount && touched.amount ? (
-                  <div>{errors.amount}</div>
-                ) : null}
-                <StyledWrapper>
-                  <StyledEditDatePicker
-                    name="transactionDate"
-                    value={values.transactionDate}
-                    onChange={date => {
-                      handleChange({
-                        target: {
-                          name: 'transactionDate',
-                          value: date,
-                        },
-                      });
-                      setStartDate(date);
-                    }}
-                    dateFormat="dd.MM.yy"
-                    showIcon
-                    selected={startDate}
-                    maxDate={new Date()}
-                    style={{ float: 'left' }}
-                    icon={
-                      <svg width="24" height="24">
-                        <use href={`${sprite}#calendar`} />
-                      </svg>
-                    }
+                <div>
+                  <StyledEditAmount
+                    name="amount"
+                    type="number"
+                    onInput={handleNumberInput}
+                    value={values.amount.toString().replace('-', '')}
+                    placeholder="0.0"
                   />
+                  {errors.amount && touched.amount ? (
+                    <StyledReqField>{errors.amount}</StyledReqField>
+                  ) : null}
+                </div>
+                <StyledWrapper>
+                  <label>
+                    <StyledEditDatePicker
+                      name="transactionDate"
+                      value={values.transactionDate}
+                      onChange={date => {
+                        handleChange({
+                          target: {
+                            name: 'transactionDate',
+                            value: date,
+                          },
+                        });
+                        setStartDate(date);
+                      }}
+                      dateFormat="dd.MM.yy"
+                      showIcon
+                      selected={startDate}
+                      maxDate={new Date()}
+                      style={{ float: 'left' }}
+                      icon={
+                        <StyledIconCalendar width="24" height="24">
+                          <use href={`${sprite}#calendar`} />
+                        </StyledIconCalendar>
+                      }
+                    />
+                  </label>
                 </StyledWrapper>
               </StyledAmounDateEdit>
               <StyledEditField

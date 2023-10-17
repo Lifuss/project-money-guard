@@ -26,6 +26,7 @@ export const StyledFieldAmount = styled(Field)`
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 20px;
+  outline: none;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.editBtn};
@@ -50,6 +51,7 @@ export const StyledFieldComment = styled(Field)`
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 20px;
+  outline: none;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.editBtn};
@@ -101,6 +103,7 @@ export const SwitcherRoundPlus = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  box-shadow: 0px 6px 15px 0px rgba(255, 199, 39, 0.5);
   top: -2px;
   left: -2px;
 `;
@@ -114,6 +117,7 @@ export const SwitcherRoundMinus = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  box-shadow: 0px 6px 15px 0px rgba(255, 134, 141, 0.5);
   top: -2px;
   left: 38px;
 `;
@@ -133,6 +137,7 @@ export const StyledDatePicker = styled(DatePicker)`
   background: transparent;
   padding: 0 20px;
   border: none;
+  outline: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 
   &::placeholder {

@@ -52,6 +52,10 @@ export const StyledDeleteBtn = styled.button`
   border-radius: 18px;
   background: ${({ theme }) => theme.backgrounds.btnGradient};
   box-shadow: ${({ theme }) => theme.shadows.deleteBtnShadow};
+  transition: filter 0.3s;
+  &:hover {
+    filter: drop-shadow(0px 3px 10px rgba(255, 255, 255, 0.6));
+  }
 `;
 
 export const StyledEditBtn = styled.button`
@@ -69,6 +73,10 @@ export const StyledEditBtn = styled.button`
 
   background-color: transparent;
   color: ${({ theme }) => theme.colors.editBtn};
+  transition: filter 0.3s;
+  &:hover {
+    filter: drop-shadow(0px 3px 5px rgba(255, 255, 255, 0.8));
+  }
 `;
 
 export const StyledTansNotFound = styled.div`
