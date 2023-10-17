@@ -45,6 +45,12 @@ const AddTransactionForm = ({ close }) => {
     label: 'Select a category',
   });
 
+  const [transactionType, setTransactionType] = useState('EXPENSE');
+  const [isSwitcherRoundPlusVisible, setIsSwitcherRoundPlusVisible] =
+    useState(false);
+  const [isSwitcherRoundMinusVisible, setIsSwitcherRoundMinusVisible] =
+    useState(true);
+
   const onCategoryChange = category => {
     setSelectedCategory(category);
   };
@@ -58,6 +64,24 @@ const AddTransactionForm = ({ close }) => {
 
   const [startDate, setStartDate] = useState();
 
+  const handleSwitcherClick = (values, setFieldValue) => {
+    console.log('This is switcher click');
+    const newTransactionType =
+      transactionType === 'EXPENSE' ? 'INCOME' : 'EXPENSE';
+    setTransactionType(transactionType === 'EXPENSE' ? 'INCOME' : 'EXPENSE');
+    setFieldValue('type', newTransactionType);
+    setTransactionType(newTransactionType);
+
+    if (transactionType === 'EXPENSE') {
+      setIsSwitcherRoundPlusVisible(true);
+      setIsSwitcherRoundMinusVisible(false);
+    } else {
+      setIsSwitcherRoundPlusVisible(false);
+      setIsSwitcherRoundMinusVisible(true);
+    }
+    console.log(transactionType);
+  };
+
   const handleSubmit = (values, selectedCategory) => {
     // console.log('Submit, values', values);
     const addFormData = {
@@ -68,7 +92,8 @@ const AddTransactionForm = ({ close }) => {
           : '063f1132-ba5d-42b4-951d-44011ca46262', // categoryId INCOME
       comment: values.comment,
       transactionDate: values.transactionDate,
-      type: values.type,
+      // type: values.type,
+      type: transactionType,
     };
     // console.log('Submit, addFormData', addFormData);
     dispatch(addTransactionThunk(addFormData));
@@ -88,10 +113,14 @@ const AddTransactionForm = ({ close }) => {
             comment: '',
           }}
           validationSchema={AddSchema}
-          onSubmit={values => handleSubmit(values, selectedCategory)}
+          // onSubmit={values => handleSubmit(values, selectedCategory)}
+          onSubmit={(values, { setFieldValue }) =>
+            handleSubmit(values, selectedCategory)
+          }
         >
-          {({ errors, touched, values, handleChange }) => (
+          {({ errors, touched, values, handleChange, setFieldValue }) => (
             <StyledForm autoComplete="off">
+              <input type="hidden" name="type" value={values.type} />
               <StyledRadioBox>
                 <label>
                   <StyledRadioInput
@@ -109,8 +138,10 @@ const AddTransactionForm = ({ close }) => {
                     Income
                   </StyledTextSpan>
                 </label>
-                <SwitcherSquare>
-                  {values.type === 'INCOME' ? (
+                <SwitcherSquare
+                  onClick={() => handleSwitcherClick(values, setFieldValue)}
+                >
+                  {/* {values.type === 'INCOME' ? (
                     <SwitcherRoundPlus>
                       <svg width="20" height="20">
                         <use href={`${sprite}#plus`} />
@@ -122,7 +153,24 @@ const AddTransactionForm = ({ close }) => {
                         <use href={`${sprite}#minus`} />
                       </svg>
                     </SwitcherRoundMinus>
+                  )} */}
+                  {/* ================================= */}
+                  {isSwitcherRoundPlusVisible && (
+                    <SwitcherRoundPlus>
+                      <svg width="20" height="20">
+                        <use href={`${sprite}#plus`} />
+                      </svg>
+                    </SwitcherRoundPlus>
                   )}
+
+                  {isSwitcherRoundMinusVisible && (
+                    <SwitcherRoundMinus>
+                      <svg width="20" height="20">
+                        <use href={`${sprite}#minus`} />
+                      </svg>
+                    </SwitcherRoundMinus>
+                  )}
+                  {/* ========================= */}
                 </SwitcherSquare>
                 <label>
                   <StyledRadioInput
