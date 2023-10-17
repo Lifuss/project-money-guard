@@ -27,13 +27,6 @@ const handleNumberInput = e => {
   const newValue = inputValue.replace(/[-+eE]/g, '');
   e.target.value = newValue;
 };
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear().toString().slice(-2);
-  return `${day}.${month}.${year}`;
-}
 
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
@@ -47,7 +40,7 @@ const EditTransactionForm = ({ transaction, close }) => {
   });
 
   const handleSubmit = values => {
-    const editData = {
+    const EditData = {
       id: transaction.id,
       amount:
         values.type === 'EXPENSE'
@@ -58,7 +51,7 @@ const EditTransactionForm = ({ transaction, close }) => {
       comment: values.comment,
       categoryId: transaction.categoryId,
     };
-    dispatch(updateTransactionThunk(editData));
+    dispatch(updateTransactionThunk(EditData));
     close();
   };
 
@@ -70,7 +63,7 @@ const EditTransactionForm = ({ transaction, close }) => {
           initialValues={{
             id: transaction.id,
             amount: transaction.amount,
-            transactionDate: formatDate(transaction.transactionDate),
+            transactionDate: new Date(Date.parse(transaction.transactionDate)),
             comment: transaction.comment,
             type: transaction.type,
           }}
@@ -111,32 +104,36 @@ const EditTransactionForm = ({ transaction, close }) => {
                 </CustomRadioLabel>
               </StyledlabelBox>
               <StyledAmounDateEdit>
-                <StyledEditAmount
-                  name="amount"
-                  type="number"
-                  onInput={handleNumberInput}
-                  value={values.amount.toString().replace('-', '')}
-                  placeholder="0.0"
-                />
-                {errors.amount && touched.amount ? (
-                  <StyledReqField>{errors.amount}</StyledReqField>
-                ) : null}
-
+                <div>
+                  <StyledEditAmount
+                    name="amount"
+                    type="number"
+                    onInput={handleNumberInput}
+                    value={values.amount.toString().replace('-', '')}
+                    placeholder="0.0"
+                  />
+                  {errors.amount && touched.amount ? (
+                    <StyledReqField>{errors.amount}</StyledReqField>
+                  ) : null}
+                </div>
                 <StyledWrapper>
                   <label>
                     <StyledEditDatePicker
                       name="transactionDate"
                       value={values.transactionDate}
-                      onChange={transactionDate => {
+                      onChange={date => {
                         handleChange({
                           target: {
                             name: 'transactionDate',
-                            value: transactionDate,
+                            value: date,
                           },
                         });
-                        setStartDate(transactionDate);
+                        setStartDate(date);
                       }}
                       dateFormat="dd.MM.yyyy"
+                      placeholderText={`${values.transactionDate.toLocaleDateString(
+                        'uk-UA'
+                      )}`}
                       showIcon
                       selected={startDate}
                       maxDate={new Date()}
