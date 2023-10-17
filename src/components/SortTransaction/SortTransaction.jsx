@@ -32,6 +32,6 @@ const SortTransaction = ({ value, setSortCriteria }) => {
 export default SortTransaction;
 
 SortTransaction.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.object,
   setSortCriteria: PropTypes.func,
 };

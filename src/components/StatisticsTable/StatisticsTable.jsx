@@ -102,6 +102,12 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
 export default StatisticsTable;
 
 StatisticsTable.propTypes = {
-  categories: PropTypes.array,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      type: PropTypes.string,
+      total: PropTypes.number,
+    })
+  ),
   dataDoughnut: PropTypes.object,
 };

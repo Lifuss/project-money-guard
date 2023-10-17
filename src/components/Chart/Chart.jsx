@@ -27,6 +27,12 @@ const Chart = ({ dataDoughnut, categories }) => {
 export default Chart;
 
 Chart.propTypes = {
-  dataDoughnut: PropTypes.object,
-  categories: PropTypes.array,
+  dataDoughnut: PropTypes.objectOf(PropTypes.array),
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      type: PropTypes.string,
+      total: PropTypes.number,
+    })
+  ),
 };
