@@ -8,8 +8,8 @@ import { fetchTransactionsSummary } from 'redux/transactions/operations';
 const StatisticsDashboard = () => {
   const dispatch = useDispatch();
   const [selectedMonth, setSelectedMonth] = useState({
-    value: 1,
-    label: 'January',
+    value: 10,
+    label: 'October',
   });
   const [selectedYear, setSelectedYear] = useState({
     value: 2023,

@@ -30,18 +30,18 @@ const StatisticsTab = () => {
       {
         data: [...categoriesValue],
         backgroundColor: [
-          '#00AD84',
+          '#00ff3c',
           '#FED057',
-          '#24CCA7',
+          '#006825',
 
           '#FFD8D0',
           '#4A56E2',
-          '#24CCA7',
+          '#ffff00',
           '#6E78E8',
           '#81E1FF',
           '#C5BAFF',
 
-          '#61f6d6',
+          '#e0661b',
 
           '#FD9498',
         ],
@@ -61,7 +61,7 @@ const StatisticsTab = () => {
 
           '#b7696ca4',
         ],
-        borderWidth: 4,
+        borderWidth: 1,
         cutout: '70%',
       },
     ],
