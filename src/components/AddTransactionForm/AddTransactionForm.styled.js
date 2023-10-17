@@ -103,6 +103,7 @@ export const SwitcherRoundPlus = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  box-shadow: 0px 6px 15px 0px rgba(255, 199, 39, 0.5);
   top: -2px;
   left: -2px;
 `;
@@ -116,6 +117,7 @@ export const SwitcherRoundMinus = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  box-shadow: 0px 6px 15px 0px rgba(255, 134, 141, 0.5);
   top: -2px;
   left: 38px;
 `;
