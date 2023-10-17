@@ -82,6 +82,7 @@ export const StyledEditAmount = styled(Field)`
   padding-left: 20px;
   width: 280px;
   margin-bottom: 40px;
+  outline: none;
 
   border: none;
   background: transparent;
@@ -101,6 +102,7 @@ export const StyledEditField = styled(Field)`
   width: 280px;
   padding: 0 20px 8px 20px;
   background: transparent;
+  outline: none;
   border: none;
   border-bottom: ${({ theme }) => theme.border.borderBottom};
   color: ${({ theme }) => theme.colors.mainWhite};
@@ -117,6 +119,7 @@ export const StyledEditDatePicker = styled(DatePicker)`
   font-weight: 600;
   line-height: normal;
   margin-bottom: 20px;
+  outline: none;
 
   background: transparent;
   border: none;
