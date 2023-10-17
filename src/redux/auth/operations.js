@@ -27,20 +27,20 @@ export const registerThunk = createAsyncThunk(
         updatedCredentials
       );
       setToken(data.token);
-      toast.success(`Good job, ${data.user.email}`);
+      toast.success(`Welcome, ${data.user.email}`);
       return data;
     } catch (error) {
       console.log(error);
       switch (error.response.status) {
-      case 400:
-        toast.error(`Validation error: please check your data`);
-        break;
-      case 409:
-        toast.error(`Error: User with such email already exists`);
-        break;
-      default:
-        break;
-    }
+        case 400:
+          toast.error(`Validation error: please check your data`);
+          break;
+        case 409:
+          toast.error(`Error: User with such email already exists`);
+          break;
+        default:
+          break;
+      }
       return rejectWithValue(error.response.data);
     }
   }
@@ -68,11 +68,11 @@ export const logoutThunk = createAsyncThunk(
       await swaggerApi.delete('auth/sign-out');
       clearToken();
       toast.info(`Bye, ${getState().auth.user.email} `);
-      // dispatch(logoutSuccess()); 
+      // dispatch(logoutSuccess());
     } catch (error) {
-       switch (error.response.status) {
+      switch (error.response.status) {
         case 401:
-          toast.error("Bearer auth failed. You are not authorized to log out.");
+          toast.error('Bearer auth failed. You are not authorized to log out.');
           break;
         default:
           toast.warning(`Something went wrong. Please try again later.`);
