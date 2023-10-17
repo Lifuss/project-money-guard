@@ -35,8 +35,8 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
       content: '';
       width: 285px;
       height: 265.381px;
-      top: 520px;
-      left: 851px;
+      top: 490px;
+      left: calc(100vw - 400px);
       z-index: -1;
       position: absolute;
       border-radius: 362.381px;
@@ -65,7 +65,7 @@ export const StyledDashBoardBox = styled.div`
     &::before {
       content: '';
       width: 739px;
-      height: 600px;
+      height: 500px;
       border-radius: 366.105px;
       background: #5e3ede;
 
@@ -85,7 +85,7 @@ export const StyledDashBoardBox = styled.div`
       z-index: -1;
       filter: blur(150px);
       position: absolute;
-      left: 940px;
+      left: calc(100vw - 450px);
       top: 80px;
     }
   }

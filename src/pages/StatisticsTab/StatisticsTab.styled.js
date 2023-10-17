@@ -18,7 +18,7 @@ export const StyledStatisticDivMain = styled(StyledContainer)`
     max-width: 803px;
     height: calc(100vh - 70px);
 
-    padding: 20px 16px 0 0;
+    padding: 20px 0 0 0;
   }
 `;
 export const StyledStatisticDivChart = styled.div`
