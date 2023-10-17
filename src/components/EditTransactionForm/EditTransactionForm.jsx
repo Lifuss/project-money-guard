@@ -21,6 +21,7 @@ import {
   StyledWrapper,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
+import PropTypes from 'prop-types';
 
 const handleNumberInput = e => {
   const inputValue = e.target.value;
@@ -169,3 +170,8 @@ const EditTransactionForm = ({ transaction, close }) => {
 };
 
 export default EditTransactionForm;
+
+EditTransactionForm.propTypes = {
+  transaction: PropTypes.object,
+  close: PropTypes.func,
+};

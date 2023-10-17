@@ -6,6 +6,7 @@ import {
   ButtonCloseStyle,
   CancelBtnStyle,
 } from './Modal.styled';
+import PropTypes from 'prop-types';
 
 export default function Modal({ children, showCloseIcon = true, close }) {
   useEffect(() => {
@@ -58,3 +59,9 @@ export default function Modal({ children, showCloseIcon = true, close }) {
     </OverlayStyle>
   );
 }
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  showCloseIcon: PropTypes.bool,
+  close: PropTypes.func,
+};

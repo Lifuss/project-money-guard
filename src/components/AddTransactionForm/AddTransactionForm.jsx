@@ -32,6 +32,7 @@ import { selectAllCategories } from 'redux/transactions/selectors';
 import Select from 'react-select';
 import { StyledIconCalendar } from 'components/EditTransactionForm/EditTransactionForm.styled';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 const AddSchema = object({
   amount: string().required(),
@@ -302,3 +303,7 @@ const AddTransactionForm = ({ close }) => {
 };
 
 export default AddTransactionForm;
+
+AddTransactionForm.propTypes = {
+  close: PropTypes.func,
+};

@@ -12,7 +12,7 @@ import {
   StyledDeskContainer,
 } from './DashboardPage.styled';
 import Loader from 'components/Loader/Loader';
-import ScrollButton from 'components/ToTopButton/ScrollButton';
+import ScrollButton from 'components/ScrollButton/ScrollButton';
 
 const DashboardPage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
