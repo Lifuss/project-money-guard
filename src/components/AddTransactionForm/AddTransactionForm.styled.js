@@ -26,6 +26,7 @@ export const StyledFieldAmount = styled(Field)`
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 20px;
+  outline: none;
 
   @media only screen and (min-width: 768px) {
     width: 181px;
@@ -40,7 +41,7 @@ export const StyledFieldComment = styled(Field)`
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 20px;
-
+  outline: none;
   @media only screen and (min-width: 768px) {
     width: 394px;
   }
@@ -119,6 +120,7 @@ export const StyledDatePicker = styled(DatePicker)`
   background: transparent;
   padding: 0 20px;
   border: none;
+  outline: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 
   @media only screen and (min-width: 768px) {

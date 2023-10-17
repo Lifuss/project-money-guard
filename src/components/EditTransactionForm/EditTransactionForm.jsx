@@ -16,10 +16,17 @@ import {
   StyledEditDatePicker,
   StyledEditField,
   StyledEditForm,
+  StyledIconCalendar,
   StyledReqField,
   StyledWrapper,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
+
+const handleNumberInput = e => {
+  const inputValue = e.target.value;
+  const newValue = inputValue.replace(/[-+eE]/g, '');
+  e.target.value = newValue;
+};
 
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
@@ -100,6 +107,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <StyledEditAmount
                     name="amount"
                     type="number"
+                    onInput={handleNumberInput}
                     value={values.amount.toString().replace('-', '')}
                     placeholder="0.0"
                   />
@@ -127,9 +135,9 @@ const EditTransactionForm = ({ transaction, close }) => {
                       maxDate={new Date()}
                       style={{ float: 'left' }}
                       icon={
-                        <svg width="24" height="24">
+                        <StyledIconCalendar width="24" height="24">
                           <use href={`${sprite}#calendar`} />
-                        </svg>
+                        </StyledIconCalendar>
                       }
                     />
                   </label>

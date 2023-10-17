@@ -135,6 +135,9 @@ export const StyledEditDatePicker = styled(DatePicker)`
   }
 `;
 
+export const StyledIconCalendar = styled.svg`
+  cursor: pointer;
+`;
 export const StyledWrapper = styled.div`
   .react-datepicker__view-calendar-icon input {
     padding: 6px 5px 5px 20px;
