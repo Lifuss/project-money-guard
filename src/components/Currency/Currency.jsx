@@ -39,7 +39,7 @@ const Currency = () => {
     if (storedData) {
       const { data, fetchTime } = JSON.parse(storedData);
       const currentTime = new Date().getTime();
-      if (currentTime - fetchTime < 300000) {
+      if (currentTime - fetchTime < 3600000) {
         setData(data);
       } else {
         fetchDataAndStore();

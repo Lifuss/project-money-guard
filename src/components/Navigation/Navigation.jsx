@@ -22,26 +22,36 @@ const Navigation = () => {
           <NavList>
             <li>
               <StyledNavLink to="/">
-                <svg width="38" height="38">
-                  <use href={`${sprite}#homepage`} />
-                </svg>
+                <div>
+                  {' '}
+                  <svg width="38" height="38">
+                    <use href={`${sprite}#homepage`} />
+                  </svg>
+                </div>
+
                 {isDesktopOrLaptop && <StyledNavText>Home</StyledNavText>}
               </StyledNavLink>
             </li>
             <li>
               <StyledNavLink to="/statistics">
-                <svg width="38" height="38">
-                  <use href={`${sprite}#statistics`} />
-                </svg>
+                <div>
+                  <svg width="38" height="38">
+                    <use href={`${sprite}#statistics`} />
+                  </svg>
+                </div>
+
                 {isDesktopOrLaptop && <StyledNavText>Statistics</StyledNavText>}
               </StyledNavLink>
             </li>
             {isMobile ? (
               <li>
                 <StyledNavLink to="/currency">
-                  <svg width="38" height="38">
-                    <use href={`${sprite}#dollar`} />
-                  </svg>
+                  <div>
+                    {' '}
+                    <svg width="38" height="38">
+                      <use href={`${sprite}#dollar`} />
+                    </svg>
+                  </div>
                 </StyledNavLink>
               </li>
             ) : null}

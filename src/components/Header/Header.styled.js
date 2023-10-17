@@ -72,6 +72,10 @@ export const LogoutBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: filter 0.3s;
+  &:hover {
+    filter: drop-shadow(0px 3px 5px rgba(255, 255, 255, 0.8));
+  }
 `;
 
 export const OverlayStyle = styled.div`
@@ -178,9 +182,9 @@ export const CancelButtonStyle = styled.button`
     font-weight: 600;
   }
 
-   @media screen and (min-width: 768px) {
-      width: 319px;
-      height: 50px;
+  @media screen and (min-width: 768px) {
+    width: 319px;
+    height: 50px;
   }
 `;
 
@@ -208,10 +212,10 @@ export const LogOutButtonStyle = styled.button`
   &:hover {
     font-weight: 600;
   }
-  
-   @media screen and (min-width: 768px) {
-      width: 319px;
-      height: 50px;
+
+  @media screen and (min-width: 768px) {
+    width: 319px;
+    height: 50px;
   }
 `;
 
