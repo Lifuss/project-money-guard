@@ -27,24 +27,6 @@ const handleNumberInput = e => {
   const newValue = inputValue.replace(/[-+eE]/g, '');
   e.target.value = newValue;
 };
-<<<<<<< Updated upstream
-
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const day = date.getDate().toString().padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-=======
-// function formatDate(dateString) {
-//   const date = new Date(dateString);
-//   const day = date.getDate().toString().padStart(2, '0');
-//   const month = (date.getMonth() + 1).toString().padStart(2, '0');
-//   const year = date.getFullYear().toString().slice(-2);
-//   return `${day}.${month}.${year}`;
-// }
->>>>>>> Stashed changes
 
 const EditTransactionForm = ({ transaction, close }) => {
   const dispatch = useDispatch();
@@ -148,14 +130,10 @@ const EditTransactionForm = ({ transaction, close }) => {
                         });
                         setStartDate(date);
                       }}
-<<<<<<< Updated upstream
-                      dateFormat="dd.MM.yy"
-=======
                       dateFormat="dd.MM.yyyy"
                       placeholderText={`${values.transactionDate.toLocaleDateString(
                         'uk-UA'
                       )}`}
->>>>>>> Stashed changes
                       showIcon
                       selected={startDate}
                       maxDate={new Date()}
