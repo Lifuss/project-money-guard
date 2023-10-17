@@ -78,7 +78,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                     type="radio"
                     name="type"
                     value="INCOME"
-                    disabled={values.type === 'EXPENSE' ? 'true' : 'false'}
+                    disabled={values.type === 'EXPENSE' ? true : false}
                     checked={values.type === 'INCOME'}
                     onChange={() => {
                       setFieldValue('type', 'INCOME');
@@ -92,7 +92,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    disabled={values.type === 'INCOME' ? 'true' : 'false'}
+                    disabled={values.type === 'INCOME' ? true : false}
                     value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
                     onChange={() => {
