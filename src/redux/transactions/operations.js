@@ -68,7 +68,6 @@ export const updateTransactionThunk = createAsyncThunk(
       const { data: freshData } = await swaggerApi.get('/users/current');
       toast.success('Edit completed!');
       const newData = { data, freshData };
-      console.log(newData);
 
       return newData;
     } catch (error) {

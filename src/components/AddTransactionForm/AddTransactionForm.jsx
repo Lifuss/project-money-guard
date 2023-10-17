@@ -97,7 +97,6 @@ const AddTransactionForm = ({ close }) => {
   };
 
   const handleSubmit = (values, selectedCategory) => {
-    console.log(values, selectedCategory);
     const addFormData = {
       amount:
         values.type === 'EXPENSE'
@@ -112,7 +111,6 @@ const AddTransactionForm = ({ close }) => {
       type: values.type,
       // type: transactionType,
     };
-    console.log(addFormData);
 
     dispatch(addTransactionThunk(addFormData))
       .unwrap()
