@@ -97,12 +97,19 @@ export const StyledEditAmount = styled(Field)`
 export const StyledReqField = styled.span`
   position: absolute;
   font-size: 14px;
+  right: 90px;
   bottom: 90px;
   color: ${({ theme }) => theme.colors.expenseColor};
 
   @media only screen and (min-width: 768px) {
     bottom: 20px;
+    right: 210px;
   }
+`;
+
+export const StyledReqCommentField = styled.span`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.expenseColor};
 `;
 
 export const StyledEditField = styled(Field)`
