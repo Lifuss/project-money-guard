@@ -63,6 +63,7 @@ export const CustomRadioInput = styled.input`
 `;
 
 export const StyledAmounDateEdit = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -93,10 +94,15 @@ export const StyledEditAmount = styled(Field)`
     text-align: center;
   }
 `;
-export const StyledReqField = styled.div`
+export const StyledReqField = styled.span`
+  position: absolute;
   font-size: 14px;
-  color: red;
-  margin-top: -16px;
+  bottom: 90px;
+  color: ${({ theme }) => theme.colors.expenseColor};
+
+  @media only screen and (min-width: 768px) {
+    bottom: 20px;
+  }
 `;
 
 export const StyledEditField = styled(Field)`

@@ -40,7 +40,7 @@ const EditTransactionForm = ({ transaction, close }) => {
   });
 
   const handleSubmit = values => {
-    const EditData = {
+    const editData = {
       id: transaction.id,
       amount:
         values.type === 'EXPENSE'
@@ -50,7 +50,7 @@ const EditTransactionForm = ({ transaction, close }) => {
       type: values.type,
       comment: values.comment,
     };
-    dispatch(updateTransactionThunk(EditData));
+    dispatch(updateTransactionThunk(editData));
     close();
   };
 
@@ -103,18 +103,17 @@ const EditTransactionForm = ({ transaction, close }) => {
                 </CustomRadioLabel>
               </StyledlabelBox>
               <StyledAmounDateEdit>
-                <div>
-                  <StyledEditAmount
-                    name="amount"
-                    type="number"
-                    onInput={handleNumberInput}
-                    value={values.amount.toString().replace('-', '')}
-                    placeholder="0.0"
-                  />
-                  {errors.amount && touched.amount ? (
-                    <StyledReqField>{errors.amount}</StyledReqField>
-                  ) : null}
-                </div>
+                <StyledEditAmount
+                  name="amount"
+                  type="number"
+                  onInput={handleNumberInput}
+                  value={values.amount.toString().replace('-', '')}
+                  placeholder="0.0"
+                />
+                {errors.amount && touched.amount ? (
+                  <StyledReqField>{errors.amount}</StyledReqField>
+                ) : null}
+
                 <StyledWrapper>
                   <label>
                     <StyledEditDatePicker
