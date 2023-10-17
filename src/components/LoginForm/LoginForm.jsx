@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operations';
 import StyledLoginButton from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockIcon from '@mui/icons-material/Lock';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
@@ -90,7 +89,7 @@ const LoginForm = () => {
           style={{
             width: '90%',
             marginTop: '52px',
-            // borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+
             outline: 'none',
           }}
         />
@@ -124,7 +123,6 @@ const LoginForm = () => {
           style={{
             width: '90%',
             marginTop: '40px',
-            // borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
           }}
         />
         <StyledLoginButton

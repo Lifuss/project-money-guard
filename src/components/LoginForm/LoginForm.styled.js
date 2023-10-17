@@ -99,6 +99,7 @@ export const StyledLoginField = styled(TextField)`
   fieldset {
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
     &:hover {
       border-bottom: 1px solid ${({ theme }) => theme.backgrounds.active};
     }
