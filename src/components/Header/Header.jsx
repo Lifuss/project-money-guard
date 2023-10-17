@@ -45,23 +45,22 @@ const Header = () => {
     document.body.style.overflow = 'hidden';
   };
 
-   const enableBodyScroll = () => {
+  const enableBodyScroll = () => {
     document.body.style.overflow = 'auto';
   };
 
   const handleLogout = () => {
     setShowLogoutConfirmation(true);
     disableBodyScroll();
-     document.addEventListener('keydown', handleEscapeKey);
+    document.addEventListener('keydown', handleEscapeKey);
   };
 
-  const handleEscapeKey = (e) => {
+  const handleEscapeKey = e => {
     if (e.key === 'Escape') {
       setShowLogoutConfirmation(false);
       enableBodyScroll();
     }
   };
-
 
   const confirmLogout = () => {
     dispatch(logoutThunk());
@@ -70,9 +69,10 @@ const Header = () => {
     document.removeEventListener('keydown', handleEscapeKey);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     return () => {
-      document.removeEventListener('keydown');
+      // document.removeEventListener('keydown');
+      document.removeEventListener('keydown', handleEscapeKey);
     };
   }, []);
 
@@ -105,7 +105,8 @@ const Header = () => {
               <LogoutName>Money Guard</LogoutName>
             </LogoutLogoBox>
             <ConfirmationMessage>
-              <p>Are you sure you want to logout?</p>
+              {/* <p>Are you sure you want to logout?</p> */}
+              Are you sure you want to logout?
             </ConfirmationMessage>
             <div>
               <LogOutButtonStyle onClick={confirmLogout}>
