@@ -18,7 +18,6 @@ export const StyledSelectMainDiv = styled.div`
     margin: 0;
   }
   @media only screen and (min-width: 1280px) {
-    padding: 20px 20px 0 0;
     margin-top: 60px;
     min-width: 213px;
     max-width: 213px;
