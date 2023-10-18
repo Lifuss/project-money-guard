@@ -26,7 +26,7 @@ const TransactionsItem = ({ transaction }) => {
   return (
     <>
       <StyledTransaction
-        $color={transaction.type === 'INCOME' ? '#ff868d' : '#FFB627'}
+        $color={transaction.type === 'INCOME' ? '#FFB627' : '#FF868D'}
       >
         <StyledParWrapper>
           <StyledParagraph>Date</StyledParagraph>
