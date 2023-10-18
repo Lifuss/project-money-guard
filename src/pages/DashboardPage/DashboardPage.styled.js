@@ -35,7 +35,7 @@ export const StyledDashBoardContainer = styled(StyledContainer)`
       content: '';
       width: 285px;
       height: 265.381px;
-      top: 490px;
+      top: 430px;
       left: calc(100vw - 400px);
       z-index: -1;
       position: absolute;
