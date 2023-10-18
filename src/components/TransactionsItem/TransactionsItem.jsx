@@ -14,6 +14,7 @@ import sprite from '../../images/sprite.svg';
 import useModal from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
 import EditTransactionForm from 'components/EditTransactionForm/EditTransactionForm';
+import PropTypes from 'prop-types';
 
 const TransactionsItem = ({ transaction }) => {
   const categories = useSelector(selectAllCategories);
@@ -81,3 +82,7 @@ function formatDate(dateString) {
 }
 
 export default TransactionsItem;
+
+TransactionsItem.propTypes = {
+  transaction: PropTypes.object,
+};

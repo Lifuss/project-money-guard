@@ -4,6 +4,7 @@ import { AddBtnCircle } from './ButtonAddTransactions.styled';
 import useModal from 'hooks/useModal';
 import Modal from 'components/Modal/Modal';
 import AddTransactionForm from 'components/AddTransactionForm/AddTransactionForm';
+import PropTypes from 'prop-types';
 
 const ButtonAddTransactions = ({ transaction }) => {
   const { open, close, isOpen, data } = useModal();
@@ -24,3 +25,7 @@ const ButtonAddTransactions = ({ transaction }) => {
 };
 
 export default ButtonAddTransactions;
+
+ButtonAddTransactions.propTypes = {
+  transaction: PropTypes.object,
+};

@@ -14,6 +14,8 @@ import {
   selectExpenseSummary,
   selectIncomeSummary,
 } from 'redux/transactions/selectors';
+import PropTypes from 'prop-types';
+
 const StatisticsTable = ({ categories, dataDoughnut }) => {
   const income = useSelector(selectIncomeSummary);
   const expense = useSelector(selectExpenseSummary);
@@ -98,3 +100,14 @@ const StatisticsTable = ({ categories, dataDoughnut }) => {
 };
 
 export default StatisticsTable;
+
+StatisticsTable.propTypes = {
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      type: PropTypes.string,
+      total: PropTypes.number,
+    })
+  ),
+  dataDoughnut: PropTypes.object,
+};
