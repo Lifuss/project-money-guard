@@ -24,6 +24,9 @@ export const OverlayStyle = styled.div`
 export const ModalWindowStyle = styled.div`
   width: 320px;
   min-height: 600px;
+  @media only screen and (max-width: 767px) {
+    min-height: 700px;
+  }
   padding: 41px 40px;
   display: flex;
   flex-direction: column;
