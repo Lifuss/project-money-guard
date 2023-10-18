@@ -110,7 +110,6 @@ const AddTransactionForm = ({ close }) => {
       comment: values.comment,
       transactionDate: values.transactionDate,
       type: values.type,
-      // type: transactionType,
     };
 
     dispatch(addTransactionThunk(addFormData))
@@ -139,7 +138,6 @@ const AddTransactionForm = ({ close }) => {
             comment: '',
           }}
           validationSchema={AddSchema}
-          // onSubmit={values => handleSubmit(values, selectedCategory)}
           onSubmit={(values, { setFieldValue }) =>
             handleSubmit(values, selectedCategory)
           }
@@ -168,20 +166,6 @@ const AddTransactionForm = ({ close }) => {
                 <SwitcherSquare
                   onClick={() => handleSwitcherClick(values, setFieldValue)}
                 >
-                  {/* {values.type === 'INCOME' ? (
-                    <SwitcherRoundPlus>
-                      <svg width="20" height="20">
-                        <use href={`${sprite}#plus`} />
-                      </svg>
-                    </SwitcherRoundPlus>
-                  ) : (
-                    <SwitcherRoundMinus>
-                      <svg width="20" height="20">
-                        <use href={`${sprite}#minus`} />
-                      </svg>
-                    </SwitcherRoundMinus>
-                  )} */}
-                  {/* ================================= */}
                   {isSwitcherRoundPlusVisible && (
                     <SwitcherRoundPlus>
                       <svg width="20" height="20">
@@ -197,7 +181,7 @@ const AddTransactionForm = ({ close }) => {
                       </svg>
                     </SwitcherRoundMinus>
                   )}
-                  {/* ========================= */}
+
                 </SwitcherSquare>
                 <label>
                   <StyledRadioInput

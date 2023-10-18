@@ -50,7 +50,6 @@ export const StyledTableTrHead = styled.tr`
   }
 `;
 export const StyledTableTh = styled.th`
-  /* padding: 16px; */
   display: inline-block;
 `;
 export const StyledTableH3 = styled.h3`
@@ -69,7 +68,6 @@ export const StyledTableH3 = styled.h3`
   }
 `;
 export const StyledTableBody = styled.tbody`
-  /* padding: 16px; */
   display: flex;
   flex-direction: column;
 

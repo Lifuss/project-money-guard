@@ -68,7 +68,6 @@ export const logoutThunk = createAsyncThunk(
       await swaggerApi.delete('auth/sign-out');
       clearToken();
       toast.info(`Bye, ${getState().auth.user.email} `);
-      // dispatch(logoutSuccess());
     } catch (error) {
       switch (error.response.status) {
         case 401:

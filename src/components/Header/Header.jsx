@@ -29,7 +29,6 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-width: 768px)',
   });
