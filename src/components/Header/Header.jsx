@@ -47,6 +47,11 @@ const Header = () => {
   const enableBodyScroll = useCallback(() => {
     document.body.style.overflow = 'auto';
   }, []);
+
+  const handleCancel = () => {
+    setShowLogoutConfirmation(false);
+    enableBodyScroll();
+  };
   const handleEscapeKey = useCallback(
     e => {
       if (e.key === 'Escape') {
@@ -113,9 +118,7 @@ const Header = () => {
               <LogOutButtonStyle onClick={confirmLogout}>
                 Logout
               </LogOutButtonStyle>
-              <CancelButtonStyle
-                onClick={() => setShowLogoutConfirmation(false)}
-              >
+              <CancelButtonStyle onClick={handleCancel}>
                 Cancel
               </CancelButtonStyle>
             </div>
