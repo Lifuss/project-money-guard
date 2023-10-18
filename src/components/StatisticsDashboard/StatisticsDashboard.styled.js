@@ -8,7 +8,7 @@ export const StyledSelectMainDiv = styled.div`
   min-width: 280px;
   max-width: 280px;
   margin: 0 auto;
-  /* overflow: hidden; */
+
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     gap: 16px;

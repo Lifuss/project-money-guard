@@ -19,9 +19,6 @@ const HomeTab = lazy(() => import('pages/HomeTab/HomeTab'));
 const StatisticsTab = lazy(() => import('pages/StatisticsTab/StatisticsTab'));
 
 export const App = () => {
-  // const isDesktopOrLaptop = useMediaQuery({
-  //   query: '(min-width: 768px)',
-  // });
   const dispatch = useDispatch();
   const isRefresh = useSelector(selectIsRefresh);
   useEffect(() => {

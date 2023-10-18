@@ -26,10 +26,9 @@ export const addTransactionThunk = createAsyncThunk(
     };
     try {
       const res = await swaggerApi.post('transactions', data);
-      toast.success(`Transaction added💸`);
+
       return res.data;
     } catch (error) {
-      toast.error(`Invalid input, check your data`);
       return rejectWithValue(error.message);
     }
   }
@@ -40,8 +39,10 @@ export const deleteTransactionThunk = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await swaggerApi.delete(`transactions/${id}`);
+      const { data } = await swaggerApi.get('/users/current');
+      const newData = { data, id };
       toast.success('Transaction delete success!');
-      return id;
+      return newData;
     } catch (error) {
       toast.error(`Error! ${error.message}`);
       return rejectWithValue(error.message);
@@ -67,7 +68,6 @@ export const updateTransactionThunk = createAsyncThunk(
       const { data: freshData } = await swaggerApi.get('/users/current');
       toast.success('Edit completed!');
       const newData = { data, freshData };
-      console.log(newData);
 
       return newData;
     } catch (error) {

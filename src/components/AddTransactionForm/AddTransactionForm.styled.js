@@ -245,7 +245,6 @@ export const styles = {
     borderRadius: 'none',
     borderBottom: '1px solid gray',
     paddingTop: '42px',
-    // background: ' rgba(133, 93, 175, 0.13) ',
     '@media only screen and (min-width:768px)': {
       ...styles['@media only screen and (min-width: 768px)'],
       width: 394,
@@ -254,10 +253,8 @@ export const styles = {
   option: (styles, state) => ({
     ...styles,
     backgroundColor: state.isSelected ? 'rgba(255, 255, 255, 0.10)' : '',
-    // color: state.isSelected ? '#FF868D' : '',
     ':hover': {
       background: 'rgba(255, 255, 255, 0.10)',
-      // color: '#FF868D',
     },
   }),
   menu: baseStyles => ({

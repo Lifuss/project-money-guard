@@ -2,6 +2,7 @@ import { styles } from 'components/StatisticsDashboard/StatisticsDashboard.style
 import { styledSort } from './SortTransaction.styled';
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 
 const SortTransaction = ({ value, setSortCriteria }) => {
   const options = [
@@ -29,3 +30,8 @@ const SortTransaction = ({ value, setSortCriteria }) => {
 };
 
 export default SortTransaction;
+
+SortTransaction.propTypes = {
+  value: PropTypes.object,
+  setSortCriteria: PropTypes.func,
+};

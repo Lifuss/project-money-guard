@@ -8,7 +8,7 @@ export const StyledTableWrapper = styled.div`
   margin: 0 auto;
   @media only screen and (min-width: 768px) {
     min-width: 336px;
-    /* height: 214px; */
+
     margin: 0;
   }
   @media only screen and (min-width: 1280px) {
@@ -21,8 +21,6 @@ export const StyledTableWrapper = styled.div`
 export const StyledGraphWrapper = styled.div`
   position: relative;
   width: 100%;
-  /* height: 100%; */
-  /* background-color: rgba(74, 86, 226, 0.1); */
 
   top: -6px;
   &::before {
@@ -37,19 +35,6 @@ export const StyledGraphWrapper = styled.div`
     left: 39px;
     top: 21px;
     z-index: 1000;
-    /* &::before {
-      content: '${props => props.$usd}';
-      display: inline-block;
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: #563eaf;
-      border: solid 1px #ff868d;
-      left: 39px;
-      top: 21px;
-      z-index: 1000;
-    } */
   }
 
   &::after {
@@ -99,14 +84,12 @@ export const StyledTable = styled.table`
   border-collapse: collapse;
   padding-left: 20px;
   @media only screen and (min-width: 1280px) {
-    /* padding-left: 50px; */
   }
 `;
 export const StyledThead = styled.thead`
   background: rgba(255, 255, 255, 0.2);
   font-weight: 600;
   @media only screen and (min-width: 1280px) {
-    /* padding-left: 50px; */
   }
 `;
 
@@ -175,16 +158,3 @@ export const StyledGraphEur = styled.div`
   font-weight: 400;
   line-height: normal;
 `;
-
-// &::before {
-//       left: 58px;
-//       top: 29px;
-//       width: 9px;
-//       height: 9px;
-//     }
-//     &::after {
-//       left: 364px;
-//       top: -4px;
-//       width: 9px;
-//       height: 9px;
-//     }

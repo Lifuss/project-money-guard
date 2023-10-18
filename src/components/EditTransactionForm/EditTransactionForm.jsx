@@ -21,6 +21,7 @@ import {
   StyledWrapper,
   StyledlabelBox,
 } from './EditTransactionForm.styled';
+import PropTypes from 'prop-types';
 
 const handleNumberInput = e => {
   const inputValue = e.target.value;
@@ -35,7 +36,7 @@ const EditTransactionForm = ({ transaction, close }) => {
 
   const AddSchema = object({
     amount: string().required().min(1, 'Too Short!').max(12, 'Too Long!'),
-    comment: string().min(2, 'Too Short!').max(50, 'Too Long!'),
+    comment: string().max(50, 'Too Long!'),
     type: string().oneOf(['INCOME', 'EXPENSE'], 'Invalid transaction type'),
   });
 
@@ -63,7 +64,7 @@ const EditTransactionForm = ({ transaction, close }) => {
           initialValues={{
             id: transaction.id,
             amount: transaction.amount,
-            transactionDate: transaction.transactionDate,
+            transactionDate: new Date(Date.parse(transaction.transactionDate)),
             comment: transaction.comment,
             type: transaction.type,
           }}
@@ -78,7 +79,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                     type="radio"
                     name="type"
                     value="INCOME"
-                    disabled={values.type === 'EXPENSE' ? 'true' : 'false'}
+                    disabled={values.type === 'EXPENSE' ? true : false}
                     checked={values.type === 'INCOME'}
                     onChange={() => {
                       setFieldValue('type', 'INCOME');
@@ -92,7 +93,7 @@ const EditTransactionForm = ({ transaction, close }) => {
                   <CustomRadioInput
                     type="radio"
                     name="type"
-                    disabled={values.type === 'INCOME' ? 'true' : 'false'}
+                    disabled={values.type === 'INCOME' ? true : false}
                     value="EXPENSE"
                     checked={values.type === 'EXPENSE'}
                     onChange={() => {
@@ -130,7 +131,10 @@ const EditTransactionForm = ({ transaction, close }) => {
                         });
                         setStartDate(date);
                       }}
-                      dateFormat="dd.MM.yy"
+                      dateFormat="dd.MM.yyyy"
+                      placeholderText={`${values.transactionDate.toLocaleDateString(
+                        'uk-UA'
+                      )}`}
                       showIcon
                       selected={startDate}
                       maxDate={new Date()}
@@ -150,10 +154,6 @@ const EditTransactionForm = ({ transaction, close }) => {
                 value={values.comment}
                 placeholder="Comment"
               />
-              {errors.comment && touched.comment ? (
-                <div>{errors.comment}</div>
-              ) : null}
-
               <EditBtnBox>
                 <BtnSave type="submit">Save</BtnSave>
               </EditBtnBox>
@@ -166,3 +166,8 @@ const EditTransactionForm = ({ transaction, close }) => {
 };
 
 export default EditTransactionForm;
+
+EditTransactionForm.propTypes = {
+  transaction: PropTypes.object,
+  close: PropTypes.func,
+};

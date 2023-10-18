@@ -63,6 +63,7 @@ export const CustomRadioInput = styled.input`
 `;
 
 export const StyledAmounDateEdit = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -93,10 +94,22 @@ export const StyledEditAmount = styled(Field)`
     text-align: center;
   }
 `;
-export const StyledReqField = styled.div`
+export const StyledReqField = styled.span`
+  position: absolute;
   font-size: 14px;
-  color: red;
-  margin-top: -16px;
+  right: 90px;
+  bottom: 90px;
+  color: ${({ theme }) => theme.colors.expenseColor};
+
+  @media only screen and (min-width: 768px) {
+    bottom: 20px;
+    right: 210px;
+  }
+`;
+
+export const StyledReqCommentField = styled.span`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.expenseColor};
 `;
 
 export const StyledEditField = styled(Field)`
@@ -129,6 +142,10 @@ export const StyledEditDatePicker = styled(DatePicker)`
   border: none;
   border-bottom: ${({ theme }) => theme.border.borderBottom};
   color: ${({ theme }) => theme.colors.mainWhite};
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.mainWhite};
+  }
 
   @media only screen and (min-width: 768px) {
     width: 180px;

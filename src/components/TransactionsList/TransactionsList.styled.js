@@ -57,12 +57,6 @@ export const StyledHeaderTr = styled.tr`
   }
 `;
 
-// export const StyledTrSortBox = styled.tr`
-//   display: flex;
-//   align-items: center;
-//   gap: 6px;
-//   cursor: pointer;
-// `;
 export const StyledTh = styled.th`
   text-align: center;
   font-size: 16px;

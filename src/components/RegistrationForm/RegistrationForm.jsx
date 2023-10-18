@@ -20,10 +20,6 @@ import {
 } from '../LoginForm/LoginForm.styled';
 import { StyledSection, StyledForm } from './RegistrationForm.styled';
 
-// Import PasswordStrengthBar and define barColors and isRequired
-// const barColors = ['#ddd', '#FFC727', '#FFC727', '#FFC727', '#FFC727'];
-// const isRequired = false;
-
 const validationSchema = yup.object({
   name: yup.string('Enter your name').required('Name is required'),
   email: yup

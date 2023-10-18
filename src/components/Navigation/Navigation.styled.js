@@ -56,8 +56,6 @@ export const StyledNavLink = styled(NavLink)`
       width: 37px;
       height: 37px;
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-      /* border: 2px transparent; */
-      /* overflow: ; */
     }
   }
 
