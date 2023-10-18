@@ -3,12 +3,12 @@
   "name": "Money guard",
   "icons": [
     {
-      "src": "%PUBLIC_URL%/favicon.ico",
+      "src": "/public/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/ico"
     }
   ],
-  "start_url": "%PUBLIC_URL%/favicon.ico",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
