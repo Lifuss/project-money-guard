@@ -30,7 +30,6 @@ export const registerThunk = createAsyncThunk(
       toast.success(`Welcome, ${data.user.email}`);
       return data;
     } catch (error) {
-      console.log(error);
       switch (error.response.status) {
         case 400:
           toast.error(`Validation error: please check your data`);
