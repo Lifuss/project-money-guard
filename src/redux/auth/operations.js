@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export const swaggerApi = axios.create({
-  baseURL: 'https://wallet.goit.ua/api/',
+  baseURL: 'https://wallet.b.goit.study/api/',
+
 });
 
 const setToken = token => {
